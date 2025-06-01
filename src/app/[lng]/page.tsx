@@ -89,71 +89,99 @@ export default function Home({ params }: HomeProps) {
 
         {/* Right Content Area */}
         <motion.div
-          className="flex flex-col space-y-8"
+          className="flex flex-col space-y-8 bg-background/5 backdrop-blur-sm rounded-2xl p-6 border border-border/50"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
-          {/* Navigation */}
-          <nav className="flex flex-wrap gap-4 justify-center md:justify-start">
-            <Link
-              href={`/${lng}/resume`}
-              className="px-6 py-3 bg-background/10 backdrop-blur-sm rounded-lg 
-                       hover:bg-background/20 transition-all duration-300"
+          {/* Navigation - Hidden on mobile */}
+          <div className="hidden md:flex justify-end">
+            <nav
+              className="inline-flex flex-wrap gap-4 p-4 bg-background/10 
+                  backdrop-blur-sm rounded-2xl border border-border/50"
             >
-              <span className="text-foreground">{t("nav.resume")}</span>
-            </Link>
-            <Link
-              href={`/${lng}/portfolio`}
-              className="px-6 py-3 bg-background/10 backdrop-blur-sm rounded-lg 
-                       hover:bg-background/20 transition-all duration-300"
-            >
-              <span className="text-foreground">{t("nav.portfolio")}</span>
-            </Link>
-            <Link
-              href={`/${lng}/blog`}
-              className="px-6 py-3 bg-background/10 backdrop-blur-sm rounded-lg 
-                       hover:bg-background/20 transition-all duration-300"
-            >
-              <span className="text-foreground">{t("nav.blog")}</span>
-            </Link>
-            <Link
-              href={`/${lng}/contact`}
-              className="px-6 py-3 bg-background/10 backdrop-blur-sm rounded-lg 
-                       hover:bg-background/20 transition-all duration-300"
-            >
-              <span className="text-foreground">{t("nav.contact")}</span>
-            </Link>
-          </nav>
+              {["resume", "portfolio", "blog", "contact"].map((item) => (
+                <Link
+                  key={item}
+                  href={`/${lng}/${item}`}
+                  className="group relative px-6 py-2 transition-all duration-300"
+                >
+                  <span className="relative z-10 text-foreground/80 group-hover:text-white transition-colors">
+                    {t(`nav.${item}`)}
+                  </span>
+                  {/* Hover effect - bottom line */}
+                  <span
+                    className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-accent to-primary 
+                    group-hover:w-full transition-all duration-300"
+                  />
+                  {/* Hover effect - background glow */}
+                  <span
+                    className="absolute inset-0 rounded-lg bg-gradient-to-r from-accent/20 to-primary/20 
+                    opacity-0 group-hover:opacity-100 transition-all duration-300 -z-0"
+                  />
+                </Link>
+              ))}
+            </nav>
+          </div>
 
-          {/* Main Content */}
-          <section className="space-y-8">
-            <div className="bg-background/10 backdrop-blur-sm rounded-2xl p-6 border border-border">
-              <h3 className="text-2xl font-bold mb-4">{t("about.title")}</h3>
-              <p className="text-muted">{t("about.content")}</p>
-            </div>
+          {/* Content Container */}
+          <div className="space-y-8">
+            {/* About Section */}
+            <motion.div
+              className="group bg-background/10 backdrop-blur-sm rounded-2xl p-6 border border-border/50
+                        hover:bg-background/15 transition-all duration-300"
+              whileHover={{ scale: 1.01 }}
+            >
+              <h3 className="text-2xl font-bold mb-4 flex items-center gap-2">
+                <span className="text-accent">⚡</span>
+                {t("about.title")}
+              </h3>
+              <p className="text-muted group-hover:text-foreground transition-colors">
+                {t("about.content")}
+              </p>
+            </motion.div>
 
-            <div className="bg-background/10 backdrop-blur-sm rounded-2xl p-6 border border-border">
-              <h3 className="text-2xl font-bold mb-4">
+            {/* What I Do Section */}
+            <motion.div
+              className="group bg-background/10 backdrop-blur-sm rounded-2xl p-6 border border-border/50
+                        hover:bg-background/15 transition-all duration-300"
+              whileHover={{ scale: 1.01 }}
+            >
+              <h3 className="text-2xl font-bold mb-4 flex items-center gap-2">
+                <span className="text-primary">🎯</span>
                 {t("what-i-do.title")}
               </h3>
-              <p className="text-muted">{t("what-i-do.content")}</p>
-            </div>
+              <p className="text-muted group-hover:text-foreground transition-colors">
+                {t("what-i-do.content")}
+              </p>
+            </motion.div>
 
-            {/* Add Testimonials Carousel here */}
-            <div className="bg-background/10 backdrop-blur-sm rounded-2xl p-6 border border-border">
-              <h3 className="text-2xl font-bold mb-4">
+            {/* Testimonials Section */}
+            <motion.div
+              className="group bg-background/10 backdrop-blur-sm rounded-2xl p-6 border border-border/50
+                        hover:bg-background/15 transition-all duration-300"
+              whileHover={{ scale: 1.01 }}
+            >
+              <h3 className="text-2xl font-bold mb-4 flex items-center gap-2">
+                <span className="text-secondary">💬</span>
                 {t("testimonials.title")}
               </h3>
               {/* Add your carousel component here */}
-            </div>
+            </motion.div>
 
-            {/* Add Clients Carousel here */}
-            <div className="bg-background/10 backdrop-blur-sm rounded-2xl p-6 border border-border">
-              <h3 className="text-2xl font-bold mb-4">{t("clients.title")}</h3>
+            {/* Clients Section */}
+            <motion.div
+              className="group bg-background/10 backdrop-blur-sm rounded-2xl p-6 border border-border/50
+                        hover:bg-background/15 transition-all duration-300"
+              whileHover={{ scale: 1.01 }}
+            >
+              <h3 className="text-2xl font-bold mb-4 flex items-center gap-2">
+                <span className="text-accent">🤝</span>
+                {t("clients.title")}
+              </h3>
               {/* Add your carousel component here */}
-            </div>
-          </section>
+            </motion.div>
+          </div>
         </motion.div>
       </div>
 

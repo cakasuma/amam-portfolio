@@ -1,4 +1,30 @@
 {
-    "title": "Hello, there",
-    "to-resume-page": "To resume page"
+  "title": "Hello, there",
+  "to-resume-page": "To resume page",
+  "name": "Mustofa Amami",
+  "email": "mustofa.amami@email.com",
+  "phone": "+62 123 456 7890",
+  "birthday": "Born: January 1, 1990",
+  "nav": {
+    "resume": "Resume",
+    "portfolio": "Portfolio",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+  "about": {
+    "title": "About Me",
+    "content": "I am a passionate full-stack developer with expertise in modern web technologies. I love creating beautiful, functional, and user-friendly applications that solve real-world problems. With a strong background in React, Next.js, and TypeScript, I bring ideas to life through clean, efficient code."
+  },
+  "what-i-do": {
+    "title": "What I Do",
+    "content": "I specialize in building modern web applications using cutting-edge technologies like React, Next.js, TypeScript, and Tailwind CSS. I focus on creating responsive, accessible, and performant user interfaces that provide exceptional user experiences across all devices."
+  },
+  "testimonials": {
+    "title": "Testimonials",
+    "content": "What my clients say about working with me."
+  },
+  "clients": {
+    "title": "Clients",
+    "content": "Companies I've had the pleasure to work with."
   }
+}

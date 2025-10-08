@@ -39,7 +39,7 @@ export function LanguageSwitcher({ lng }: { lng: string }) {
         {isOpen && (
           <motion.div
             className="absolute top-full right-0 mt-2 bg-button-bg backdrop-blur-sm 
-               border border-border rounded-lg overflow-hidden min-w-[56px]"
+               border border-border rounded-lg overflow-hidden min-w-[56px] z-50"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}

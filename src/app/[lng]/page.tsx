@@ -43,7 +43,7 @@ export default function Home({ params }: HomeProps) {
           >
             <div className="flex items-center gap-4 w-full md:flex-col">
               <Image
-                src="/your-photo.jpg"
+                src="/profile-placeholder.svg"
                 alt="Profile"
                 width={60}
                 height={60}
@@ -71,13 +71,28 @@ export default function Home({ params }: HomeProps) {
                     <p className="text-muted">{t("birthday")}</p>
                   </div>
                   <div className="flex gap-4 justify-center">
-                    <a href="#" className="text-foreground hover:text-accent">
+                    <a
+                      href="https://linkedin.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-foreground hover:text-accent transition-colors"
+                    >
                       LinkedIn
                     </a>
-                    <a href="#" className="text-foreground hover:text-accent">
+                    <a
+                      href="https://github.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-foreground hover:text-accent transition-colors"
+                    >
                       GitHub
                     </a>
-                    <a href="#" className="text-foreground hover:text-accent">
+                    <a
+                      href="https://twitter.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-foreground hover:text-accent transition-colors"
+                    >
                       Twitter
                     </a>
                   </div>
@@ -166,7 +181,28 @@ export default function Home({ params }: HomeProps) {
                 <span className="text-secondary">💬</span>
                 {t("testimonials.title")}
               </h3>
-              {/* Add your carousel component here */}
+              <div className="space-y-4">
+                <blockquote className="border-l-4 border-primary pl-4">
+                  <p className="text-muted italic mb-2">
+                    &ldquo;Mustofa is an exceptional developer who consistently
+                    delivers high-quality work. His attention to detail and
+                    problem-solving skills are outstanding.&rdquo;
+                  </p>
+                  <cite className="text-primary font-semibold">
+                    - Sarah Johnson, Project Manager
+                  </cite>
+                </blockquote>
+                <blockquote className="border-l-4 border-secondary pl-4">
+                  <p className="text-muted italic mb-2">
+                    &ldquo;Working with Mustofa was a pleasure. He&apos;s
+                    professional, reliable, and his technical expertise helped
+                    bring our vision to life.&rdquo;
+                  </p>
+                  <cite className="text-secondary font-semibold">
+                    - Alex Chen, Startup Founder
+                  </cite>
+                </blockquote>
+              </div>
             </motion.div>
 
             {/* Clients Section */}
@@ -179,14 +215,30 @@ export default function Home({ params }: HomeProps) {
                 <span className="text-accent">🤝</span>
                 {t("clients.title")}
               </h3>
-              {/* Add your carousel component here */}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                {["TechCorp", "InnovateLab", "DigitalFlow", "StartupXYZ"].map(
+                  (client) => (
+                    <div
+                      key={client}
+                      className="bg-background/20 rounded-lg p-4 text-center border border-border/30 hover:border-accent/50 transition-colors"
+                    >
+                      <div className="w-12 h-12 bg-accent/20 rounded-full mx-auto mb-2 flex items-center justify-center">
+                        <span className="text-accent font-bold">
+                          {client.charAt(0)}
+                        </span>
+                      </div>
+                      <p className="text-muted text-sm">{client}</p>
+                    </div>
+                  )
+                )}
+              </div>
             </motion.div>
           </div>
         </motion.div>
       </div>
 
       {/* Mobile Navigation */}
-      <nav className="fixed bottom-0 left-0 right-0 md:hidden">
+      <nav className="fixed bottom-0 left-0 right-0 md:hidden z-50">
         <div className="flex justify-around p-4 bg-background/60 backdrop-blur-lg border-t border-border">
           <Link
             href={`/${lng}/resume`}

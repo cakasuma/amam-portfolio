@@ -1,4 +1,37 @@
 {
-    "title": "Hi from resume page!",
-    "back-to-home": "Back to home"
+  "title": "Resume",
+  "back-to-home": "Back to home",
+  "personal-info": {
+    "title": "Personal Information",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "location": "Location"
+  },
+  "skills": {
+    "title": "Skills",
+    "frontend": "Frontend Technologies",
+    "backend": "Backend Technologies"
+  },
+  "experience": {
+    "title": "Work Experience",
+    "job1": {
+      "title": "Senior Full Stack Developer",
+      "company": "Tech Innovation Corp",
+      "period": "2022 - Present",
+      "description": "Leading development of modern web applications using React, Next.js, and Node.js. Mentoring junior developers and implementing best practices for code quality and performance."
+    },
+    "job2": {
+      "title": "Frontend Developer",
+      "company": "Digital Solutions Ltd",
+      "period": "2020 - 2022",
+      "description": "Developed responsive web applications using React and TypeScript. Collaborated with design teams to implement pixel-perfect user interfaces and improved application performance by 40%."
+    }
+  },
+  "education": {
+    "title": "Education",
+    "degree": "Bachelor of Computer Science",
+    "school": "University of Indonesia",
+    "period": "2016 - 2020"
   }
+}

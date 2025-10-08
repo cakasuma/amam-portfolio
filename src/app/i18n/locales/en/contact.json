@@ -1,0 +1,33 @@
+{
+  "title": "Contact",
+  "subtitle": "Let's get in touch and discuss your next project",
+  "back-to-home": "Back to home",
+  "info": {
+    "title": "Get in Touch",
+    "description": "I'm always interested in hearing about new opportunities and exciting projects. Whether you have a question or just want to say hi, feel free to reach out!",
+    "email": {
+      "label": "Email"
+    },
+    "phone": {
+      "label": "Phone"
+    },
+    "location": {
+      "label": "Location"
+    },
+    "social": {
+      "title": "Follow Me"
+    }
+  },
+  "form": {
+    "title": "Send Message",
+    "name": "Full Name",
+    "name-placeholder": "Enter your full name",
+    "email": "Email Address",
+    "email-placeholder": "Enter your email address",
+    "subject": "Subject",
+    "subject-placeholder": "Enter the subject",
+    "message": "Message",
+    "message-placeholder": "Enter your message here...",
+    "submit": "Send Message"
+  }
+}

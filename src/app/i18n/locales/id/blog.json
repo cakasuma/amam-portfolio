@@ -1,0 +1,12 @@
+{
+  "title": "Blog",
+  "subtitle": "Pemikiran, tutorial, dan wawasan tentang pengembangan web",
+  "back-to-home": "Kembali ke halaman utama",
+  "read-more": "Baca selengkapnya",
+  "newsletter": {
+    "title": "Tetap Update",
+    "description": "Berlangganan untuk mendapat notifikasi tentang posting blog dan update terbaru.",
+    "placeholder": "Masukkan email Anda",
+    "button": "Berlangganan"
+  }
+}

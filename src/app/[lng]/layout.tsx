@@ -5,6 +5,7 @@ import { use } from "react";
 import { languages } from "@/app/i18n/settings";
 import { Providers } from "@/app/theme/Providers";
 import { Navigation } from "@/app/components/Navigation";
+import { Footer } from "@/app/components/Footer";
 import "./globals.css";
 
 export async function generateStaticParams() {
@@ -49,7 +50,8 @@ export default function RootLayout({
       >
         <Providers>
           <Navigation lng={lng} />
-          <main className="pb-16">{children}</main>
+          <main className="pb-24 md:pb-16">{children}</main>
+          <Footer lng={lng} />
         </Providers>
       </body>
     </html>

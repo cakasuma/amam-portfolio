@@ -1,0 +1,33 @@
+{
+  "title": "Kontak",
+  "subtitle": "Mari terhubung dan diskusikan proyek Anda selanjutnya",
+  "back-to-home": "Kembali ke halaman utama",
+  "info": {
+    "title": "Hubungi Saya",
+    "description": "Saya selalu tertarik mendengar tentang peluang baru dan proyek yang menarik. Apakah Anda memiliki pertanyaan atau hanya ingin menyapa, jangan ragu untuk menghubungi!",
+    "email": {
+      "label": "Email"
+    },
+    "phone": {
+      "label": "Telepon"
+    },
+    "location": {
+      "label": "Lokasi"
+    },
+    "social": {
+      "title": "Ikuti Saya"
+    }
+  },
+  "form": {
+    "title": "Kirim Pesan",
+    "name": "Nama Lengkap",
+    "name-placeholder": "Masukkan nama lengkap Anda",
+    "email": "Alamat Email",
+    "email-placeholder": "Masukkan alamat email Anda",
+    "subject": "Subjek",
+    "subject-placeholder": "Masukkan subjek",
+    "message": "Pesan",
+    "message-placeholder": "Masukkan pesan Anda di sini...",
+    "submit": "Kirim Pesan"
+  }
+}

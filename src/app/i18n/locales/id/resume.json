@@ -1,4 +1,37 @@
 {
-    "title": "Halo dari halaman resume!",
-    "back-to-home": "Kembali ke halaman utama"
+  "title": "Resume",
+  "back-to-home": "Kembali ke halaman utama",
+  "personal-info": {
+    "title": "Informasi Pribadi",
+    "name": "Nama",
+    "email": "Email",
+    "phone": "Telepon",
+    "location": "Lokasi"
+  },
+  "skills": {
+    "title": "Keahlian",
+    "frontend": "Teknologi Frontend",
+    "backend": "Teknologi Backend"
+  },
+  "experience": {
+    "title": "Pengalaman Kerja",
+    "job1": {
+      "title": "Senior Full Stack Developer",
+      "company": "Tech Innovation Corp",
+      "period": "2022 - Sekarang",
+      "description": "Memimpin pengembangan aplikasi web modern menggunakan React, Next.js, dan Node.js. Membimbing developer junior dan mengimplementasikan praktik terbaik untuk kualitas dan performa kode."
+    },
+    "job2": {
+      "title": "Frontend Developer",
+      "company": "Digital Solutions Ltd",
+      "period": "2020 - 2022",
+      "description": "Mengembangkan aplikasi web responsif menggunakan React dan TypeScript. Berkolaborasi dengan tim desain untuk mengimplementasikan antarmuka pengguna yang sempurna dan meningkatkan performa aplikasi sebesar 40%."
+    }
+  },
+  "education": {
+    "title": "Pendidikan",
+    "degree": "Sarjana Ilmu Komputer",
+    "school": "Universitas Indonesia",
+    "period": "2016 - 2020"
   }
+}

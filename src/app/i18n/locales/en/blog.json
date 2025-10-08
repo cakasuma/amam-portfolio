@@ -1,0 +1,12 @@
+{
+  "title": "Blog",
+  "subtitle": "Thoughts, tutorials, and insights about web development",
+  "back-to-home": "Back to home",
+  "read-more": "Read more",
+  "newsletter": {
+    "title": "Stay Updated",
+    "description": "Subscribe to get notified about new blog posts and updates.",
+    "placeholder": "Enter your email",
+    "button": "Subscribe"
+  }
+}

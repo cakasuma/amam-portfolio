@@ -1,6 +1,7 @@
 "use client";
 import { useTranslation } from "@/app/i18n/client";
 import { motion } from "motion/react";
+import Link from "next/link";
 import { use } from "react";
 
 interface ResumeProps {
@@ -14,73 +15,74 @@ export default function Resume({ params }: ResumeProps) {
   const { t } = useTranslation(lng, "resume");
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 px-6 py-8">
+    <motion.main
+      className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-gray-900 pt-20 px-4 pb-24 md:pb-8"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+    >
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <motion.div
-          className="text-center mb-12"
-          initial={{ opacity: 0, y: 20 }}
+          className="text-center mb-8"
+          initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h1 className="text-5xl font-bold text-white mb-6">{t("title")}</h1>
+          <h1 className="text-4xl font-bold text-white mb-4">{t("title")}</h1>
+          <Link
+            href={`/${lng}`}
+            className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors"
+          >
+            ← {t("back-to-home")}
+          </Link>
         </motion.div>
 
         {/* Resume Content */}
         <motion.div
-          className="bg-white/10 backdrop-blur-md rounded-2xl p-10 border border-white/20 shadow-xl"
+          className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20 shadow-xl"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
           {/* Personal Info */}
-          <section className="mb-10">
-            <h2 className="text-3xl font-bold text-white mb-6">
+          <section className="mb-8">
+            <h2 className="text-2xl font-bold text-white mb-4">
               {t("personal-info.title")}
             </h2>
-            <div className="grid md:grid-cols-2 gap-6 text-blue-200">
-              <div className="space-y-2">
+            <div className="grid md:grid-cols-2 gap-4 text-white/80">
+              <div>
                 <p>
-                  <span className="font-semibold text-white">
-                    {t("personal-info.name")}:
-                  </span>{" "}
-                  Mustofa Amami
+                  <strong>{t("personal-info.name")}:</strong> Mustofa Amami
                 </p>
                 <p>
-                  <span className="font-semibold text-white">
-                    {t("personal-info.email")}:
-                  </span>{" "}
+                  <strong>{t("personal-info.email")}:</strong>{" "}
                   mustofa.amami@email.com
                 </p>
               </div>
-              <div className="space-y-2">
+              <div>
                 <p>
-                  <span className="font-semibold text-white">
-                    {t("personal-info.phone")}:
-                  </span>{" "}
-                  +62 123 456 7890
+                  <strong>{t("personal-info.phone")}:</strong> +62 123 456 7890
                 </p>
                 <p>
-                  <span className="font-semibold text-white">
-                    {t("personal-info.location")}:
-                  </span>{" "}
-                  Jakarta, Indonesia
+                  <strong>{t("personal-info.location")}:</strong> Jakarta,
+                  Indonesia
                 </p>
               </div>
             </div>
           </section>
 
           {/* Skills */}
-          <section className="mb-10">
-            <h2 className="text-3xl font-bold text-white mb-6">
+          <section className="mb-8">
+            <h2 className="text-2xl font-bold text-white mb-4">
               {t("skills.title")}
             </h2>
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <h3 className="text-xl font-semibold text-white mb-4">
+                <h3 className="text-lg font-semibold text-white mb-2">
                   {t("skills.frontend")}
                 </h3>
-                <div className="flex flex-wrap gap-3">
+                <div className="flex flex-wrap gap-2">
                   {[
                     "React",
                     "Next.js",
@@ -91,7 +93,7 @@ export default function Resume({ params }: ResumeProps) {
                   ].map((skill) => (
                     <span
                       key={skill}
-                      className="px-4 py-2 bg-blue-600/30 text-blue-200 rounded-full text-sm border border-blue-400/30 font-medium"
+                      className="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm"
                     >
                       {skill}
                     </span>
@@ -99,10 +101,10 @@ export default function Resume({ params }: ResumeProps) {
                 </div>
               </div>
               <div>
-                <h3 className="text-xl font-semibold text-white mb-4">
+                <h3 className="text-lg font-semibold text-white mb-2">
                   {t("skills.backend")}
                 </h3>
-                <div className="flex flex-wrap gap-3">
+                <div className="flex flex-wrap gap-2">
                   {[
                     "Node.js",
                     "Express",
@@ -113,7 +115,7 @@ export default function Resume({ params }: ResumeProps) {
                   ].map((skill) => (
                     <span
                       key={skill}
-                      className="px-4 py-2 bg-slate-600/30 text-slate-200 rounded-full text-sm border border-slate-400/30 font-medium"
+                      className="px-3 py-1 bg-slate-500/20 text-slate-400 rounded-full text-sm"
                     >
                       {skill}
                     </span>
@@ -124,36 +126,36 @@ export default function Resume({ params }: ResumeProps) {
           </section>
 
           {/* Experience */}
-          <section className="mb-10">
-            <h2 className="text-3xl font-bold text-white mb-6">
+          <section className="mb-8">
+            <h2 className="text-2xl font-bold text-white mb-4">
               {t("experience.title")}
             </h2>
-            <div className="space-y-8">
-              <div className="border-l-4 border-blue-600 pl-6 py-2">
-                <h3 className="text-xl font-semibold text-white">
+            <div className="space-y-6">
+              <div className="border-l-2 border-primary pl-4">
+                <h3 className="text-lg font-semibold text-foreground">
                   {t("experience.job1.title")}
                 </h3>
-                <p className="text-blue-300 font-medium text-lg">
+                <p className="text-primary font-medium">
                   {t("experience.job1.company")}
                 </p>
-                <p className="text-blue-200 text-sm mb-3">
+                <p className="text-muted text-sm">
                   {t("experience.job1.period")}
                 </p>
-                <p className="text-blue-200 leading-relaxed">
+                <p className="text-muted mt-2">
                   {t("experience.job1.description")}
                 </p>
               </div>
-              <div className="border-l-4 border-blue-600 pl-6 py-2">
-                <h3 className="text-xl font-semibold text-white">
+              <div className="border-l-2 border-secondary pl-4">
+                <h3 className="text-lg font-semibold text-foreground">
                   {t("experience.job2.title")}
                 </h3>
-                <p className="text-blue-300 font-medium text-lg">
+                <p className="text-secondary font-medium">
                   {t("experience.job2.company")}
                 </p>
-                <p className="text-blue-200 text-sm mb-3">
+                <p className="text-muted text-sm">
                   {t("experience.job2.period")}
                 </p>
-                <p className="text-blue-200 leading-relaxed">
+                <p className="text-muted mt-2">
                   {t("experience.job2.description")}
                 </p>
               </div>
@@ -161,22 +163,20 @@ export default function Resume({ params }: ResumeProps) {
           </section>
 
           {/* Education */}
-          <section className="mb-6">
-            <h2 className="text-3xl font-bold text-white mb-6">
+          <section className="mb-8">
+            <h2 className="text-2xl font-bold text-foreground mb-4">
               {t("education.title")}
             </h2>
-            <div className="border-l-4 border-blue-600 pl-6 py-2">
-              <h3 className="text-xl font-semibold text-white">
+            <div className="border-l-2 border-accent pl-4">
+              <h3 className="text-lg font-semibold text-foreground">
                 {t("education.degree")}
               </h3>
-              <p className="text-blue-300 font-medium text-lg">
-                {t("education.school")}
-              </p>
-              <p className="text-blue-200 text-sm">{t("education.period")}</p>
+              <p className="text-accent font-medium">{t("education.school")}</p>
+              <p className="text-muted text-sm">{t("education.period")}</p>
             </div>
           </section>
         </motion.div>
       </div>
-    </div>
+    </motion.main>
   );
 }

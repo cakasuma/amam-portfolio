@@ -49,33 +49,24 @@ export default function Portfolio({ params }: PortfolioProps) {
   ];
 
   return (
-    <motion.main
-      className="min-h-screen bg-gradient-to-br from-primary via-secondary to-accent p-6"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1 }}
-    >
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 px-6 py-8">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <motion.div
-          className="text-center mb-8"
-          initial={{ opacity: 0, y: -50 }}
+          className="text-center mb-12"
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h1 className="text-4xl font-bold text-white mb-4">{t("title")}</h1>
-          <p className="text-white/80 mb-6">{t("subtitle")}</p>
-          <Link
-            href={`/${lng}`}
-            className="inline-flex items-center gap-2 text-white/80 hover:text-white transition-colors"
-          >
-            ← {t("back-to-home")}
-          </Link>
+          <h1 className="text-5xl font-bold text-white mb-6">{t("title")}</h1>
+          <p className="text-blue-200 text-lg mb-8 max-w-2xl mx-auto">
+            {t("subtitle")}
+          </p>
         </motion.div>
 
         {/* Projects Grid */}
         <motion.div
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
@@ -83,36 +74,38 @@ export default function Portfolio({ params }: PortfolioProps) {
           {projects.map((project, index) => (
             <motion.div
               key={project.id}
-              className="bg-background/10 backdrop-blur-sm rounded-2xl overflow-hidden border border-border/50 group hover:bg-background/15 transition-all duration-300"
+              className="bg-white/10 backdrop-blur-md rounded-2xl overflow-hidden border border-white/20 group hover:bg-white/15 transition-all duration-300 shadow-xl"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 * index }}
               whileHover={{ scale: 1.02 }}
             >
               {/* Project Image */}
-              <div className="relative h-48 bg-muted/20">
+              <div className="relative h-48 bg-slate-800/50">
                 <Image
                   src={project.image}
                   alt={project.title}
                   fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  className="object-cover group-hover:scale-105 transition-transform duration-300 opacity-60"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
               </div>
 
               {/* Project Content */}
               <div className="p-6">
-                <h3 className="text-xl font-bold text-foreground mb-2">
+                <h3 className="text-xl font-bold text-white mb-3">
                   {project.title}
                 </h3>
-                <p className="text-muted mb-4">{project.description}</p>
+                <p className="text-blue-200 mb-4 leading-relaxed">
+                  {project.description}
+                </p>
 
                 {/* Technologies */}
-                <div className="flex flex-wrap gap-2 mb-4">
+                <div className="flex flex-wrap gap-2 mb-6">
                   {project.technologies.map((tech) => (
                     <span
                       key={tech}
-                      className="px-2 py-1 bg-primary/20 text-primary rounded text-xs"
+                      className="px-3 py-1 bg-blue-600/30 text-blue-200 rounded-full text-sm border border-blue-400/30"
                     >
                       {tech}
                     </span>
@@ -123,13 +116,13 @@ export default function Portfolio({ params }: PortfolioProps) {
                 <div className="flex gap-3">
                   <a
                     href={project.demoUrl}
-                    className="flex-1 bg-primary hover:bg-primary/80 text-white px-4 py-2 rounded-lg text-center transition-colors"
+                    className="flex-1 bg-blue-600 hover:bg-blue-700 text-white px-4 py-3 rounded-xl text-center transition-colors font-medium"
                   >
                     {t("view-demo")}
                   </a>
                   <a
                     href={project.githubUrl}
-                    className="flex-1 bg-foreground/10 hover:bg-foreground/20 text-foreground px-4 py-2 rounded-lg text-center transition-colors"
+                    className="flex-1 bg-white/10 hover:bg-white/20 text-white px-4 py-3 rounded-xl text-center transition-colors font-medium border border-white/20"
                   >
                     {t("view-code")}
                   </a>
@@ -141,25 +134,27 @@ export default function Portfolio({ params }: PortfolioProps) {
 
         {/* Contact CTA */}
         <motion.div
-          className="text-center mt-12"
+          className="text-center mt-16"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.5 }}
         >
-          <div className="bg-background/10 backdrop-blur-sm rounded-2xl p-8 border border-border/50">
-            <h2 className="text-2xl font-bold text-foreground mb-4">
+          <div className="bg-white/10 backdrop-blur-md rounded-2xl p-10 border border-white/20 shadow-xl">
+            <h2 className="text-3xl font-bold text-white mb-4">
               {t("cta.title")}
             </h2>
-            <p className="text-muted mb-6">{t("cta.description")}</p>
+            <p className="text-blue-200 mb-8 max-w-2xl mx-auto leading-relaxed">
+              {t("cta.description")}
+            </p>
             <Link
               href={`/${lng}/contact`}
-              className="inline-block bg-accent hover:bg-accent/80 text-background px-8 py-3 rounded-lg font-semibold transition-colors"
+              className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-semibold transition-colors shadow-lg"
             >
               {t("cta.button")}
             </Link>
           </div>
         </motion.div>
       </div>
-    </motion.main>
+    </div>
   );
 }

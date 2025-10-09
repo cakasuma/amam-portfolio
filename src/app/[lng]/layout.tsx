@@ -4,7 +4,8 @@ import { dir } from "i18next";
 import { use } from "react";
 import { languages } from "@/app/i18n/settings";
 import { Providers } from "@/app/theme/Providers";
-import { Navigation } from "@/app/components/Navigation";
+import { SmartHeader } from "@/app/components/SmartHeader";
+import { SmartFooter } from "@/app/components/SmartFooter";
 import { Footer } from "@/app/components/Footer";
 import "./globals.css";
 
@@ -49,8 +50,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased relative min-h-screen`}
       >
         <Providers>
-          <Navigation lng={lng} />
-          <main className="pb-24 md:pb-16">{children}</main>
+          <SmartHeader lng={lng} />
+          <main className="pt-16 pb-24 md:pb-16">{children}</main>
+          <SmartFooter lng={lng} />
           <Footer lng={lng} />
         </Providers>
       </body>

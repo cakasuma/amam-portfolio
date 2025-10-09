@@ -6,6 +6,7 @@
   "phone": "+62 123 456 7890",
   "birthday": "Born: January 1, 1990",
   "nav": {
+    "home": "Home",
     "resume": "Resume",
     "portfolio": "Portfolio",
     "blog": "Blog",

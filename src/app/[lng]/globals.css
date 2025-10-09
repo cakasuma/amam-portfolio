@@ -6,45 +6,106 @@
 }
 
 html.light {
+  /* Base Colors */
   --background: #ffffff;
-  --foreground: #171717;
-  --muted: #737373;
-  --border: #e5e5e5;
-  --accent: #18181b;
-  --primary: #2563eb;
-  --secondary: #4f46e5;
-  --success: #16a34a;
-  --warning: #ca8a04;
-  --danger: #dc2626;
-  /* Add these new color variables */
-  --text-primary: #000000;
-  --text-secondary: #171717;
-  --button-text: #171717;
-  --button-bg: rgba(255, 255, 255, 0.9);
+  --background-secondary: #f8fafc; /* slate-50 */
+  --foreground: #0f172a; /* slate-900 */
+  --muted: #64748b; /* slate-500 */
+  --muted-foreground: #475569; /* slate-600 */
+  --border: #e2e8f0; /* slate-200 */
+  --input: #f1f5f9; /* slate-100 */
+  
+  /* Accent Colors */
+  --accent: #f1f5f9; /* slate-100 */
+  --accent-foreground: #334155; /* slate-700 */
+  --primary: #1e40af; /* blue-800 */
+  --primary-foreground: #ffffff;
+  --secondary: #f1f5f9; /* slate-100 */
+  --secondary-foreground: #334155; /* slate-700 */
+  
+  /* Semantic Colors */
+  --success: #16a34a; /* green-600 */
+  --warning: #ca8a04; /* yellow-600 */
+  --danger: #dc2626; /* red-600 */
+  --info: #0284c7; /* sky-600 */
+  
+  /* Card & Surface */
+  --card: #ffffff;
+  --card-foreground: #0f172a; /* slate-900 */
+  
+  /* Text Colors */
+  --text-primary: #0f172a; /* slate-900 */
+  --text-secondary: #475569; /* slate-600 */
+  --text-muted: #64748b; /* slate-500 */
+  
+  /* Gradient Colors */
+  --gradient-from: #f8fafc; /* slate-50 */
+  --gradient-via: #e2e8f0; /* slate-200 */
+  --gradient-to: #cbd5e1; /* slate-300 */
+  
+  /* Glass Effect */
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(37, 99, 235, 0.2);
+  
+  /* Button Colors */
+  --button-text: #ffffff;
+  --button-bg: #1e40af; /* blue-800 */
+  --button-bg-hover: #1e3a8a; /* blue-900 */
 }
 
 html.dark {
-  --background: #0a0a0a;
-  --foreground: #ededed;
-  --muted: #737373;
-  --border: #262626;
-  --accent: #d4d4d4;
-  --primary: #3b82f6;
-  --secondary: #6366f1;
-  --success: #22c55e;
-  --warning: #eab308;
-  --danger: #ef4444;
-  /* Add these new color variables */
+  /* Base Colors */
+  --background: #0c0f1a; /* Very dark blue-gray */
+  --background-secondary: #111827; /* gray-900 */
+  --foreground: #f8fafc; /* slate-50 */
+  --muted: #6b7280; /* gray-500 */
+  --muted-foreground: #9ca3af; /* gray-400 */
+  --border: #1f2937; /* gray-800 */
+  --input: #1f2937; /* gray-800 */
+  
+  /* Accent Colors */
+  --accent: #1f2937; /* gray-800 */
+  --accent-foreground: #f9fafb; /* gray-50 */
+  --primary: #1d4ed8; /* blue-700 - deeper blue */
+  --primary-foreground: #ffffff;
+  --secondary: #1f2937; /* gray-800 */
+  --secondary-foreground: #f9fafb; /* gray-50 */
+  
+  /* Semantic Colors */
+  --success: #10b981; /* emerald-500 */
+  --warning: #f59e0b; /* amber-500 */
+  --danger: #ef4444; /* red-500 */
+  --info: #06b6d4; /* cyan-500 */
+  
+  /* Card & Surface */
+  --card: #111827; /* gray-900 */
+  --card-foreground: #f8fafc; /* slate-50 */
+  
+  /* Text Colors */
   --text-primary: #ffffff;
-  --text-secondary: #ededed;
+  --text-secondary: #e5e7eb; /* gray-200 */
+  --text-muted: #9ca3af; /* gray-400 */
+  
+  /* Gradient Colors - Darker, more professional */
+  --gradient-from: #0c0f1a; /* Very dark blue-gray */
+  --gradient-via: #1e293b; /* slate-800 */
+  --gradient-to: #1e3a8a; /* blue-900 - deeper blue */
+  
+  /* Glass Effect */
+  --glass-bg: rgba(17, 24, 39, 0.3); /* gray-900 with opacity */
+  --glass-border: rgba(29, 78, 216, 0.4); /* blue-700 with opacity */
+  
+  /* Button Colors */
   --button-text: #ffffff;
-  --button-bg: rgba(0, 0, 0, 0.7);
+  --button-bg: #1e3a8a; /* blue-900 */
+  --button-bg-hover: #1e40af; /* blue-800 */
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
   font-family: var(--font-sans);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Smooth scrolling */
@@ -92,14 +153,69 @@ html {
   }
 }
 
-/* Glass morphism effect */
+/* Modern Glass morphism effect */
 .glass {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
 }
 
-html.dark .glass {
-  background: rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+/* Modern gradient backgrounds */
+.gradient-bg-light {
+  background: linear-gradient(135deg, var(--gradient-from) 0%, var(--gradient-via) 50%, var(--gradient-to) 100%);
+}
+
+.gradient-bg-dark {
+  background: linear-gradient(135deg, var(--gradient-from) 0%, var(--gradient-via) 50%, var(--gradient-to) 100%);
+}
+
+/* Card styles */
+.card {
+  background: var(--card);
+  color: var(--card-foreground);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  transform: translateY(-2px);
+}
+
+html.dark .card:hover {
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+}
+
+/* Button styles */
+.btn-primary {
+  background: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background: var(--button-bg-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Text utilities */
+.text-primary {
+  color: var(--text-primary);
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+}
+
+.text-muted {
+  color: var(--text-muted);
 }

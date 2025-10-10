@@ -15,18 +15,18 @@ export default function ThemeSwitcher() {
 
   return (
     <motion.button
-      className="p-3 rounded-xl glass hover:bg-blue-500/20 dark:hover:bg-blue-400/20 
-                transition-all duration-300 cursor-pointer shadow-lg hover:shadow-xl
-                border border-blue-400/30 dark:border-blue-400/40"
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
+      className="p-3 rounded-lg bg-accent border border-border hover:bg-background transition-colors duration-200 cursor-pointer focus-ring"
+      whileHover={{ scale: 1.02 }}
+      whileTap={{ scale: 0.98 }}
       onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
-      aria-label={`Switch to ${resolvedTheme === "dark" ? "light" : "dark"} theme`}
+      aria-label={`Switch to ${
+        resolvedTheme === "dark" ? "light" : "dark"
+      } theme`}
     >
       {resolvedTheme === "dark" ? (
-        <FiSun className="w-5 h-5 text-yellow-400 transition-colors duration-300" />
+        <FiSun className="w-5 h-5 text-warning" />
       ) : (
-        <FiMoon className="w-5 h-5 text-blue-600 transition-colors duration-300" />
+        <FiMoon className="w-5 h-5 text-primary" />
       )}
     </motion.button>
   );

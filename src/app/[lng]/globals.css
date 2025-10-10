@@ -6,99 +6,99 @@
 }
 
 html.light {
-  /* Base Colors */
-  --background: #ffffff;
-  --background-secondary: #f8fafc; /* slate-50 */
-  --foreground: #0f172a; /* slate-900 */
-  --muted: #64748b; /* slate-500 */
-  --muted-foreground: #475569; /* slate-600 */
-  --border: #e2e8f0; /* slate-200 */
-  --input: #f1f5f9; /* slate-100 */
-  
-  /* Accent Colors */
-  --accent: #f1f5f9; /* slate-100 */
-  --accent-foreground: #334155; /* slate-700 */
-  --primary: #1e40af; /* blue-800 */
+  /* Base Colors - Clean and Accessible */
+  --background: #ffffff; /* Pure white */
+  --background-secondary: #f8f9fa; /* Light gray */
+  --foreground: #212529; /* Dark gray for excellent contrast */
+  --muted: #6c757d; /* Gray-600 */
+  --muted-foreground: #495057; /* Gray-700 */
+  --border: #dee2e6; /* Gray-300 */
+  --input: #f8f9fa; /* Light gray */
+
+  /* Accent Colors - High Contrast */
+  --accent: #e9ecef; /* Gray-200 */
+  --accent-foreground: #212529; /* Dark gray */
+  --primary: #0d6efd; /* Bootstrap blue - excellent contrast */
   --primary-foreground: #ffffff;
-  --secondary: #f1f5f9; /* slate-100 */
-  --secondary-foreground: #334155; /* slate-700 */
-  
+  --secondary: #6c757d; /* Gray-600 */
+  --secondary-foreground: #ffffff;
+
   /* Semantic Colors */
-  --success: #16a34a; /* green-600 */
-  --warning: #ca8a04; /* yellow-600 */
-  --danger: #dc2626; /* red-600 */
-  --info: #0284c7; /* sky-600 */
-  
+  --success: #198754; /* Green-700 */
+  --warning: #fd7e14; /* Orange-500 */
+  --danger: #dc3545; /* Red-600 */
+  --info: #0dcaf0; /* Cyan-400 */
+
   /* Card & Surface */
   --card: #ffffff;
-  --card-foreground: #0f172a; /* slate-900 */
-  
-  /* Text Colors */
-  --text-primary: #0f172a; /* slate-900 */
-  --text-secondary: #475569; /* slate-600 */
-  --text-muted: #64748b; /* slate-500 */
-  
-  /* Gradient Colors */
-  --gradient-from: #f8fafc; /* slate-50 */
-  --gradient-via: #e2e8f0; /* slate-200 */
-  --gradient-to: #cbd5e1; /* slate-300 */
-  
-  /* Glass Effect */
-  --glass-bg: rgba(255, 255, 255, 0.1);
-  --glass-border: rgba(37, 99, 235, 0.2);
-  
+  --card-foreground: #212529;
+
+  /* Text Colors - High Contrast */
+  --text-primary: #212529; /* Dark gray */
+  --text-secondary: #495057; /* Gray-700 */
+  --text-muted: #6c757d; /* Gray-600 */
+
+  /* Gradient Colors - Subtle */
+  --gradient-from: #ffffff;
+  --gradient-via: #f8f9fa;
+  --gradient-to: #e9ecef;
+
+  /* Glass Effect - Minimal */
+  --glass-bg: rgba(255, 255, 255, 0.9);
+  --glass-border: rgba(13, 110, 253, 0.1);
+
   /* Button Colors */
   --button-text: #ffffff;
-  --button-bg: #1e40af; /* blue-800 */
-  --button-bg-hover: #1e3a8a; /* blue-900 */
+  --button-bg: #0d6efd;
+  --button-bg-hover: #0b5ed7;
 }
 
 html.dark {
-  /* Base Colors */
-  --background: #0c0f1a; /* Very dark blue-gray */
-  --background-secondary: #111827; /* gray-900 */
-  --foreground: #f8fafc; /* slate-50 */
-  --muted: #6b7280; /* gray-500 */
-  --muted-foreground: #9ca3af; /* gray-400 */
-  --border: #1f2937; /* gray-800 */
-  --input: #1f2937; /* gray-800 */
-  
-  /* Accent Colors */
-  --accent: #1f2937; /* gray-800 */
-  --accent-foreground: #f9fafb; /* gray-50 */
-  --primary: #1d4ed8; /* blue-700 - deeper blue */
+  /* Base Colors - High Contrast Dark */
+  --background: #1a1a1a; /* Dark gray */
+  --background-secondary: #2d2d2d; /* Lighter dark gray */
+  --foreground: #ffffff; /* Pure white */
+  --muted: #adb5bd; /* Gray-400 */
+  --muted-foreground: #ced4da; /* Gray-300 */
+  --border: #495057; /* Gray-700 */
+  --input: #343a40; /* Gray-800 */
+
+  /* Accent Colors - High Contrast */
+  --accent: #343a40; /* Gray-800 */
+  --accent-foreground: #ffffff;
+  --primary: #0d6efd; /* Same blue for consistency */
   --primary-foreground: #ffffff;
-  --secondary: #1f2937; /* gray-800 */
-  --secondary-foreground: #f9fafb; /* gray-50 */
-  
+  --secondary: #6c757d; /* Gray-600 */
+  --secondary-foreground: #ffffff;
+
   /* Semantic Colors */
-  --success: #10b981; /* emerald-500 */
-  --warning: #f59e0b; /* amber-500 */
-  --danger: #ef4444; /* red-500 */
-  --info: #06b6d4; /* cyan-500 */
-  
+  --success: #20c997; /* Teal-400 */
+  --warning: #fd7e14; /* Orange-500 */
+  --danger: #dc3545; /* Red-500 */
+  --info: #0dcaf0; /* Cyan-400 */
+
   /* Card & Surface */
-  --card: #111827; /* gray-900 */
-  --card-foreground: #f8fafc; /* slate-50 */
-  
-  /* Text Colors */
+  --card: #2d2d2d; /* Lighter dark gray */
+  --card-foreground: #ffffff;
+
+  /* Text Colors - High Contrast */
   --text-primary: #ffffff;
-  --text-secondary: #e5e7eb; /* gray-200 */
-  --text-muted: #9ca3af; /* gray-400 */
-  
-  /* Gradient Colors - Darker, more professional */
-  --gradient-from: #0c0f1a; /* Very dark blue-gray */
-  --gradient-via: #1e293b; /* slate-800 */
-  --gradient-to: #1e3a8a; /* blue-900 - deeper blue */
-  
-  /* Glass Effect */
-  --glass-bg: rgba(17, 24, 39, 0.3); /* gray-900 with opacity */
-  --glass-border: rgba(29, 78, 216, 0.4); /* blue-700 with opacity */
-  
+  --text-secondary: #ced4da; /* Gray-300 */
+  --text-muted: #adb5bd; /* Gray-400 */
+
+  /* Gradient Colors - Simple */
+  --gradient-from: #1a1a1a;
+  --gradient-via: #2d2d2d;
+  --gradient-to: #343a40;
+
+  /* Glass Effect - Minimal */
+  --glass-bg: rgba(45, 45, 45, 0.9);
+  --glass-border: rgba(13, 110, 253, 0.2);
+
   /* Button Colors */
   --button-text: #ffffff;
-  --button-bg: #1e3a8a; /* blue-900 */
-  --button-bg-hover: #1e40af; /* blue-800 */
+  --button-bg: #0d6efd;
+  --button-bg-hover: #0b5ed7;
 }
 
 body {
@@ -153,43 +153,48 @@ html {
   }
 }
 
-/* Modern Glass morphism effect */
+/* Modern Glass morphism effect - Simplified */
 .glass {
   background: var(--glass-bg);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border: 1px solid var(--glass-border);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
 }
 
-/* Modern gradient backgrounds */
+/* Simple gradient backgrounds */
 .gradient-bg-light {
-  background: linear-gradient(135deg, var(--gradient-from) 0%, var(--gradient-via) 50%, var(--gradient-to) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--gradient-from) 0%,
+    var(--gradient-via) 50%,
+    var(--gradient-to) 100%
+  );
 }
 
 .gradient-bg-dark {
-  background: linear-gradient(135deg, var(--gradient-from) 0%, var(--gradient-via) 50%, var(--gradient-to) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--gradient-from) 0%,
+    var(--gradient-via) 50%,
+    var(--gradient-to) 100%
+  );
 }
 
-/* Card styles */
+/* Card styles - Simplified */
 .card {
   background: var(--card);
   color: var(--card-foreground);
   border: 1px solid var(--border);
   border-radius: 12px;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
 }
 
 .card:hover {
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  transform: translateY(-2px);
+  border-color: var(--primary);
+  transform: translateY(-1px);
 }
 
-html.dark .card:hover {
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
-}
-
-/* Button styles */
+/* Button styles - Accessible */
 .btn-primary {
   background: var(--button-bg);
   color: var(--button-text);
@@ -197,14 +202,17 @@ html.dark .card:hover {
   padding: 12px 24px;
   border-radius: 8px;
   font-weight: 600;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
   cursor: pointer;
 }
 
 .btn-primary:hover {
   background: var(--button-bg-hover);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-primary:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
 }
 
 /* Text utilities */
@@ -218,4 +226,128 @@ html.dark .card:hover {
 
 .text-muted {
   color: var(--text-muted);
+}
+
+/* Simple animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Simple hover effects - No excessive scaling */
+.hover-lift {
+  transition: transform 0.2s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px);
+}
+
+/* Remove excessive shadows and focus on accessibility */
+.focus-ring:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Simple borders */
+.border-theme {
+  border-color: var(--border);
+}
+
+.border-theme-accent {
+  border-color: var(--primary);
+}
+
+/* Modern animations */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes glow {
+  0%,
+  100% {
+    box-shadow: 0 0 5px rgba(59, 130, 246, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.8),
+      0 0 30px rgba(59, 130, 246, 0.6);
+  }
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+/* Professional hover effects */
+.hover-lift {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+html.dark .hover-lift:hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3),
+    0 10px 10px -5px rgba(0, 0, 0, 0.2);
+}
+
+/* Theme-aware borders */
+.border-theme {
+  border-color: var(--border);
+}
+
+.border-theme-accent {
+  border-color: var(--primary);
+}
+
+/* Professional gradients */
+.gradient-text {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Enhanced glass effect for modern look */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive design helpers */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

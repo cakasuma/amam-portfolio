@@ -42,7 +42,7 @@ export const SmartHeader = memo(function SmartHeader({
 
   return (
     <motion.header
-      className="fixed top-0 left-0 right-0 z-50 glass border-b border-blue-500/20 dark:border-blue-400/30 transition-all duration-300"
+      className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border transition-all duration-300"
       initial={{ y: 0 }}
       animate={{ y: isHidden ? "-100%" : 0 }}
       transition={{ duration: 0.3, ease: "easeInOut" }}
@@ -50,17 +50,17 @@ export const SmartHeader = memo(function SmartHeader({
       <div className="max-w-6xl mx-auto px-4 py-3">
         <div className="flex items-center justify-between">
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-2 glass rounded-full p-2">
+          <div className="hidden md:flex items-center gap-2 bg-accent rounded-lg p-2 border border-border">
             {navItems.map((item) => {
               const isActive = pathname === item.href;
               return (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                  className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 focus-ring ${
                     isActive
-                      ? "bg-blue-600 dark:bg-blue-700 text-white shadow-lg"
-                      : "text-blue-700 dark:text-blue-200 hover:text-white hover:bg-blue-500/20 dark:hover:bg-blue-400/20"
+                      ? "bg-primary text-white"
+                      : "text-foreground hover:bg-background"
                   }`}
                 >
                   <span className="text-lg">{item.icon}</span>
@@ -74,7 +74,7 @@ export const SmartHeader = memo(function SmartHeader({
           <div className="md:hidden">
             <Link
               href={`/${lng}`}
-              className="flex items-center justify-center w-10 h-10 bg-blue-600 dark:bg-blue-700 rounded-full text-white font-bold text-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition-all duration-300 shadow-lg"
+              className="flex items-center justify-center w-10 h-10 bg-primary rounded-lg text-white font-bold text-lg hover:bg-button-bg-hover transition-colors duration-200 focus-ring"
             >
               MA
             </Link>

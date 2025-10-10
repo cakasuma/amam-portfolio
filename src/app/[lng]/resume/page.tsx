@@ -1,7 +1,11 @@
 "use client";
 import { useTranslation } from "@/app/i18n/client";
-import { motion } from "motion/react";
 import { use } from "react";
+import PageLayout, {
+  PageHeader,
+  AnimatedCard,
+  Section,
+} from "@/app/components/PageLayout";
 
 interface ResumeProps {
   params: Promise<{
@@ -14,169 +18,164 @@ export default function Resume({ params }: ResumeProps) {
   const { t } = useTranslation(lng, "resume");
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 px-6 py-8">
-      <div className="max-w-4xl mx-auto">
-        {/* Header */}
-        <motion.div
-          className="text-center mb-12"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <h1 className="text-5xl font-bold text-white mb-6">{t("title")}</h1>
-        </motion.div>
+    <PageLayout maxWidth="4xl">
+      {/* Header */}
+      <PageHeader
+        title={t("title")}
+        subtitle="Professional Experience & Skills"
+      />
 
-        {/* Resume Content */}
-        <motion.div
-          className="bg-white/10 backdrop-blur-md rounded-2xl p-10 border border-white/20 shadow-xl"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-        >
-          {/* Personal Info */}
-          <section className="mb-10">
-            <h2 className="text-3xl font-bold text-white mb-6">
-              {t("personal-info.title")}
-            </h2>
-            <div className="grid md:grid-cols-2 gap-6 text-blue-200">
-              <div className="space-y-2">
-                <p>
-                  <span className="font-semibold text-white">
-                    {t("personal-info.name")}:
-                  </span>{" "}
-                  Mustofa Amami
-                </p>
-                <p>
-                  <span className="font-semibold text-white">
-                    {t("personal-info.email")}:
-                  </span>{" "}
-                  mustofa.amami@email.com
-                </p>
+      {/* Resume Content */}
+      <AnimatedCard delay={0.2} className="mb-12">
+        {/* Personal Info */}
+        <Section>
+          <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-6 flex items-center gap-3">
+            <span className="text-primary">👤</span>
+            {t("personal-info.title")}
+          </h2>
+          <div className="grid md:grid-cols-2 gap-6 text-secondary">
+            <div className="space-y-3">
+              <div className="flex items-center gap-3">
+                <span className="font-semibold text-foreground min-w-[80px]">
+                  {t("personal-info.name")}:
+                </span>
+                <span>Mustofa Amami</span>
               </div>
-              <div className="space-y-2">
-                <p>
-                  <span className="font-semibold text-white">
-                    {t("personal-info.phone")}:
-                  </span>{" "}
-                  +62 123 456 7890
-                </p>
-                <p>
-                  <span className="font-semibold text-white">
-                    {t("personal-info.location")}:
-                  </span>{" "}
-                  Jakarta, Indonesia
-                </p>
+              <div className="flex items-center gap-3">
+                <span className="font-semibold text-foreground min-w-[80px]">
+                  {t("personal-info.email")}:
+                </span>
+                <span>mustofa.amami@email.com</span>
               </div>
             </div>
-          </section>
-
-          {/* Skills */}
-          <section className="mb-10">
-            <h2 className="text-3xl font-bold text-white mb-6">
-              {t("skills.title")}
-            </h2>
-            <div className="grid md:grid-cols-2 gap-8">
-              <div>
-                <h3 className="text-xl font-semibold text-white mb-4">
-                  {t("skills.frontend")}
-                </h3>
-                <div className="flex flex-wrap gap-3">
-                  {[
-                    "React",
-                    "Next.js",
-                    "TypeScript",
-                    "Tailwind CSS",
-                    "HTML5",
-                    "CSS3",
-                  ].map((skill) => (
-                    <span
-                      key={skill}
-                      className="px-4 py-2 bg-blue-600/30 text-blue-200 rounded-full text-sm border border-blue-400/30 font-medium"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
+            <div className="space-y-3">
+              <div className="flex items-center gap-3">
+                <span className="font-semibold text-foreground min-w-[80px]">
+                  {t("personal-info.phone")}:
+                </span>
+                <span>+62 123 456 7890</span>
               </div>
-              <div>
-                <h3 className="text-xl font-semibold text-white mb-4">
-                  {t("skills.backend")}
-                </h3>
-                <div className="flex flex-wrap gap-3">
-                  {[
-                    "Node.js",
-                    "Express",
-                    "PostgreSQL",
-                    "MongoDB",
-                    "REST APIs",
-                    "GraphQL",
-                  ].map((skill) => (
-                    <span
-                      key={skill}
-                      className="px-4 py-2 bg-slate-600/30 text-slate-200 rounded-full text-sm border border-slate-400/30 font-medium"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
+              <div className="flex items-center gap-3">
+                <span className="font-semibold text-foreground min-w-[80px]">
+                  {t("personal-info.location")}:
+                </span>
+                <span>Jakarta, Indonesia</span>
               </div>
             </div>
-          </section>
+          </div>
+        </Section>
 
-          {/* Experience */}
-          <section className="mb-10">
-            <h2 className="text-3xl font-bold text-white mb-6">
-              {t("experience.title")}
-            </h2>
-            <div className="space-y-8">
-              <div className="border-l-4 border-blue-600 pl-6 py-2">
-                <h3 className="text-xl font-semibold text-white">
-                  {t("experience.job1.title")}
-                </h3>
-                <p className="text-blue-300 font-medium text-lg">
-                  {t("experience.job1.company")}
-                </p>
-                <p className="text-blue-200 text-sm mb-3">
-                  {t("experience.job1.period")}
-                </p>
-                <p className="text-blue-200 leading-relaxed">
-                  {t("experience.job1.description")}
-                </p>
-              </div>
-              <div className="border-l-4 border-blue-600 pl-6 py-2">
-                <h3 className="text-xl font-semibold text-white">
-                  {t("experience.job2.title")}
-                </h3>
-                <p className="text-blue-300 font-medium text-lg">
-                  {t("experience.job2.company")}
-                </p>
-                <p className="text-blue-200 text-sm mb-3">
-                  {t("experience.job2.period")}
-                </p>
-                <p className="text-blue-200 leading-relaxed">
-                  {t("experience.job2.description")}
-                </p>
-              </div>
-            </div>
-          </section>
-
-          {/* Education */}
-          <section className="mb-6">
-            <h2 className="text-3xl font-bold text-white mb-6">
-              {t("education.title")}
-            </h2>
-            <div className="border-l-4 border-blue-600 pl-6 py-2">
-              <h3 className="text-xl font-semibold text-white">
-                {t("education.degree")}
+        {/* Skills */}
+        <Section className="border-t border-border pt-8">
+          <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-6 flex items-center gap-3">
+            <span className="text-warning">⚡</span>
+            {t("skills.title")}
+          </h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
+                <span className="text-primary">🎨</span>
+                {t("skills.frontend")}
               </h3>
-              <p className="text-blue-300 font-medium text-lg">
-                {t("education.school")}
-              </p>
-              <p className="text-blue-200 text-sm">{t("education.period")}</p>
+              <div className="flex flex-wrap gap-3">
+                {[
+                  "React",
+                  "Next.js",
+                  "TypeScript",
+                  "Tailwind CSS",
+                  "HTML5",
+                  "CSS3",
+                ].map((skill) => (
+                  <span
+                    key={skill}
+                    className="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm border border-primary/20 font-medium transition-all duration-300 hover:bg-primary/20"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
             </div>
-          </section>
-        </motion.div>
-      </div>
-    </div>
+            <div>
+              <h3 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
+                <span className="text-info">⚙️</span>
+                {t("skills.backend")}
+              </h3>
+              <div className="flex flex-wrap gap-3">
+                {[
+                  "Node.js",
+                  "Express",
+                  "PostgreSQL",
+                  "MongoDB",
+                  "REST APIs",
+                  "GraphQL",
+                ].map((skill) => (
+                  <span
+                    key={skill}
+                    className="px-4 py-2 bg-info/10 text-info rounded-full text-sm border border-info/20 font-medium transition-all duration-300 hover:bg-info/20"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </Section>
+
+        {/* Experience */}
+        <Section className="border-t border-border pt-8">
+          <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-6 flex items-center gap-3">
+            <span className="text-success">💼</span>
+            {t("experience.title")}
+          </h2>
+          <div className="space-y-8">
+            <div className="border-l-4 border-primary pl-6 py-2 transition-all duration-300 hover:border-primary/60">
+              <h3 className="text-xl font-semibold text-foreground">
+                {t("experience.job1.title")}
+              </h3>
+              <p className="text-primary font-medium text-lg">
+                {t("experience.job1.company")}
+              </p>
+              <p className="text-muted text-sm mb-3">
+                {t("experience.job1.period")}
+              </p>
+              <p className="text-secondary leading-relaxed">
+                {t("experience.job1.description")}
+              </p>
+            </div>
+            <div className="border-l-4 border-warning pl-6 py-2 transition-all duration-300 hover:border-warning/60">
+              <h3 className="text-xl font-semibold text-foreground">
+                {t("experience.job2.title")}
+              </h3>
+              <p className="text-warning font-medium text-lg">
+                {t("experience.job2.company")}
+              </p>
+              <p className="text-muted text-sm mb-3">
+                {t("experience.job2.period")}
+              </p>
+              <p className="text-secondary leading-relaxed">
+                {t("experience.job2.description")}
+              </p>
+            </div>
+          </div>
+        </Section>
+
+        {/* Education */}
+        <Section className="border-t border-border pt-8">
+          <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-6 flex items-center gap-3">
+            <span className="text-info">🎓</span>
+            {t("education.title")}
+          </h2>
+          <div className="border-l-4 border-info pl-6 py-2 transition-all duration-300 hover:border-info/60">
+            <h3 className="text-xl font-semibold text-foreground">
+              {t("education.degree")}
+            </h3>
+            <p className="text-info font-medium text-lg">
+              {t("education.school")}
+            </p>
+            <p className="text-muted text-sm">{t("education.period")}</p>
+          </div>
+        </Section>
+      </AnimatedCard>
+    </PageLayout>
   );
 }

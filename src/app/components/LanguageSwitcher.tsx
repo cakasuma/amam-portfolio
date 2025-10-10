@@ -22,19 +22,17 @@ export function LanguageSwitcher({ lng }: { lng: string }) {
   return (
     <div className="relative">
       <motion.button
-        className="p-3 rounded-xl glass hover:bg-blue-500/20 dark:hover:bg-blue-400/20 
-                   transition-all duration-300 border border-blue-400/30 dark:border-blue-400/40 
-                   flex items-center gap-2 cursor-pointer shadow-lg hover:shadow-xl"
+        className="p-3 rounded-lg bg-accent border border-border hover:bg-background transition-colors duration-200 flex items-center gap-2 cursor-pointer focus-ring"
         onClick={() => setIsOpen(!isOpen)}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
+        whileHover={{ scale: 1.02 }}
+        whileTap={{ scale: 0.98 }}
         aria-label="Switch language"
       >
-        <span className="text-sm text-blue-700 dark:text-blue-200 font-medium transition-colors duration-300">
+        <span className="text-sm text-foreground font-medium">
           {lng.toUpperCase()}
         </span>
         <FiChevronDown
-          className={`w-4 h-4 text-blue-700 dark:text-blue-200 transition-all duration-200 
+          className={`w-4 h-4 text-foreground transition-transform duration-200 
                       ${isOpen ? "rotate-180" : ""}`}
         />
       </motion.button>
@@ -42,8 +40,7 @@ export function LanguageSwitcher({ lng }: { lng: string }) {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="absolute top-full right-0 mt-2 glass 
-               border border-blue-400/30 dark:border-blue-400/40 rounded-xl overflow-hidden min-w-[56px] z-50 shadow-lg"
+            className="absolute top-full right-0 mt-2 bg-background border border-border rounded-lg overflow-hidden min-w-[56px] z-50 shadow-lg"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
@@ -54,7 +51,7 @@ export function LanguageSwitcher({ lng }: { lng: string }) {
                 <Link
                   key={l}
                   href={`/${l}`}
-                  className="block px-4 py-3 text-sm text-blue-700 dark:text-blue-200 hover:bg-blue-500/20 dark:hover:bg-blue-400/20 transition-all duration-150"
+                  className="block px-4 py-3 text-sm text-foreground hover:bg-accent transition-colors duration-150 focus-ring"
                   onClick={() => setIsOpen(false)}
                 >
                   {l.toUpperCase()}

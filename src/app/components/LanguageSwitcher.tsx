@@ -42,17 +42,24 @@ export function LanguageSwitcher({ lng }: { lng: string }) {
   return (
     <div className="relative" ref={dropdownRef}>
       <motion.button
-        className="p-3 rounded-lg bg-accent border border-border hover:bg-background transition-colors duration-200 flex items-center gap-2 cursor-pointer focus-ring"
+        className={`border-runner relative p-3 rounded-lg bg-accent border border-border hover:bg-background transition-colors duration-200 flex items-center gap-2 cursor-pointer ${
+          isOpen ? "active" : ""
+        }`}
         onClick={() => setIsOpen(!isOpen)}
-        whileHover={{ scale: 1.02 }}
-        whileTap={{ scale: 0.98 }}
+        whileHover="hover"
+        whileTap="tap"
+        variants={{
+          hover: {},
+          tap: {},
+        }}
         aria-label="Switch language"
       >
-        <span className="text-sm text-foreground font-medium">
+        {/* Content */}
+        <span className="relative z-10 text-sm text-foreground font-medium">
           {lng.toUpperCase()}
         </span>
         <FiChevronDown
-          className={`w-4 h-4 text-foreground transition-transform duration-200 
+          className={`relative z-10 w-4 h-4 text-foreground transition-transform duration-200 
                       ${isOpen ? "rotate-180" : ""}`}
         />
       </motion.button>
@@ -60,11 +67,7 @@ export function LanguageSwitcher({ lng }: { lng: string }) {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="absolute top-full right-0 mt-2 backdrop-blur-md border rounded-lg overflow-hidden min-w-[56px] z-[9999] shadow-2xl"
-            style={{
-              background: "var(--glass-bg)",
-              borderColor: "var(--glass-border)",
-            }}
+            className="absolute top-full right-0 mt-2 bg-background/80 backdrop-blur-3xl border border-border rounded-lg overflow-hidden min-w-[56px] z-[9999] shadow-sm"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}

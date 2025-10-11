@@ -25,7 +25,9 @@ export default function PageLayout({
     <div
       className={`min-h-screen ${gradientClass} transition-all duration-300 ${className}`}
     >
-      <div className={`max-w-${maxWidth} mx-auto px-4 sm:px-6 lg:px-8 py-8`}>
+      <div
+        className={`max-w-${maxWidth} mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-16`}
+      >
         {children}
       </div>
     </div>
@@ -164,7 +166,7 @@ export function HeroSection({
 }: HeroSectionProps) {
   return (
     <Section
-      className={`text-center py-16 md:py-24 ${
+      className={`text-center py-4 md:py-8 ${
         background === "gradient"
           ? "bg-gradient-to-br from-background to-background-secondary"
           : "bg-background"

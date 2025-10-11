@@ -141,7 +141,7 @@ export default function Resume({ params }: ResumeProps) {
                   ].map((skill) => (
                     <span
                       key={skill}
-                      className="px-4 py-2 bg-info/10 text-info rounded-full text-sm border border-info/20 font-medium transition-all duration-300 hover:bg-info/20 hover:border-info/40"
+                      className="px-4 py-2 bg-info/10 text-info rounded-full text-sm border border-theme-accent font-medium transition-all duration-300 hover:bg-info/20 hover:border-info/40"
                     >
                       {skill}
                     </span>

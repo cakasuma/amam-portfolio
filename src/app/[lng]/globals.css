@@ -9,7 +9,7 @@ html.light {
   /* Base Colors - Warm Beige Theme */
   --background: #f5f3f0; /* Warm beige background */
   --background-secondary: #ede8e3; /* Slightly darker beige */
-  --foreground: #000000; /* True black for maximum contrast */
+  --foreground: #0d0c0a; /* True black for maximum contrast */
   --muted: #8b7355; /* Muted brown */
   --muted-foreground: #6b5b47; /* Darker muted brown */
   --border: #d4c4b0; /* Light brown border */
@@ -17,7 +17,7 @@ html.light {
 
   /* Accent Colors - Brown & Beige */
   --accent: #e6d7c3; /* Light beige accent */
-  --accent-foreground: #000000; /* True black */
+  --accent-foreground: #0d0c0a; /* True black */
   --primary: #2563eb; /* Blue accent for CTAs only */
   --primary-foreground: #ffffff;
   --secondary: #8b4513; /* Saddle brown */
@@ -28,13 +28,16 @@ html.light {
   --warning: #a0522d; /* Sienna brown */
   --danger: #dc2626; /* Red */
   --info: #2563eb; /* Blue (selective use) */
+  /* GitHub Colors - Light theme uses GitHub's light gray palette */
+  --github: #24292e; /* GitHub dark */
+  --github-hover: #1b1f23; /* GitHub dark hover */
 
   /* Card & Surface */
   --card: #ffffff; /* Pure white cards */
-  --card-foreground: #000000; /* True black text */
+  --card-foreground: #0d0c0a; /* True black text */
 
   /* Text Colors - High Contrast */
-  --text-primary: #000000; /* True black */
+  --text-primary: #0d0c0a; /* True black */
   --text-secondary: #3c2415; /* Dark brown */
   --text-muted: #8b7355; /* Muted brown */
 
@@ -62,7 +65,7 @@ html.light {
 
 html.dark {
   /* Base Colors - True Black Theme */
-  --background: #000000; /* True black */
+  --background: #0d0c0a; /* True black */
   --background-secondary: #1a1510; /* Very dark brown */
   --foreground: #f5f3f0; /* Warm beige text */
   --muted: #8b7355; /* Muted brown */
@@ -83,6 +86,9 @@ html.dark {
   --warning: #d2b48c; /* Tan for warnings */
   --danger: #ef4444; /* Red */
   --info: #3b82f6; /* Blue (selective use) */
+  /* GitHub Colors - Dark theme uses GitHub's light gray palette for contrast */
+  --github: #f6f8fa; /* GitHub light gray */
+  --github-hover: #e1e4e8; /* GitHub light gray hover */
 
   /* Card & Surface */
   --card: #1a1510; /* Very dark brown cards */
@@ -94,7 +100,7 @@ html.dark {
   --text-muted: #8b7355; /* Muted brown */
 
   /* Dark Brown Gradient Colors */
-  --gradient-from: #000000; /* True black */
+  --gradient-from: #0d0c0a; /* True black */
   --gradient-via: #1a1510; /* Very dark brown */
   --gradient-to: #2a1f15; /* Dark brown */
 
@@ -326,6 +332,10 @@ html.dark .card:hover {
   border-color: var(--primary);
 }
 
+.border-info {
+  border-color: var(--info);
+}
+
 /* Modern animations */
 @keyframes float {
   0%,
@@ -372,6 +382,15 @@ html.dark .hover-lift:hover {
     0 10px 10px -5px rgba(0, 0, 0, 0.2);
 }
 
+/* Header shadow - Theme aware */
+.header-shadow {
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+html.dark .header-shadow {
+  box-shadow: 0 1px 3px #0000001a, 0 1px 2px #ffffff4d;
+}
+
 /* Theme-aware borders */
 .border-theme {
   border-color: var(--border);
@@ -389,6 +408,31 @@ html.dark .hover-lift:hover {
   -webkit-text-fill-color: transparent;
 }
 
+/* GitHub button specific styles */
+.btn-github {
+  background: var(--github);
+  color: var(--foreground);
+  border: 2px solid var(--border);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-github:hover {
+  background: var(--github-hover);
+  border-color: var(--secondary);
+  transform: translateY(-2px);
+}
+
+html.dark .btn-github {
+  background: var(--github);
+  color: var(--background);
+  border-color: var(--github);
+}
+
+html.dark .btn-github:hover {
+  background: var(--github-hover);
+  border-color: var(--secondary);
+}
+
 /* Enhanced glass effect for modern look */
 .glass-card {
   background: var(--glass-bg);
@@ -397,6 +441,100 @@ html.dark .hover-lift:hover {
   border: 1px solid var(--glass-border);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37),
     inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Border running animation using clip-path */
+@keyframes clippath {
+  0%,
+  100% {
+    clip-path: inset(0 0 92% 0);
+  }
+  25% {
+    clip-path: inset(0 92% 0 0);
+  }
+  50% {
+    clip-path: inset(92% 0 0 0);
+  }
+  75% {
+    clip-path: inset(0 0 0 92%);
+  }
+}
+
+.border-runner {
+  position: relative;
+}
+
+.border-runner::before,
+.border-runner::after {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  border: 2px solid var(--secondary);
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  animation: clippath 2.5s infinite linear;
+  pointer-events: none;
+}
+
+.border-runner::after {
+  border-color: var(--secondary);
+  animation: clippath 2.5s infinite -1.25s linear;
+}
+
+.border-runner:hover::before,
+.border-runner:hover::after,
+.border-runner.active::before,
+.border-runner.active::after {
+  opacity: 1;
+}
+
+/* Glow effect version */
+.border-runner-glow::before {
+  border-color: rgba(255, 255, 255, 0.6);
+  filter: blur(1px);
+}
+
+.border-runner-glow::after {
+  border-color: var(--warning);
+  filter: blur(1px);
+}
+
+.text-warning {
+  color: var(--warning);
+}
+
+.bg-info {
+  background-color: var(--info);
+}
+
+.bg-warning {
+  background-color: var(--warning);
+}
+
+html.dark .border-runner-glow::before {
+  border-color: rgba(255, 255, 255, 0.8);
+}
+
+html.dark .border-runner-glow::after {
+  border-color: var(--secondary);
+}
+
+html.dark .border-runner-glow {
+  background: conic-gradient(
+    from 0deg,
+    transparent,
+    transparent,
+    transparent,
+    rgba(255, 255, 255, 0.9),
+    rgba(210, 180, 140, 0.7),
+    transparent,
+    transparent,
+    transparent
+  );
 }
 
 /* Responsive design helpers */
@@ -408,4 +546,14 @@ html.dark .hover-lift:hover {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+
+  .border-runner::before,
+  .border-runner::after {
+    animation: none !important;
+    opacity: 0.5 !important;
+  }
+}
+
+.bg-success {
+  background-color: var(--success);
 }

@@ -46,8 +46,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
           glass
             ? "bg-glass-bg backdrop-blur-sm border-glass-border"
             : "bg-card text-card-foreground",
-          hover &&
-            "hover:shadow-lg hover:border-foreground hover:-translate-y-1",
+          hover && "hover:shadow-lg hover:border-foreground",
           "p-6",
           className
         )}

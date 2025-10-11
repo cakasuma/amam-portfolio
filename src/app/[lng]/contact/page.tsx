@@ -279,7 +279,7 @@ export default function Contact({ params }: ContactProps) {
 
                 <Button
                   type="submit"
-                  variant="cta"
+                  variant="outline"
                   size="lg"
                   className="w-full"
                   loading={isSubmitting}

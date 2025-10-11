@@ -10,6 +10,7 @@ This portfolio now features a modern, professional dual-theme system with sophis
 - **Background**: Very dark blue-gray (`#0c0f1a`) for a professional, modern look
 - **Gradient**: Deep blue gradient from `#0c0f1a` → `#1e293b` → `#1e3a8a`
 - **Primary Color**: Deeper blue (`#1d4ed8`) for better contrast
+- **GitHub Button**: Dark GitHub theme (`#24292e`) with hover state (`#1b1f23`)
 - **Glass Effect**: Enhanced with proper opacity and blur for modern aesthetics
 - **Typography**: High contrast white text with proper hierarchy
 
@@ -17,6 +18,7 @@ This portfolio now features a modern, professional dual-theme system with sophis
 - **Background**: Clean white (`#ffffff`) for maximum readability
 - **Gradient**: Subtle light gradient from `#f8fafc` → `#e2e8f0` → `#cbd5e1`
 - **Primary Color**: Professional blue (`#1e40af`) for trust and reliability
+- **GitHub Button**: Light GitHub theme (`#f6f8fa`) with hover state (`#e1e4e8`)
 - **Glass Effect**: Subtle transparency with light borders
 - **Typography**: Dark text with proper contrast ratios
 

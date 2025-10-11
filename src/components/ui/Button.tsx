@@ -50,17 +50,17 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     };
 
     return (
-      <motion.button
+      <button
         ref={ref}
-        className={cn(
-          "inline-flex items-center justify-center rounded-lg font-semibold transition-all duration-200 focus:outline-none disabled:opacity-50 disabled:pointer-events-none",
-          variants[variant],
-          sizes[size],
-          className
-        )}
+        className={
+          cn(
+            "cursor-pointer inline-flex items-center justify-center rounded-lg font-semibold transition-all duration-200 focus:outline-none disabled:opacity-50 disabled:pointer-events-none",
+            variants[variant],
+            sizes[size],
+            className
+          ) + " border-runner"
+        }
         disabled={disabled || loading}
-        whileHover={{ y: -1 }}
-        whileTap={{ scale: 0.98 }}
         {...props}
       >
         {loading ? (
@@ -75,7 +75,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         ) : (
           children
         )}
-      </motion.button>
+      </button>
     );
   }
 );

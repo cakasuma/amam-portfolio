@@ -29,18 +29,13 @@ export default function Home({ params }: HomeProps) {
       {/* Hero Section */}
       <HeroSection>
         <motion.div
-          className="pt-8"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
           {/* Profile Image with enhanced styling */}
           <div className="relative w-48 h-48 lg:w-56 lg:h-56 mx-auto mb-8">
-            <motion.div
-              className="relative w-full h-full"
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.3 }}
-            >
+            <motion.div className="relative w-full h-full">
               <Image
                 src="/image-amam.png"
                 alt="Mustofa Amami - Full-Stack Developer Portrait"
@@ -57,7 +52,7 @@ export default function Home({ params }: HomeProps) {
               />
               {/* Professional status indicator */}
               <motion.div
-                className="absolute bottom-2 right-2 w-6 h-6 bg-success rounded-full border-4 border-background shadow-lg"
+                className="absolute bottom-4 right-5 lg:right-7 w-7 h-7 bg-success rounded-full border-4 border-background shadow-lg"
                 animate={{ scale: [1, 1.1, 1] }}
                 transition={{ duration: 2, repeat: Infinity }}
                 title="Available for projects"
@@ -107,8 +102,7 @@ export default function Home({ params }: HomeProps) {
             ].map((item, index) => (
               <motion.div
                 key={item.label}
-                className="group flex items-center gap-3 bg-card border border-border rounded-full px-6 py-3 hover:shadow-lg hover:border-secondary transition-all duration-300 cursor-pointer"
-                whileHover={{ y: -2, scale: 1.02 }}
+                className="group flex items-center gap-3 bg-card border border-border rounded-full px-6 py-3 hover:shadow-lg hover:border-secondary transition-all duration-300 cursor-pointer border-runner"
                 whileTap={{ scale: 0.98 }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -160,9 +154,9 @@ export default function Home({ params }: HomeProps) {
                 href: "https://github.com/cakasuma",
                 icon: FaGithub,
                 label: "GitHub",
-                color: "from-secondary to-warning",
-                hoverColor: "from-warning to-secondary",
-                shadowColor: "secondary/25",
+                color: "bg-github border-2 border-github",
+                hoverColor: "bg-github-hover border-github-hover",
+                shadowColor: "github/25",
               },
               {
                 href: "https://twitter.com/mustofaamami",
@@ -178,18 +172,37 @@ export default function Home({ params }: HomeProps) {
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`group relative w-14 h-14 bg-gradient-to-br ${social.color} rounded-xl flex items-center justify-center hover:shadow-lg hover:shadow-${social.shadowColor} transition-all duration-300 overflow-hidden`}
+                className={`group relative w-14 h-14 ${
+                  social.label === "GitHub"
+                    ? social.color
+                    : `bg-gradient-to-br ${social.color}`
+                } rounded-xl flex items-center justify-center hover:shadow-lg hover:shadow-${
+                  social.shadowColor
+                } transition-all duration-300 overflow-hidden`}
                 whileHover={{ scale: 1.1, rotate: index % 2 === 0 ? 5 : -5 }}
                 whileTap={{ scale: 0.95 }}
                 aria-label={`Visit my ${social.label} profile`}
               >
-                <motion.div
-                  className={`absolute inset-0 bg-gradient-to-br ${social.hoverColor} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
+                {social.label !== "GitHub" && (
+                  <motion.div
+                    className={`absolute inset-0 bg-gradient-to-br ${social.hoverColor} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
+                  />
+                )}
+                {social.label === "GitHub" && (
+                  <motion.div
+                    className={`absolute inset-0 ${social.hoverColor} opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl`}
+                  />
+                )}
+                <social.icon
+                  className={`${
+                    social.label === "GitHub" ? "text-foreground" : "text-white"
+                  } text-xl relative z-10 group-hover:scale-110 transition-transform duration-300`}
                 />
-                <social.icon className="text-white text-xl relative z-10 group-hover:scale-110 transition-transform duration-300" />
-                <div
-                  className={`absolute -inset-1 bg-gradient-to-r ${social.color} rounded-xl opacity-0 group-hover:opacity-30 blur transition-opacity duration-300`}
-                />
+                {social.label !== "GitHub" && (
+                  <div
+                    className={`absolute -inset-1 bg-gradient-to-r ${social.color} rounded-xl opacity-0 group-hover:opacity-30 blur transition-opacity duration-300`}
+                  />
+                )}
               </motion.a>
             ))}
           </motion.div>
@@ -239,8 +252,7 @@ export default function Home({ params }: HomeProps) {
             ].map((skill) => (
               <motion.span
                 key={skill}
-                className="px-3 py-2 bg-accent text-foreground text-sm rounded-lg border border-border hover:border-secondary hover:bg-secondary/10 transition-all duration-200"
-                whileHover={{ scale: 1.05 }}
+                className="px-3 py-2 bg-accent text-foreground text-sm rounded-lg border border-border transition-all duration-200"
                 whileTap={{ scale: 0.95 }}
               >
                 {skill}
@@ -287,7 +299,7 @@ export default function Home({ params }: HomeProps) {
                 professional, reliable, and his technical expertise helped bring
                 our vision to life.&rdquo;
               </p>
-              <cite className="text-warning font-semibold text-sm">
+              <cite className="text-secondary font-semibold text-sm">
                 - Alex Chen, Startup Founder
               </cite>
             </blockquote>
@@ -301,22 +313,22 @@ export default function Home({ params }: HomeProps) {
         description="Let's create something amazing together! I'm always excited to take on new challenges and bring innovative ideas to life."
         variant="primary"
       >
-        <motion.div
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-        >
-          <Link href={`/${lng}/contact`}>
-            <Button variant="cta" size="lg">
-              Get in Touch
-            </Button>
-          </Link>
-          <Link href={`/${lng}/portfolio`}>
-            <Button variant="outline" size="lg">
-              View My Work
-            </Button>
-          </Link>
-        </motion.div>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <div style={{ overflow: "visible" }}>
+            <Link href={`/${lng}/contact`}>
+              <Button variant="cta" size="lg" className="cursor-pointer">
+                Get in Touch
+              </Button>
+            </Link>
+          </div>
+          <div className="cursor-pointer" style={{ overflow: "visible" }}>
+            <Link href={`/${lng}/portfolio`}>
+              <Button variant="outline" size="lg" className="cursor-pointer">
+                View My Work
+              </Button>
+            </Link>
+          </div>
+        </div>
       </CTASection>
     </PageLayout>
   );

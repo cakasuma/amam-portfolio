@@ -67,7 +67,7 @@ export const SmartHeader = memo(function SmartHeader({
 
   return (
     <motion.header
-      className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border transition-all duration-300 shadow-sm"
+      className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm transition-all duration-300 header-shadow"
       initial={{ y: 0 }}
       animate={{ y: isHidden ? "-100%" : 0 }}
       transition={{ duration: 0.3, ease: "easeInOut" }}
@@ -88,9 +88,7 @@ export const SmartHeader = memo(function SmartHeader({
                   key={item.href}
                   href={item.href}
                   className={`group flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 relative overflow-hidden ${
-                    isActive
-                      ? "text-foreground"
-                      : "text-foreground hover:bg-background hover:shadow-sm"
+                    isActive ? "text-foreground" : "text-foreground"
                   }`}
                   aria-label={item.ariaLabel}
                   aria-current={isActive ? "page" : undefined}
@@ -123,7 +121,7 @@ export const SmartHeader = memo(function SmartHeader({
                   {/* Hover effect for non-active items */}
                   {!isActive && (
                     <motion.div
-                      className="absolute inset-0 bg-accent/50 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+                      className="absolute inset-0 bg-[var(--nav-hover-bg)] rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200"
                       initial={false}
                     />
                   )}

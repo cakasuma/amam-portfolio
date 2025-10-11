@@ -11,23 +11,70 @@ export default function ThemeSwitcher() {
 
   useEffect(() => setMounted(true), []);
 
-  if (!mounted) return null;
+  if (!mounted) {
+    return (
+      <div className="w-12 h-12 bg-accent border border-border rounded-lg animate-pulse" />
+    );
+  }
+
+  const isDark = resolvedTheme === "dark";
 
   return (
     <motion.button
-      className="p-3 rounded-lg bg-accent border border-border hover:bg-background transition-colors duration-200 cursor-pointer focus-ring"
+      className="relative flex items-center justify-center w-12 h-12 rounded-lg bg-accent border border-border hover:bg-background hover:border-secondary transition-all duration-200 overflow-hidden group cursor-pointer"
       whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
-      onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
-      aria-label={`Switch to ${
-        resolvedTheme === "dark" ? "light" : "dark"
-      } theme`}
+      onClick={() => setTheme(isDark ? "light" : "dark")}
+      aria-label={`Switch to ${isDark ? "light" : "dark"} theme`}
+      title={`Switch to ${isDark ? "light" : "dark"} theme`}
     >
-      {resolvedTheme === "dark" ? (
-        <FiSun className="w-5 h-5 text-warning" />
-      ) : (
-        <FiMoon className="w-5 h-5 text-primary" />
-      )}
+      {/* Background gradient on hover */}
+      <motion.div
+        className="absolute inset-0 bg-gradient-to-br from-secondary/10 to-warning/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        initial={false}
+      />
+
+      {/* Sun icon for dark mode (show sun when in dark mode) */}
+      <motion.div
+        className="absolute inset-0 flex items-center justify-center"
+        initial={{
+          opacity: isDark ? 1 : 0,
+          rotate: isDark ? 0 : 180,
+          scale: isDark ? 1 : 0.5,
+        }}
+        animate={{
+          opacity: isDark ? 1 : 0,
+          rotate: isDark ? 0 : 180,
+          scale: isDark ? 1 : 0.5,
+        }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
+      >
+        <FiSun className="w-5 h-5 text-warning relative z-10" />
+      </motion.div>
+
+      {/* Moon icon for light mode (show moon when in light mode) */}
+      <motion.div
+        className="absolute inset-0 flex items-center justify-center"
+        initial={{
+          opacity: !isDark ? 1 : 0,
+          rotate: !isDark ? 0 : -180,
+          scale: !isDark ? 1 : 0.5,
+        }}
+        animate={{
+          opacity: !isDark ? 1 : 0,
+          rotate: !isDark ? 0 : -180,
+          scale: !isDark ? 1 : 0.5,
+        }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
+      >
+        <FiMoon className="w-5 h-5 text-secondary relative z-10" />
+      </motion.div>
+
+      {/* Subtle glow effect */}
+      <motion.div
+        className="absolute inset-0 rounded-lg bg-gradient-to-br from-secondary/20 to-warning/20 opacity-0 group-hover:opacity-100 blur-sm transition-opacity duration-300"
+        initial={false}
+      />
     </motion.button>
   );
 }

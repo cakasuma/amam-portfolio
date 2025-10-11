@@ -56,20 +56,53 @@ export const SmartFooter = memo(function SmartFooter({
       initial={{ y: 0 }}
       animate={{ y: isHidden ? "100%" : 0 }}
       transition={{ duration: 0.3, ease: "easeInOut" }}
+      role="navigation"
+      aria-label="Mobile navigation"
     >
-      <div className="flex justify-around p-4 bg-background/95 backdrop-blur-sm border-t border-border">
+      <div className="flex justify-around p-3 bg-background/95 backdrop-blur-sm border-t border-border shadow-sm">
         {navItems.map((item) => {
           const isActive = pathname === item.href;
           return (
             <Link
               key={item.href}
               href={item.href}
-              className={`flex flex-col items-center text-sm transition-colors focus-ring rounded-md p-2 ${
-                isActive ? "text-primary" : "text-muted hover:text-foreground"
+              className={`group flex flex-col items-center text-sm font-medium transition-all duration-300 relative overflow-hidden rounded-lg p-2 min-w-[64px] ${
+                isActive ? "text-foreground" : "text-foreground hover:shadow-sm"
               }`}
+              aria-current={isActive ? "page" : undefined}
             >
-              <span className="text-lg mb-1">{item.icon}</span>
-              <span className="text-xs">{item.label}</span>
+              {/* Active indicator - chip style */}
+              {isActive && (
+                <motion.div
+                  className="absolute inset-0 bg-[var(--nav-active-bg)] rounded-lg shadow-sm"
+                  layoutId="mobile-navbar-active"
+                  transition={{
+                    type: "spring",
+                    bounce: 0.15,
+                    duration: 0.5,
+                  }}
+                />
+              )}
+
+              {/* Content */}
+              <span className="relative z-10 text-lg mb-1 group-hover:scale-110 transition-transform duration-200">
+                {item.icon}
+              </span>
+              <span
+                className={`relative z-10 text-xs ${
+                  isActive ? "text-[var(--nav-active-text)]" : ""
+                }`}
+              >
+                {item.label}
+              </span>
+
+              {/* Hover effect for non-active items */}
+              {!isActive && (
+                <motion.div
+                  className="absolute inset-0 bg-accent/50 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+                  initial={false}
+                />
+              )}
             </Link>
           );
         })}

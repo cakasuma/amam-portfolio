@@ -3,7 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "./MotionLink";
 import { languages } from "../i18n/settings";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { FiChevronDown } from "react-icons/fi";
 
 /**
@@ -18,9 +18,29 @@ import { FiChevronDown } from "react-icons/fi";
 
 export function LanguageSwitcher({ lng }: { lng: string }) {
   const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsOpen(false);
+      }
+    }
+
+    if (isOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isOpen]);
 
   return (
-    <div className="relative">
+    <div className="relative" ref={dropdownRef}>
       <motion.button
         className="p-3 rounded-lg bg-accent border border-border hover:bg-background transition-colors duration-200 flex items-center gap-2 cursor-pointer focus-ring"
         onClick={() => setIsOpen(!isOpen)}
@@ -40,7 +60,11 @@ export function LanguageSwitcher({ lng }: { lng: string }) {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="absolute top-full right-0 mt-2 bg-background border border-border rounded-lg overflow-hidden min-w-[56px] z-50 shadow-lg"
+            className="absolute top-full right-0 mt-2 backdrop-blur-md border rounded-lg overflow-hidden min-w-[56px] z-[9999] shadow-2xl"
+            style={{
+              background: "var(--glass-bg)",
+              borderColor: "var(--glass-border)",
+            }}
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}

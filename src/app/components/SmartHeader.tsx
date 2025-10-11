@@ -21,11 +21,23 @@ export const SmartHeader = memo(function SmartHeader({
 
   const navItems = useMemo(
     () => [
-      { href: `/${lng}`, label: t("nav.home"), icon: "🏠" },
-      { href: `/${lng}/resume`, label: t("nav.resume"), icon: "📄" },
-      { href: `/${lng}/portfolio`, label: t("nav.portfolio"), icon: "💼" },
-      { href: `/${lng}/blog`, label: t("nav.blog"), icon: "📝" },
-      { href: `/${lng}/contact`, label: t("nav.contact"), icon: "📧" },
+      { href: `/${lng}`, label: t("nav.home") || "Home", icon: "🏠" },
+      {
+        href: `/${lng}/resume`,
+        label: t("nav.resume") || "Resume",
+        icon: "📄",
+      },
+      {
+        href: `/${lng}/portfolio`,
+        label: t("nav.portfolio") || "Portfolio",
+        icon: "💼",
+      },
+      { href: `/${lng}/blog`, label: t("nav.blog") || "Blog", icon: "📝" },
+      {
+        href: `/${lng}/contact`,
+        label: t("nav.contact") || "Contact",
+        icon: "📧",
+      },
     ],
     [lng, t]
   );
@@ -59,8 +71,8 @@ export const SmartHeader = memo(function SmartHeader({
                   href={item.href}
                   className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 focus-ring ${
                     isActive
-                      ? "bg-primary text-white"
-                      : "text-foreground hover:bg-background"
+                      ? "bg-primary text-foreground"
+                      : "text-foreground hover:bg-accent hover:text-foreground"
                   }`}
                 >
                   <span className="text-lg">{item.icon}</span>

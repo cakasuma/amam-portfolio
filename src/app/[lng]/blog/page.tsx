@@ -3,6 +3,10 @@ import { useTranslation } from "@/app/i18n/client";
 import { motion } from "motion/react";
 import Link from "next/link";
 import { use } from "react";
+import PageLayout, {
+  PageHeader,
+  AnimatedCard,
+} from "@/app/components/PageLayout";
 
 interface BlogProps {
   params: Promise<{
@@ -54,32 +58,23 @@ export default function Blog({ params }: BlogProps) {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 px-6 py-8">
-      <div className="max-w-4xl mx-auto">
-        {/* Header */}
-        <motion.div
-          className="text-center mb-12"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <h1 className="text-5xl font-bold text-white mb-6">{t("title")}</h1>
-          <p className="text-blue-200 text-lg mb-8 max-w-2xl mx-auto">
-            {t("subtitle")}
-          </p>
-        </motion.div>
+    <PageLayout maxWidth="4xl">
+      {/* Header */}
+      <PageHeader
+        title={t("title") || "Blog"}
+        subtitle={
+          t("subtitle") ||
+          "Thoughts, tutorials, and insights about web development"
+        }
+      />
 
-        {/* Blog Posts */}
-        <motion.div
-          className="space-y-8"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-        >
+      {/* Blog Posts */}
+      <AnimatedCard delay={0.2}>
+        <div className="space-y-8">
           {blogPosts.map((post, index) => (
             <motion.article
               key={post.id}
-              className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20 group hover:bg-white/15 transition-all duration-300 shadow-xl"
+              className="card p-6 lg:p-8 group hover-lift"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 * index }}
@@ -87,12 +82,12 @@ export default function Blog({ params }: BlogProps) {
             >
               <div className="flex flex-col md:flex-row md:items-center justify-between mb-4">
                 <div className="flex items-center gap-3 mb-2 md:mb-0">
-                  <span className="px-3 py-1 bg-blue-600/30 text-blue-200 rounded-full text-sm border border-blue-400/30">
+                  <span className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm border border-primary/20">
                     {post.category}
                   </span>
-                  <span className="text-blue-300 text-sm">{post.readTime}</span>
+                  <span className="text-muted text-sm">{post.readTime}</span>
                 </div>
-                <time className="text-blue-300 text-sm" dateTime={post.date}>
+                <time className="text-muted text-sm" dateTime={post.date}>
                   {new Date(post.date).toLocaleDateString(
                     lng === "id" ? "id-ID" : "en-US",
                     {
@@ -104,51 +99,44 @@ export default function Blog({ params }: BlogProps) {
                 </time>
               </div>
 
-              <h2 className="text-2xl font-bold text-white mb-4 group-hover:text-blue-300 transition-colors">
+              <h2 className="text-2xl font-bold text-foreground mb-4 group-hover:text-primary transition-colors">
                 {post.title}
               </h2>
 
-              <p className="text-blue-200 mb-6 leading-relaxed">
+              <p className="text-secondary mb-6 leading-relaxed">
                 {post.excerpt}
               </p>
 
               <Link
                 href="#"
-                className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 font-medium transition-colors"
+                className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium transition-colors"
               >
                 {t("read-more")} →
               </Link>
             </motion.article>
           ))}
-        </motion.div>
+        </div>
+      </AnimatedCard>
 
-        {/* Newsletter Signup */}
-        <motion.div
-          className="mt-16"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
-        >
-          <div className="bg-white/10 backdrop-blur-md rounded-2xl p-10 border border-white/20 text-center shadow-xl">
-            <h2 className="text-3xl font-bold text-white mb-4">
-              {t("newsletter.title")}
-            </h2>
-            <p className="text-blue-200 mb-8 max-w-2xl mx-auto leading-relaxed">
-              {t("newsletter.description")}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder={t("newsletter.placeholder")}
-                className="flex-1 px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder:text-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400 backdrop-blur-sm"
-              />
-              <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-semibold transition-colors">
-                {t("newsletter.button")}
-              </button>
-            </div>
+      {/* Newsletter Signup */}
+      <AnimatedCard delay={0.5} className="text-center">
+        <div className="bg-gradient-to-r from-primary to-info p-8 lg:p-10 rounded-xl text-white">
+          <h2 className="text-3xl font-bold mb-4">{t("newsletter.title")}</h2>
+          <p className="text-white/90 mb-8 max-w-2xl mx-auto leading-relaxed">
+            {t("newsletter.description")}
+          </p>
+          <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+            <input
+              type="email"
+              placeholder={t("newsletter.placeholder")}
+              className="flex-1 px-4 py-3 bg-white/20 border border-white/30 rounded-xl text-white placeholder:text-white/70 focus:outline-none focus:ring-2 focus:ring-white/50 backdrop-blur-sm"
+            />
+            <button className="bg-background text-primary hover:bg-accent border border-border px-6 py-3 rounded-xl font-semibold transition-colors focus-ring">
+              {t("newsletter.button")}
+            </button>
           </div>
-        </motion.div>
-      </div>
-    </div>
+        </div>
+      </AnimatedCard>
+    </PageLayout>
   );
 }

@@ -5,6 +5,7 @@ import Image from "next/image";
 import { use } from "react";
 import { useTranslation } from "@/app/i18n/client";
 import PageLayout, { AnimatedCard, Section } from "@/app/components/PageLayout";
+import { FaLinkedin, FaGithub, FaTwitter } from "react-icons/fa";
 
 interface HomeProps {
   params: Promise<{
@@ -41,7 +42,7 @@ export default function Home({ params }: HomeProps) {
                 objectPosition: "center 15%",
               }}
             />
-            <div className="absolute bottom-2 right-2 w-8 h-8 bg-success rounded-full border-4 border-background"></div>
+            {/* <div className="absolute bottom-2 right-2 w-8 h-8 bg-success rounded-full border-4 border-background"></div> */}
           </div>
 
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
@@ -52,47 +53,109 @@ export default function Home({ params }: HomeProps) {
             Full-Stack Developer & UI/UX Enthusiast
           </p>
 
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
-            <div className="flex items-center gap-2 bg-accent rounded-full px-4 py-2 border border-border">
-              <span className="text-muted">📧</span>
-              <span className="text-muted text-sm">{t("email")}</span>
-            </div>
-            <div className="flex items-center gap-2 bg-accent rounded-full px-4 py-2 border border-border">
-              <span className="text-muted">📱</span>
-              <span className="text-muted text-sm">{t("phone")}</span>
-            </div>
-            <div className="flex items-center gap-2 bg-accent rounded-full px-4 py-2 border border-border">
-              <span className="text-muted">📍</span>
-              <span className="text-muted text-sm">Jakarta, ID</span>
-            </div>
-          </div>
+          <motion.div
+            className="flex flex-wrap justify-center gap-4 mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <motion.div
+              className="flex items-center gap-3 bg-accent rounded-full px-6 py-3 border border-border hover:shadow-md hover:scale-105 transition-all duration-300 cursor-pointer group"
+              whileHover={{ y: -2 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <motion.span
+                className="text-2xl group-hover:scale-110 transition-transform duration-300"
+                animate={{ rotate: [0, 10, -10, 0] }}
+                transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
+              >
+                📧
+              </motion.span>
+              <span className="text-muted text-sm font-medium group-hover:text-foreground transition-colors duration-300">
+                {t("email")}
+              </span>
+            </motion.div>
 
-          <div className="flex justify-center gap-4">
-            <a
-              href="https://linkedin.com"
+            <motion.div
+              className="flex items-center gap-3 bg-accent rounded-full px-6 py-3 border border-border hover:shadow-md hover:scale-105 transition-all duration-300 cursor-pointer group"
+              whileHover={{ y: -2 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <motion.span
+                className="text-2xl group-hover:scale-110 transition-transform duration-300"
+                animate={{ rotate: [0, 15, -15, 0] }}
+                transition={{ duration: 2.5, repeat: Infinity, repeatDelay: 4 }}
+              >
+                📱
+              </motion.span>
+              <span className="text-muted text-sm font-medium group-hover:text-foreground transition-colors duration-300">
+                {t("phone")}
+              </span>
+            </motion.div>
+
+            <motion.div
+              className="flex items-center gap-3 bg-accent rounded-full px-6 py-3 border border-border hover:shadow-md hover:scale-105 transition-all duration-300 cursor-pointer group"
+              whileHover={{ y: -2 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <motion.span
+                className="text-2xl group-hover:scale-110 transition-transform duration-300"
+                animate={{ y: [0, -3, 3, 0] }}
+                transition={{ duration: 3, repeat: Infinity, repeatDelay: 2 }}
+              >
+                📍
+              </motion.span>
+              <span className="text-muted text-sm font-medium group-hover:text-foreground transition-colors duration-300">
+                Jakarta, ID
+              </span>
+            </motion.div>
+          </motion.div>
+
+          <motion.div
+            className="flex justify-center gap-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
+            <motion.a
+              href="https://linkedin.com/in/mustofaamami"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-12 h-12 bg-primary rounded-full flex items-center justify-center hover:bg-button-bg-hover transition-colors duration-200 focus-ring"
+              className="group relative w-14 h-14 bg-gradient-to-br from-blue-600 to-blue-700 rounded-xl flex items-center justify-center hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 focus-ring overflow-hidden"
+              whileHover={{ scale: 1.1, rotate: 5 }}
+              whileTap={{ scale: 0.95 }}
             >
-              <span className="text-white text-lg font-bold">in</span>
-            </a>
-            <a
-              href="https://github.com"
+              <motion.div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <FaLinkedin className="text-white text-xl relative z-10 group-hover:scale-110 transition-transform duration-300" />
+              <div className="absolute -inset-1 bg-gradient-to-r from-blue-400 to-blue-600 rounded-xl opacity-0 group-hover:opacity-30 blur transition-opacity duration-300" />
+            </motion.a>
+
+            <motion.a
+              href="https://github.com/cakasuma"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-12 h-12 bg-foreground rounded-full flex items-center justify-center hover:opacity-80 transition-opacity duration-200 focus-ring"
+              className="group relative w-14 h-14 bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl flex items-center justify-center hover:shadow-lg hover:shadow-gray-800/25 transition-all duration-300 focus-ring overflow-hidden"
+              whileHover={{ scale: 1.1, rotate: -5 }}
+              whileTap={{ scale: 0.95 }}
             >
-              <span className="text-background text-lg font-bold">gh</span>
-            </a>
-            <a
-              href="https://twitter.com"
+              <motion.div className="absolute inset-0 bg-gradient-to-br from-gray-700 to-gray-800 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <FaGithub className="text-white text-xl relative z-10 group-hover:scale-110 transition-transform duration-300" />
+              <div className="absolute -inset-1 bg-gradient-to-r from-gray-600 to-gray-800 rounded-xl opacity-0 group-hover:opacity-30 blur transition-opacity duration-300" />
+            </motion.a>
+
+            <motion.a
+              href="https://twitter.com/mustofaamami"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-12 h-12 bg-info rounded-full flex items-center justify-center hover:opacity-80 transition-opacity duration-200 focus-ring"
+              className="group relative w-14 h-14 bg-gradient-to-br from-sky-500 to-sky-600 rounded-xl flex items-center justify-center hover:shadow-lg hover:shadow-sky-500/25 transition-all duration-300 focus-ring overflow-hidden"
+              whileHover={{ scale: 1.1, rotate: 5 }}
+              whileTap={{ scale: 0.95 }}
             >
-              <span className="text-white text-lg font-bold">tw</span>
-            </a>
-          </div>
+              <motion.div className="absolute inset-0 bg-gradient-to-br from-sky-400 to-sky-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <FaTwitter className="text-white text-xl relative z-10 group-hover:scale-110 transition-transform duration-300" />
+              <div className="absolute -inset-1 bg-gradient-to-r from-sky-400 to-sky-600 rounded-xl opacity-0 group-hover:opacity-30 blur transition-opacity duration-300" />
+            </motion.a>
+          </motion.div>
         </motion.div>
       </Section>
 
@@ -163,19 +226,31 @@ export default function Home({ params }: HomeProps) {
 
       {/* Call to Action */}
       <AnimatedCard delay={0.5} className="text-center">
-        <div className="bg-primary p-8 rounded-xl text-white">
+        <div className="bg-primary p-8 rounded-xl text-foreground">
           <h2 className="text-2xl lg:text-3xl font-bold mb-4">
             Ready to work together?
           </h2>
           <p className="mb-6 text-lg opacity-90">
             Let&apos;s create something amazing together!
           </p>
-          <Link
-            href={`/${lng}/contact`}
-            className="inline-block bg-white text-primary px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200 focus-ring"
-          >
-            Get in Touch
-          </Link>
+          <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+            <Link
+              href={`/${lng}/contact`}
+              className="group relative inline-block bg-background text-primary hover:bg-accent border border-border px-8 py-3 rounded-lg font-semibold transition-all duration-300 focus-ring overflow-hidden"
+            >
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-primary/10 to-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                initial={false}
+              />
+              <span className="relative z-10 group-hover:text-primary transition-colors duration-300">
+                Get in Touch
+              </span>
+              <motion.div
+                className="absolute bottom-0 left-0 h-0.5 bg-primary origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300"
+                style={{ width: "100%" }}
+              />
+            </Link>
+          </motion.div>
         </div>
       </AnimatedCard>
     </PageLayout>

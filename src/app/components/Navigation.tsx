@@ -12,11 +12,23 @@ export const Navigation = memo(function Navigation({ lng }: { lng: string }) {
 
   const navItems = useMemo(
     () => [
-      { href: `/${lng}`, label: t("nav.home"), icon: "🏠" },
-      { href: `/${lng}/resume`, label: t("nav.resume"), icon: "📄" },
-      { href: `/${lng}/portfolio`, label: t("nav.portfolio"), icon: "💼" },
-      { href: `/${lng}/blog`, label: t("nav.blog"), icon: "📝" },
-      { href: `/${lng}/contact`, label: t("nav.contact"), icon: "📧" },
+      { href: `/${lng}`, label: t("nav.home") || "Home", icon: "🏠" },
+      {
+        href: `/${lng}/resume`,
+        label: t("nav.resume") || "Resume",
+        icon: "📄",
+      },
+      {
+        href: `/${lng}/portfolio`,
+        label: t("nav.portfolio") || "Portfolio",
+        icon: "💼",
+      },
+      { href: `/${lng}/blog`, label: t("nav.blog") || "Blog", icon: "📝" },
+      {
+        href: `/${lng}/contact`,
+        label: t("nav.contact") || "Contact",
+        icon: "📧",
+      },
     ],
     [lng, t]
   );
@@ -31,15 +43,15 @@ export const Navigation = memo(function Navigation({ lng }: { lng: string }) {
 
       {/* Mobile Navigation */}
       <nav className="fixed bottom-0 left-0 right-0 md:hidden z-50">
-        <div className="flex justify-around p-4 bg-slate-900/95 backdrop-blur-lg border-t border-blue-500/20">
+        <div className="flex justify-around p-4 bg-background/95 backdrop-blur-sm border-t border-border">
           {navItems.map((item) => {
             const isActive = pathname === item.href;
             return (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`flex flex-col items-center text-sm transition-colors ${
-                  isActive ? "text-white" : "text-blue-200 hover:text-white"
+                className={`flex flex-col items-center text-sm transition-colors focus-ring rounded-md p-2 ${
+                  isActive ? "text-primary" : "text-muted hover:text-foreground"
                 }`}
               >
                 <span className="text-lg mb-1">{item.icon}</span>

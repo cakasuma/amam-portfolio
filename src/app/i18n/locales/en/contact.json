@@ -28,6 +28,14 @@
     "subject-placeholder": "Enter the subject",
     "message": "Message",
     "message-placeholder": "Enter your message here...",
-    "submit": "Send Message"
+    "submit": "Send Message",
+    "sending": "Sending..."
+  },
+  "freelance": {
+    "title": "Available for Freelance Projects",
+    "description": "I'm currently accepting new freelance projects and consulting opportunities. Whether you need a full-stack web application, UI/UX improvements, or technical consultation, I'd love to help bring your vision to life.",
+    "available": "Available for new projects",
+    "response": "Quick response time",
+    "flexible": "Flexible scheduling"
   }
 }

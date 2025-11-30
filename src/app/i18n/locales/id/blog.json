@@ -3,10 +3,20 @@
   "subtitle": "Pemikiran, tutorial, dan wawasan tentang pengembangan web",
   "back-to-home": "Kembali ke halaman utama",
   "read-more": "Baca selengkapnya",
+  "featured": "Unggulan",
+  "featured-posts": {
+    "title": "Postingan Unggulan",
+    "description": "Artikel pilihan yang membahas perkembangan terbaru dalam pengembangan web dan pemrograman"
+  },
+  "recent-posts": {
+    "title": "Postingan Terbaru",
+    "description": "Artikel dan tutorial terbaru dari perjalanan pengembangan saya"
+  },
   "newsletter": {
     "title": "Tetap Update",
     "description": "Berlangganan untuk mendapat notifikasi tentang posting blog dan update terbaru.",
     "placeholder": "Masukkan email Anda",
-    "button": "Berlangganan"
+    "button": "Berlangganan",
+    "privacy": "Tanpa spam, berhenti berlangganan kapan saja. Saya menghormati privasi Anda dan hanya akan mengirimkan konten yang berharga."
   }
 }

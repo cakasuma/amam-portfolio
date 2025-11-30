@@ -3,10 +3,20 @@
   "subtitle": "Thoughts, tutorials, and insights about web development",
   "back-to-home": "Back to home",
   "read-more": "Read more",
+  "featured": "Featured",
+  "featured-posts": {
+    "title": "Featured Posts",
+    "description": "Hand-picked articles covering the latest in web development and programming"
+  },
+  "recent-posts": {
+    "title": "Recent Posts",
+    "description": "Latest articles and tutorials from my development journey"
+  },
   "newsletter": {
     "title": "Stay Updated",
     "description": "Subscribe to get notified about new blog posts and updates.",
     "placeholder": "Enter your email",
-    "button": "Subscribe"
+    "button": "Subscribe",
+    "privacy": "No spam, unsubscribe at any time. I respect your privacy and will only send valuable content."
   }
 }

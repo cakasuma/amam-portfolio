@@ -4,6 +4,18 @@
   "back-to-home": "Back to home",
   "view-demo": "Live Demo",
   "view-code": "View Code",
+  "demo": "Demo",
+  "code": "Code",
+  "featured": "Featured",
+  "featured-projects": {
+    "title": "Featured Projects",
+    "description": "Highlighting some of my most impactful and technically challenging projects"
+  },
+  "other-projects": {
+    "title": "Other Projects",
+    "description": "Additional projects showcasing various technologies and creative solutions"
+  },
+  "view-resume": "View Resume",
   "cta": {
     "title": "Interested in working together?",
     "description": "I'm always open to discussing new opportunities and exciting projects.",

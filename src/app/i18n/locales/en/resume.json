@@ -1,6 +1,7 @@
 {
   "title": "Resume",
   "back-to-home": "Back to home",
+  "subtitle": "Experience, Skills, and Professional Journey",
   "personal-info": {
     "title": "Personal Information",
     "name": "Name",
@@ -33,5 +34,28 @@
     "degree": "Bachelor of Computer Science",
     "school": "University of Indonesia",
     "period": "2016 - 2020"
+  },
+  "certifications": {
+    "title": "Certifications & Achievements",
+    "cert1": {
+      "name": "AWS Certified Developer",
+      "issuer": "Amazon Web Services",
+      "year": "2023"
+    },
+    "cert2": {
+      "name": "React Professional Certificate",
+      "issuer": "Meta",
+      "year": "2022"
+    },
+    "cert3": {
+      "name": "TypeScript Advanced",
+      "issuer": "Microsoft",
+      "year": "2022"
+    },
+    "cert4": {
+      "name": "Node.js Application Developer",
+      "issuer": "OpenJS Foundation",
+      "year": "2021"
+    }
   }
 }

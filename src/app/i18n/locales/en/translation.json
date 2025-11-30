@@ -5,6 +5,14 @@
   "email": "mustofa.amami@email.com",
   "phone": "+62 123 456 7890",
   "birthday": "Born: January 1, 1990",
+  "role": "Full-Stack Developer & UI/UX Enthusiast",
+  "hero-description": "Passionate about creating beautiful, functional web experiences with modern technologies. Based in Jakarta, Indonesia.",
+  "location": "Jakarta, Indonesia",
+  "contact-info": {
+    "email-label": "Email",
+    "phone-label": "Phone",
+    "location-label": "Location"
+  },
   "nav": {
     "home": "Home",
     "resume": "Resume",
@@ -14,7 +22,8 @@
   },
   "about": {
     "title": "About Me",
-    "content": "I am a passionate full-stack developer with expertise in modern web technologies. I love creating beautiful, functional, and user-friendly applications that solve real-world problems. With a strong background in React, Next.js, and TypeScript, I bring ideas to life through clean, efficient code."
+    "content": "I am a passionate full-stack developer with expertise in modern web technologies. I love creating beautiful, functional, and user-friendly applications that solve real-world problems. With a strong background in React, Next.js, and TypeScript, I bring ideas to life through clean, efficient code.",
+    "learning": "Continuously learning and staying up-to-date with the latest industry trends and best practices."
   },
   "what-i-do": {
     "title": "What I Do",
@@ -22,10 +31,21 @@
   },
   "testimonials": {
     "title": "Testimonials",
-    "content": "What my clients say about working with me."
+    "content": "What my clients say about working with me.",
+    "trusted": "Trusted by clients and colleagues for delivering high-quality work and exceptional results.",
+    "quote1": "Mustofa is an exceptional developer who consistently delivers high-quality work. His attention to detail and problem-solving skills are outstanding.",
+    "author1": "Sarah Johnson, Project Manager",
+    "quote2": "Working with Mustofa was a pleasure. He's professional, reliable, and his technical expertise helped bring our vision to life.",
+    "author2": "Alex Chen, Startup Founder"
   },
   "clients": {
     "title": "Clients",
     "content": "Companies I've had the pleasure to work with."
+  },
+  "cta": {
+    "title": "Ready to work together?",
+    "description": "Let's create something amazing together! I'm always excited to take on new challenges and bring innovative ideas to life.",
+    "get-in-touch": "Get in Touch",
+    "view-my-work": "View My Work"
   }
 }

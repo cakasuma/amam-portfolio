@@ -286,7 +286,7 @@ export default function Contact({ params }: ContactProps) {
                   disabled={isSubmitting}
                 >
                   {isSubmitting
-                    ? "Sending..."
+                    ? t("form.sending") || "Sending..."
                     : t("form.submit") || "Send Message"}
                 </Button>
               </form>
@@ -300,26 +300,23 @@ export default function Contact({ params }: ContactProps) {
         <Card className="text-center bg-gradient-to-r from-accent/50 to-background-secondary/50">
           <CardContent className="p-8">
             <h2 className="text-2xl font-bold text-foreground mb-4">
-              Available for Freelance Projects
+              {t("freelance.title") || "Available for Freelance Projects"}
             </h2>
             <p className="text-text-secondary mb-6 max-w-2xl mx-auto">
-              I&apos;m currently accepting new freelance projects and consulting
-              opportunities. Whether you need a full-stack web application,
-              UI/UX improvements, or technical consultation, I&apos;d love to
-              help bring your vision to life.
+              {t("freelance.description") || "I'm currently accepting new freelance projects and consulting opportunities. Whether you need a full-stack web application, UI/UX improvements, or technical consultation, I'd love to help bring your vision to life."}
             </p>
             <div className="flex flex-wrap justify-center gap-4 text-sm text-text-muted">
               <span className="flex items-center gap-2">
                 <span className="w-2 h-2 bg-success rounded-full"></span>
-                Available for new projects
+                {t("freelance.available") || "Available for new projects"}
               </span>
               <span className="flex items-center gap-2">
                 <span className="w-2 h-2 bg-info rounded-full"></span>
-                Quick response time
+                {t("freelance.response") || "Quick response time"}
               </span>
               <span className="flex items-center gap-2">
                 <span className="w-2 h-2 bg-warning rounded-full"></span>
-                Flexible scheduling
+                {t("freelance.flexible") || "Flexible scheduling"}
               </span>
             </div>
           </CardContent>

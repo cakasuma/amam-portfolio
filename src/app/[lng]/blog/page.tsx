@@ -1,15 +1,17 @@
 "use client";
 import { useTranslation } from "@/app/i18n/client";
 import { motion } from "motion/react";
-import Link from "next/link";
-import { use } from "react";
+import Image from "next/image";
+import { use, useEffect, useState } from "react";
 import PageLayout, {
   PageHeader,
   Section,
   CTASection,
 } from "@/app/components/PageLayout";
 import { Card, CardContent, Button } from "@/components/ui";
-import { FaCalendarAlt, FaClock, FaTag, FaArrowRight } from "react-icons/fa";
+import { FaCalendarAlt, FaClock, FaTag, FaExternalLinkAlt, FaHeart, FaComment } from "react-icons/fa";
+import { SiDevdotto } from "react-icons/si";
+import { getBlogPosts, BlogPost } from "@/lib/devto";
 
 interface BlogProps {
   params: Promise<{
@@ -17,62 +19,48 @@ interface BlogProps {
   }>;
 }
 
+// Loading skeleton component
+function BlogPostSkeleton() {
+  return (
+    <Card className="animate-pulse">
+      <CardContent className="p-6">
+        <div className="flex flex-wrap items-center gap-3 mb-4">
+          <div className="h-6 w-20 bg-accent/30 rounded-full"></div>
+          <div className="h-4 w-24 bg-accent/20 rounded"></div>
+        </div>
+        <div className="h-6 w-3/4 bg-accent/30 rounded mb-3"></div>
+        <div className="h-4 w-full bg-accent/20 rounded mb-2"></div>
+        <div className="h-4 w-2/3 bg-accent/20 rounded mb-4"></div>
+        <div className="flex items-center justify-between">
+          <div className="h-4 w-28 bg-accent/20 rounded"></div>
+          <div className="h-4 w-20 bg-accent/20 rounded"></div>
+        </div>
+      </CardContent>
+    </Card>
+  );
+}
+
 export default function Blog({ params }: BlogProps) {
   const { lng } = use(params);
   const { t } = useTranslation(lng, "blog");
+  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  const blogPosts = [
-    {
-      id: 1,
-      title: "Getting Started with Next.js 15",
-      excerpt:
-        "Exploring the new features and improvements in Next.js 15, including the app router, server components, and enhanced performance optimizations.",
-      date: "2024-01-15",
-      readTime: "5 min read",
-      category: "Development",
-      featured: true,
-    },
-    {
-      id: 2,
-      title: "Building Responsive Layouts with Tailwind CSS",
-      excerpt:
-        "A comprehensive guide to creating beautiful, responsive layouts using Tailwind CSS utility classes and best practices for modern web design.",
-      date: "2024-01-10",
-      readTime: "8 min read",
-      category: "CSS",
-      featured: true,
-    },
-    {
-      id: 3,
-      title: "TypeScript Best Practices in 2024",
-      excerpt:
-        "Learn the latest TypeScript best practices and patterns that will make your code more maintainable, type-safe, and developer-friendly.",
-      date: "2024-01-05",
-      readTime: "6 min read",
-      category: "TypeScript",
-      featured: false,
-    },
-    {
-      id: 4,
-      title: "State Management in React Applications",
-      excerpt:
-        "Comparing different state management solutions and when to use each one in your React projects, from useState to Zustand.",
-      date: "2023-12-28",
-      readTime: "10 min read",
-      category: "React",
-      featured: false,
-    },
-    {
-      id: 5,
-      title: "The Future of Web Development",
-      excerpt:
-        "Exploring emerging trends in web development including WebAssembly, edge computing, and the evolution of JavaScript frameworks.",
-      date: "2023-12-20",
-      readTime: "7 min read",
-      category: "Trends",
-      featured: false,
-    },
-  ];
+  useEffect(() => {
+    async function fetchPosts() {
+      try {
+        const posts = await getBlogPosts();
+        setBlogPosts(posts);
+      } catch (err) {
+        setError("Failed to load blog posts");
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchPosts();
+  }, []);
 
   const featuredPosts = blogPosts.filter((post) => post.featured);
   const regularPosts = blogPosts.filter((post) => !post.featured);
@@ -89,8 +77,72 @@ export default function Blog({ params }: BlogProps) {
         level={1}
       />
 
+      {/* Dev.to Attribution */}
+      <Section id="devto-attribution" ariaLabel="Content source">
+        <div className="flex items-center justify-center gap-2 text-text-secondary mb-8">
+          <SiDevdotto className="w-6 h-6" />
+          <span className="text-sm">
+            {t("powered-by") || "Articles from"}{" "}
+            <a 
+              href="https://dev.to/cakasuma" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-secondary hover:underline font-medium"
+            >
+              dev.to/cakasuma
+            </a>
+          </span>
+        </div>
+      </Section>
+
+      {/* Loading State */}
+      {loading && (
+        <Section id="loading" ariaLabel="Loading blog posts">
+          <div className="grid md:grid-cols-2 gap-8 mb-12">
+            {[1, 2, 3, 4].map((i) => (
+              <BlogPostSkeleton key={i} />
+            ))}
+          </div>
+        </Section>
+      )}
+
+      {/* Error State */}
+      {error && !loading && (
+        <Section id="error" ariaLabel="Error loading blog posts">
+          <div className="text-center py-12">
+            <p className="text-error mb-4">{error}</p>
+            <Button 
+              variant="outline" 
+              onClick={() => window.location.reload()}
+            >
+              {t("retry") || "Try Again"}
+            </Button>
+          </div>
+        </Section>
+      )}
+
+      {/* Empty State */}
+      {!loading && !error && blogPosts.length === 0 && (
+        <Section id="empty" ariaLabel="No blog posts">
+          <div className="text-center py-12">
+            <p className="text-text-secondary mb-4">
+              {t("no-posts") || "No blog posts found. Check back later!"}
+            </p>
+            <a 
+              href="https://dev.to/cakasuma" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-secondary hover:underline"
+            >
+              {t("visit-devto") || "Visit my Dev.to profile"}
+              <FaExternalLinkAlt className="w-3 h-3" />
+            </a>
+          </div>
+        </Section>
+      )}
+
       {/* Featured Posts */}
-      {featuredPosts.length > 0 && (
+      {!loading && featuredPosts.length > 0 && (
         <Section id="featured-posts" ariaLabel="Featured blog posts">
           <div className="text-center mb-8">
             <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-4 flex items-center justify-center gap-3">
@@ -98,7 +150,7 @@ export default function Blog({ params }: BlogProps) {
               {t("featured-posts.title") || "Featured Posts"}
             </h2>
             <p className="text-text-secondary max-w-2xl mx-auto">
-              {t("featured-posts.description") || "Hand-picked articles covering the latest in web development and programming"}
+              {t("featured-posts.description") || "Popular articles with the most engagement from the community"}
             </p>
           </div>
 
@@ -112,6 +164,19 @@ export default function Blog({ params }: BlogProps) {
               >
                 <Card className="group h-full" hover>
                   <CardContent className="p-6">
+                    {/* Cover Image */}
+                    {post.coverImage && (
+                      <div className="mb-4 -mx-6 -mt-6 overflow-hidden rounded-t-xl relative h-48">
+                        <Image 
+                          src={post.coverImage} 
+                          alt={post.title}
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-300"
+                          unoptimized
+                        />
+                      </div>
+                    )}
+                    
                     {/* Post Meta */}
                     <header className="flex flex-wrap items-center gap-3 mb-4">
                       <span className="px-3 py-1 bg-accent/10 text-accent border-accent/20 rounded-full text-sm border font-medium flex items-center gap-1">
@@ -129,17 +194,31 @@ export default function Blog({ params }: BlogProps) {
 
                     {/* Post Content */}
                     <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-secondary transition-colors duration-200">
-                      <Link
-                        href={`/${lng}/blog/${post.id}`}
+                      <a
+                        href={post.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="hover:underline"
                       >
                         {post.title}
-                      </Link>
+                      </a>
                     </h3>
 
-                    <p className="text-text-secondary mb-4 leading-relaxed">
+                    <p className="text-text-secondary mb-4 leading-relaxed line-clamp-3">
                       {post.excerpt}
                     </p>
+
+                    {/* Engagement Stats */}
+                    <div className="flex items-center gap-4 mb-4 text-text-muted text-sm">
+                      <span className="flex items-center gap-1">
+                        <FaHeart className="w-3 h-3 text-error" />
+                        {post.reactionsCount}
+                      </span>
+                      <span className="flex items-center gap-1">
+                        <FaComment className="w-3 h-3" />
+                        {post.commentsCount}
+                      </span>
+                    </div>
 
                     {/* Post Footer */}
                     <footer className="flex items-center justify-between">
@@ -158,13 +237,15 @@ export default function Blog({ params }: BlogProps) {
                         )}
                       </time>
 
-                      <Link
-                        href={`/${lng}/blog/${post.id}`}
+                      <a
+                        href={post.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 text-secondary hover:text-secondary/80 font-medium transition-colors group-hover:translate-x-1 duration-200"
                       >
-                        {t("read-more") || "Read More"}
-                        <FaArrowRight className="w-3 h-3" />
-                      </Link>
+                        {t("read-on-devto") || "Read on Dev.to"}
+                        <FaExternalLinkAlt className="w-3 h-3" />
+                      </a>
                     </footer>
                   </CardContent>
                 </Card>
@@ -175,112 +256,139 @@ export default function Blog({ params }: BlogProps) {
       )}
 
       {/* Regular Posts */}
-      <Section id="recent-posts" ariaLabel="Recent blog posts">
-        <div className="text-center mb-8">
-          <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-4 flex items-center justify-center gap-3">
-            <span className="text-warning text-3xl">📝</span>
-            {t("recent-posts.title") || "Recent Posts"}
-          </h2>
-          <p className="text-text-secondary max-w-2xl mx-auto">
-            {t("recent-posts.description") || "Latest articles and tutorials from my development journey"}
-          </p>
-        </div>
+      {!loading && regularPosts.length > 0 && (
+        <Section id="recent-posts" ariaLabel="Recent blog posts">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-4 flex items-center justify-center gap-3">
+              <span className="text-warning text-3xl">📝</span>
+              {t("recent-posts.title") || "All Posts"}
+            </h2>
+            <p className="text-text-secondary max-w-2xl mx-auto">
+              {t("recent-posts.description") || "Latest articles and tutorials from my development journey"}
+            </p>
+          </div>
 
-        <div className="space-y-6">
-          {regularPosts.map((post, index) => (
-            <motion.article
-              key={post.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 * index }}
-            >
-              <Card className="group" hover>
-                <CardContent className="p-6">
-                  <div className="flex flex-col md:flex-row md:items-start gap-6">
-                    {/* Post Content */}
-                    <div className="flex-1">
-                      {/* Post Meta */}
-                      <header className="flex flex-wrap items-center gap-3 mb-3">
-                        <span className="px-3 py-1 bg-accent/10 text-accent border-accent/20 rounded-full text-sm border font-medium flex items-center gap-1">
-                          <FaTag className="w-3 h-3" />
-                          {post.category}
-                        </span>
-                        <span className="text-text-muted text-sm flex items-center gap-1">
-                          <FaClock className="w-3 h-3" />
-                          {post.readTime}
-                        </span>
-                      </header>
+          <div className="space-y-6">
+            {regularPosts.map((post, index) => (
+              <motion.article
+                key={post.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 * index }}
+              >
+                <Card className="group" hover>
+                  <CardContent className="p-6">
+                    <div className="flex flex-col md:flex-row md:items-start gap-6">
+                      {/* Cover Image */}
+                      {post.coverImage && (
+                        <div className="md:w-48 h-48 md:h-32 flex-shrink-0 overflow-hidden rounded-lg relative">
+                          <Image 
+                            src={post.coverImage} 
+                            alt={post.title}
+                            fill
+                            className="object-cover group-hover:scale-105 transition-transform duration-300"
+                            unoptimized
+                          />
+                        </div>
+                      )}
+                      
+                      {/* Post Content */}
+                      <div className="flex-1">
+                        {/* Post Meta */}
+                        <header className="flex flex-wrap items-center gap-3 mb-3">
+                          <span className="px-3 py-1 bg-accent/10 text-accent border-accent/20 rounded-full text-sm border font-medium flex items-center gap-1">
+                            <FaTag className="w-3 h-3" />
+                            {post.category}
+                          </span>
+                          <span className="text-text-muted text-sm flex items-center gap-1">
+                            <FaClock className="w-3 h-3" />
+                            {post.readTime}
+                          </span>
+                          <span className="flex items-center gap-1 text-text-muted text-sm">
+                            <FaHeart className="w-3 h-3 text-error" />
+                            {post.reactionsCount}
+                          </span>
+                          <span className="flex items-center gap-1 text-text-muted text-sm">
+                            <FaComment className="w-3 h-3" />
+                            {post.commentsCount}
+                          </span>
+                        </header>
 
-                      <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-secondary transition-colors duration-200">
-                        <Link
-                          href={`/${lng}/blog/${post.id}`}
-                          className="hover:underline"
-                        >
-                          {post.title}
-                        </Link>
-                      </h3>
+                        <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-secondary transition-colors duration-200">
+                          <a
+                            href={post.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="hover:underline"
+                          >
+                            {post.title}
+                          </a>
+                        </h3>
 
-                      <p className="text-text-secondary mb-4 leading-relaxed">
-                        {post.excerpt}
-                      </p>
+                        <p className="text-text-secondary mb-4 leading-relaxed line-clamp-2">
+                          {post.excerpt}
+                        </p>
 
-                      {/* Post Footer */}
-                      <footer className="flex items-center justify-between">
-                        <time
-                          className="text-text-muted text-sm flex items-center gap-1"
-                          dateTime={post.date}
-                        >
-                          <FaCalendarAlt className="w-3 h-3" />
-                          {new Date(post.date).toLocaleDateString(
-                            lng === "id" ? "id-ID" : "en-US",
-                            {
-                              year: "numeric",
-                              month: "long",
-                              day: "numeric",
-                            }
-                          )}
-                        </time>
+                        {/* Post Footer */}
+                        <footer className="flex items-center justify-between">
+                          <time
+                            className="text-text-muted text-sm flex items-center gap-1"
+                            dateTime={post.date}
+                          >
+                            <FaCalendarAlt className="w-3 h-3" />
+                            {new Date(post.date).toLocaleDateString(
+                              lng === "id" ? "id-ID" : "en-US",
+                              {
+                                year: "numeric",
+                                month: "long",
+                                day: "numeric",
+                              }
+                            )}
+                          </time>
 
-                        <Link
-                          href={`/${lng}/blog/${post.id}`}
-                          className="inline-flex items-center gap-2 text-secondary hover:text-secondary/80 font-medium transition-colors group-hover:translate-x-1 duration-200"
-                        >
-                          {t("read-more") || "Read More"}
-                          <FaArrowRight className="w-3 h-3" />
-                        </Link>
-                      </footer>
+                          <a
+                            href={post.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 text-secondary hover:text-secondary/80 font-medium transition-colors group-hover:translate-x-1 duration-200"
+                          >
+                            {t("read-on-devto") || "Read on Dev.to"}
+                            <FaExternalLinkAlt className="w-3 h-3" />
+                          </a>
+                        </footer>
+                      </div>
                     </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.article>
-          ))}
-        </div>
-      </Section>
+                  </CardContent>
+                </Card>
+              </motion.article>
+            ))}
+          </div>
+        </Section>
+      )}
 
-      {/* Newsletter Signup */}
+      {/* Follow on Dev.to CTA */}
       <CTASection
-        title={t("newsletter.title") || "Stay Updated"}
+        title={t("follow.title") || "Follow Me on Dev.to"}
         description={
-          t("newsletter.description") ||
-          "Subscribe to my newsletter to get the latest articles and tutorials delivered directly to your inbox."
+          t("follow.description") ||
+          "Get notified about new articles and join the discussion. I regularly share insights about web development, programming tips, and tech tutorials."
         }
         variant="secondary"
       >
-        <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-          <input
-            type="email"
-            placeholder={
-              t("newsletter.placeholder") || "Enter your email address"
-            }
-            className="flex-1 px-4 py-3 bg-background border border-border rounded-xl text-foreground placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-secondary focus:border-secondary transition-all duration-300"
-          />
-          <Button variant="cta" size="md">
-            {t("newsletter.button") || "Subscribe"}
-          </Button>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <a
+            href="https://dev.to/cakasuma"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Button variant="cta" size="md" className="inline-flex items-center gap-2">
+              <SiDevdotto className="w-5 h-5" />
+              {t("follow.button") || "Follow on Dev.to"}
+            </Button>
+          </a>
         </div>
         <p className="text-text-muted text-sm mt-4 max-w-md mx-auto">
-          {t("newsletter.privacy") || "No spam, unsubscribe at any time. I respect your privacy and will only send valuable content."}
+          {t("follow.note") || "Join the community and never miss a post!"}
         </p>
       </CTASection>
     </PageLayout>

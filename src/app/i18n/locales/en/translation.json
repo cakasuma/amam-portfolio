@@ -1,13 +1,13 @@
 {
   "title": "Hello, there",
   "to-resume-page": "To resume page",
-  "name": "Mustofa Amami",
-  "email": "mustofa.amami@email.com",
-  "phone": "+62 123 456 7890",
+  "name": "Mustofa Ghaleb Amami",
+  "email": "amammustofa@gmail.com",
+  "phone": "+60 18-265 5318",
   "birthday": "Born: January 1, 1990",
-  "role": "Full-Stack Developer & UI/UX Enthusiast",
-  "hero-description": "Passionate about creating beautiful, functional web experiences with modern technologies. Based in Jakarta, Indonesia.",
-  "location": "Jakarta, Indonesia",
+  "role": "Tech Lead Fullstack & Software Engineering Lecturer",
+  "hero-description": "Tech Team Lead at Deriv, specializing in building robust web platforms. Software Engineering Lecturer at RevoU, coaching aspiring engineers. Passionate about creating user-focused, high-performance web applications.",
+  "location": "Kuala Lumpur, Malaysia",
   "contact-info": {
     "email-label": "Email",
     "phone-label": "Phone",
@@ -22,12 +22,12 @@
   },
   "about": {
     "title": "About Me",
-    "content": "I am a passionate full-stack developer with expertise in modern web technologies. I love creating beautiful, functional, and user-friendly applications that solve real-world problems. With a strong background in React, Next.js, and TypeScript, I bring ideas to life through clean, efficient code.",
-    "learning": "Continuously learning and staying up-to-date with the latest industry trends and best practices."
+    "content": "I am a Tech Team Lead at Deriv and Software Engineering Lecturer at RevoU. With expertise in JavaScript, TypeScript, React, Next.js, and Node.js, I lead web platform initiatives and mentor aspiring developers. I believe that creativity and understanding users are equally important as technical ability in building successful applications.",
+    "learning": "Continuously learning new technologies like Kotlin, Flutter, Swift, Go, and Python while staying up-to-date with the latest industry trends."
   },
   "what-i-do": {
     "title": "What I Do",
-    "content": "I specialize in building modern web applications using cutting-edge technologies like React, Next.js, TypeScript, and Tailwind CSS. I focus on creating responsive, accessible, and performant user interfaces that provide exceptional user experiences across all devices."
+    "content": "I lead web platform fullstack development at Deriv, driving initiatives like OAuth implementation and partner onboarding experiences. I also teach software engineering at RevoU, coaching hundreds of aspiring engineers. I specialize in React, Next.js, TypeScript, Node.js, and modern CSS frameworks."
   },
   "testimonials": {
     "title": "Testimonials",

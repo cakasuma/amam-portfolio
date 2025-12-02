@@ -17,16 +17,22 @@
   "experience": {
     "title": "Pengalaman Kerja",
     "job1": {
-      "title": "Senior Full Stack Developer",
-      "company": "Tech Innovation Corp",
-      "period": "2022 - Sekarang",
-      "description": "Memimpin pengembangan aplikasi web modern menggunakan React, Next.js, dan Node.js. Membimbing developer junior dan mengimplementasikan praktik terbaik untuk kualitas dan performa kode."
+      "title": "Tech Team Lead - Web Platform Fullstack",
+      "company": "Deriv",
+      "period": "Juli 2024 - Sekarang",
+      "description": "Memimpin inisiatif fullstack platform web, mendorong peningkatan implementasi OAuth dan pengalaman onboarding partner. Mengelola tim lintas fungsi untuk memberikan solusi fintech yang berkualitas tinggi dan skalabel."
     },
     "job2": {
-      "title": "Frontend Developer",
-      "company": "Digital Solutions Ltd",
-      "period": "2020 - 2022",
-      "description": "Mengembangkan aplikasi web responsif menggunakan React dan TypeScript. Berkolaborasi dengan tim desain untuk mengimplementasikan antarmuka pengguna yang sempurna dan meningkatkan performa aplikasi sebesar 40%."
+      "title": "Lead Frontend Developer",
+      "company": "Deriv (sebelumnya Binary.com)",
+      "period": "2018 - 2024",
+      "description": "Memimpin pengembangan aplikasi web modern menggunakan React, Next.js, TypeScript, dan Node.js. Membimbing developer junior dan mengimplementasikan praktik terbaik untuk kualitas dan performa kode. Membangun aplikasi yang berfokus pada pengguna yang menerjemahkan desain menjadi pengalaman web yang cepat dan interaktif."
+    },
+    "job3": {
+      "title": "Pengajar Software Engineering",
+      "company": "RevoU",
+      "period": "Part-time",
+      "description": "Membimbing dan melatih mahasiswa software engineering, berbagi wawasan praktis dari pengalaman industri untuk membantu mereka mengembangkan keterampilan yang siap kerja dalam pengembangan web modern."
     }
   },
   "education": {

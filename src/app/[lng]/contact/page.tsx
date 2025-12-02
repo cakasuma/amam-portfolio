@@ -104,10 +104,10 @@ export default function Contact({ params }: ContactProps) {
                       {t("info.email.label") || "Email"}
                     </h3>
                     <a
-                      href="mailto:mustofa.amami@email.com"
+                      href="mailto:amammustofa@gmail.com"
                       className="text-text-secondary hover:text-secondary transition-colors duration-200"
                     >
-                      mustofa.amami@email.com
+                      amammustofa@gmail.com
                     </a>
                   </div>
                 </div>
@@ -121,10 +121,10 @@ export default function Contact({ params }: ContactProps) {
                       {t("info.phone.label") || "Phone"}
                     </h3>
                     <a
-                      href="tel:+621234567890"
+                      href="tel:+60182655318"
                       className="text-text-secondary hover:text-success transition-colors duration-200"
                     >
-                      +62 123 456 7890
+                      +60 18-265 5318
                     </a>
                   </div>
                 </div>
@@ -137,7 +137,7 @@ export default function Contact({ params }: ContactProps) {
                     <h3 className="font-semibold text-foreground">
                       {t("info.location.label") || "Location"}
                     </h3>
-                    <p className="text-text-secondary">Jakarta, Indonesia</p>
+                    <p className="text-text-secondary">Kuala Lumpur, Malaysia</p>
                   </div>
                 </div>
               </div>
@@ -149,7 +149,7 @@ export default function Contact({ params }: ContactProps) {
                 </h3>
                 <div className="flex gap-4">
                   <a
-                    href="https://linkedin.com/in/mustofaamami"
+                    href="https://linkedin.com/in/mustofa-ghaleb-amami"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-12 h-12 bg-blue-500/10 rounded-lg flex items-center justify-center hover:bg-blue-500/20 transition-all duration-200 border border-blue-500/20 hover:border-blue-500/40 group"

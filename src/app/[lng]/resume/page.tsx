@@ -47,7 +47,7 @@ export default function Resume({ params }: ResumeProps) {
                     className="text-text-secondary"
                     style={{ wordBreak: "break-word" }}
                   >
-                    Mustofa Amami
+                    Mustofa Ghaleb Amami
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
@@ -58,7 +58,7 @@ export default function Resume({ params }: ResumeProps) {
                     className="text-text-secondary"
                     style={{ wordBreak: "break-word" }}
                   >
-                    mustofa.amami@email.com
+                    amammustofa@gmail.com
                   </span>
                 </div>
               </div>
@@ -71,7 +71,7 @@ export default function Resume({ params }: ResumeProps) {
                     className="text-text-secondary"
                     style={{ wordBreak: "break-word" }}
                   >
-                    +62 123 456 7890
+                    +60 18-265 5318
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
@@ -82,7 +82,7 @@ export default function Resume({ params }: ResumeProps) {
                     className="text-text-secondary"
                     style={{ wordBreak: "break-word" }}
                   >
-                    Jakarta, Indonesia
+                    Kuala Lumpur, Malaysia
                   </span>
                 </div>
               </div>
@@ -198,6 +198,24 @@ export default function Resume({ params }: ResumeProps) {
                 <p className="text-text-secondary leading-relaxed">
                   {t("experience.job2.description") ||
                     "Developed responsive web applications and user interfaces. Worked closely with designers to implement pixel-perfect designs and ensure excellent user experience."}
+                </p>
+              </article>
+
+              <article className="border-l-4 border-info pl-6 py-4 bg-accent/30 rounded-r-lg transition-all duration-300 hover:border-info/80 hover:bg-accent/50">
+                <header>
+                  <h3 className="text-xl font-semibold text-foreground mb-2">
+                    {t("experience.job3.title") || "Software Engineering Lecturer"}
+                  </h3>
+                  <p className="text-info font-medium text-lg mb-1">
+                    {t("experience.job3.company") || "RevoU"}
+                  </p>
+                  <p className="text-text-muted text-sm mb-3">
+                    {t("experience.job3.period") || "Part-time"}
+                  </p>
+                </header>
+                <p className="text-text-secondary leading-relaxed">
+                  {t("experience.job3.description") ||
+                    "Coaching and mentoring software engineering students, sharing practical insights from industry experience."}
                 </p>
               </article>
             </div>

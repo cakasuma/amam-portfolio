@@ -117,11 +117,10 @@ export default function Portfolio({ params }: PortfolioProps) {
         <div className="text-center mb-8">
           <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-4 flex items-center justify-center gap-3">
             <span className="text-secondary text-3xl">⭐</span>
-            Featured Projects
+            {t("featured-projects.title") || "Featured Projects"}
           </h2>
           <p className="text-text-secondary max-w-2xl mx-auto">
-            Highlighting some of my most impactful and technically challenging
-            projects
+            {t("featured-projects.description") || "Highlighting some of my most impactful and technically challenging projects"}
           </p>
         </div>
 
@@ -145,7 +144,7 @@ export default function Portfolio({ params }: PortfolioProps) {
                   <div className="absolute inset-0 bg-gradient-to-t from-card/90 to-transparent" />
                   <div className="absolute top-4 right-4">
                     <span className="px-3 py-1 bg-secondary text-secondary-foreground text-xs font-medium rounded-full">
-                      Featured
+                      {t("featured") || "Featured"}
                     </span>
                   </div>
                 </div>
@@ -212,11 +211,10 @@ export default function Portfolio({ params }: PortfolioProps) {
         <div className="text-center mb-8">
           <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-4 flex items-center justify-center gap-3">
             <span className="text-warning text-3xl">🚀</span>
-            Other Projects
+            {t("other-projects.title") || "Other Projects"}
           </h2>
           <p className="text-text-secondary max-w-2xl mx-auto">
-            Additional projects showcasing various technologies and creative
-            solutions
+            {t("other-projects.description") || "Additional projects showcasing various technologies and creative solutions"}
           </p>
         </div>
 
@@ -283,7 +281,7 @@ export default function Portfolio({ params }: PortfolioProps) {
                         className="w-full text-xs"
                       >
                         <FaExternalLinkAlt className="w-3 h-3 mr-1" />
-                        Demo
+                        {t("demo") || "Demo"}
                       </Button>
                     </a>
                     <a
@@ -299,7 +297,7 @@ export default function Portfolio({ params }: PortfolioProps) {
                         className="w-full text-xs"
                       >
                         <FaGithub className="w-3 h-3 mr-1" />
-                        Code
+                        {t("code") || "Code"}
                       </Button>
                     </a>
                   </footer>
@@ -327,7 +325,7 @@ export default function Portfolio({ params }: PortfolioProps) {
           </Link>
           <Link href={`/${lng}/resume`}>
             <Button variant="outline" size="lg">
-              View Resume
+              {t("view-resume") || "View Resume"}
             </Button>
           </Link>
         </div>

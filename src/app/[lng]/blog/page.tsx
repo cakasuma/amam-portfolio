@@ -95,11 +95,10 @@ export default function Blog({ params }: BlogProps) {
           <div className="text-center mb-8">
             <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-4 flex items-center justify-center gap-3">
               <span className="text-secondary text-3xl">⭐</span>
-              Featured Posts
+              {t("featured-posts.title") || "Featured Posts"}
             </h2>
             <p className="text-text-secondary max-w-2xl mx-auto">
-              Hand-picked articles covering the latest in web development and
-              programming
+              {t("featured-posts.description") || "Hand-picked articles covering the latest in web development and programming"}
             </p>
           </div>
 
@@ -124,7 +123,7 @@ export default function Blog({ params }: BlogProps) {
                         {post.readTime}
                       </span>
                       <span className="px-3 py-1 bg-secondary text-secondary-foreground text-xs font-medium rounded-full">
-                        Featured
+                        {t("featured") || "Featured"}
                       </span>
                     </header>
 
@@ -180,10 +179,10 @@ export default function Blog({ params }: BlogProps) {
         <div className="text-center mb-8">
           <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-4 flex items-center justify-center gap-3">
             <span className="text-warning text-3xl">📝</span>
-            Recent Posts
+            {t("recent-posts.title") || "Recent Posts"}
           </h2>
           <p className="text-text-secondary max-w-2xl mx-auto">
-            Latest articles and tutorials from my development journey
+            {t("recent-posts.description") || "Latest articles and tutorials from my development journey"}
           </p>
         </div>
 
@@ -281,8 +280,7 @@ export default function Blog({ params }: BlogProps) {
           </Button>
         </div>
         <p className="text-text-muted text-sm mt-4 max-w-md mx-auto">
-          No spam, unsubscribe at any time. I respect your privacy and will only
-          send valuable content.
+          {t("newsletter.privacy") || "No spam, unsubscribe at any time. I respect your privacy and will only send valuable content."}
         </p>
       </CTASection>
     </PageLayout>

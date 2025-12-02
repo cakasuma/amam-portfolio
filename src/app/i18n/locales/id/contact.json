@@ -28,6 +28,14 @@
     "subject-placeholder": "Masukkan subjek",
     "message": "Pesan",
     "message-placeholder": "Masukkan pesan Anda di sini...",
-    "submit": "Kirim Pesan"
+    "submit": "Kirim Pesan",
+    "sending": "Mengirim..."
+  },
+  "freelance": {
+    "title": "Tersedia untuk Proyek Freelance",
+    "description": "Saya saat ini menerima proyek freelance baru dan peluang konsultasi. Apakah Anda membutuhkan aplikasi web full-stack, perbaikan UI/UX, atau konsultasi teknis, saya dengan senang hati membantu mewujudkan visi Anda.",
+    "available": "Tersedia untuk proyek baru",
+    "response": "Waktu respons cepat",
+    "flexible": "Penjadwalan fleksibel"
   }
 }

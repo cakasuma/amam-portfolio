@@ -23,7 +23,7 @@ export default function Resume({ params }: ResumeProps) {
       {/* Header */}
       <PageHeader
         title={t("title") || "Professional Resume"}
-        subtitle="Experience, Skills, and Professional Journey"
+        subtitle={t("subtitle") || "Experience, Skills, and Professional Journey"}
         level={1}
       />
 
@@ -238,37 +238,37 @@ export default function Resume({ params }: ResumeProps) {
           <CardHeader>
             <CardTitle className="flex items-center gap-3">
               <span className="text-secondary text-3xl">🏆</span>
-              Certifications & Achievements
+              {t("certifications.title") || "Certifications & Achievements"}
             </CardTitle>
           </CardHeader>
           <CardContent>
             <ContentGrid columns={2} gap="md">
               <div className="p-4 bg-accent/50 rounded-lg border border-border">
                 <h4 className="font-semibold text-foreground mb-2">
-                  AWS Certified Developer
+                  {t("certifications.cert1.name") || "AWS Certified Developer"}
                 </h4>
                 <p className="text-text-muted text-sm">
-                  Amazon Web Services • 2023
+                  {t("certifications.cert1.issuer") || "Amazon Web Services"} • {t("certifications.cert1.year") || "2023"}
                 </p>
               </div>
               <div className="p-4 bg-accent/50 rounded-lg border border-border">
                 <h4 className="font-semibold text-foreground mb-2">
-                  React Professional Certificate
+                  {t("certifications.cert2.name") || "React Professional Certificate"}
                 </h4>
-                <p className="text-text-muted text-sm">Meta • 2022</p>
+                <p className="text-text-muted text-sm">{t("certifications.cert2.issuer") || "Meta"} • {t("certifications.cert2.year") || "2022"}</p>
               </div>
               <div className="p-4 bg-accent/50 rounded-lg border border-border">
                 <h4 className="font-semibold text-foreground mb-2">
-                  TypeScript Advanced
+                  {t("certifications.cert3.name") || "TypeScript Advanced"}
                 </h4>
-                <p className="text-text-muted text-sm">Microsoft • 2022</p>
+                <p className="text-text-muted text-sm">{t("certifications.cert3.issuer") || "Microsoft"} • {t("certifications.cert3.year") || "2022"}</p>
               </div>
               <div className="p-4 bg-accent/50 rounded-lg border border-border">
                 <h4 className="font-semibold text-foreground mb-2">
-                  Node.js Application Developer
+                  {t("certifications.cert4.name") || "Node.js Application Developer"}
                 </h4>
                 <p className="text-text-muted text-sm">
-                  OpenJS Foundation • 2021
+                  {t("certifications.cert4.issuer") || "OpenJS Foundation"} • {t("certifications.cert4.year") || "2021"}
                 </p>
               </div>
             </ContentGrid>

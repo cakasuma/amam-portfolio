@@ -5,6 +5,14 @@
   "email": "mustofa.amami@email.com",
   "phone": "+62 123 456 7890",
   "birthday": "Lahir: 1 Januari 1990",
+  "role": "Full-Stack Developer & UI/UX Enthusiast",
+  "hero-description": "Bersemangat dalam menciptakan pengalaman web yang indah dan fungsional dengan teknologi modern. Berbasis di Jakarta, Indonesia.",
+  "location": "Jakarta, Indonesia",
+  "contact-info": {
+    "email-label": "Email",
+    "phone-label": "Telepon",
+    "location-label": "Lokasi"
+  },
   "nav": {
     "home": "Beranda",
     "resume": "Resume",
@@ -14,7 +22,8 @@
   },
   "about": {
     "title": "Tentang Saya",
-    "content": "Saya adalah seorang full-stack developer yang bersemangat dengan keahlian dalam teknologi web modern. Saya senang menciptakan aplikasi yang indah, fungsional, dan ramah pengguna yang menyelesaikan masalah dunia nyata. Dengan latar belakang yang kuat dalam React, Next.js, dan TypeScript, saya mewujudkan ide melalui kode yang bersih dan efisien."
+    "content": "Saya adalah seorang full-stack developer yang bersemangat dengan keahlian dalam teknologi web modern. Saya senang menciptakan aplikasi yang indah, fungsional, dan ramah pengguna yang menyelesaikan masalah dunia nyata. Dengan latar belakang yang kuat dalam React, Next.js, dan TypeScript, saya mewujudkan ide melalui kode yang bersih dan efisien.",
+    "learning": "Terus belajar dan mengikuti tren industri terbaru serta praktik terbaik."
   },
   "what-i-do": {
     "title": "Apa Yang Saya Lakukan",
@@ -22,10 +31,21 @@
   },
   "testimonials": {
     "title": "Testimoni",
-    "content": "Apa yang klien saya katakan tentang bekerja dengan saya."
+    "content": "Apa yang klien saya katakan tentang bekerja dengan saya.",
+    "trusted": "Dipercaya oleh klien dan rekan kerja untuk memberikan pekerjaan berkualitas tinggi dan hasil yang luar biasa.",
+    "quote1": "Mustofa adalah developer luar biasa yang secara konsisten memberikan pekerjaan berkualitas tinggi. Perhatiannya terhadap detail dan kemampuan pemecahan masalahnya sangat luar biasa.",
+    "author1": "Sarah Johnson, Manajer Proyek",
+    "quote2": "Bekerja dengan Mustofa adalah suatu kesenangan. Dia profesional, dapat diandalkan, dan keahlian teknisnya membantu mewujudkan visi kami.",
+    "author2": "Alex Chen, Pendiri Startup"
   },
   "clients": {
     "title": "Klien",
     "content": "Perusahaan yang telah saya ajak bekerja sama."
+  },
+  "cta": {
+    "title": "Siap bekerja sama?",
+    "description": "Mari ciptakan sesuatu yang luar biasa bersama! Saya selalu bersemangat untuk menghadapi tantangan baru dan mewujudkan ide-ide inovatif.",
+    "get-in-touch": "Hubungi Saya",
+    "view-my-work": "Lihat Karya Saya"
   }
 }

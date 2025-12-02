@@ -71,12 +71,11 @@ export default function Home({ params }: HomeProps) {
             </h1>
 
             <p className="text-xl lg:text-2xl text-text-secondary mb-8 max-w-2xl mx-auto">
-              Full-Stack Developer & UI/UX Enthusiast
+              {t("role") || "Full-Stack Developer & UI/UX Enthusiast"}
             </p>
 
             <p className="text-base lg:text-lg text-text-muted mb-12 max-w-xl mx-auto leading-relaxed">
-              Passionate about creating beautiful, functional web experiences
-              with modern technologies. Based in Jakarta, Indonesia.
+              {t("hero-description") || "Passionate about creating beautiful, functional web experiences with modern technologies. Based in Jakarta, Indonesia."}
             </p>
           </motion.div>
 
@@ -91,14 +90,14 @@ export default function Home({ params }: HomeProps) {
               {
                 icon: "📧",
                 text: t("email") || "mustofaamami@email.com",
-                label: "Email",
+                label: t("contact-info.email-label") || "Email",
               },
               {
                 icon: "📱",
                 text: t("phone") || "+62 123 456 7890",
-                label: "Phone",
+                label: t("contact-info.phone-label") || "Phone",
               },
-              { icon: "📍", text: "Jakarta, Indonesia", label: "Location" },
+              { icon: "📍", text: t("location") || "Jakarta, Indonesia", label: t("contact-info.location-label") || "Location" },
             ].map((item, index) => (
               <motion.div
                 key={item.label}
@@ -224,8 +223,7 @@ export default function Home({ params }: HomeProps) {
               "I'm a passionate full-stack developer with expertise in modern web technologies. I love creating seamless user experiences and robust backend systems."}
           </p>
           <p className="text-text-muted text-sm">
-            Continuously learning and staying up-to-date with the latest
-            industry trends and best practices.
+            {t("about.learning") || "Continuously learning and staying up-to-date with the latest industry trends and best practices."}
           </p>
         </AnimatedCard>
 
@@ -276,31 +274,26 @@ export default function Home({ params }: HomeProps) {
               {t("testimonials.title") || "What Clients Say"}
             </h2>
             <p className="text-text-secondary max-w-2xl mx-auto">
-              Trusted by clients and colleagues for delivering high-quality work
-              and exceptional results.
+              {t("testimonials.trusted") || "Trusted by clients and colleagues for delivering high-quality work and exceptional results."}
             </p>
           </header>
 
           <ContentGrid columns={2} gap="md">
             <blockquote className="border-l-4 border-secondary pl-6 bg-accent/50 p-6 rounded-r-lg">
               <p className="text-text-secondary italic mb-4 leading-relaxed">
-                &ldquo;Mustofa is an exceptional developer who consistently
-                delivers high-quality work. His attention to detail and
-                problem-solving skills are outstanding.&rdquo;
+                &ldquo;{t("testimonials.quote1") || "Mustofa is an exceptional developer who consistently delivers high-quality work. His attention to detail and problem-solving skills are outstanding."}&rdquo;
               </p>
               <cite className="text-secondary font-semibold text-sm">
-                - Sarah Johnson, Project Manager
+                - {t("testimonials.author1") || "Sarah Johnson, Project Manager"}
               </cite>
             </blockquote>
 
             <blockquote className="border-l-4 border-warning pl-6 bg-accent/50 p-6 rounded-r-lg">
               <p className="text-text-secondary italic mb-4 leading-relaxed">
-                &ldquo;Working with Mustofa was a pleasure. He&apos;s
-                professional, reliable, and his technical expertise helped bring
-                our vision to life.&rdquo;
+                &ldquo;{t("testimonials.quote2") || "Working with Mustofa was a pleasure. He's professional, reliable, and his technical expertise helped bring our vision to life."}&rdquo;
               </p>
               <cite className="text-secondary font-semibold text-sm">
-                - Alex Chen, Startup Founder
+                - {t("testimonials.author2") || "Alex Chen, Startup Founder"}
               </cite>
             </blockquote>
           </ContentGrid>
@@ -309,22 +302,22 @@ export default function Home({ params }: HomeProps) {
 
       {/* Call to Action */}
       <CTASection
-        title="Ready to work together?"
-        description="Let's create something amazing together! I'm always excited to take on new challenges and bring innovative ideas to life."
+        title={t("cta.title") || "Ready to work together?"}
+        description={t("cta.description") || "Let's create something amazing together! I'm always excited to take on new challenges and bring innovative ideas to life."}
         variant="primary"
       >
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <div style={{ overflow: "visible" }}>
             <Link href={`/${lng}/contact`}>
               <Button variant="cta" size="lg" className="cursor-pointer">
-                Get in Touch
+                {t("cta.get-in-touch") || "Get in Touch"}
               </Button>
             </Link>
           </div>
           <div className="cursor-pointer" style={{ overflow: "visible" }}>
             <Link href={`/${lng}/portfolio`}>
               <Button variant="outline" size="lg" className="cursor-pointer">
-                View My Work
+                {t("cta.view-my-work") || "View My Work"}
               </Button>
             </Link>
           </div>

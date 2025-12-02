@@ -47,18 +47,21 @@ export default function Blog({ params }: BlogProps) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    async function fetchPosts() {
-      try {
-        const posts = await getBlogPosts();
-        setBlogPosts(posts);
-      } catch (err) {
-        setError("Failed to load blog posts");
-        console.error(err);
-      } finally {
-        setLoading(false);
-      }
+  const fetchPosts = async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const posts = await getBlogPosts();
+      setBlogPosts(posts);
+    } catch (err) {
+      setError("Failed to load blog posts");
+      console.error(err);
+    } finally {
+      setLoading(false);
     }
+  };
+
+  useEffect(() => {
     fetchPosts();
   }, []);
 
@@ -113,7 +116,7 @@ export default function Blog({ params }: BlogProps) {
             <p className="text-error mb-4">{error}</p>
             <Button 
               variant="outline" 
-              onClick={() => window.location.reload()}
+              onClick={() => fetchPosts()}
             >
               {t("retry") || "Try Again"}
             </Button>

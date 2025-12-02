@@ -62,9 +62,10 @@ export async function fetchDevToArticles(
  * Transforms dev.to articles to blog post format
  */
 export function transformArticleToBlogPost(article: DevToArticle): BlogPost {
-  // Determine category from tags (use first tag or default to "Development")
-  const category = article.tag_list[0]
-    ? article.tag_list[0].charAt(0).toUpperCase() + article.tag_list[0].slice(1)
+  // Determine category from tags (use first non-empty tag or default to "Development")
+  const firstTag = article.tag_list.find(tag => tag && tag.trim().length > 0);
+  const category = firstTag
+    ? firstTag.charAt(0).toUpperCase() + firstTag.slice(1)
     : "Development";
 
   return {

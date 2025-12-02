@@ -2,15 +2,18 @@
 
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { fallbackLng } from "@/app/i18n/settings";
+import { fallbackLng, languages } from "@/app/i18n/settings";
 
 export default function RootPage() {
   const router = useRouter();
 
   useEffect(() => {
     // Detect browser language and redirect to appropriate locale
-    const browserLang = navigator.language.split("-")[0];
-    const supportedLang = ["en", "id"].includes(browserLang)
+    const browserLang =
+      typeof window !== "undefined"
+        ? navigator.language?.split("-")[0]
+        : fallbackLng;
+    const supportedLang = languages.includes(browserLang)
       ? browserLang
       : fallbackLng;
     router.replace(`/${supportedLang}`);

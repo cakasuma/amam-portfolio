@@ -1,13 +1,13 @@
 {
   "title": "Apa kabar!",
   "to-resume-page": "Ke halaman resume",
-  "name": "Mustofa Amami",
-  "email": "mustofa.amami@email.com",
-  "phone": "+62 123 456 7890",
+  "name": "Mustofa Ghaleb Amami",
+  "email": "amammustofa@gmail.com",
+  "phone": "+60 18-265 5318",
   "birthday": "Lahir: 1 Januari 1990",
-  "role": "Full-Stack Developer & UI/UX Enthusiast",
-  "hero-description": "Bersemangat dalam menciptakan pengalaman web yang indah dan fungsional dengan teknologi modern. Berbasis di Jakarta, Indonesia.",
-  "location": "Jakarta, Indonesia",
+  "role": "Tech Lead Fullstack & Pengajar Software Engineering",
+  "hero-description": "Tech Team Lead di Deriv, mengkhususkan diri dalam membangun platform web yang tangguh. Pengajar Software Engineering di RevoU, membimbing para calon engineer. Bersemangat dalam menciptakan aplikasi web yang berfokus pada pengguna dan berkinerja tinggi.",
+  "location": "Kuala Lumpur, Malaysia",
   "contact-info": {
     "email-label": "Email",
     "phone-label": "Telepon",
@@ -22,12 +22,12 @@
   },
   "about": {
     "title": "Tentang Saya",
-    "content": "Saya adalah seorang full-stack developer yang bersemangat dengan keahlian dalam teknologi web modern. Saya senang menciptakan aplikasi yang indah, fungsional, dan ramah pengguna yang menyelesaikan masalah dunia nyata. Dengan latar belakang yang kuat dalam React, Next.js, dan TypeScript, saya mewujudkan ide melalui kode yang bersih dan efisien.",
-    "learning": "Terus belajar dan mengikuti tren industri terbaru serta praktik terbaik."
+    "content": "Saya adalah Tech Team Lead di Deriv dan Pengajar Software Engineering di RevoU. Dengan keahlian dalam JavaScript, TypeScript, React, Next.js, dan Node.js, saya memimpin inisiatif platform web dan membimbing developer pemula. Saya percaya bahwa kreativitas dan pemahaman terhadap pengguna sama pentingnya dengan kemampuan teknis dalam membangun aplikasi yang sukses.",
+    "learning": "Terus belajar teknologi baru seperti Kotlin, Flutter, Swift, Go, dan Python sambil mengikuti tren industri terbaru."
   },
   "what-i-do": {
     "title": "Apa Yang Saya Lakukan",
-    "content": "Saya mengkhususkan diri dalam membangun aplikasi web modern menggunakan teknologi terdepan seperti React, Next.js, TypeScript, dan Tailwind CSS. Saya fokus pada pembuatan antarmuka pengguna yang responsif, aksesibel, dan berkinerja tinggi yang memberikan pengalaman pengguna yang luar biasa di semua perangkat."
+    "content": "Saya memimpin pengembangan fullstack platform web di Deriv, mendorong inisiatif seperti implementasi OAuth dan pengalaman onboarding partner. Saya juga mengajar software engineering di RevoU, membimbing ratusan calon engineer. Saya mengkhususkan diri dalam React, Next.js, TypeScript, Node.js, dan framework CSS modern."
   },
   "testimonials": {
     "title": "Testimoni",

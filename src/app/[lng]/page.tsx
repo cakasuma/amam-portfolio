@@ -142,7 +142,7 @@ export default function Home({ params }: HomeProps) {
           >
             {[
               {
-                href: "https://linkedin.com/in/mustofaamami",
+                href: "https://linkedin.com/in/mustofa-ghaleb-amami",
                 icon: FaLinkedin,
                 label: "LinkedIn",
                 color: "from-blue-600 to-blue-700",

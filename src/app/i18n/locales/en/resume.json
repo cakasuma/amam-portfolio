@@ -17,23 +17,29 @@
   "experience": {
     "title": "Work Experience",
     "job1": {
-      "title": "Senior Full Stack Developer",
-      "company": "Tech Innovation Corp",
-      "period": "2022 - Present",
-      "description": "Leading development of modern web applications using React, Next.js, and Node.js. Mentoring junior developers and implementing best practices for code quality and performance."
+      "title": "Tech Team Lead - Web Platform Fullstack",
+      "company": "Deriv",
+      "period": "July 2024 - Present",
+      "description": "Leading web platform fullstack initiatives, driving OAuth implementation enhancements and partner onboarding experiences. Managing cross-functional teams to deliver high-quality, scalable fintech solutions."
     },
     "job2": {
-      "title": "Frontend Developer",
-      "company": "Digital Solutions Ltd",
-      "period": "2020 - 2022",
-      "description": "Developed responsive web applications using React and TypeScript. Collaborated with design teams to implement pixel-perfect user interfaces and improved application performance by 40%."
+      "title": "Lead Frontend Developer",
+      "company": "Deriv (formerly Binary.com)",
+      "period": "2018 - 2024",
+      "description": "Led development of modern web applications using React, Next.js, TypeScript, and Node.js. Mentored junior developers and implemented best practices for code quality and performance. Built user-focused applications that translate designs into fast and interactive web experiences."
+    },
+    "job3": {
+      "title": "Software Engineering Lecturer",
+      "company": "RevoU",
+      "period": "Part-time",
+      "description": "Coaching and mentoring software engineering students, sharing practical insights from industry experience to help them develop job-ready skills in modern web development."
     }
   },
   "education": {
     "title": "Education",
-    "degree": "Bachelor of Computer Science",
-    "school": "University of Indonesia",
-    "period": "2016 - 2020"
+    "degree": "BSc in Information Technology (Information Security System)",
+    "school": "Asia Pacific University of Technology & Innovation (APU)",
+    "period": "2015 - 2018"
   },
   "certifications": {
     "title": "Certifications & Achievements",

@@ -4,15 +4,15 @@ import { fallbackLng, languages, cookieName } from './app/i18n/settings'
 
 acceptLanguage.languages(languages)
 
-interface MiddlewareConfig {
+interface ProxyConfig {
     matcher: string[]
 }
 
-export const config: MiddlewareConfig = {
+export const config: ProxyConfig = {
     matcher: ['/((?!api|_next/static|_next/image|assets|favicon.ico|sw.js|site.webmanifest|projects).*)']
 }
 
-export function middleware(req: NextRequest): NextResponse {
+export function proxy(req: NextRequest): NextResponse {
     let lng: string | null = null
     if (req.cookies.has(cookieName)) lng = acceptLanguage.get(req.cookies.get(cookieName)?.value)
     if (!lng) lng = acceptLanguage.get(req.headers.get('Accept-Language'))

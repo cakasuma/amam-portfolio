@@ -38,20 +38,97 @@ export default function Contact({ params }: ContactProps) {
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formErrors, setFormErrors] = useState<{
+    name?: string;
+    email?: string;
+    subject?: string;
+    message?: string;
+  }>({});
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: "success" | "error" | null;
+    message: string;
+  }>({ type: null, message: "" });
+
+  const validateField = (name: string, value: string): string | undefined => {
+    switch (name) {
+      case "name":
+        if (!value.trim()) return t("form.errors.name-required") || "Name is required";
+        if (value.trim().length < 2)
+          return t("form.errors.name-min") || "Name must be at least 2 characters";
+        break;
+      case "email":
+        if (!value.trim()) return t("form.errors.email-required") || "Email is required";
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(value))
+          return t("form.errors.email-invalid") || "Please enter a valid email address";
+        break;
+      case "subject":
+        if (!value.trim()) return t("form.errors.subject-required") || "Subject is required";
+        if (value.trim().length < 3)
+          return t("form.errors.subject-min") || "Subject must be at least 3 characters";
+        break;
+      case "message":
+        if (!value.trim()) return t("form.errors.message-required") || "Message is required";
+        if (value.trim().length < 10)
+          return t("form.errors.message-min") || "Message must be at least 10 characters";
+        break;
+    }
+    return undefined;
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Reset previous status
+    setSubmitStatus({ type: null, message: "" });
+
+    // Validate all fields
+    const errors: typeof formErrors = {};
+    Object.keys(formData).forEach((key) => {
+      const error = validateField(key, formData[key as keyof typeof formData]);
+      if (error) errors[key as keyof typeof formErrors] = error;
+    });
+
+    setFormErrors(errors);
+
+    // If there are errors, don't submit
+    if (Object.keys(errors).length > 0) {
+      return;
+    }
+
     setIsSubmitting(true);
 
-    // Simulate form submission
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      console.log("Form submitted:", formData);
-      // Reset form
-      setFormData({ name: "", email: "", subject: "", message: "" });
-      // Show success message (you could add toast notification here)
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setSubmitStatus({
+          type: "success",
+          message: data.message || t("form.success") || "Message sent successfully!",
+        });
+        // Reset form
+        setFormData({ name: "", email: "", subject: "", message: "" });
+        setFormErrors({});
+      } else {
+        setSubmitStatus({
+          type: "error",
+          message: data.error || t("form.error") || "Failed to send message. Please try again.",
+        });
+      }
     } catch (error) {
       console.error("Form submission error:", error);
+      setSubmitStatus({
+        type: "error",
+        message: t("form.error") || "An error occurred. Please try again later.",
+      });
     } finally {
       setIsSubmitting(false);
     }
@@ -60,10 +137,19 @@ export default function Contact({ params }: ContactProps) {
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
+    const { name, value } = e.target;
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [name]: value,
     });
+
+    // Clear error for this field when user starts typing
+    if (formErrors[name as keyof typeof formErrors]) {
+      setFormErrors({
+        ...formErrors,
+        [name]: undefined,
+      });
+    }
   };
 
   return (
@@ -200,7 +286,20 @@ export default function Contact({ params }: ContactProps) {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6" noValidate>
+                {/* Success/Error Message */}
+                {submitStatus.type && (
+                  <div
+                    className={`p-4 rounded-lg border ${
+                      submitStatus.type === "success"
+                        ? "bg-success/10 border-success/20 text-success"
+                        : "bg-error/10 border-error/20 text-error"
+                    }`}
+                  >
+                    {submitStatus.message}
+                  </div>
+                )}
+
                 <div>
                   <label
                     htmlFor="name"
@@ -214,12 +313,18 @@ export default function Contact({ params }: ContactProps) {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 bg-input border border-border rounded-xl text-foreground placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-secondary focus:border-secondary transition-all duration-300"
+                    className={`w-full px-4 py-3 bg-input border rounded-xl text-foreground placeholder:text-text-muted focus:outline-none focus:ring-2 transition-all duration-300 ${
+                      formErrors.name
+                        ? "border-error focus:ring-error focus:border-error"
+                        : "border-border focus:ring-secondary focus:border-secondary"
+                    }`}
                     placeholder={
                       t("form.name-placeholder") || "Enter your full name"
                     }
                   />
+                  {formErrors.name && (
+                    <p className="mt-1 text-sm text-error">{formErrors.name}</p>
+                  )}
                 </div>
 
                 <div>
@@ -235,12 +340,18 @@ export default function Contact({ params }: ContactProps) {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 bg-input border border-border rounded-xl text-foreground placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-secondary focus:border-secondary transition-all duration-300"
+                    className={`w-full px-4 py-3 bg-input border rounded-xl text-foreground placeholder:text-text-muted focus:outline-none focus:ring-2 transition-all duration-300 ${
+                      formErrors.email
+                        ? "border-error focus:ring-error focus:border-error"
+                        : "border-border focus:ring-secondary focus:border-secondary"
+                    }`}
                     placeholder={
                       t("form.email-placeholder") || "your.email@example.com"
                     }
                   />
+                  {formErrors.email && (
+                    <p className="mt-1 text-sm text-error">{formErrors.email}</p>
+                  )}
                 </div>
 
                 <div>
@@ -256,12 +367,18 @@ export default function Contact({ params }: ContactProps) {
                     name="subject"
                     value={formData.subject}
                     onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 bg-input border border-border rounded-xl text-foreground placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-secondary focus:border-secondary transition-all duration-300"
+                    className={`w-full px-4 py-3 bg-input border rounded-xl text-foreground placeholder:text-text-muted focus:outline-none focus:ring-2 transition-all duration-300 ${
+                      formErrors.subject
+                        ? "border-error focus:ring-error focus:border-error"
+                        : "border-border focus:ring-secondary focus:border-secondary"
+                    }`}
                     placeholder={
                       t("form.subject-placeholder") || "What's this about?"
                     }
                   />
+                  {formErrors.subject && (
+                    <p className="mt-1 text-sm text-error">{formErrors.subject}</p>
+                  )}
                 </div>
 
                 <div>
@@ -276,14 +393,20 @@ export default function Contact({ params }: ContactProps) {
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
-                    required
                     rows={5}
-                    className="w-full px-4 py-3 bg-input border border-border rounded-xl text-foreground placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-secondary focus:border-secondary resize-none transition-all duration-300"
+                    className={`w-full px-4 py-3 bg-input border rounded-xl text-foreground placeholder:text-text-muted focus:outline-none focus:ring-2 resize-none transition-all duration-300 ${
+                      formErrors.message
+                        ? "border-error focus:ring-error focus:border-error"
+                        : "border-border focus:ring-secondary focus:border-secondary"
+                    }`}
                     placeholder={
                       t("form.message-placeholder") ||
                       "Tell me about your project or inquiry..."
                     }
                   />
+                  {formErrors.message && (
+                    <p className="mt-1 text-sm text-error">{formErrors.message}</p>
+                  )}
                 </div>
 
                 <Button

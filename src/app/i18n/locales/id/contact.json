@@ -29,7 +29,19 @@
     "message": "Pesan",
     "message-placeholder": "Masukkan pesan Anda di sini...",
     "submit": "Kirim Pesan",
-    "sending": "Mengirim..."
+    "sending": "Mengirim...",
+    "success": "Pesan Anda telah berhasil dikirim! Saya akan segera menghubungi Anda.",
+    "error": "Terjadi kesalahan. Silakan coba lagi nanti.",
+    "errors": {
+      "name-required": "Nama wajib diisi",
+      "name-min": "Nama harus minimal 2 karakter",
+      "email-required": "Email wajib diisi",
+      "email-invalid": "Silakan masukkan alamat email yang valid",
+      "subject-required": "Subjek wajib diisi",
+      "subject-min": "Subjek harus minimal 3 karakter",
+      "message-required": "Pesan wajib diisi",
+      "message-min": "Pesan harus minimal 10 karakter"
+    }
   },
   "freelance": {
     "title": "Tersedia untuk Proyek Freelance",

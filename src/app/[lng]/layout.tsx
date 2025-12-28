@@ -9,6 +9,7 @@ import { SmartFooter } from "@/app/components/SmartFooter";
 import { Footer } from "@/app/components/Footer";
 import GoogleAnalytics from "@/app/components/GoogleAnalytics";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
 export async function generateStaticParams() {
@@ -165,6 +166,7 @@ export default function RootLayout({
         <Providers>
           <GoogleAnalytics />
           <Analytics />
+          <SpeedInsights />
           <div className="flex flex-col min-h-screen">
             <SmartHeader lng={lng} />
             <main

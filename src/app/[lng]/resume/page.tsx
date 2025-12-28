@@ -221,7 +221,7 @@ export default function Resume({ params }: ResumeProps) {
                 </header>
                 <p className="text-text-secondary leading-relaxed">
                   {t("experience.job3.description") ||
-                    "Worked closely with managers, backend, and testers to ensure payment flows and features running smoothly."}
+                    "Worked closely with managers, backend, and testers to ensure payment flows and features run smoothly."}
                 </p>
               </article>
 

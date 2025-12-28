@@ -9,7 +9,7 @@ interface MiddlewareConfig {
 }
 
 export const config: MiddlewareConfig = {
-    matcher: ['/((?!api|_next/static|_next/image|assets|favicon.ico|sw.js|site.webmanifest).*)']
+    matcher: ['/((?!api|_next/static|_next/image|assets|favicon.ico|sw.js|site.webmanifest|projects).*)']
 }
 
 export function middleware(req: NextRequest): NextResponse {

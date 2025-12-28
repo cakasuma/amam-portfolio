@@ -26,74 +26,74 @@ export default function Portfolio({ params }: PortfolioProps) {
   const projects = [
     {
       id: 1,
-      title: "E-Commerce Platform",
+      title: "Wedding Invitation - Rina & Amam",
       description:
-        "A modern, responsive e-commerce platform built with Next.js featuring Stripe payment integration, user authentication, and admin dashboard.",
-      image: "/file.svg",
+        "A beautiful and elegant wedding invitation website featuring interactive RSVP system, event details, gallery, and guest management. Built with modern web technologies for a seamless mobile experience.",
+      image: "/projects/wedding-invitation.svg",
       technologies: [
+        "React",
         "Next.js",
         "TypeScript",
         "Tailwind CSS",
-        "Stripe",
-        "PostgreSQL",
+        "Vercel",
       ],
-      demoUrl: "#",
-      githubUrl: "#",
+      demoUrl: "https://wedding-rina-amam-invitation.vercel.app/",
+      githubUrl: "https://github.com/cakasuma/wedding-rina-amam",
       featured: true,
     },
     {
       id: 2,
-      title: "Task Management App",
+      title: "WeImpact",
       description:
-        "A collaborative task management application with real-time updates, team collaboration features, and intuitive drag-and-drop interface.",
-      image: "/file.svg",
-      technologies: ["React", "Node.js", "Socket.io", "MongoDB", "Express"],
-      demoUrl: "#",
-      githubUrl: "#",
+        "A social impact platform connecting volunteers with meaningful causes and projects. Features include project listings, volunteer matching, impact tracking, and community engagement tools.",
+      image: "/projects/weimpact.svg",
+      technologies: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Firebase"],
+      demoUrl: "https://weimpact.netlify.app/",
+      githubUrl: "https://github.com/cakasuma/weimpact",
       featured: true,
     },
     {
       id: 3,
-      title: "Weather Dashboard",
+      title: "Astro TV Channels",
       description:
-        "A beautiful, responsive weather dashboard with location-based forecasts, interactive charts, and severe weather alerts.",
-      image: "/file.svg",
-      technologies: ["React", "OpenWeather API", "Chart.js", "CSS3"],
-      demoUrl: "#",
-      githubUrl: "#",
-      featured: false,
+        "A comprehensive TV schedule browser for Astro channels with real-time program listings, search functionality, filtering options, and dark mode support. Built with React Hooks, MobX state management, and styled components.",
+      image: "/projects/tv-channels.svg",
+      technologies: ["React", "MobX", "Styled Components", "Axios", "React Router"],
+      demoUrl: "https://my-tv-channels.netlify.app",
+      githubUrl: "https://github.com/cakasuma/tv-channels",
+      featured: true,
     },
     {
       id: 4,
-      title: "Personal Finance Tracker",
+      title: "Pacemaker FHIR Integration",
       description:
-        "A comprehensive personal finance tracking application with expense categorization, budget planning, and financial insights.",
-      image: "/file.svg",
-      technologies: ["Vue.js", "Firebase", "Chart.js", "Vuetify"],
-      demoUrl: "#",
-      githubUrl: "#",
-      featured: false,
+        "Healthcare data integration solution implementing FHIR standards for interoperability. Developed for HubSpot Pacemaker to streamline patient data exchange and medical records management.",
+      image: "/projects/pacemaker-fhir.svg",
+      technologies: ["React", "TypeScript", "FHIR API", "Node.js", "Healthcare Standards"],
+      demoUrl: null,
+      githubUrl: "https://github.com/cakasuma/hubspot-pacemaker",
+      featured: true,
     },
     {
       id: 5,
-      title: "Blog CMS Platform",
+      title: "Deriv Trading Platform",
       description:
-        "A headless CMS platform for bloggers with rich text editing, SEO optimization, and multi-author support.",
-      image: "/file.svg",
-      technologies: ["Next.js", "Sanity", "TypeScript", "Vercel"],
-      demoUrl: "#",
-      githubUrl: "#",
+        "Enterprise-level trading platform for derivatives and forex trading. Contributed to building scalable frontend architecture, real-time data visualization, trading charts, and responsive user interfaces for global markets.",
+      image: "/projects/deriv.svg",
+      technologies: ["React", "TypeScript", "Redux", "WebSocket", "Trading APIs"],
+      demoUrl: "https://app.deriv.com",
+      githubUrl: null,
       featured: false,
     },
     {
       id: 6,
-      title: "Real Estate Portal",
+      title: "MoneyLion Financial App",
       description:
-        "A modern real estate portal with property listings, advanced search filters, and virtual tour integration.",
-      image: "/file.svg",
-      technologies: ["React", "Node.js", "PostgreSQL", "Redis"],
-      demoUrl: "#",
-      githubUrl: "#",
+        "Financial services platform providing personal loans, banking services, and credit monitoring. Worked on developing user-facing features, payment integrations, and secure financial transactions.",
+      image: "/projects/moneylion.svg",
+      technologies: ["React", "TypeScript", "Node.js", "Financial APIs", "Security"],
+      demoUrl: "https://app.moneylion.com",
+      githubUrl: null,
       featured: false,
     },
   ];
@@ -174,30 +174,44 @@ export default function Portfolio({ params }: PortfolioProps) {
 
                   {/* Action Buttons */}
                   <footer className="flex gap-3">
-                    <a
-                      href={project.demoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`View live demo of ${project.title}`}
-                      className="flex-1"
-                    >
-                      <Button variant="cta" size="sm" className="w-full">
+                    {project.demoUrl ? (
+                      <a
+                        href={project.demoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`View live demo of ${project.title}`}
+                        className="flex-1"
+                      >
+                        <Button variant="cta" size="sm" className="w-full">
+                          <FaExternalLinkAlt className="w-3 h-3 mr-2" />
+                          {t("view-demo") || "Live Demo"}
+                        </Button>
+                      </a>
+                    ) : (
+                      <Button variant="cta" size="sm" className="w-full opacity-50 cursor-not-allowed" disabled>
                         <FaExternalLinkAlt className="w-3 h-3 mr-2" />
-                        {t("view-demo") || "Live Demo"}
+                        {t("available-on-request") || "Available on Request"}
                       </Button>
-                    </a>
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`View source code for ${project.title}`}
-                      className="flex-1"
-                    >
-                      <Button variant="outline" size="sm" className="w-full">
+                    )}
+                    {project.githubUrl ? (
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`View source code for ${project.title}`}
+                        className="flex-1"
+                      >
+                        <Button variant="outline" size="sm" className="w-full">
+                          <FaGithub className="w-3 h-3 mr-2" />
+                          {t("view-code") || "GitHub"}
+                        </Button>
+                      </a>
+                    ) : (
+                      <Button variant="outline" size="sm" className="w-full opacity-50 cursor-not-allowed" disabled>
                         <FaGithub className="w-3 h-3 mr-2" />
-                        {t("view-code") || "GitHub"}
+                        {t("private-repo") || "Private"}
                       </Button>
-                    </a>
+                    )}
                   </footer>
                 </CardContent>
               </Card>
@@ -268,38 +282,62 @@ export default function Portfolio({ params }: PortfolioProps) {
 
                   {/* Action Buttons */}
                   <footer className="flex gap-2">
-                    <a
-                      href={project.demoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`View demo of ${project.title}`}
-                      className="flex-1"
-                    >
+                    {project.demoUrl ? (
+                      <a
+                        href={project.demoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`View demo of ${project.title}`}
+                        className="flex-1"
+                      >
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          className="w-full text-xs"
+                        >
+                          <FaExternalLinkAlt className="w-3 h-3 mr-1" />
+                          {t("demo") || "Demo"}
+                        </Button>
+                      </a>
+                    ) : (
                       <Button
                         variant="ghost"
                         size="sm"
-                        className="w-full text-xs"
+                        className="w-full text-xs opacity-50 cursor-not-allowed"
+                        disabled
                       >
                         <FaExternalLinkAlt className="w-3 h-3 mr-1" />
-                        {t("demo") || "Demo"}
+                        {t("private") || "Private"}
                       </Button>
-                    </a>
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`View code for ${project.title}`}
-                      className="flex-1"
-                    >
+                    )}
+                    {project.githubUrl ? (
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`View code for ${project.title}`}
+                        className="flex-1"
+                      >
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          className="w-full text-xs"
+                        >
+                          <FaGithub className="w-3 h-3 mr-1" />
+                          {t("code") || "Code"}
+                        </Button>
+                      </a>
+                    ) : (
                       <Button
                         variant="ghost"
                         size="sm"
-                        className="w-full text-xs"
+                        className="w-full text-xs opacity-50 cursor-not-allowed"
+                        disabled
                       >
                         <FaGithub className="w-3 h-3 mr-1" />
-                        {t("code") || "Code"}
+                        {t("private") || "Private"}
                       </Button>
-                    </a>
+                    )}
                   </footer>
                 </CardContent>
               </Card>

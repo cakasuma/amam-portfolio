@@ -42,8 +42,8 @@ GOOGLE_SITE_VERIFICATION=your-verification-code
 - [x] Replace placeholder email: `amammustofa@gmail.com` ✅
 - [x] Replace placeholder phone: `+60 10-844 4970` ✅  
 - [x] Verify social media URLs are correct ✅
-- [ ] Update portfolio project demo/GitHub URLs (currently `#`)
-- [ ] Replace project placeholder images (`/file.svg`)
+- [x] Update portfolio project demo/GitHub URLs (currently `#`)
+- [x] Replace project placeholder images (`/file.svg`)
 
 ### 3. Assets to Generate
 **Review:** `MISSING_FAVICON_FILES.md`

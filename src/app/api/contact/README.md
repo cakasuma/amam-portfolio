@@ -1,65 +1,48 @@
 # Contact Form Email API
 
 ## Overview
-The contact form API endpoint at `/api/contact` handles form submissions and prepares them for email delivery.
+The contact form API endpoint at `/api/contact` handles form submissions and sends emails using Resend.
 
 ## Current Implementation
-Currently, the API:
-- Validates all form fields (name, email, subject, message)
-- Logs the email content to the console
-- Returns appropriate success/error responses
+The API now includes:
+- Full server-side validation for all form fields
+- Input sanitization to prevent injection attacks
+- **Integrated Resend email service** for sending actual emails
+- Fallback to console logging if Resend is not configured
+- Proper error handling for email delivery failures
 
-## Email Service Integration
+## Email Service Setup
 
-To send actual emails, you can integrate one of the following services:
+### Resend (Integrated)
+Resend is already integrated and ready to use. Just configure your environment variables:
 
-### Option 1: Resend (Recommended)
-```bash
-npm install resend
+1. Sign up for a free account at [resend.com](https://resend.com)
+2. Get your API key from the dashboard
+3. Add environment variables to `.env.local`:
+
+```env
+RESEND_API_KEY=re_your_api_key_here
+CONTACT_EMAIL=amammustofa@gmail.com
+RESEND_FROM_EMAIL=Portfolio Contact <onboarding@resend.dev>
 ```
 
-Add to `.env.local`:
-```
-RESEND_API_KEY=your_api_key_here
-CONTACT_EMAIL=your-email@example.com
-```
+**Note:** 
+- `RESEND_FROM_EMAIL` defaults to `Portfolio Contact <onboarding@resend.dev>` if not specified
+- `CONTACT_EMAIL` defaults to `amammustofa@gmail.com` if not specified
+- Without `RESEND_API_KEY`, form submissions will only be logged to console
 
-Update `/src/app/api/contact/route.ts`:
-```typescript
-import { Resend } from 'resend';
+### Alternative Services (Optional)
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+If you prefer a different email service, you can replace Resend with:
 
-// In the POST handler, replace the console.log with:
-await resend.emails.send({
-  from: 'Portfolio Contact <onboarding@resend.dev>',
-  to: process.env.CONTACT_EMAIL || 'your-email@example.com',
-  subject: `Contact Form: ${subject}`,
-  text: emailContent,
-});
-```
-
-### Option 2: SendGrid
+#### Option 1: SendGrid
 ```bash
 npm install @sendgrid/mail
 ```
 
-Add to `.env.local`:
-```
-SENDGRID_API_KEY=your_api_key_here
-```
-
-### Option 3: Nodemailer with SMTP
+#### Option 2: Nodemailer with SMTP
 ```bash
 npm install nodemailer
-```
-
-Add to `.env.local`:
-```
-SMTP_HOST=smtp.gmail.com
-SMTP_PORT=587
-SMTP_USER=your_email@gmail.com
-SMTP_PASS=your_app_password
 ```
 
 ## Validation Rules

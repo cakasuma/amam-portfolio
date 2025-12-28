@@ -20,6 +20,7 @@ import {
   CardTitle,
   CardContent,
   Button,
+  Snackbar,
 } from "@/components/ui";
 
 interface ContactProps {
@@ -44,10 +45,11 @@ export default function Contact({ params }: ContactProps) {
     subject?: string;
     message?: string;
   }>({});
-  const [submitStatus, setSubmitStatus] = useState<{
-    type: "success" | "error" | null;
+  const [snackbar, setSnackbar] = useState<{
+    isOpen: boolean;
     message: string;
-  }>({ type: null, message: "" });
+    type: "success" | "error";
+  }>({ isOpen: false, message: "", type: "success" });
 
   type FormField = keyof typeof formData;
 
@@ -80,9 +82,6 @@ export default function Contact({ params }: ContactProps) {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // Reset previous status
-    setSubmitStatus({ type: null, message: "" });
 
     // Validate all fields
     const errors: typeof formErrors = {};
@@ -113,7 +112,8 @@ export default function Contact({ params }: ContactProps) {
       const data = await response.json();
 
       if (response.ok) {
-        setSubmitStatus({
+        setSnackbar({
+          isOpen: true,
           type: "success",
           message: data.message || t("form.success") || "Message sent successfully!",
         });
@@ -121,14 +121,16 @@ export default function Contact({ params }: ContactProps) {
         setFormData({ name: "", email: "", subject: "", message: "" });
         setFormErrors({});
       } else {
-        setSubmitStatus({
+        setSnackbar({
+          isOpen: true,
           type: "error",
           message: data.error || t("form.error") || "Failed to send message. Please try again.",
         });
       }
     } catch (error) {
       console.error("Form submission error:", error);
-      setSubmitStatus({
+      setSnackbar({
+        isOpen: true,
         type: "error",
         message: t("form.error") || "An error occurred. Please try again later.",
       });
@@ -292,19 +294,6 @@ export default function Contact({ params }: ContactProps) {
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-6" noValidate>
-                {/* Success/Error Message */}
-                {submitStatus.type && (
-                  <div
-                    className={`p-4 rounded-lg border ${
-                      submitStatus.type === "success"
-                        ? "bg-success/10 border-success/20 text-success"
-                        : "bg-error/10 border-error/20 text-error"
-                    }`}
-                  >
-                    {submitStatus.message}
-                  </div>
-                )}
-
                 <div>
                   <label
                     htmlFor="name"
@@ -460,6 +449,15 @@ export default function Contact({ params }: ContactProps) {
           </CardContent>
         </Card>
       </Section>
+
+      {/* Snackbar Notification */}
+      <Snackbar
+        isOpen={snackbar.isOpen}
+        message={snackbar.message}
+        type={snackbar.type}
+        onClose={() => setSnackbar({ ...snackbar, isOpen: false })}
+        duration={5000}
+      />
     </PageLayout>
   );
 }

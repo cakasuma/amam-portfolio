@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { Resend } from "resend";
 
 interface ContactFormData {
   name: string;
@@ -6,6 +7,11 @@ interface ContactFormData {
   subject: string;
   message: string;
 }
+
+// Initialize Resend only if API key is provided
+const resend = process.env.RESEND_API_KEY 
+  ? new Resend(process.env.RESEND_API_KEY)
+  : null;
 
 export async function POST(request: NextRequest) {
   try {
@@ -87,18 +93,29 @@ ${sanitize(message)}
 Sent from Portfolio Contact Form
     `.trim();
 
-    // In production, you would send an actual email here
-    // Example with Resend (requires: npm install resend):
-    // const resend = new Resend(process.env.RESEND_API_KEY);
-    // await resend.emails.send({
-    //   from: 'Portfolio Contact <onboarding@resend.dev>',
-    //   to: process.env.CONTACT_EMAIL || 'your-email@example.com',
-    //   subject: `Contact Form: ${subject}`,
-    //   text: emailContent,
-    // });
-
-    console.log("Contact form submission received:");
-    console.log(emailContent);
+    // Send email using Resend
+    try {
+      if (resend) {
+        await resend.emails.send({
+          from: process.env.RESEND_FROM_EMAIL || 'Portfolio Contact <onboarding@resend.dev>',
+          to: process.env.CONTACT_EMAIL || 'amammustofa@gmail.com',
+          subject: `Contact Form: ${sanitize(subject)}`,
+          text: emailContent,
+          replyTo: email,
+        });
+        
+        console.log("Email sent successfully via Resend");
+      } else {
+        // Fallback to console logging if no API key is configured
+        console.log("Contact form submission received (no email sent - RESEND_API_KEY not configured):");
+        console.log(emailContent);
+      }
+    } catch (emailError) {
+      // Log email error but don't fail the request
+      console.error("Error sending email:", emailError);
+      console.log("Contact form submission logged (email failed to send):");
+      console.log(emailContent);
+    }
 
     // Return success response
     return NextResponse.json(

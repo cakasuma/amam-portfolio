@@ -49,7 +49,9 @@ export default function Contact({ params }: ContactProps) {
     message: string;
   }>({ type: null, message: "" });
 
-  const validateField = (name: string, value: string): string | undefined => {
+  type FormField = keyof typeof formData;
+
+  const validateField = (name: FormField, value: string): string | undefined => {
     switch (name) {
       case "name":
         if (!value.trim()) return t("form.errors.name-required") || "Name is required";
@@ -85,8 +87,9 @@ export default function Contact({ params }: ContactProps) {
     // Validate all fields
     const errors: typeof formErrors = {};
     Object.keys(formData).forEach((key) => {
-      const error = validateField(key, formData[key as keyof typeof formData]);
-      if (error) errors[key as keyof typeof formErrors] = error;
+      const field = key as FormField;
+      const error = validateField(field, formData[field]);
+      if (error) errors[field] = error;
     });
 
     setFormErrors(errors);
@@ -138,16 +141,18 @@ export default function Contact({ params }: ContactProps) {
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
+    const field = name as FormField;
+    
     setFormData({
       ...formData,
-      [name]: value,
+      [field]: value,
     });
 
     // Clear error for this field when user starts typing
-    if (formErrors[name as keyof typeof formErrors]) {
+    if (formErrors[field]) {
       setFormErrors({
         ...formErrors,
-        [name]: undefined,
+        [field]: undefined,
       });
     }
   };

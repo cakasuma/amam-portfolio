@@ -60,16 +60,28 @@ export async function POST(request: NextRequest) {
     // - AWS SES
     // For now, we'll log it and simulate success
     
-    // Format email content
+    // Sanitize user input by escaping special characters
+    const sanitize = (str: string) => str.replace(/[<>&'"]/g, (char) => {
+      const escapeChars: { [key: string]: string } = {
+        '<': '&lt;',
+        '>': '&gt;',
+        '&': '&amp;',
+        "'": '&#39;',
+        '"': '&quot;',
+      };
+      return escapeChars[char] || char;
+    });
+
+    // Format email content with sanitized input
     const emailContent = `
 New Contact Form Submission
 
-From: ${name}
-Email: ${email}
-Subject: ${subject}
+From: ${sanitize(name)}
+Email: ${sanitize(email)}
+Subject: ${sanitize(subject)}
 
 Message:
-${message}
+${sanitize(message)}
 
 ---
 Sent from Portfolio Contact Form
@@ -80,7 +92,7 @@ Sent from Portfolio Contact Form
     // const resend = new Resend(process.env.RESEND_API_KEY);
     // await resend.emails.send({
     //   from: 'Portfolio Contact <onboarding@resend.dev>',
-    //   to: 'amammustofa@gmail.com',
+    //   to: process.env.CONTACT_EMAIL || 'your-email@example.com',
     //   subject: `Contact Form: ${subject}`,
     //   text: emailContent,
     // });

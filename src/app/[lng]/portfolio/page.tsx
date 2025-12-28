@@ -190,7 +190,7 @@ export default function Portfolio({ params }: PortfolioProps) {
                     ) : (
                       <Button variant="cta" size="sm" className="w-full opacity-50 cursor-not-allowed" disabled>
                         <FaExternalLinkAlt className="w-3 h-3 mr-2" />
-                        {t("available-on-request") || "Available on Request"}
+                        {t("private-project") || "Private Project"}
                       </Button>
                     )}
                     {project.githubUrl ? (
@@ -209,7 +209,7 @@ export default function Portfolio({ params }: PortfolioProps) {
                     ) : (
                       <Button variant="outline" size="sm" className="w-full opacity-50 cursor-not-allowed" disabled>
                         <FaGithub className="w-3 h-3 mr-2" />
-                        {t("private-repo") || "Private"}
+                        {t("private-repo") || "Private Repo"}
                       </Button>
                     )}
                   </footer>
@@ -307,7 +307,7 @@ export default function Portfolio({ params }: PortfolioProps) {
                         disabled
                       >
                         <FaExternalLinkAlt className="w-3 h-3 mr-1" />
-                        {t("private") || "Private"}
+                        {t("private-project") || "Private Project"}
                       </Button>
                     )}
                     {project.githubUrl ? (
@@ -335,7 +335,7 @@ export default function Portfolio({ params }: PortfolioProps) {
                         disabled
                       >
                         <FaGithub className="w-3 h-3 mr-1" />
-                        {t("private") || "Private"}
+                        {t("private-repo") || "Private Repo"}
                       </Button>
                     )}
                   </footer>

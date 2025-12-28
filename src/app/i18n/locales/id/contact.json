@@ -32,6 +32,7 @@
     "sending": "Mengirim...",
     "success": "Pesan Anda telah berhasil dikirim! Saya akan segera menghubungi Anda.",
     "error": "Terjadi kesalahan. Silakan coba lagi nanti.",
+    "rate-limit": "Terlalu banyak permintaan. Silakan tunggu beberapa menit sebelum mencoba lagi.",
     "errors": {
       "name-required": "Nama wajib diisi",
       "name-min": "Nama harus minimal 2 karakter",

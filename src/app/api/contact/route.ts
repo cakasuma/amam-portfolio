@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
+import { contactRateLimiter } from "@/lib/rate-limiter";
 
 interface ContactFormData {
   name: string;
@@ -13,8 +14,50 @@ const resend = process.env.RESEND_API_KEY
   ? new Resend(process.env.RESEND_API_KEY)
   : null;
 
+/**
+ * Get client IP address from request headers
+ * Supports various proxy configurations (Vercel, Cloudflare, etc.)
+ */
+function getClientIP(request: NextRequest): string {
+  const forwarded = request.headers.get("x-forwarded-for");
+  const real = request.headers.get("x-real-ip");
+  const cfConnecting = request.headers.get("cf-connecting-ip");
+  
+  if (cfConnecting) return cfConnecting;
+  if (forwarded) return forwarded.split(",")[0].trim();
+  if (real) return real;
+  
+  return "unknown";
+}
+
 export async function POST(request: NextRequest) {
   try {
+    // Rate limiting - prevent DDoS attacks
+    const clientIP = getClientIP(request);
+    const rateLimitResult = contactRateLimiter.checkLimit(clientIP);
+    
+    if (!rateLimitResult.allowed) {
+      const resetTime = rateLimitResult.resetTime 
+        ? new Date(rateLimitResult.resetTime).toISOString()
+        : "later";
+      
+      return NextResponse.json(
+        { 
+          error: "Too many requests. Please try again later.",
+          resetTime,
+        },
+        { 
+          status: 429,
+          headers: {
+            "Retry-After": String(Math.ceil((rateLimitResult.resetTime! - Date.now()) / 1000)),
+            "X-RateLimit-Limit": "5",
+            "X-RateLimit-Remaining": "0",
+            "X-RateLimit-Reset": String(rateLimitResult.resetTime),
+          }
+        }
+      );
+    }
+
     const body: ContactFormData = await request.json();
     const { name, email, subject, message } = body;
 
@@ -123,7 +166,13 @@ Sent from Portfolio Contact Form
         success: true,
         message: "Your message has been sent successfully! I'll get back to you soon.",
       },
-      { status: 200 }
+      { 
+        status: 200,
+        headers: {
+          "X-RateLimit-Limit": "5",
+          "X-RateLimit-Remaining": String(rateLimitResult.remaining ?? 0),
+        }
+      }
     );
   } catch (error) {
     console.error("Error processing contact form:", error);

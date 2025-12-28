@@ -120,6 +120,15 @@ export default function Contact({ params }: ContactProps) {
         // Reset form
         setFormData({ name: "", email: "", subject: "", message: "" });
         setFormErrors({});
+      } else if (response.status === 429) {
+        // Rate limit exceeded
+        const retryAfter = response.headers.get("Retry-After");
+        const waitMinutes = retryAfter ? Math.ceil(parseInt(retryAfter) / 60) : 15;
+        setSnackbar({
+          isOpen: true,
+          type: "error",
+          message: t("form.rate-limit") || `Too many requests. Please try again in ${waitMinutes} minutes.`,
+        });
       } else {
         setSnackbar({
           isOpen: true,

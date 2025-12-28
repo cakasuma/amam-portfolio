@@ -112,24 +112,31 @@ export default function Contact({ params }: ContactProps) {
                   </div>
                 </div>
 
-                <div className="flex items-center gap-4 p-4 bg-accent/50 rounded-lg border border-border hover:border-success/50 transition-colors duration-200">
+                <a
+                  href="https://wa.me/60108444970"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-4 p-4 bg-accent/50 rounded-lg border border-border hover:border-success/50 transition-colors duration-200"
+                >
                   <div className="w-12 h-12 bg-success/10 rounded-lg flex items-center justify-center border border-success/20">
                     <FaPhone className="text-success" />
                   </div>
                   <div>
                     <h3 className="font-semibold text-foreground">
-                      {t("info.phone.label") || "Phone"}
+                      {t("info.phone.label") || "WhatsApp"}
                     </h3>
-                    <a
-                      href="tel:+60182655318"
-                      className="text-text-secondary hover:text-success transition-colors duration-200"
-                    >
-                      +60 18-265 5318
-                    </a>
+                    <span className="text-text-secondary group-hover:text-success transition-colors duration-200">
+                      +60 10-844 4970
+                    </span>
                   </div>
-                </div>
+                </a>
 
-                <div className="flex items-center gap-4 p-4 bg-accent/50 rounded-lg border border-border hover:border-warning/50 transition-colors duration-200">
+                <a
+                  href="https://maps.google.com/?q=Kuala+Lumpur,+Malaysia"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-4 p-4 bg-accent/50 rounded-lg border border-border hover:border-warning/50 transition-colors duration-200"
+                >
                   <div className="w-12 h-12 bg-warning/10 rounded-lg flex items-center justify-center border border-warning/20">
                     <FaMapMarkerAlt className="text-warning" />
                   </div>
@@ -137,9 +144,11 @@ export default function Contact({ params }: ContactProps) {
                     <h3 className="font-semibold text-foreground">
                       {t("info.location.label") || "Location"}
                     </h3>
-                    <p className="text-text-secondary">Kuala Lumpur, Malaysia</p>
+                    <span className="text-text-secondary group-hover:text-warning transition-colors duration-200">
+                      Kuala Lumpur, Malaysia
+                    </span>
                   </div>
-                </div>
+                </a>
               </div>
 
               {/* Social Links */}
@@ -303,7 +312,8 @@ export default function Contact({ params }: ContactProps) {
               {t("freelance.title") || "Available for Freelance Projects"}
             </h2>
             <p className="text-text-secondary mb-6 max-w-2xl mx-auto">
-              {t("freelance.description") || "I'm currently accepting new freelance projects and consulting opportunities. Whether you need a full-stack web application, UI/UX improvements, or technical consultation, I'd love to help bring your vision to life."}
+              {t("freelance.description") ||
+                "I'm currently accepting new freelance projects and consulting opportunities. Whether you need a full-stack web application, UI/UX improvements, or technical consultation, I'd love to help bring your vision to life."}
             </p>
             <div className="flex flex-wrap justify-center gap-4 text-sm text-text-muted">
               <span className="flex items-center gap-2">

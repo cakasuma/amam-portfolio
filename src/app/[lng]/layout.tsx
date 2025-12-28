@@ -7,6 +7,7 @@ import { Providers } from "@/app/theme/Providers";
 import { SmartHeader } from "@/app/components/SmartHeader";
 import { SmartFooter } from "@/app/components/SmartFooter";
 import { Footer } from "@/app/components/Footer";
+import GoogleAnalytics from "@/app/components/GoogleAnalytics";
 import "./globals.css";
 
 export async function generateStaticParams() {
@@ -161,6 +162,7 @@ export default function RootLayout({
         </a>
 
         <Providers>
+          <GoogleAnalytics />
           <div className="flex flex-col min-h-screen">
             <SmartHeader lng={lng} />
             <main

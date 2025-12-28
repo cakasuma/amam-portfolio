@@ -54,12 +54,13 @@ export default function Resume({ params }: ResumeProps) {
                   <span className="font-semibold text-foreground min-w-[80px]">
                     {t("personal-info.email") || "Email"}:
                   </span>
-                  <span
-                    className="text-text-secondary"
+                  <a
+                    href="mailto:amammustofa@gmail.com"
+                    className="text-text-secondary hover:text-secondary transition-colors duration-200"
                     style={{ wordBreak: "break-word" }}
                   >
                     amammustofa@gmail.com
-                  </span>
+                  </a>
                 </div>
               </div>
               <div className="space-y-4">
@@ -67,23 +68,29 @@ export default function Resume({ params }: ResumeProps) {
                   <span className="font-semibold text-foreground min-w-[80px]">
                     {t("personal-info.phone") || "Phone"}:
                   </span>
-                  <span
-                    className="text-text-secondary"
+                  <a
+                    href="https://wa.me/60182655318"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-text-secondary hover:text-success transition-colors duration-200"
                     style={{ wordBreak: "break-word" }}
                   >
                     +60 18-265 5318
-                  </span>
+                  </a>
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="font-semibold text-foreground min-w-[80px]">
                     {t("personal-info.location") || "Location"}:
                   </span>
-                  <span
-                    className="text-text-secondary"
+                  <a
+                    href="https://maps.google.com/?q=Kuala+Lumpur,+Malaysia"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-text-secondary hover:text-warning transition-colors duration-200"
                     style={{ wordBreak: "break-word" }}
                   >
                     Kuala Lumpur, Malaysia
-                  </span>
+                  </a>
                 </div>
               </div>
             </ContentGrid>

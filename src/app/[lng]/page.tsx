@@ -42,11 +42,8 @@ export default function Home({ params }: HomeProps) {
                 width={224}
                 height={224}
                 priority
-                unoptimized
-                className="rounded-full border-4 border-secondary object-cover shadow-lg"
+                className="rounded-full border-4 border-secondary object-cover shadow-lg w-full h-full"
                 style={{
-                  width: "100%",
-                  height: "100%",
                   objectPosition: "center 15%",
                 }}
               />
@@ -75,7 +72,8 @@ export default function Home({ params }: HomeProps) {
             </p>
 
             <p className="text-base lg:text-lg text-text-muted mb-12 max-w-xl mx-auto leading-relaxed">
-              {t("hero-description") || "Passionate about creating beautiful, functional web experiences with modern technologies. Based in Jakarta, Indonesia."}
+              {t("hero-description") ||
+                "Passionate about creating beautiful, functional web experiences with modern technologies. Based in Jakarta, Indonesia."}
             </p>
           </motion.div>
 
@@ -89,18 +87,30 @@ export default function Home({ params }: HomeProps) {
             {[
               {
                 icon: "📧",
-                text: t("email") || "mustofaamami@email.com",
+                text: t("email") || "amammustofa@gmail.com",
                 label: t("contact-info.email-label") || "Email",
+                href: "mailto:amammustofa@gmail.com",
               },
               {
                 icon: "📱",
-                text: t("phone") || "+62 123 456 7890",
+                text: t("phone") || "+60 10-844 4970",
                 label: t("contact-info.phone-label") || "Phone",
+                href: "https://wa.me/60108444970",
               },
-              { icon: "📍", text: t("location") || "Jakarta, Indonesia", label: t("contact-info.location-label") || "Location" },
+              {
+                icon: "📍",
+                text: t("location") || "Kuala Lumpur, Malaysia",
+                label: t("contact-info.location-label") || "Location",
+                href: "https://maps.google.com/?q=Kuala+Lumpur,+Malaysia",
+              },
             ].map((item, index) => (
-              <motion.div
+              <motion.a
                 key={item.label}
+                href={item.href}
+                target={item.label === "Location" ? "_blank" : undefined}
+                rel={
+                  item.label === "Location" ? "noopener noreferrer" : undefined
+                }
                 className="group flex items-center gap-3 bg-card border border-border rounded-full px-6 py-3 hover:shadow-lg hover:border-secondary transition-all duration-300 cursor-pointer border-runner"
                 whileTap={{ scale: 0.98 }}
                 initial={{ opacity: 0, y: 20 }}
@@ -129,7 +139,7 @@ export default function Home({ params }: HomeProps) {
                 <span className="text-text-muted text-sm font-medium group-hover:text-foreground transition-colors duration-300">
                   {item.text}
                 </span>
-              </motion.div>
+              </motion.a>
             ))}
           </motion.div>
 
@@ -142,7 +152,7 @@ export default function Home({ params }: HomeProps) {
           >
             {[
               {
-                href: "https://linkedin.com/in/mustofa-ghaleb-amami",
+                href: "https://www.linkedin.com/in/mustofa-ghaleb-amami?originalSubdomain=my",
                 icon: FaLinkedin,
                 label: "LinkedIn",
                 color: "from-blue-600 to-blue-700",
@@ -158,7 +168,7 @@ export default function Home({ params }: HomeProps) {
                 shadowColor: "github/25",
               },
               {
-                href: "https://twitter.com/mustofaamami",
+                href: "https://x.com/cakasuma",
                 icon: FaTwitter,
                 label: "Twitter",
                 color: "from-sky-500 to-sky-600",
@@ -223,7 +233,8 @@ export default function Home({ params }: HomeProps) {
               "I'm a passionate full-stack developer with expertise in modern web technologies. I love creating seamless user experiences and robust backend systems."}
           </p>
           <p className="text-text-muted text-sm">
-            {t("about.learning") || "Continuously learning and staying up-to-date with the latest industry trends and best practices."}
+            {t("about.learning") ||
+              "Continuously learning and staying up-to-date with the latest industry trends and best practices."}
           </p>
         </AnimatedCard>
 
@@ -274,23 +285,31 @@ export default function Home({ params }: HomeProps) {
               {t("testimonials.title") || "What Clients Say"}
             </h2>
             <p className="text-text-secondary max-w-2xl mx-auto">
-              {t("testimonials.trusted") || "Trusted by clients and colleagues for delivering high-quality work and exceptional results."}
+              {t("testimonials.trusted") ||
+                "Trusted by clients and colleagues for delivering high-quality work and exceptional results."}
             </p>
           </header>
 
           <ContentGrid columns={2} gap="md">
             <blockquote className="border-l-4 border-secondary pl-6 bg-accent/50 p-6 rounded-r-lg">
               <p className="text-text-secondary italic mb-4 leading-relaxed">
-                &ldquo;{t("testimonials.quote1") || "Mustofa is an exceptional developer who consistently delivers high-quality work. His attention to detail and problem-solving skills are outstanding."}&rdquo;
+                &ldquo;
+                {t("testimonials.quote1") ||
+                  "Mustofa is an exceptional developer who consistently delivers high-quality work. His attention to detail and problem-solving skills are outstanding."}
+                &rdquo;
               </p>
               <cite className="text-secondary font-semibold text-sm">
-                - {t("testimonials.author1") || "Sarah Johnson, Project Manager"}
+                -{" "}
+                {t("testimonials.author1") || "Sarah Johnson, Project Manager"}
               </cite>
             </blockquote>
 
             <blockquote className="border-l-4 border-warning pl-6 bg-accent/50 p-6 rounded-r-lg">
               <p className="text-text-secondary italic mb-4 leading-relaxed">
-                &ldquo;{t("testimonials.quote2") || "Working with Mustofa was a pleasure. He's professional, reliable, and his technical expertise helped bring our vision to life."}&rdquo;
+                &ldquo;
+                {t("testimonials.quote2") ||
+                  "Working with Mustofa was a pleasure. He's professional, reliable, and his technical expertise helped bring our vision to life."}
+                &rdquo;
               </p>
               <cite className="text-secondary font-semibold text-sm">
                 - {t("testimonials.author2") || "Alex Chen, Startup Founder"}
@@ -303,7 +322,10 @@ export default function Home({ params }: HomeProps) {
       {/* Call to Action */}
       <CTASection
         title={t("cta.title") || "Ready to work together?"}
-        description={t("cta.description") || "Let's create something amazing together! I'm always excited to take on new challenges and bring innovative ideas to life."}
+        description={
+          t("cta.description") ||
+          "Let's create something amazing together! I'm always excited to take on new challenges and bring innovative ideas to life."
+        }
         variant="primary"
       >
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">

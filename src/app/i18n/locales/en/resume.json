@@ -5,8 +5,8 @@
   "personal-info": {
     "title": "Personal Information",
     "name": "Name",
-    "email": "Email",
-    "phone": "Phone",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
     "location": "Location"
   },
   "skills": {
@@ -29,6 +29,12 @@
       "description": "Led development of modern web applications using React, Next.js, TypeScript, and Node.js. Mentored junior developers and implemented best practices for code quality and performance. Built user-focused applications that translate designs into fast and interactive web experiences."
     },
     "job3": {
+      "title": "Senior Frontend Engineer",
+      "company": "MoneyLion",
+      "period": "2020 - 2022",
+      "description": "Developed and maintained high-performance web applications for fintech solutions. Collaborated with cross-functional teams to deliver user-centric financial products, ensuring scalability and performance optimization."
+    },
+    "job4": {
       "title": "Software Engineering Lecturer",
       "company": "RevoU",
       "period": "Part-time",
@@ -44,24 +50,24 @@
   "certifications": {
     "title": "Certifications & Achievements",
     "cert1": {
-      "name": "AWS Certified Developer",
-      "issuer": "Amazon Web Services",
-      "year": "2023"
+      "name": "Professional Scrum Master™ I (PSM I)",
+      "issuer": "Scrum.org",
+      "year": "2024"
     },
     "cert2": {
-      "name": "React Professional Certificate",
-      "issuer": "Meta",
+      "name": "Node.js Services Development",
+      "issuer": "OpenJS Node.js Services Developer (JSNSD)",
       "year": "2022"
     },
     "cert3": {
-      "name": "TypeScript Advanced",
-      "issuer": "Microsoft",
+      "name": "Node.js Application Development",
+      "issuer": "OpenJS Node.js Application Developer (JSNAD)",
       "year": "2022"
     },
     "cert4": {
-      "name": "Node.js Application Developer",
-      "issuer": "OpenJS Foundation",
-      "year": "2021"
+      "name": "AWS Certified Cloud Practitioner",
+      "issuer": "Amazon Web Services",
+      "year": "2020"
     }
   }
 }

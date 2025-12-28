@@ -5,8 +5,8 @@
   "personal-info": {
     "title": "Informasi Pribadi",
     "name": "Nama",
-    "email": "Email",
-    "phone": "Telepon",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
     "location": "Lokasi"
   },
   "skills": {
@@ -29,6 +29,12 @@
       "description": "Memimpin pengembangan aplikasi web modern menggunakan React, Next.js, TypeScript, dan Node.js. Membimbing developer junior dan mengimplementasikan praktik terbaik untuk kualitas dan performa kode. Membangun aplikasi yang berfokus pada pengguna yang menerjemahkan desain menjadi pengalaman web yang cepat dan interaktif."
     },
     "job3": {
+      "title": "Senior Frontend Engineer",
+      "company": "MoneyLion",
+      "period": "2020 - 2022",
+      "description": "Mengembangkan dan memelihara aplikasi web berkinerja tinggi untuk solusi fintech. Berkolaborasi dengan tim lintas fungsi untuk memberikan produk finansial yang berpusat pada pengguna, memastikan skalabilitas dan optimalisasi performa."
+    },
+    "job4": {
       "title": "Pengajar Software Engineering",
       "company": "RevoU",
       "period": "Part-time",
@@ -44,24 +50,24 @@
   "certifications": {
     "title": "Sertifikasi & Pencapaian",
     "cert1": {
-      "name": "AWS Certified Developer",
-      "issuer": "Amazon Web Services",
-      "year": "2023"
+      "name": "Professional Scrum Master™ I (PSM I)",
+      "issuer": "Scrum.org",
+      "year": "2024"
     },
     "cert2": {
-      "name": "React Professional Certificate",
-      "issuer": "Meta",
+      "name": "Node.js Services Development",
+      "issuer": "OpenJS Node.js Services Developer (JSNSD)",
       "year": "2022"
     },
     "cert3": {
-      "name": "TypeScript Advanced",
-      "issuer": "Microsoft",
+      "name": "Node.js Application Development",
+      "issuer": "OpenJS Node.js Application Developer (JSNAD)",
       "year": "2022"
     },
     "cert4": {
-      "name": "Node.js Application Developer",
-      "issuer": "OpenJS Foundation",
-      "year": "2021"
+      "name": "AWS Certified Cloud Practitioner",
+      "issuer": "Amazon Web Services",
+      "year": "2020"
     }
   }
 }

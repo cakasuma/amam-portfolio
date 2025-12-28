@@ -52,45 +52,44 @@ export default function Resume({ params }: ResumeProps) {
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="font-semibold text-foreground min-w-[80px]">
-                    {t("personal-info.email") || "Email"}:
+                    {t("personal-info.linkedin") || "LinkedIn"}:
                   </span>
                   <a
-                    href="mailto:amammustofa@gmail.com"
+                    href="https://www.linkedin.com/in/mustofa-ghaleb-amami/"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="text-text-secondary hover:text-secondary transition-colors duration-200"
                     style={{ wordBreak: "break-word" }}
                   >
-                    amammustofa@gmail.com
+                    /mustofa-ghaleb-amami
                   </a>
                 </div>
               </div>
               <div className="space-y-4">
                 <div className="flex items-center gap-2">
                   <span className="font-semibold text-foreground min-w-[80px]">
-                    {t("personal-info.phone") || "Phone"}:
+                    {t("personal-info.github") || "GitHub"}:
                   </span>
                   <a
-                    href="https://wa.me/60182655318"
+                    href="https://github.com/cakasuma"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-text-secondary hover:text-success transition-colors duration-200"
                     style={{ wordBreak: "break-word" }}
                   >
-                    +60 18-265 5318
+                    @cakasuma
                   </a>
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="font-semibold text-foreground min-w-[80px]">
                     {t("personal-info.location") || "Location"}:
                   </span>
-                  <a
-                    href="https://maps.google.com/?q=Kuala+Lumpur,+Malaysia"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-text-secondary hover:text-warning transition-colors duration-200"
+                  <span
+                    className="text-text-secondary"
                     style={{ wordBreak: "break-word" }}
                   >
                     Kuala Lumpur, Malaysia
-                  </a>
+                  </span>
                 </div>
               </div>
             </ContentGrid>
@@ -211,17 +210,35 @@ export default function Resume({ params }: ResumeProps) {
               <article className="border-l-4 border-info pl-6 py-4 bg-accent/30 rounded-r-lg transition-all duration-300 hover:border-info/80 hover:bg-accent/50">
                 <header>
                   <h3 className="text-xl font-semibold text-foreground mb-2">
-                    {t("experience.job3.title") || "Software Engineering Lecturer"}
+                    {t("experience.job3.title") || "Senior Frontend Engineer"}
                   </h3>
                   <p className="text-info font-medium text-lg mb-1">
-                    {t("experience.job3.company") || "RevoU"}
+                    {t("experience.job3.company") || "MoneyLion"}
                   </p>
                   <p className="text-text-muted text-sm mb-3">
-                    {t("experience.job3.period") || "Part-time"}
+                    {t("experience.job3.period") || "2020 - 2022"}
                   </p>
                 </header>
                 <p className="text-text-secondary leading-relaxed">
                   {t("experience.job3.description") ||
+                    "Developed and maintained high-performance web applications for fintech solutions."}
+                </p>
+              </article>
+
+              <article className="border-l-4 border-success pl-6 py-4 bg-accent/30 rounded-r-lg transition-all duration-300 hover:border-success/80 hover:bg-accent/50">
+                <header>
+                  <h3 className="text-xl font-semibold text-foreground mb-2">
+                    {t("experience.job4.title") || "Software Engineering Lecturer"}
+                  </h3>
+                  <p className="text-success font-medium text-lg mb-1">
+                    {t("experience.job4.company") || "RevoU"}
+                  </p>
+                  <p className="text-text-muted text-sm mb-3">
+                    {t("experience.job4.period") || "Part-time"}
+                  </p>
+                </header>
+                <p className="text-text-secondary leading-relaxed">
+                  {t("experience.job4.description") ||
                     "Coaching and mentoring software engineering students, sharing practical insights from industry experience."}
                 </p>
               </article>

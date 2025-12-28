@@ -29,10 +29,10 @@
       "description": "Memimpin pengembangan aplikasi web modern menggunakan React, Next.js, TypeScript, dan Node.js. Membimbing developer junior dan mengimplementasikan praktik terbaik untuk kualitas dan performa kode. Membangun aplikasi yang berfokus pada pengguna yang menerjemahkan desain menjadi pengalaman web yang cepat dan interaktif."
     },
     "job3": {
-      "title": "Senior Frontend Engineer",
+      "title": "Senior Mobile Engineer",
       "company": "MoneyLion",
-      "period": "2020 - 2022",
-      "description": "Mengembangkan dan memelihara aplikasi web berkinerja tinggi untuk solusi fintech. Berkolaborasi dengan tim lintas fungsi untuk memberikan produk finansial yang berpusat pada pengguna, memastikan skalabilitas dan optimalisasi performa."
+      "period": "Oktober 2021 - September 2023",
+      "description": "Bekerja sama dengan manajer, backend, dan tester untuk memastikan alur pembayaran dan fitur berjalan lancar. Membangun dan memelihara aplikasi mobile menggunakan React Native dan Redux, memberikan solusi fintech berkualitas tinggi untuk jutaan pengguna."
     },
     "job4": {
       "title": "Pengajar Software Engineering",
@@ -50,24 +50,19 @@
   "certifications": {
     "title": "Sertifikasi & Pencapaian",
     "cert1": {
-      "name": "Professional Scrum Master™ I (PSM I)",
-      "issuer": "Scrum.org",
-      "year": "2024"
+      "name": "Javascript (Intermediate)",
+      "issuer": "Team HackerRank",
+      "year": "2021"
     },
     "cert2": {
-      "name": "Node.js Services Development",
-      "issuer": "OpenJS Node.js Services Developer (JSNSD)",
-      "year": "2022"
+      "name": "DEV401 Salesforce Platform App Builder",
+      "issuer": "Salesforce",
+      "year": "2017"
     },
     "cert3": {
-      "name": "Node.js Application Development",
-      "issuer": "OpenJS Node.js Application Developer (JSNAD)",
-      "year": "2022"
-    },
-    "cert4": {
-      "name": "AWS Certified Cloud Practitioner",
-      "issuer": "Amazon Web Services",
-      "year": "2020"
+      "name": "Microsoft Azure Fundamentals",
+      "issuer": "Microsoft",
+      "year": "2017"
     }
   }
 }

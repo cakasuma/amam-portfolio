@@ -29,10 +29,10 @@
       "description": "Led development of modern web applications using React, Next.js, TypeScript, and Node.js. Mentored junior developers and implemented best practices for code quality and performance. Built user-focused applications that translate designs into fast and interactive web experiences."
     },
     "job3": {
-      "title": "Senior Frontend Engineer",
+      "title": "Senior Mobile Engineer",
       "company": "MoneyLion",
-      "period": "2020 - 2022",
-      "description": "Developed and maintained high-performance web applications for fintech solutions. Collaborated with cross-functional teams to deliver user-centric financial products, ensuring scalability and performance optimization."
+      "period": "October 2021 - September 2023",
+      "description": "Worked closely with managers, backend, and testers to ensure payment flows and features running smoothly. Built and maintained mobile applications using React Native and Redux, delivering high-quality fintech solutions for millions of users."
     },
     "job4": {
       "title": "Software Engineering Lecturer",
@@ -50,24 +50,19 @@
   "certifications": {
     "title": "Certifications & Achievements",
     "cert1": {
-      "name": "Professional Scrum Master™ I (PSM I)",
-      "issuer": "Scrum.org",
-      "year": "2024"
+      "name": "Javascript (Intermediate)",
+      "issuer": "Team HackerRank",
+      "year": "2021"
     },
     "cert2": {
-      "name": "Node.js Services Development",
-      "issuer": "OpenJS Node.js Services Developer (JSNSD)",
-      "year": "2022"
+      "name": "DEV401 Salesforce Platform App Builder",
+      "issuer": "Salesforce",
+      "year": "2017"
     },
     "cert3": {
-      "name": "Node.js Application Development",
-      "issuer": "OpenJS Node.js Application Developer (JSNAD)",
-      "year": "2022"
-    },
-    "cert4": {
-      "name": "AWS Certified Cloud Practitioner",
-      "issuer": "Amazon Web Services",
-      "year": "2020"
+      "name": "Microsoft Azure Fundamentals",
+      "issuer": "Microsoft",
+      "year": "2017"
     }
   }
 }

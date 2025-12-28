@@ -4,13 +4,24 @@
   "back-to-home": "Kembali ke halaman utama",
   "read-more": "Baca selengkapnya",
   "featured": "Unggulan",
+  "powered-by": "Artikel dari",
+  "no-posts": "Tidak ada postingan blog. Periksa kembali nanti!",
+  "visit-devto": "Kunjungi profil Dev.to saya",
+  "read-on-devto": "Baca di Dev.to",
+  "retry": "Coba Lagi",
   "featured-posts": {
     "title": "Postingan Unggulan",
-    "description": "Artikel pilihan yang membahas perkembangan terbaru dalam pengembangan web dan pemrograman"
+    "description": "Artikel populer dengan keterlibatan terbanyak dari komunitas"
   },
   "recent-posts": {
-    "title": "Postingan Terbaru",
+    "title": "Semua Postingan",
     "description": "Artikel dan tutorial terbaru dari perjalanan pengembangan saya"
+  },
+  "follow": {
+    "title": "Ikuti Saya di Dev.to",
+    "description": "Dapatkan notifikasi tentang artikel baru dan bergabunglah dalam diskusi. Saya secara rutin membagikan wawasan tentang pengembangan web, tips pemrograman, dan tutorial teknologi.",
+    "button": "Ikuti di Dev.to",
+    "note": "Bergabunglah dengan komunitas dan jangan lewatkan postingan!"
   },
   "newsletter": {
     "title": "Tetap Update",

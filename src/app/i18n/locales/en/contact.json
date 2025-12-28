@@ -29,7 +29,20 @@
     "message": "Message",
     "message-placeholder": "Enter your message here...",
     "submit": "Send Message",
-    "sending": "Sending..."
+    "sending": "Sending...",
+    "success": "Your message has been sent successfully! I'll get back to you soon.",
+    "error": "An error occurred. Please try again later.",
+    "rate-limit": "Too many requests. Please wait a few minutes before trying again.",
+    "errors": {
+      "name-required": "Name is required",
+      "name-min": "Name must be at least 2 characters",
+      "email-required": "Email is required",
+      "email-invalid": "Please enter a valid email address",
+      "subject-required": "Subject is required",
+      "subject-min": "Subject must be at least 3 characters",
+      "message-required": "Message is required",
+      "message-min": "Message must be at least 10 characters"
+    }
   },
   "freelance": {
     "title": "Available for Freelance Projects",

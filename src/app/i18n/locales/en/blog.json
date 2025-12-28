@@ -4,13 +4,24 @@
   "back-to-home": "Back to home",
   "read-more": "Read more",
   "featured": "Featured",
+  "powered-by": "Articles from",
+  "no-posts": "No blog posts found. Check back later!",
+  "visit-devto": "Visit my Dev.to profile",
+  "read-on-devto": "Read on Dev.to",
+  "retry": "Try Again",
   "featured-posts": {
     "title": "Featured Posts",
-    "description": "Hand-picked articles covering the latest in web development and programming"
+    "description": "Popular articles with the most engagement from the community"
   },
   "recent-posts": {
-    "title": "Recent Posts",
+    "title": "All Posts",
     "description": "Latest articles and tutorials from my development journey"
+  },
+  "follow": {
+    "title": "Follow Me on Dev.to",
+    "description": "Get notified about new articles and join the discussion. I regularly share insights about web development, programming tips, and tech tutorials.",
+    "button": "Follow on Dev.to",
+    "note": "Join the community and never miss a post!"
   },
   "newsletter": {
     "title": "Stay Updated",

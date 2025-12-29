@@ -70,7 +70,7 @@ export const SmartHeader = memo(function SmartHeader({
       className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm transition-all duration-300 header-shadow"
       initial={{ y: 0 }}
       animate={{ y: isHidden ? "-100%" : 0 }}
-      transition={{ duration: 0.3, ease: "easeInOut" }}
+      transition={{ duration: 0.25, ease: "easeInOut" }}
       role="banner"
     >
       <nav
@@ -87,7 +87,8 @@ export const SmartHeader = memo(function SmartHeader({
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`group flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 relative overflow-hidden ${
+                  prefetch={true}
+                  className={`group flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative overflow-hidden ${
                     isActive ? "text-foreground" : "text-foreground"
                   }`}
                   aria-label={item.ariaLabel}
@@ -101,13 +102,13 @@ export const SmartHeader = memo(function SmartHeader({
                       transition={{
                         type: "spring",
                         bounce: 0.15,
-                        duration: 0.5,
+                        duration: 0.4,
                       }}
                     />
                   )}
 
                   {/* Content */}
-                  <span className="relative z-10 text-lg group-hover:scale-110 transition-transform duration-200">
+                  <span className="relative z-10 text-lg group-hover:scale-110 transition-transform duration-150">
                     {item.icon}
                   </span>
                   <span
@@ -120,10 +121,7 @@ export const SmartHeader = memo(function SmartHeader({
 
                   {/* Hover effect for non-active items */}
                   {!isActive && (
-                    <motion.div
-                      className="absolute inset-0 bg-[var(--nav-hover-bg)] rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-                      initial={false}
-                    />
+                    <div className="absolute inset-0 bg-[var(--nav-hover-bg)] rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-150" />
                   )}
                 </Link>
               );
@@ -134,14 +132,12 @@ export const SmartHeader = memo(function SmartHeader({
           <div className="md:hidden">
             <Link
               href={`/${lng}`}
-              className="group flex items-center justify-center w-12 h-12 bg-gradient-to-br from-secondary to-warning rounded-xl text-secondary-foreground font-bold text-lg hover:shadow-lg transition-all duration-200 relative overflow-hidden"
+              prefetch={true}
+              className="group flex items-center justify-center w-12 h-12 bg-gradient-to-br from-secondary to-warning rounded-xl text-secondary-foreground font-bold text-lg hover:shadow-lg transition-all duration-150 relative overflow-hidden active:scale-95"
               aria-label="Mustofa Amami - Home"
             >
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-br from-warning to-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                initial={false}
-              />
-              <span className="relative z-10 group-hover:scale-110 transition-transform duration-200">
+              <div className="absolute inset-0 bg-gradient-to-br from-warning to-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+              <span className="relative z-10 group-hover:scale-110 transition-transform duration-150">
                 MA
               </span>
             </Link>

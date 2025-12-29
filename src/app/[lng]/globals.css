@@ -557,3 +557,32 @@ html.dark .border-runner-glow {
 .bg-success {
   background-color: var(--success);
 }
+
+/* Performance optimizations */
+* {
+  /* Enable hardware acceleration for transforms and opacity */
+  will-change: auto;
+}
+
+/* Optimize animations for performance */
+@media (prefers-reduced-motion: no-preference) {
+  * {
+    /* Use GPU acceleration for common animations */
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+}
+
+/* Faster transitions for interactive elements */
+a, button, [role="button"] {
+  transition-duration: 0.15s;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Optimize text rendering */
+body {
+  text-rendering: optimizeSpeed;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

@@ -2,7 +2,7 @@
 
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 import i18next, { TFunction} from 'i18next'
 import { initReactI18next, useTranslation as useTranslationOrg } from 'react-i18next'
 import { useCookies } from 'react-cookie'
@@ -21,6 +21,7 @@ interface I18nOptions {
     preload: string[];
 }
 
+// Initialize i18next with better performance settings
 i18next
     .use(initReactI18next)
     .use(LanguageDetector)
@@ -31,7 +32,14 @@ i18next
         detection: {
             order: ['path', 'htmlTag', 'cookie', 'navigator'],
         },
-        preload: runsOnServerSide ? languages : []
+        preload: runsOnServerSide ? languages : [],
+        // Performance optimizations
+        react: {
+            useSuspense: false, // Disable suspense for better performance
+        },
+        interpolation: {
+            escapeValue: false, // React already escapes values
+        },
     })
 
 

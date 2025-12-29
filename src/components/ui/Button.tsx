@@ -1,18 +1,9 @@
 "use client";
 
-import { motion } from "motion/react";
 import { forwardRef, ButtonHTMLAttributes } from "react";
 import { cn } from "@/lib/utils";
 
-export interface ButtonProps
-  extends Omit<
-    ButtonHTMLAttributes<HTMLButtonElement>,
-    | "onDrag"
-    | "onDragEnd"
-    | "onDragStart"
-    | "onAnimationStart"
-    | "onAnimationEnd"
-  > {
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "primary" | "secondary" | "cta" | "outline" | "ghost";
   size?: "sm" | "md" | "lg";
   loading?: boolean;
@@ -54,7 +45,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         className={
           cn(
-            "cursor-pointer inline-flex items-center justify-center rounded-lg font-semibold transition-all duration-200 focus:outline-none disabled:opacity-50 disabled:pointer-events-none",
+            "cursor-pointer inline-flex items-center justify-center rounded-lg font-semibold transition-all duration-200 focus:outline-none disabled:opacity-50 disabled:pointer-events-none active:scale-95",
             variants[variant],
             sizes[size],
             className
@@ -65,11 +56,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       >
         {loading ? (
           <>
-            <motion.div
-              className="w-4 h-4 border-2 border-current border-t-transparent rounded-full mr-2"
-              animate={{ rotate: 360 }}
-              transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-            />
+            <span className="w-4 h-4 border-2 border-current border-t-transparent rounded-full mr-2 animate-spin" />
             Loading...
           </>
         ) : (

@@ -1,8 +1,8 @@
 "use client";
 import { motion } from "motion/react";
-import Link from "@/app/components/MotionLink";
+import Link from "next/link";
 import Image from "next/image";
-import { use } from "react";
+import { use, useMemo } from "react";
 import { useTranslation } from "@/app/i18n/client";
 import PageLayout, {
   AnimatedCard,
@@ -24,18 +24,73 @@ export default function Home({ params }: HomeProps) {
   const { lng } = use(params);
   const { t } = useTranslation(lng);
 
+  // Memoize contact info to avoid recreating on every render
+  const contactInfo = useMemo(
+    () => [
+      {
+        icon: "📧",
+        text: t("email") || "amammustofa@gmail.com",
+        label: t("contact-info.email-label") || "Email",
+        href: "mailto:amammustofa@gmail.com",
+      },
+      {
+        icon: "📱",
+        text: t("phone") || "+60 10-844 4970",
+        label: t("contact-info.phone-label") || "Phone",
+        href: "https://wa.me/60108444970",
+      },
+      {
+        icon: "📍",
+        text: t("location") || "Kuala Lumpur, Malaysia",
+        label: t("contact-info.location-label") || "Location",
+        href: "https://maps.google.com/?q=Kuala+Lumpur,+Malaysia",
+      },
+    ],
+    [t]
+  );
+
+  // Memoize social links
+  const socialLinks = useMemo(
+    () => [
+      {
+        href: "https://www.linkedin.com/in/mustofa-ghaleb-amami?originalSubdomain=my",
+        icon: FaLinkedin,
+        label: "LinkedIn",
+        color: "from-blue-600 to-blue-700",
+        hoverColor: "from-blue-500 to-blue-600",
+      },
+      {
+        href: "https://github.com/cakasuma",
+        icon: FaGithub,
+        label: "GitHub",
+        color: "bg-github border-2 border-github",
+        hoverColor: "bg-github-hover border-github-hover",
+      },
+      {
+        href: "https://x.com/cakasuma",
+        icon: FaTwitter,
+        label: "Twitter",
+        color: "from-sky-500 to-sky-600",
+        hoverColor: "from-sky-400 to-sky-500",
+      },
+    ],
+    []
+  );
+
+  // Memoize skills
+  const skills = useMemo(
+    () => ["React", "Next.js", "TypeScript", "Node.js", "Tailwind CSS", "PostgreSQL"],
+    []
+  );
+
   return (
     <PageLayout>
       {/* Hero Section */}
-      <HeroSection>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
+      <HeroSection animate={false}>
+        <div>
           {/* Profile Image with enhanced styling */}
           <div className="relative w-48 h-48 lg:w-56 lg:h-56 mx-auto mb-8">
-            <motion.div className="relative w-full h-full">
+            <div className="relative w-full h-full">
               <Image
                 src="/image-amam.png"
                 alt="Mustofa Amami - Full-Stack Developer Portrait"
@@ -47,22 +102,16 @@ export default function Home({ params }: HomeProps) {
                   objectPosition: "center 15%",
                 }}
               />
-              {/* Professional status indicator */}
-              <motion.div
-                className="absolute bottom-4 right-5 lg:right-7 w-7 h-7 bg-success rounded-full border-4 border-background shadow-lg"
-                animate={{ scale: [1, 1.1, 1] }}
-                transition={{ duration: 2, repeat: Infinity }}
+              {/* Professional status indicator - simplified animation */}
+              <span
+                className="absolute bottom-4 right-5 lg:right-7 w-7 h-7 bg-success rounded-full border-4 border-background shadow-lg animate-pulse"
                 title="Available for projects"
               />
-            </motion.div>
+            </div>
           </div>
 
           {/* Name and Title */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
+          <div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4">
               {t("name") || "Mustofa Amami"}
             </h1>
@@ -75,108 +124,34 @@ export default function Home({ params }: HomeProps) {
               {t("hero-description") ||
                 "Passionate about creating beautiful, functional web experiences with modern technologies. Based in Jakarta, Indonesia."}
             </p>
-          </motion.div>
+          </div>
 
           {/* Contact Info Cards */}
-          <motion.div
-            className="flex flex-wrap justify-center gap-4 mb-12"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
-            {[
-              {
-                icon: "📧",
-                text: t("email") || "amammustofa@gmail.com",
-                label: t("contact-info.email-label") || "Email",
-                href: "mailto:amammustofa@gmail.com",
-              },
-              {
-                icon: "📱",
-                text: t("phone") || "+60 10-844 4970",
-                label: t("contact-info.phone-label") || "Phone",
-                href: "https://wa.me/60108444970",
-              },
-              {
-                icon: "📍",
-                text: t("location") || "Kuala Lumpur, Malaysia",
-                label: t("contact-info.location-label") || "Location",
-                href: "https://maps.google.com/?q=Kuala+Lumpur,+Malaysia",
-              },
-            ].map((item, index) => (
-              <motion.a
+          <div className="flex flex-wrap justify-center gap-4 mb-12">
+            {contactInfo.map((item) => (
+              <a
                 key={item.label}
                 href={item.href}
                 target={item.label === "Location" ? "_blank" : undefined}
                 rel={
                   item.label === "Location" ? "noopener noreferrer" : undefined
                 }
-                className="group flex items-center gap-3 bg-card border border-border rounded-full px-6 py-3 hover:shadow-lg hover:border-secondary transition-all duration-300 cursor-pointer border-runner"
-                whileTap={{ scale: 0.98 }}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
+                className="group flex items-center gap-3 bg-card border border-border rounded-full px-6 py-3 hover:shadow-lg hover:border-secondary transition-all duration-200 cursor-pointer border-runner active:scale-95"
               >
-                <motion.span
-                  className="text-2xl group-hover:scale-110 transition-transform duration-300"
-                  animate={{
-                    rotate:
-                      index === 0
-                        ? [0, 10, -10, 0]
-                        : index === 1
-                        ? [0, 15, -15, 0]
-                        : [0, 0, 0, 0],
-                    y: index === 2 ? [0, -3, 3, 0] : [0, 0, 0, 0],
-                  }}
-                  transition={{
-                    duration: 2 + index * 0.5,
-                    repeat: Infinity,
-                    repeatDelay: 3 + index,
-                  }}
-                >
+                <span className="text-2xl group-hover:scale-110 transition-transform duration-200">
                   {item.icon}
-                </motion.span>
-                <span className="text-text-muted text-sm font-medium group-hover:text-foreground transition-colors duration-300">
+                </span>
+                <span className="text-text-muted text-sm font-medium group-hover:text-foreground transition-colors duration-200">
                   {item.text}
                 </span>
-              </motion.a>
+              </a>
             ))}
-          </motion.div>
+          </div>
 
           {/* Social Links */}
-          <motion.div
-            className="flex justify-center gap-6"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-          >
-            {[
-              {
-                href: "https://www.linkedin.com/in/mustofa-ghaleb-amami?originalSubdomain=my",
-                icon: FaLinkedin,
-                label: "LinkedIn",
-                color: "from-blue-600 to-blue-700",
-                hoverColor: "from-blue-500 to-blue-600",
-                shadowColor: "blue-500/25",
-              },
-              {
-                href: "https://github.com/cakasuma",
-                icon: FaGithub,
-                label: "GitHub",
-                color: "bg-github border-2 border-github",
-                hoverColor: "bg-github-hover border-github-hover",
-                shadowColor: "github/25",
-              },
-              {
-                href: "https://x.com/cakasuma",
-                icon: FaTwitter,
-                label: "Twitter",
-                color: "from-sky-500 to-sky-600",
-                hoverColor: "from-sky-400 to-sky-500",
-                shadowColor: "sky-500/25",
-              },
-            ].map((social, index) => (
-              <motion.a
+          <div className="flex justify-center gap-6">
+            {socialLinks.map((social) => (
+              <a
                 key={social.label}
                 href={social.href}
                 target="_blank"
@@ -185,43 +160,34 @@ export default function Home({ params }: HomeProps) {
                   social.label === "GitHub"
                     ? social.color
                     : `bg-gradient-to-br ${social.color}`
-                } rounded-xl flex items-center justify-center hover:shadow-lg hover:shadow-${
-                  social.shadowColor
-                } transition-all duration-300 overflow-hidden`}
-                whileHover={{ scale: 1.1, rotate: index % 2 === 0 ? 5 : -5 }}
-                whileTap={{ scale: 0.95 }}
+                } rounded-xl flex items-center justify-center hover:shadow-lg transition-all duration-200 overflow-hidden active:scale-95`}
                 aria-label={`Visit my ${social.label} profile`}
               >
                 {social.label !== "GitHub" && (
-                  <motion.div
-                    className={`absolute inset-0 bg-gradient-to-br ${social.hoverColor} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
+                  <div
+                    className={`absolute inset-0 bg-gradient-to-br ${social.hoverColor} opacity-0 group-hover:opacity-100 transition-opacity duration-200`}
                   />
                 )}
                 {social.label === "GitHub" && (
-                  <motion.div
-                    className={`absolute inset-0 ${social.hoverColor} opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl`}
+                  <div
+                    className={`absolute inset-0 ${social.hoverColor} opacity-0 group-hover:opacity-100 transition-opacity duration-200 rounded-xl`}
                   />
                 )}
                 <social.icon
                   className={`${
                     social.label === "GitHub" ? "text-foreground" : "text-white"
-                  } text-xl relative z-10 group-hover:scale-110 transition-transform duration-300`}
+                  } text-xl relative z-10 group-hover:scale-110 transition-transform duration-200`}
                 />
-                {social.label !== "GitHub" && (
-                  <div
-                    className={`absolute -inset-1 bg-gradient-to-r ${social.color} rounded-xl opacity-0 group-hover:opacity-30 blur transition-opacity duration-300`}
-                  />
-                )}
-              </motion.a>
+              </a>
             ))}
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </HeroSection>
 
       {/* Main Content Sections */}
       <ContentGrid columns={2} className="mb-12">
         {/* About Section */}
-        <AnimatedCard delay={0.2} direction="left">
+        <AnimatedCard delay={0} direction="left" animate={false}>
           <header className="mb-6">
             <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
               <span className="text-secondary text-3xl">⚡</span>
@@ -239,7 +205,7 @@ export default function Home({ params }: HomeProps) {
         </AnimatedCard>
 
         {/* Skills Section */}
-        <AnimatedCard delay={0.3} direction="right">
+        <AnimatedCard delay={0} direction="right" animate={false}>
           <header className="mb-6">
             <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
               <span className="text-warning text-3xl">🎯</span>
@@ -251,21 +217,13 @@ export default function Home({ params }: HomeProps) {
               "I specialize in building full-stack web applications using cutting-edge technologies and following industry best practices."}
           </p>
           <div className="flex flex-wrap gap-2">
-            {[
-              "React",
-              "Next.js",
-              "TypeScript",
-              "Node.js",
-              "Tailwind CSS",
-              "PostgreSQL",
-            ].map((skill) => (
-              <motion.span
+            {skills.map((skill) => (
+              <span
                 key={skill}
-                className="px-3 py-2 bg-accent text-foreground text-sm rounded-lg border border-border transition-all duration-200"
-                whileTap={{ scale: 0.95 }}
+                className="px-3 py-2 bg-accent text-foreground text-sm rounded-lg border border-border transition-all duration-200 hover:border-foreground active:scale-95"
               >
                 {skill}
-              </motion.span>
+              </span>
             ))}
           </div>
         </AnimatedCard>
@@ -273,12 +231,13 @@ export default function Home({ params }: HomeProps) {
 
       {/* Testimonials Section */}
       <Section
-        delay={0.4}
+        delay={0}
         className="mb-12"
         id="testimonials"
         ariaLabel="Client testimonials"
+        animate={false}
       >
-        <AnimatedCard>
+        <AnimatedCard animate={false}>
           <header className="text-center mb-8">
             <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-4 flex items-center justify-center gap-3">
               <span className="text-info text-3xl">💬</span>
@@ -327,17 +286,18 @@ export default function Home({ params }: HomeProps) {
           "Let's create something amazing together! I'm always excited to take on new challenges and bring innovative ideas to life."
         }
         variant="primary"
+        animate={false}
       >
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <div style={{ overflow: "visible" }}>
-            <Link href={`/${lng}/contact`}>
+            <Link href={`/${lng}/contact`} prefetch={true}>
               <Button variant="cta" size="lg" className="cursor-pointer">
                 {t("cta.get-in-touch") || "Get in Touch"}
               </Button>
             </Link>
           </div>
           <div className="cursor-pointer" style={{ overflow: "visible" }}>
-            <Link href={`/${lng}/portfolio`}>
+            <Link href={`/${lng}/portfolio`} prefetch={true}>
               <Button variant="outline" size="lg" className="cursor-pointer">
                 {t("cta.view-my-work") || "View My Work"}
               </Button>

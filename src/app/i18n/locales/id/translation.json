@@ -6,7 +6,7 @@
   "phone": "+60 10-844 4970",
   "birthday": "Lahir: 1 Januari 1990",
   "role": "Tech Lead Fullstack & Pengajar Software Engineering",
-  "hero-description": "Sebagai Tech Team Lead di Deriv, saya mengubah ide menjadi platform web dan mobile yang memberdayakan jutaan pengguna. Saya juga merasa terhormat membimbing generasi insinyur masa depan di RevoU, berbagi passion dan kebijaksanaan praktis yang didapat dari pengalaman bertahun-tahun di industri ini. Setiap baris kode yang saya tulis didorong oleh komitmen untuk menciptakan pengalaman yang powerful sekaligus menyenangkan.",
+  "hero-description": "Sebagai Tech Team Lead di Deriv, saya mengubah ide menjadi platform web dan mobile yang digunakan jutaan orang. Di RevoU, saya berkesempatan membimbing generasi engineer masa depan, berbagi pengalaman dan pembelajaran praktis dari bertahun-tahun berkarir di industri ini. Setiap baris kode yang saya tulis didorong oleh tekad untuk menciptakan pengalaman yang canggih sekaligus mudah digunakan.",
   "location": "Kuala Lumpur, Malaysia",
   "contact-info": {
     "email-label": "Email",
@@ -22,20 +22,20 @@
   },
   "about": {
     "title": "Tentang Saya",
-    "content": "Teknologi bukan hanya tentang kode—ini tentang memecahkan masalah nyata dan menyentuh kehidupan. Sebagai Tech Team Lead di Deriv dan Pengajar Software Engineering di RevoU, saya menggabungkan keunggulan teknis dengan pemahaman mendalam tentang apa yang benar-benar dibutuhkan pengguna. Dengan keahlian yang mencakup JavaScript, TypeScript, React, Next.js, dan Node.js, saya memiliki privilese untuk memimpin tim dan membimbing developer yang passionate dalam perjalanan mereka menjadi insinyur hebat. Saya percaya keajaiban terjadi ketika kreativitas, empati, dan kemampuan teknis bertemu.",
-    "learning": "Pembelajaran tidak pernah berhenti! Saya terus menjelajahi horizon baru—Kotlin, Flutter, Swift, Go, Python—sambil tetap terhubung dengan denyut nadi industri yang terus berkembang."
+    "content": "Teknologi bukan hanya soal kode—ini tentang memecahkan masalah nyata dan memberi dampak pada kehidupan orang. Sebagai Tech Team Lead di Deriv dan Pengajar Software Engineering di RevoU, saya menggabungkan keahlian teknis dengan pemahaman mendalam tentang kebutuhan pengguna yang sebenarnya. Dengan pengalaman di JavaScript, TypeScript, React, Next.js, dan Node.js, saya berkesempatan memimpin tim dan membimbing para developer dalam perjalanan mereka menjadi engineer yang handal. Saya percaya, keajaiban terjadi ketika kreativitas, empati, dan kemampuan teknis bersatu.",
+    "learning": "Belajar tidak pernah berhenti! Saya terus mengeksplorasi teknologi baru—Kotlin, Flutter, Swift, Go, Python—sambil mengikuti perkembangan terkini di industri."
   },
   "what-i-do": {
     "title": "Apa Yang Saya Lakukan",
-    "content": "Di Deriv, saya memimpin tim pengembangan fullstack platform web, mengorkestrasi inisiatif kompleks seperti implementasi OAuth dan menciptakan pengalaman onboarding partner yang seamless. Di luar dunia korporat, hati saya menemukan kebahagiaan di ruang kelas RevoU, di mana saya memiliki kehormatan membimbing ratusan calon insinyur saat mereka menemukan potensi mereka. Perangkat teknis saya—React, Next.js, TypeScript, Node.js, dan framework CSS modern—selalu siap untuk menciptakan solusi yang benar-benar bermakna."
+    "content": "Di Deriv, saya memimpin tim pengembangan fullstack platform web, mengatur inisiatif kompleks seperti implementasi OAuth dan menciptakan pengalaman onboarding partner yang mulus. Di luar dunia kerja, saya menemukan kebahagiaan di kelas RevoU, tempat saya berkesempatan membimbing ratusan calon engineer menemukan potensi mereka. Keahlian saya di React, Next.js, TypeScript, Node.js, dan framework CSS modern—selalu saya manfaatkan untuk menciptakan solusi yang bermakna."
   },
   "testimonials": {
     "title": "Testimoni",
-    "content": "Kata-kata baik dari kolega yang telah menjadi bagian dari perjalanan saya.",
-    "trusted": "Bersyukur atas kepercayaan dan kolaborasi dari individu-individu berbakat yang telah saya ajak bekerja sama.",
-    "quote1": "Mustofa membawa keunggulan teknis dan kepedulian yang tulus dalam semua yang dia lakukan. Kemampuannya memahami masalah kompleks dan membimbing tim menuju solusi yang elegan benar-benar luar biasa. Bekerja dengannya sangat menginspirasi dan bermanfaat.",
+    "content": "Kata-kata baik dari rekan kerja yang sudah menjadi bagian dari perjalanan saya.",
+    "trusted": "Bersyukur atas kepercayaan dan kolaborasi dari orang-orang berbakat yang sudah bekerja bersama saya.",
+    "quote1": "Mustofa menggabungkan keahlian teknis dengan kepedulian tulus di semua yang dia kerjakan. Kemampuannya memahami masalah kompleks dan membimbing tim menemukan solusi yang tepat benar-benar luar biasa. Bekerja dengannya sangat menginspirasi dan bermanfaat.",
     "author1": "Yashim Wong, Staff Engineer di Deriv",
-    "quote2": "Yang membedakan Mustofa bukan hanya keahlian teknisnya, tetapi pendekatannya yang hangat terhadap kepemimpinan dan mentoring. Dia memiliki bakat untuk membuat konsep yang menantang menjadi mudah dipahami dan menciptakan lingkungan di mana semua orang merasa dihargai dan termotivasi untuk berkembang.",
+    "quote2": "Yang membuat Mustofa berbeda bukan cuma keahlian teknisnya, tapi juga cara dia memimpin dan membimbing dengan hangat. Dia punya kemampuan khusus untuk membuat konsep yang rumit jadi mudah dipahami dan menciptakan lingkungan kerja di mana semua orang merasa dihargai dan termotivasi untuk berkembang.",
     "author2": "Lipika, Senior Manager di Deriv"
   },
   "clients": {
@@ -43,8 +43,8 @@
     "content": "Perusahaan yang telah saya ajak bekerja sama."
   },
   "cta": {
-    "title": "Mari Ciptakan Sesuatu yang Luar Biasa Bersama",
-    "description": "Baik Anda ingin membangun aplikasi yang inovatif, membutuhkan bimbingan dalam perjalanan teknologi Anda, atau sekadar ingin bertukar ide—saya sangat senang mendengar dari Anda. Setiap proyek hebat dimulai dengan percakapan.",
+    "title": "Mari Wujudkan Sesuatu yang Luar Biasa Bersama",
+    "description": "Mau membangun aplikasi inovatif, butuh bimbingan dalam perjalanan teknologi Anda, atau cuma ingin ngobrol ide—saya dengan senang hati mendengarkan. Setiap proyek hebat dimulai dari obrolan santai.",
     "get-in-touch": "Hubungi Saya",
     "view-my-work": "Lihat Karya Saya"
   }

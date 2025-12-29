@@ -610,3 +610,13 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+/* Prevent i18n content flash - hide content until translations are ready */
+.i18n-loading {
+  opacity: 0;
+  transition: opacity 0.15s ease-in;
+}
+
+.i18n-ready {
+  opacity: 1;
+}

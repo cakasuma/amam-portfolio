@@ -2,7 +2,7 @@
 
 'use client'
 
-import { useEffect, useState, useMemo } from 'react'
+import { useEffect, useState } from 'react'
 import i18next, { TFunction} from 'i18next'
 import { initReactI18next, useTranslation as useTranslationOrg } from 'react-i18next'
 import { useCookies } from 'react-cookie'
@@ -32,7 +32,7 @@ i18next
         detection: {
             order: ['path', 'htmlTag', 'cookie', 'navigator'],
         },
-        preload: runsOnServerSide ? languages : [],
+        preload: languages, // Preload all languages to prevent flickering
         // Performance optimizations
         react: {
             useSuspense: false, // Disable suspense for better performance

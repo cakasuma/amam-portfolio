@@ -1,7 +1,7 @@
 {
   "title": "Resume",
   "back-to-home": "Back to home",
-  "subtitle": "Experience, Skills, and Professional Journey",
+  "subtitle": "A Journey of Growth, Impact, and Continuous Learning",
   "personal-info": {
     "title": "Personal Information",
     "name": "Name",
@@ -20,25 +20,25 @@
       "title": "Tech Team Lead - Web Platform Fullstack",
       "company": "Deriv",
       "period": "July 2024 - Present",
-      "description": "Leading web platform fullstack initiatives, driving OAuth implementation enhancements and partner onboarding experiences. Managing cross-functional teams to deliver high-quality, scalable fintech solutions."
+      "description": "Leading cross-functional teams to transform ambitious ideas into reality. Orchestrating OAuth implementation enhancements and crafting intuitive partner onboarding experiences that set new standards in fintech. Every day brings opportunities to mentor talented individuals and push the boundaries of what's possible with modern web technologies."
     },
     "job2": {
       "title": "Lead Frontend Developer",
       "company": "Deriv (formerly Binary.com)",
       "period": "2018 - 2024",
-      "description": "Led development of modern web applications using React, Next.js, TypeScript, and Node.js. Mentored junior developers and implemented best practices for code quality and performance. Built user-focused applications that translate designs into fast and interactive web experiences."
+      "description": "Pioneered the development of innovative web applications that serve millions globally. Using React, Next.js, TypeScript, and Node.js, I led initiatives that balanced technical excellence with user delight. Mentored junior developers, fostering a culture of continuous learning and best practices that elevated our entire team's capabilities."
     },
     "job3": {
       "title": "Senior Mobile Engineer",
       "company": "MoneyLion",
       "period": "October 2021 - September 2023",
-      "description": "Worked closely with managers, backend, and testers to ensure payment flows and features run smoothly. Built and maintained mobile applications using React Native and Redux, delivering high-quality fintech solutions for millions of users."
+      "description": "Collaborated closely with cross-functional teams to ensure flawless payment flows and feature delivery for millions of users. Built and maintained high-performance mobile applications using React Native and Redux, always keeping user experience at the heart of every decision. Every feature shipped was a testament to our team's dedication to quality and reliability."
     },
     "job4": {
       "title": "Software Engineering Lecturer",
       "company": "RevoU",
       "period": "Part-time",
-      "description": "Coaching and mentoring software engineering students, sharing practical insights from industry experience to help them develop job-ready skills in modern web development."
+      "description": "One of my greatest joys is guiding aspiring engineers as they take their first steps into the world of software development. Sharing real-world insights and practical wisdom gained from years in the industry, I help students build not just technical skills, but the confidence and mindset needed to thrive in modern web development."
     }
   },
   "education": {

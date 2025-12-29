@@ -1,10 +1,10 @@
 {
   "title": "Contact",
-  "subtitle": "Let's get in touch and discuss your next project",
+  "subtitle": "Let's Connect and Bring Your Vision to Life",
   "back-to-home": "Back to home",
   "info": {
     "title": "Get in Touch",
-    "description": "I'm always interested in hearing about new opportunities and exciting projects. Whether you have a question or just want to say hi, feel free to reach out!",
+    "description": "I truly believe that the best projects start with genuine conversations. Whether you're exploring new opportunities, have questions about technology, or just want to connect—I'm all ears! Every message matters, and I look forward to hearing your story.",
     "email": {
       "label": "Email"
     },
@@ -30,7 +30,7 @@
     "message-placeholder": "Enter your message here...",
     "submit": "Send Message",
     "sending": "Sending...",
-    "success": "Your message has been sent successfully! I'll get back to you soon.",
+    "success": "Thank you for reaching out! Your message means a lot to me. I'll get back to you as soon as possible—usually within 24 hours.",
     "error": "An error occurred. Please try again later.",
     "rate-limit": "Too many requests. Please wait a few minutes before trying again.",
     "errors": {
@@ -45,8 +45,8 @@
     }
   },
   "freelance": {
-    "title": "Available for Freelance Projects",
-    "description": "I'm currently accepting new freelance projects and consulting opportunities. Whether you need a full-stack web application, UI/UX improvements, or technical consultation, I'd love to help bring your vision to life.",
+    "title": "Open for Exciting Collaborations",
+    "description": "I'm currently welcoming new freelance projects and consulting opportunities. Whether you need a full-stack web application, UI/UX enhancements, or technical guidance—I'd be honored to help transform your vision into reality. Let's build something remarkable together.",
     "available": "Available for new projects",
     "response": "Quick response time",
     "flexible": "Flexible scheduling"

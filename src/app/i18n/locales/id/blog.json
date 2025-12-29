@@ -1,6 +1,6 @@
 {
   "title": "Blog",
-  "subtitle": "Pemikiran, tutorial, dan wawasan tentang pengembangan web",
+  "subtitle": "Cerita, Wawasan, dan Pembelajaran dari Perjalanan Saya",
   "back-to-home": "Kembali ke halaman utama",
   "read-more": "Baca selengkapnya",
   "featured": "Unggulan",
@@ -11,23 +11,23 @@
   "retry": "Coba Lagi",
   "featured-posts": {
     "title": "Postingan Unggulan",
-    "description": "Artikel populer dengan keterlibatan terbanyak dari komunitas"
+    "description": "Artikel yang paling banyak memicu diskusi dan beresonansi dengan komunitas"
   },
   "recent-posts": {
     "title": "Semua Postingan",
-    "description": "Artikel dan tutorial terbaru dari perjalanan pengembangan saya"
+    "description": "Perspektif segar dan tutorial praktis dari perjalanan saya di dunia pengembangan software"
   },
   "follow": {
-    "title": "Ikuti Saya di Dev.to",
-    "description": "Dapatkan notifikasi tentang artikel baru dan bergabunglah dalam diskusi. Saya secara rutin membagikan wawasan tentang pengembangan web, tips pemrograman, dan tutorial teknologi.",
-    "button": "Ikuti di Dev.to",
-    "note": "Bergabunglah dengan komunitas dan jangan lewatkan postingan!"
+    "title": "Bergabung di Dev.to",
+    "description": "Mari berkembang bersama! Follow saya untuk update artikel baru dan ikut diskusi yang menarik. Saya rutin berbagi insight tentang web development, tips pemrograman praktis, dan tutorial teknologi yang saya harap ada waktu saya baru mulai belajar.",
+    "button": "Follow di Dev.to",
+    "note": "Gabung di komunitas dan jangan lewatkan insight menarik!"
   },
   "newsletter": {
-    "title": "Tetap Update",
-    "description": "Berlangganan untuk mendapat notifikasi tentang posting blog dan update terbaru.",
+    "title": "Tetap Terhubung",
+    "description": "Jadi yang pertama tahu update dan insight terbaru. Subscribe untuk dapat konten menarik langsung ke inbox Anda.",
     "placeholder": "Masukkan email Anda",
     "button": "Berlangganan",
-    "privacy": "Tanpa spam, berhenti berlangganan kapan saja. Saya menghormati privasi Anda dan hanya akan mengirimkan konten yang berharga."
+    "privacy": "Privasi Anda dijaga. Tanpa spam. Berhenti langganan kapan saja. Saya cuma kirim konten bermanfaat yang saya yakin bisa membantu Anda berkembang."
   }
 }

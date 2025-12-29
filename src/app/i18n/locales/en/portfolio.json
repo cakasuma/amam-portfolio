@@ -1,6 +1,6 @@
 {
   "title": "Portfolio",
-  "subtitle": "A showcase of my recent projects and work",
+  "subtitle": "Turning Ideas into Reality, One Project at a Time",
   "back-to-home": "Back to home",
   "view-demo": "Live Demo",
   "view-code": "View Code",
@@ -9,16 +9,16 @@
   "featured": "Featured",
   "featured-projects": {
     "title": "Featured Projects",
-    "description": "Highlighting some of my most impactful and technically challenging projects"
+    "description": "A collection of work I'm most proud of—projects that challenged me, taught me valuable lessons, and made a real impact"
   },
   "other-projects": {
     "title": "Other Projects",
-    "description": "Additional projects showcasing various technologies and creative solutions"
+    "description": "More explorations in creative problem-solving and innovative solutions across various technologies"
   },
   "view-resume": "View Resume",
   "cta": {
-    "title": "Interested in working together?",
-    "description": "I'm always open to discussing new opportunities and exciting projects.",
+    "title": "Let's Build Something Amazing Together",
+    "description": "I'm always excited to discuss new ideas and explore opportunities for collaboration. Your next project could be our next success story.",
     "button": "Get in Touch"
   }
 }

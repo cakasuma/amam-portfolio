@@ -6,7 +6,7 @@
   "phone": "+60 10-844 4970",
   "birthday": "Born: January 1, 1990",
   "role": "Tech Lead Fullstack & Software Engineering Lecturer",
-  "hero-description": "Tech Team Lead at Deriv, specializing in building robust web and mobile platforms. Software Engineering Lecturer at RevoU, coaching aspiring engineers. Passionate about creating user-focused, high-performance web and mobile applications.",
+  "hero-description": "As Tech Team Lead at Deriv, I transform ideas into robust web and mobile platforms that empower millions of users. I'm also honored to guide the next generation of engineers at RevoU, sharing the passion and practical wisdom gained from years in the industry. Every line of code I write is driven by a commitment to creating experiences that are both powerful and delightful.",
   "location": "Kuala Lumpur, Malaysia",
   "contact-info": {
     "email-label": "Email",
@@ -22,29 +22,29 @@
   },
   "about": {
     "title": "About Me",
-    "content": "I am a Tech Team Lead at Deriv and Software Engineering Lecturer at RevoU. With expertise in JavaScript, TypeScript, React, Next.js, and Node.js, I lead web platform initiatives and mentor aspiring developers. I believe that creativity and understanding users are equally important as technical ability in building successful applications.",
-    "learning": "Continuously learning new technologies like Kotlin, Flutter, Swift, Go, and Python while staying up-to-date with the latest industry trends."
+    "content": "Technology is more than just code—it's about solving real problems and touching lives. As a Tech Team Lead at Deriv and Software Engineering Lecturer at RevoU, I bring together technical excellence and a deep understanding of what users truly need. With expertise spanning JavaScript, TypeScript, React, Next.js, and Node.js, I've had the privilege of leading teams and mentoring passionate developers on their journey to becoming great engineers. I believe the magic happens when creativity, empathy, and technical skill converge.",
+    "learning": "The learning never stops! I'm constantly exploring new horizons—Kotlin, Flutter, Swift, Go, Python—while staying connected to the pulse of our ever-evolving industry."
   },
   "what-i-do": {
     "title": "What I Do",
-    "content": "I lead web platform fullstack development at Deriv, driving initiatives like OAuth implementation and partner onboarding experiences. I also teach software engineering at RevoU, coaching hundreds of aspiring engineers. I specialize in React, Next.js, TypeScript, Node.js, and modern CSS frameworks."
+    "content": "At Deriv, I lead our web platform fullstack development team, orchestrating complex initiatives like OAuth implementation and crafting seamless partner onboarding experiences. Beyond the corporate world, my heart finds joy in the classroom at RevoU, where I've had the honor of guiding hundreds of aspiring engineers as they discover their potential. My technical toolkit—React, Next.js, TypeScript, Node.js, and modern CSS frameworks—is always at the service of creating solutions that truly matter."
   },
   "testimonials": {
     "title": "Testimonials",
-    "content": "What my clients say about working with me.",
-    "trusted": "Trusted by clients and colleagues for delivering high-quality work and exceptional results.",
-    "quote1": "Mustofa is an exceptional developer who consistently delivers high-quality work. His attention to detail and problem-solving skills are outstanding.",
-    "author1": "Sarah Johnson, Project Manager",
-    "quote2": "Working with Mustofa was a pleasure. He's professional, reliable, and his technical expertise helped bring our vision to life.",
-    "author2": "Alex Chen, Startup Founder"
+    "content": "Kind words from colleagues who've been part of my journey.",
+    "trusted": "Grateful for the trust and collaboration from talented individuals I've had the honor to work alongside.",
+    "quote1": "Mustofa brings both technical excellence and genuine care to everything he does. His ability to understand complex problems and guide teams toward elegant solutions is truly remarkable. Working with him has been both inspiring and rewarding.",
+    "author1": "Yashim Wong, Staff Engineer at Deriv",
+    "quote2": "What sets Mustofa apart is not just his technical prowess, but his warm approach to leadership and mentorship. He has a gift for making challenging concepts accessible and creating an environment where everyone feels valued and motivated to grow.",
+    "author2": "Lipika, Senior Manager at Deriv"
   },
   "clients": {
     "title": "Clients",
     "content": "Companies I've had the pleasure to work with."
   },
   "cta": {
-    "title": "Ready to work together?",
-    "description": "Let's create something amazing together! I'm always excited to take on new challenges and bring innovative ideas to life.",
+    "title": "Let's Create Something Amazing Together",
+    "description": "Whether you're looking to build a groundbreaking application, need guidance on your tech journey, or simply want to exchange ideas—I'd love to hear from you. Every great project starts with a conversation.",
     "get-in-touch": "Get in Touch",
     "view-my-work": "View My Work"
   }

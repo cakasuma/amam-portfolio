@@ -1,6 +1,6 @@
 {
   "title": "Blog",
-  "subtitle": "Thoughts, tutorials, and insights about web development",
+  "subtitle": "Stories, Insights, and Lessons from My Development Journey",
   "back-to-home": "Back to home",
   "read-more": "Read more",
   "featured": "Featured",
@@ -11,23 +11,23 @@
   "retry": "Try Again",
   "featured-posts": {
     "title": "Featured Posts",
-    "description": "Popular articles with the most engagement from the community"
+    "description": "The articles that sparked the most conversations and resonated deeply with our community"
   },
   "recent-posts": {
     "title": "All Posts",
-    "description": "Latest articles and tutorials from my development journey"
+    "description": "Fresh perspectives and practical tutorials from my ongoing journey in software development"
   },
   "follow": {
-    "title": "Follow Me on Dev.to",
-    "description": "Get notified about new articles and join the discussion. I regularly share insights about web development, programming tips, and tech tutorials.",
+    "title": "Join Me on Dev.to",
+    "description": "Let's grow together! Follow me to stay updated with new articles and be part of meaningful discussions. I regularly share insights about web development, practical programming tips, and tech tutorials that I wish I had when I was starting out.",
     "button": "Follow on Dev.to",
-    "note": "Join the community and never miss a post!"
+    "note": "Join our community and never miss an insight!"
   },
   "newsletter": {
-    "title": "Stay Updated",
-    "description": "Subscribe to get notified about new blog posts and updates.",
+    "title": "Stay Connected",
+    "description": "Be the first to know about new insights and updates. Subscribe to receive thoughtful content straight to your inbox.",
     "placeholder": "Enter your email",
     "button": "Subscribe",
-    "privacy": "No spam, unsubscribe at any time. I respect your privacy and will only send valuable content."
+    "privacy": "Your privacy matters. No spam, ever. Unsubscribe anytime. I'll only share valuable content that I believe will help you grow."
   }
 }

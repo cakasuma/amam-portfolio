@@ -6,7 +6,7 @@
   "phone": "+60 10-844 4970",
   "birthday": "Lahir: 1 Januari 1990",
   "role": "Tech Lead Fullstack & Pengajar Software Engineering",
-  "hero-description": "Tech Team Lead di Deriv, mengkhususkan diri dalam membangun platform web yang tangguh. Pengajar Software Engineering di RevoU, membimbing para calon engineer. Bersemangat dalam menciptakan aplikasi web yang berfokus pada pengguna dan berkinerja tinggi.",
+  "hero-description": "Sebagai Tech Team Lead di Deriv, saya mengubah ide menjadi platform web dan mobile yang memberdayakan jutaan pengguna. Saya juga merasa terhormat membimbing generasi insinyur masa depan di RevoU, berbagi passion dan kebijaksanaan praktis yang didapat dari pengalaman bertahun-tahun di industri ini. Setiap baris kode yang saya tulis didorong oleh komitmen untuk menciptakan pengalaman yang powerful sekaligus menyenangkan.",
   "location": "Kuala Lumpur, Malaysia",
   "contact-info": {
     "email-label": "Email",
@@ -22,29 +22,29 @@
   },
   "about": {
     "title": "Tentang Saya",
-    "content": "Saya adalah Tech Team Lead di Deriv dan Pengajar Software Engineering di RevoU. Dengan keahlian dalam JavaScript, TypeScript, React, Next.js, dan Node.js, saya memimpin inisiatif platform web dan membimbing developer pemula. Saya percaya bahwa kreativitas dan pemahaman terhadap pengguna sama pentingnya dengan kemampuan teknis dalam membangun aplikasi yang sukses.",
-    "learning": "Terus belajar teknologi baru seperti Kotlin, Flutter, Swift, Go, dan Python sambil mengikuti tren industri terbaru."
+    "content": "Teknologi bukan hanya tentang kode—ini tentang memecahkan masalah nyata dan menyentuh kehidupan. Sebagai Tech Team Lead di Deriv dan Pengajar Software Engineering di RevoU, saya menggabungkan keunggulan teknis dengan pemahaman mendalam tentang apa yang benar-benar dibutuhkan pengguna. Dengan keahlian yang mencakup JavaScript, TypeScript, React, Next.js, dan Node.js, saya memiliki privilese untuk memimpin tim dan membimbing developer yang passionate dalam perjalanan mereka menjadi insinyur hebat. Saya percaya keajaiban terjadi ketika kreativitas, empati, dan kemampuan teknis bertemu.",
+    "learning": "Pembelajaran tidak pernah berhenti! Saya terus menjelajahi horizon baru—Kotlin, Flutter, Swift, Go, Python—sambil tetap terhubung dengan denyut nadi industri yang terus berkembang."
   },
   "what-i-do": {
     "title": "Apa Yang Saya Lakukan",
-    "content": "Saya memimpin pengembangan fullstack platform web di Deriv, mendorong inisiatif seperti implementasi OAuth dan pengalaman onboarding partner. Saya juga mengajar software engineering di RevoU, membimbing ratusan calon engineer. Saya mengkhususkan diri dalam React, Next.js, TypeScript, Node.js, dan framework CSS modern."
+    "content": "Di Deriv, saya memimpin tim pengembangan fullstack platform web, mengorkestrasi inisiatif kompleks seperti implementasi OAuth dan menciptakan pengalaman onboarding partner yang seamless. Di luar dunia korporat, hati saya menemukan kebahagiaan di ruang kelas RevoU, di mana saya memiliki kehormatan membimbing ratusan calon insinyur saat mereka menemukan potensi mereka. Perangkat teknis saya—React, Next.js, TypeScript, Node.js, dan framework CSS modern—selalu siap untuk menciptakan solusi yang benar-benar bermakna."
   },
   "testimonials": {
     "title": "Testimoni",
-    "content": "Apa yang klien saya katakan tentang bekerja dengan saya.",
-    "trusted": "Dipercaya oleh klien dan rekan kerja untuk memberikan pekerjaan berkualitas tinggi dan hasil yang luar biasa.",
-    "quote1": "Mustofa adalah developer luar biasa yang secara konsisten memberikan pekerjaan berkualitas tinggi. Perhatiannya terhadap detail dan kemampuan pemecahan masalahnya sangat luar biasa.",
-    "author1": "Sarah Johnson, Manajer Proyek",
-    "quote2": "Bekerja dengan Mustofa adalah suatu kesenangan. Dia profesional, dapat diandalkan, dan keahlian teknisnya membantu mewujudkan visi kami.",
-    "author2": "Alex Chen, Pendiri Startup"
+    "content": "Kata-kata baik dari kolega yang telah menjadi bagian dari perjalanan saya.",
+    "trusted": "Bersyukur atas kepercayaan dan kolaborasi dari individu-individu berbakat yang telah saya ajak bekerja sama.",
+    "quote1": "Mustofa membawa keunggulan teknis dan kepedulian yang tulus dalam semua yang dia lakukan. Kemampuannya memahami masalah kompleks dan membimbing tim menuju solusi yang elegan benar-benar luar biasa. Bekerja dengannya sangat menginspirasi dan bermanfaat.",
+    "author1": "Yashim Wong, Staff Engineer di Deriv",
+    "quote2": "Yang membedakan Mustofa bukan hanya keahlian teknisnya, tetapi pendekatannya yang hangat terhadap kepemimpinan dan mentoring. Dia memiliki bakat untuk membuat konsep yang menantang menjadi mudah dipahami dan menciptakan lingkungan di mana semua orang merasa dihargai dan termotivasi untuk berkembang.",
+    "author2": "Lipika, Senior Manager di Deriv"
   },
   "clients": {
     "title": "Klien",
     "content": "Perusahaan yang telah saya ajak bekerja sama."
   },
   "cta": {
-    "title": "Siap bekerja sama?",
-    "description": "Mari ciptakan sesuatu yang luar biasa bersama! Saya selalu bersemangat untuk menghadapi tantangan baru dan mewujudkan ide-ide inovatif.",
+    "title": "Mari Ciptakan Sesuatu yang Luar Biasa Bersama",
+    "description": "Baik Anda ingin membangun aplikasi yang inovatif, membutuhkan bimbingan dalam perjalanan teknologi Anda, atau sekadar ingin bertukar ide—saya sangat senang mendengar dari Anda. Setiap proyek hebat dimulai dengan percakapan.",
     "get-in-touch": "Hubungi Saya",
     "view-my-work": "Lihat Karya Saya"
   }

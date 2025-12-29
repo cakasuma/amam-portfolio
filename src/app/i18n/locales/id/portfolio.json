@@ -1,6 +1,6 @@
 {
   "title": "Portfolio",
-  "subtitle": "Showcase dari proyek dan karya terbaru saya",
+  "subtitle": "Mengubah Ide Menjadi Kenyataan, Satu Proyek Setiap Saat",
   "back-to-home": "Kembali ke halaman utama",
   "view-demo": "Demo Langsung",
   "view-code": "Lihat Kode",
@@ -9,16 +9,16 @@
   "featured": "Unggulan",
   "featured-projects": {
     "title": "Proyek Unggulan",
-    "description": "Menyoroti beberapa proyek saya yang paling berdampak dan menantang secara teknis"
+    "description": "Koleksi karya yang paling saya banggakan—proyek yang menantang saya, mengajarkan pelajaran berharga, dan memberikan dampak nyata"
   },
   "other-projects": {
     "title": "Proyek Lainnya",
-    "description": "Proyek tambahan yang menampilkan berbagai teknologi dan solusi kreatif"
+    "description": "Lebih banyak eksplorasi dalam pemecahan masalah kreatif dan solusi inovatif di berbagai teknologi"
   },
   "view-resume": "Lihat Resume",
   "cta": {
-    "title": "Tertarik untuk bekerja sama?",
-    "description": "Saya selalu terbuka untuk mendiskusikan peluang baru dan proyek yang menarik.",
+    "title": "Mari Bangun Sesuatu yang Luar Biasa Bersama",
+    "description": "Saya selalu bersemangat untuk mendiskusikan ide-ide baru dan mengeksplorasi peluang kolaborasi. Proyek Anda berikutnya bisa menjadi kisah sukses kita berikutnya.",
     "button": "Hubungi Saya"
   }
 }

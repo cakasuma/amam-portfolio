@@ -1,10 +1,10 @@
 {
   "title": "Kontak",
-  "subtitle": "Mari terhubung dan diskusikan proyek Anda selanjutnya",
+  "subtitle": "Mari Terhubung dan Wujudkan Visi Anda",
   "back-to-home": "Kembali ke halaman utama",
   "info": {
     "title": "Hubungi Saya",
-    "description": "Saya selalu tertarik mendengar tentang peluang baru dan proyek yang menarik. Apakah Anda memiliki pertanyaan atau hanya ingin menyapa, jangan ragu untuk menghubungi!",
+    "description": "Saya sungguh percaya bahwa proyek terbaik dimulai dengan percakapan yang tulus. Baik Anda sedang menjelajahi peluang baru, memiliki pertanyaan tentang teknologi, atau hanya ingin terhubung—saya siap mendengarkan! Setiap pesan berarti, dan saya menantikan untuk mendengar cerita Anda.",
     "email": {
       "label": "Email"
     },
@@ -30,7 +30,7 @@
     "message-placeholder": "Masukkan pesan Anda di sini...",
     "submit": "Kirim Pesan",
     "sending": "Mengirim...",
-    "success": "Pesan Anda telah berhasil dikirim! Saya akan segera menghubungi Anda.",
+    "success": "Terima kasih telah menghubungi! Pesan Anda sangat berarti bagi saya. Saya akan segera menghubungi Anda kembali—biasanya dalam 24 jam.",
     "error": "Terjadi kesalahan. Silakan coba lagi nanti.",
     "rate-limit": "Terlalu banyak permintaan. Silakan tunggu beberapa menit sebelum mencoba lagi.",
     "errors": {
@@ -45,8 +45,8 @@
     }
   },
   "freelance": {
-    "title": "Tersedia untuk Proyek Freelance",
-    "description": "Saya saat ini menerima proyek freelance baru dan peluang konsultasi. Apakah Anda membutuhkan aplikasi web full-stack, perbaikan UI/UX, atau konsultasi teknis, saya dengan senang hati membantu mewujudkan visi Anda.",
+    "title": "Terbuka untuk Kolaborasi Menarik",
+    "description": "Saya saat ini menerima proyek freelance baru dan peluang konsultasi. Apakah Anda membutuhkan aplikasi web full-stack, peningkatan UI/UX, atau bimbingan teknis—saya akan merasa terhormat membantu mengubah visi Anda menjadi kenyataan. Mari bangun sesuatu yang luar biasa bersama.",
     "available": "Tersedia untuk proyek baru",
     "response": "Waktu respons cepat",
     "flexible": "Penjadwalan fleksibel"

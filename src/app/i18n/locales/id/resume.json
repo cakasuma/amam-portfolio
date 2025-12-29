@@ -1,7 +1,7 @@
 {
   "title": "Resume",
   "back-to-home": "Kembali ke halaman utama",
-  "subtitle": "Pengalaman, Keahlian, dan Perjalanan Profesional",
+  "subtitle": "Perjalanan Pertumbuhan, Dampak, dan Pembelajaran Berkelanjutan",
   "personal-info": {
     "title": "Informasi Pribadi",
     "name": "Nama",
@@ -20,25 +20,25 @@
       "title": "Tech Team Lead - Web Platform Fullstack",
       "company": "Deriv",
       "period": "Juli 2024 - Sekarang",
-      "description": "Memimpin inisiatif fullstack platform web, mendorong peningkatan implementasi OAuth dan pengalaman onboarding partner. Mengelola tim lintas fungsi untuk memberikan solusi fintech yang berkualitas tinggi dan skalabel."
+      "description": "Memimpin tim lintas fungsi untuk mengubah ide-ide ambisius menjadi kenyataan. Mengorkestrasi peningkatan implementasi OAuth dan menciptakan pengalaman onboarding partner yang intuitif yang menetapkan standar baru di fintech. Setiap hari membawa kesempatan untuk membimbing individu berbakat dan mendorong batasan dari apa yang mungkin dengan teknologi web modern."
     },
     "job2": {
       "title": "Lead Frontend Developer",
       "company": "Deriv (sebelumnya Binary.com)",
       "period": "2018 - 2024",
-      "description": "Memimpin pengembangan aplikasi web modern menggunakan React, Next.js, TypeScript, dan Node.js. Membimbing developer junior dan mengimplementasikan praktik terbaik untuk kualitas dan performa kode. Membangun aplikasi yang berfokus pada pengguna yang menerjemahkan desain menjadi pengalaman web yang cepat dan interaktif."
+      "description": "Mempelopori pengembangan aplikasi web inovatif yang melayani jutaan pengguna secara global. Menggunakan React, Next.js, TypeScript, dan Node.js, saya memimpin inisiatif yang menyeimbangkan keunggulan teknis dengan kepuasan pengguna. Membimbing developer junior, memupuk budaya pembelajaran berkelanjutan dan praktik terbaik yang meningkatkan kapabilitas seluruh tim kami."
     },
     "job3": {
       "title": "Senior Mobile Engineer",
       "company": "MoneyLion",
       "period": "Oktober 2021 - September 2023",
-      "description": "Bekerja sama dengan manajer, backend, dan tester untuk memastikan alur pembayaran dan fitur berjalan lancar. Membangun dan memelihara aplikasi mobile menggunakan React Native dan Redux, memberikan solusi fintech berkualitas tinggi untuk jutaan pengguna."
+      "description": "Berkolaborasi erat dengan tim lintas fungsi untuk memastikan alur pembayaran dan pengiriman fitur yang sempurna untuk jutaan pengguna. Membangun dan memelihara aplikasi mobile berkinerja tinggi menggunakan React Native dan Redux, selalu menempatkan pengalaman pengguna di jantung setiap keputusan. Setiap fitur yang diluncurkan adalah bukti dedikasi tim kami terhadap kualitas dan keandalan."
     },
     "job4": {
       "title": "Pengajar Software Engineering",
       "company": "RevoU",
       "period": "Part-time",
-      "description": "Membimbing dan melatih mahasiswa software engineering, berbagi wawasan praktis dari pengalaman industri untuk membantu mereka mengembangkan keterampilan yang siap kerja dalam pengembangan web modern."
+      "description": "Salah satu kebahagiaan terbesar saya adalah membimbing calon insinyur saat mereka mengambil langkah pertama mereka ke dunia pengembangan perangkat lunak. Berbagi wawasan dunia nyata dan kebijaksanaan praktis yang didapat dari tahun-tahun di industri, saya membantu mahasiswa membangun tidak hanya keterampilan teknis, tetapi juga kepercayaan diri dan pola pikir yang dibutuhkan untuk berkembang dalam pengembangan web modern."
     }
   },
   "education": {

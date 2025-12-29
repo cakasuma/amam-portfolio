@@ -3,8 +3,14 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   // Enable experimental features
   experimental: {
-    optimizePackageImports: ['framer-motion', 'react-icons'],
+    optimizePackageImports: ['motion', 'react-icons'],
   },
+
+  // Enable Cache Components (formerly PPR) for better performance
+  cacheComponents: true,
+
+  // Optimize React compiler for better performance
+  reactStrictMode: true,
 
   // Security headers for production
   async headers() {

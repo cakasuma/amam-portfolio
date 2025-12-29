@@ -1,4 +1,5 @@
-import { motion } from "motion/react";
 import Link from "next/link";
 
-export default motion.create(Link);
+// Use regular Next.js Link for optimal performance
+// Motion animations on links can significantly slow down navigation
+export default Link;

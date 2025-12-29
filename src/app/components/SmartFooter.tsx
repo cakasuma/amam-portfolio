@@ -13,7 +13,7 @@ export const SmartFooter = memo(function SmartFooter({
   lng,
 }: SmartFooterProps) {
   const pathname = usePathname();
-  const { t } = useTranslation(lng);
+  const { t, ready } = useTranslation(lng);
   const [isHidden, setIsHidden] = useState(false);
   const { scrollY } = useScroll();
 
@@ -50,12 +50,14 @@ export const SmartFooter = memo(function SmartFooter({
     }
   });
 
+  // Always render the navigation, even if translations aren't ready yet
+  // This ensures mobile navigation is always visible
   return (
     <motion.nav
-      className="fixed bottom-0 left-0 right-0 md:hidden z-50"
+      className="sticky bottom-0 left-0 right-0 md:hidden z-50"
       initial={{ y: 0 }}
       animate={{ y: isHidden ? "100%" : 0 }}
-      transition={{ duration: 0.3, ease: "easeInOut" }}
+      transition={{ duration: 0.25, ease: "easeInOut" }}
       role="navigation"
       aria-label="Mobile navigation"
     >
@@ -66,7 +68,8 @@ export const SmartFooter = memo(function SmartFooter({
             <Link
               key={item.href}
               href={item.href}
-              className={`group flex flex-col items-center text-sm font-medium transition-all duration-300 relative overflow-hidden rounded-lg p-2 min-w-[64px] ${
+              prefetch={true}
+              className={`group flex flex-col items-center text-sm font-medium transition-all duration-200 relative overflow-hidden rounded-lg p-2 min-w-[64px] active:scale-95 ${
                 isActive ? "text-foreground" : "text-foreground hover:shadow-sm"
               }`}
               aria-current={isActive ? "page" : undefined}
@@ -79,13 +82,13 @@ export const SmartFooter = memo(function SmartFooter({
                   transition={{
                     type: "spring",
                     bounce: 0.15,
-                    duration: 0.5,
+                    duration: 0.4,
                   }}
                 />
               )}
 
               {/* Content */}
-              <span className="relative z-10 text-lg mb-1 group-hover:scale-110 transition-transform duration-200">
+              <span className="relative z-10 text-lg mb-1 group-hover:scale-110 transition-transform duration-150">
                 {item.icon}
               </span>
               <span
@@ -98,10 +101,7 @@ export const SmartFooter = memo(function SmartFooter({
 
               {/* Hover effect for non-active items */}
               {!isActive && (
-                <motion.div
-                  className="absolute inset-0 bg-accent/50 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-                  initial={false}
-                />
+                <div className="absolute inset-0 bg-accent/50 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-150" />
               )}
             </Link>
           );

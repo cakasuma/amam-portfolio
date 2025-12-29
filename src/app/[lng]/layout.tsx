@@ -109,6 +109,16 @@ export const metadata: Metadata = {
   verification: {
     google: process.env.GOOGLE_SITE_VERIFICATION,
   },
+  icons: {
+    icon: [
+      { url: "/favicons/favicon.ico", sizes: "32x32" },
+      { url: "/favicons/favicon.svg", type: "image/svg+xml" },
+      { url: "/icon.svg", type: "image/svg+xml" },
+    ],
+    apple: [
+      { url: "/favicons/apple-touch-icon.png" },
+    ],
+  },
 };
 
 export default function RootLayout({
@@ -139,8 +149,9 @@ export default function RootLayout({
         {/* Favicon and app icons */}
         <link rel="icon" href="/favicons/favicon.ico" sizes="32x32" />
         <link rel="icon" href="/favicons/favicon.svg" type="image/svg+xml" />
+        <link rel="icon" href="/icon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/favicons/apple-touch-icon.png" />
-        <link rel="manifest" href="/manifest.json" />
+        <link rel="manifest" href="/favicons/site.webmanifest" />
 
         {/* Theme color for mobile browsers */}
         <meta name="theme-color" content="#8b4513" />

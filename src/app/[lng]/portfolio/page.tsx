@@ -21,7 +21,7 @@ interface PortfolioProps {
 
 export default function Portfolio({ params }: PortfolioProps) {
   const { lng } = use(params);
-  const { t } = useTranslation(lng, "portfolio");
+  const { t, ready } = useTranslation(lng, "portfolio");
 
   const projects = [
     {
@@ -100,6 +100,17 @@ export default function Portfolio({ params }: PortfolioProps) {
 
   const featuredProjects = projects.filter((project) => project.featured);
   const otherProjects = projects.filter((project) => !project.featured);
+
+  // Show loading state until translations are ready
+  if (!ready) {
+    return (
+      <PageLayout>
+        <div className="min-h-screen flex items-center justify-center">
+          <div className="animate-pulse text-muted">Loading...</div>
+        </div>
+      </PageLayout>
+    );
+  }
 
   return (
     <PageLayout>

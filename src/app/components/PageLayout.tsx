@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { ReactNode } from "react";
+import { ReactNode, memo } from "react";
 import { Card } from "@/components/ui";
 
 interface PageLayoutProps {
@@ -11,7 +11,7 @@ interface PageLayoutProps {
   gradient?: boolean;
 }
 
-export default function PageLayout({
+const PageLayout = memo(function PageLayout({
   children,
   className = "",
   maxWidth = "6xl",
@@ -32,7 +32,9 @@ export default function PageLayout({
       </div>
     </div>
   );
-}
+});
+
+export default PageLayout;
 
 // Enhanced page header component with better SEO structure
 interface PageHeaderProps {
@@ -41,14 +43,16 @@ interface PageHeaderProps {
   children?: ReactNode;
   delay?: number;
   level?: 1 | 2 | 3;
+  animate?: boolean;
 }
 
-export function PageHeader({
+export const PageHeader = memo(function PageHeader({
   title,
   subtitle,
   children,
   delay = 0,
   level = 1,
+  animate = true,
 }: PageHeaderProps) {
   const headingStyles = {
     1: "text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4 lg:mb-6",
@@ -70,14 +74,8 @@ export function PageHeader({
     }
   };
 
-  return (
-    <motion.header
-      className="text-center mb-12 lg:mb-16"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay }}
-      role="banner"
-    >
+  const content = (
+    <>
       {renderHeading()}
       {subtitle && (
         <p className="text-lg md:text-xl text-text-secondary max-w-2xl mx-auto mb-6">
@@ -85,9 +83,29 @@ export function PageHeader({
         </p>
       )}
       {children}
+    </>
+  );
+
+  if (!animate) {
+    return (
+      <header className="text-center mb-12 lg:mb-16" role="banner">
+        {content}
+      </header>
+    );
+  }
+
+  return (
+    <motion.header
+      className="text-center mb-12 lg:mb-16"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4, delay }}
+      role="banner"
+    >
+      {content}
     </motion.header>
   );
-}
+});
 
 // Enhanced animated card component using the new Card UI component
 interface AnimatedCardProps {
@@ -97,15 +115,17 @@ interface AnimatedCardProps {
   direction?: "up" | "left" | "right";
   hover?: boolean;
   glass?: boolean;
+  animate?: boolean;
 }
 
-export function AnimatedCard({
+export const AnimatedCard = memo(function AnimatedCard({
   children,
   className = "",
   delay = 0,
   direction = "up",
   hover = true,
   glass = false,
+  animate = true,
 }: AnimatedCardProps) {
   return (
     <Card
@@ -114,11 +134,12 @@ export function AnimatedCard({
       direction={direction}
       hover={hover}
       glass={glass}
+      animate={animate}
     >
       {children}
     </Card>
   );
-}
+});
 
 // Enhanced section wrapper component with better semantic structure
 interface SectionProps {
@@ -127,28 +148,38 @@ interface SectionProps {
   delay?: number;
   id?: string;
   ariaLabel?: string;
+  animate?: boolean;
 }
 
-export function Section({
+export const Section = memo(function Section({
   children,
   className = "",
   delay = 0,
   id,
   ariaLabel,
+  animate = true,
 }: SectionProps) {
+  if (!animate) {
+    return (
+      <section id={id} className={`mb-8 lg:mb-12 ${className}`} aria-label={ariaLabel}>
+        {children}
+      </section>
+    );
+  }
+
   return (
     <motion.section
       id={id}
       className={`mb-8 lg:mb-12 ${className}`}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay }}
+      transition={{ duration: 0.4, delay }}
       aria-label={ariaLabel}
     >
       {children}
     </motion.section>
   );
-}
+});
 
 // New components for better structure
 
@@ -157,12 +188,14 @@ interface HeroSectionProps {
   children: ReactNode;
   className?: string;
   background?: "gradient" | "solid";
+  animate?: boolean;
 }
 
-export function HeroSection({
+export const HeroSection = memo(function HeroSection({
   children,
   className = "",
   background = "gradient",
+  animate = true,
 }: HeroSectionProps) {
   return (
     <Section
@@ -172,11 +205,12 @@ export function HeroSection({
           : "bg-background"
       } ${className}`}
       ariaLabel="Hero section"
+      animate={animate}
     >
       {children}
     </Section>
   );
-}
+});
 
 // Content grid for organizing sections
 interface ContentGridProps {
@@ -186,7 +220,7 @@ interface ContentGridProps {
   className?: string;
 }
 
-export function ContentGrid({
+export const ContentGrid = memo(function ContentGrid({
   children,
   columns = 2,
   gap = "lg",
@@ -209,7 +243,7 @@ export function ContentGrid({
       {children}
     </div>
   );
-}
+});
 
 // Call-to-action section
 interface CTASectionProps {
@@ -218,14 +252,16 @@ interface CTASectionProps {
   children?: ReactNode;
   className?: string;
   variant?: "primary" | "secondary";
+  animate?: boolean;
 }
 
-export function CTASection({
+export const CTASection = memo(function CTASection({
   title,
   description,
   children,
   className = "",
   variant = "primary",
+  animate = true,
 }: CTASectionProps) {
   const bgClass =
     variant === "primary"
@@ -233,8 +269,8 @@ export function CTASection({
       : "bg-accent text-foreground border border-border";
 
   return (
-    <Section className={`text-center ${className}`}>
-      <Card className={`${bgClass} p-8 md:p-12`} hover={false}>
+    <Section className={`text-center ${className}`} animate={animate}>
+      <Card className={`${bgClass} p-8 md:p-12`} hover={false} animate={animate}>
         <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">
           {title}
         </h2>
@@ -247,4 +283,4 @@ export function CTASection({
       </Card>
     </Section>
   );
-}
+});

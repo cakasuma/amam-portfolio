@@ -4,7 +4,7 @@ import ThemeSwitcher from "./ThemeSwitcher";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTranslation } from "@/app/i18n/client";
-import { memo, useMemo } from "react";
+import { memo, useMemo, useCallback } from "react";
 
 export const Navigation = memo(function Navigation({ lng }: { lng: string }) {
   const pathname = usePathname();
@@ -50,6 +50,7 @@ export const Navigation = memo(function Navigation({ lng }: { lng: string }) {
               <Link
                 key={item.href}
                 href={item.href}
+                prefetch={true}
                 className={`flex flex-col items-center text-sm transition-colors focus-ring rounded-md p-2 ${
                   isActive ? "text-primary" : "text-muted hover:text-foreground"
                 }`}

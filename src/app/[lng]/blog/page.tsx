@@ -42,7 +42,7 @@ function BlogPostSkeleton() {
 
 export default function Blog({ params }: BlogProps) {
   const { lng } = use(params);
-  const { t } = useTranslation(lng, "blog");
+  const { t, ready } = useTranslation(lng, "blog");
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -67,6 +67,17 @@ export default function Blog({ params }: BlogProps) {
 
   const featuredPosts = blogPosts.filter((post) => post.featured);
   const regularPosts = blogPosts.filter((post) => !post.featured);
+
+  // Show loading state until translations are ready
+  if (!ready) {
+    return (
+      <PageLayout maxWidth="5xl">
+        <div className="min-h-screen flex items-center justify-center">
+          <div className="animate-pulse text-muted">Loading...</div>
+        </div>
+      </PageLayout>
+    );
+  }
 
   return (
     <PageLayout maxWidth="5xl">

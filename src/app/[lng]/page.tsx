@@ -22,7 +22,7 @@ interface HomeProps {
 
 export default function Home({ params }: HomeProps) {
   const { lng } = use(params);
-  const { t } = useTranslation(lng);
+  const { t, ready } = useTranslation(lng);
 
   // Memoize contact info to avoid recreating on every render
   const contactInfo = useMemo(
@@ -82,6 +82,17 @@ export default function Home({ params }: HomeProps) {
     () => ["React", "Next.js", "TypeScript", "Node.js", "Tailwind CSS", "PostgreSQL"],
     []
   );
+
+  // Don't render content until translations are ready
+  if (!ready) {
+    return (
+      <PageLayout>
+        <div className="min-h-screen flex items-center justify-center">
+          <div className="animate-pulse text-muted">Loading...</div>
+        </div>
+      </PageLayout>
+    );
+  }
 
   return (
     <PageLayout>

@@ -15,7 +15,7 @@ export const SmartHeader = memo(function SmartHeader({
   lng,
 }: SmartHeaderProps) {
   const pathname = usePathname();
-  const { t } = useTranslation(lng);
+  const { t, ready } = useTranslation(lng);
   const [isHidden, setIsHidden] = useState(false);
   const { scrollY } = useScroll();
 
@@ -64,6 +64,31 @@ export const SmartHeader = memo(function SmartHeader({
       setIsHidden(false);
     }
   });
+
+  // Don't render until translations are ready
+  if (!ready) {
+    return (
+      <motion.header
+        className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm transition-all duration-300 header-shadow"
+        role="banner"
+      >
+        <nav className="max-w-6xl mx-auto px-4 py-3" role="navigation" aria-label="Main navigation">
+          <div className="flex items-center justify-between">
+            <div className="hidden md:flex items-center gap-1 bg-accent rounded-xl p-3 border border-border shadow-sm">
+              {/* Loading placeholder */}
+            </div>
+            <div className="md:hidden">
+              <div className="w-12 h-12 bg-gradient-to-br from-secondary to-warning rounded-xl" />
+            </div>
+            <div className="flex items-center gap-3">
+              <LanguageSwitcher lng={lng} />
+              <ThemeSwitcher />
+            </div>
+          </div>
+        </nav>
+      </motion.header>
+    );
+  }
 
   return (
     <motion.header

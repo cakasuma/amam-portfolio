@@ -13,7 +13,7 @@ export const SmartFooter = memo(function SmartFooter({
   lng,
 }: SmartFooterProps) {
   const pathname = usePathname();
-  const { t } = useTranslation(lng);
+  const { t, ready } = useTranslation(lng);
   const [isHidden, setIsHidden] = useState(false);
   const { scrollY } = useScroll();
 
@@ -49,6 +49,11 @@ export const SmartFooter = memo(function SmartFooter({
       setIsHidden(false);
     }
   });
+
+  // Don't render until translations are ready
+  if (!ready) {
+    return null;
+  }
 
   return (
     <motion.nav

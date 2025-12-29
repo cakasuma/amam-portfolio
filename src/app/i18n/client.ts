@@ -46,28 +46,54 @@ i18next
 interface UseTranslationReturn {
     t: TFunction;
     i18n: typeof i18next;
+    ready: boolean;
 }
 
 export function useTranslation(lng: string, ns?: string | string[], options?: Record<string, unknown>): UseTranslationReturn {
     const [cookies, setCookie] = useCookies([cookieName])
-    const ret = useTranslationOrg(ns, options) as UseTranslationReturn
+    const [ready, setReady] = useState(false)
+    const ret = useTranslationOrg(ns, options) as Omit<UseTranslationReturn, 'ready'>
     const { i18n } = ret
+    
     if (runsOnServerSide && lng && i18n.resolvedLanguage !== lng) {
         i18n.changeLanguage(lng)
     } else {
         const [activeLng, setActiveLng] = useState<string>(i18n.resolvedLanguage || 'en')
+        
+        useEffect(() => {
+            // Check if translations are loaded for the current language
+            const checkReady = () => {
+                const isReady = i18n.hasResourceBundle(lng, 'translation')
+                setReady(isReady)
+            }
+            
+            checkReady()
+            
+            // Listen for language changes
+            i18n.on('languageChanged', checkReady)
+            i18n.on('loaded', checkReady)
+            
+            return () => {
+                i18n.off('languageChanged', checkReady)
+                i18n.off('loaded', checkReady)
+            }
+        }, [lng, i18n])
+        
         useEffect(() => {
             if (activeLng === i18n.resolvedLanguage) return
             setActiveLng(i18n.resolvedLanguage || 'en')
         }, [activeLng, i18n.resolvedLanguage])
+        
         useEffect(() => {
             if (!lng || i18n.resolvedLanguage === lng) return
             i18n.changeLanguage(lng)
         }, [lng, i18n])
+        
         useEffect(() => {
             if (cookies.i18next === lng) return
             setCookie(cookieName, lng, { path: '/' })
         }, [lng, cookies.i18next, setCookie])
     }
-    return ret
+    
+    return { ...ret, ready }
 }

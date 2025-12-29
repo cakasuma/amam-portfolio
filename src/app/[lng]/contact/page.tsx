@@ -31,7 +31,7 @@ interface ContactProps {
 
 export default function Contact({ params }: ContactProps) {
   const { lng } = use(params);
-  const { t } = useTranslation(lng, "contact");
+  const { t, ready } = useTranslation(lng, "contact");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -167,6 +167,17 @@ export default function Contact({ params }: ContactProps) {
       });
     }
   };
+
+  // Show loading state until translations are ready
+  if (!ready) {
+    return (
+      <PageLayout>
+        <div className="min-h-screen flex items-center justify-center">
+          <div className="animate-pulse text-muted">Loading...</div>
+        </div>
+      </PageLayout>
+    );
+  }
 
   return (
     <PageLayout>

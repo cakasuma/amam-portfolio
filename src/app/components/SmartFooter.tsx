@@ -50,11 +50,8 @@ export const SmartFooter = memo(function SmartFooter({
     }
   });
 
-  // Don't render until translations are ready
-  if (!ready) {
-    return null;
-  }
-
+  // Always render the navigation, even if translations aren't ready yet
+  // This ensures mobile navigation is always visible
   return (
     <motion.nav
       className="fixed bottom-0 left-0 right-0 md:hidden z-50"

@@ -16,7 +16,18 @@ interface ResumeProps {
 
 export default function Resume({ params }: ResumeProps) {
   const { lng } = use(params);
-  const { t } = useTranslation(lng, "resume");
+  const { t, ready } = useTranslation(lng, "resume");
+
+  // Show loading state until translations are ready
+  if (!ready) {
+    return (
+      <PageLayout maxWidth="4xl">
+        <div className="min-h-screen flex items-center justify-center">
+          <div className="animate-pulse text-muted">Loading...</div>
+        </div>
+      </PageLayout>
+    );
+  }
 
   return (
     <PageLayout maxWidth="4xl">

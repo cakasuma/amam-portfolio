@@ -47,18 +47,18 @@ const Card = memo(
       }
 
       const directionVariants = {
-        up: { y: 10 },
-        left: { x: -10 },
-        right: { x: 10 },
+        up: { y: 5 },
+        left: { x: -5 },
+        right: { x: 5 },
       };
 
       return (
         <motion.div
           ref={ref}
           className={cardClasses}
-          initial={{ opacity: 0, ...directionVariants[direction] }}
+          initial={{ opacity: 0.3, ...directionVariants[direction] }}
           animate={{ opacity: 1, x: 0, y: 0 }}
-          transition={{ duration: 0.3, delay }}
+          transition={{ duration: 0.2, delay, ease: "easeOut" }}
           {...props}
         >
           {children}

@@ -583,19 +583,12 @@ html.dark .border-runner-glow {
 }
 
 /* Performance optimizations */
-* {
-  /* Enable hardware acceleration for transforms and opacity */
-  will-change: auto;
-}
-
-/* Optimize animations for performance */
-@media (prefers-reduced-motion: no-preference) {
-  * {
-    /* Use GPU acceleration for common animations */
-    transform: translateZ(0);
-    backface-visibility: hidden;
-    perspective: 1000px;
-  }
+/* Only apply GPU acceleration to elements that actually need it */
+.motion-div,
+.animate-spin,
+[data-motion-element] {
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 /* Faster transitions for interactive elements */
@@ -606,7 +599,6 @@ a, button, [role="button"] {
 
 /* Optimize text rendering */
 body {
-  text-rendering: optimizeSpeed;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

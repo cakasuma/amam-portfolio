@@ -4,9 +4,10 @@ const nextConfig: NextConfig = {
   // Enable experimental features
   experimental: {
     optimizePackageImports: ['motion', 'react-icons'],
-    // Enable Partial Prerendering for better performance
-    ppr: 'incremental',
   },
+
+  // Enable Cache Components (formerly PPR) for better performance
+  cacheComponents: true,
 
   // Optimize React compiler for better performance
   reactStrictMode: true,

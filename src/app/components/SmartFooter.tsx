@@ -54,7 +54,7 @@ export const SmartFooter = memo(function SmartFooter({
   // This ensures mobile navigation is always visible
   return (
     <motion.nav
-      className="fixed bottom-0 left-0 right-0 md:hidden z-50"
+      className="sticky bottom-0 left-0 right-0 md:hidden z-50"
       initial={{ y: 0 }}
       animate={{ y: isHidden ? "100%" : 0 }}
       transition={{ duration: 0.25, ease: "easeInOut" }}

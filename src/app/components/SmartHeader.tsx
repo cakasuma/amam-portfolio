@@ -69,7 +69,7 @@ export const SmartHeader = memo(function SmartHeader({
   if (!ready) {
     return (
       <motion.header
-        className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm transition-all duration-300 header-shadow"
+        className="sticky top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm transition-all duration-300 header-shadow"
         role="banner"
       >
         <nav className="max-w-6xl mx-auto px-4 py-3" role="navigation" aria-label="Main navigation">
@@ -92,7 +92,7 @@ export const SmartHeader = memo(function SmartHeader({
 
   return (
     <motion.header
-      className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm transition-all duration-300 header-shadow"
+      className="sticky top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm transition-all duration-300 header-shadow"
       initial={{ y: 0 }}
       animate={{ y: isHidden ? "-100%" : 0 }}
       transition={{ duration: 0.25, ease: "easeInOut" }}

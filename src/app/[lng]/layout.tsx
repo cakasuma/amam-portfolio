@@ -128,6 +128,19 @@ export default function RootLayout({
       className="scroll-smooth"
     >
       <head>
+        {/* Prevent theme flickering on initial load */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                const theme = localStorage.getItem('theme');
+                const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                const appliedTheme = theme === 'system' || !theme ? systemTheme : theme;
+                document.documentElement.classList.add(appliedTheme);
+              } catch (e) {}
+            `,
+          }}
+        />
         {/* Preconnect to external domains for performance */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link

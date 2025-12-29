@@ -61,9 +61,11 @@ export function useTranslation(lng: string, ns?: string | string[], options?: Re
         const [activeLng, setActiveLng] = useState<string>(i18n.resolvedLanguage || 'en')
         
         useEffect(() => {
-            // Check if translations are loaded for the current language
+            // Check if translations are loaded for the current language and namespace
             const checkReady = () => {
-                const isReady = i18n.hasResourceBundle(lng, 'translation')
+                // Get the namespace to check - default to 'translation' if not specified
+                const namespaceToCheck = Array.isArray(ns) ? ns[0] : (ns || 'translation')
+                const isReady = i18n.hasResourceBundle(lng, namespaceToCheck)
                 setReady(isReady)
             }
             
@@ -77,7 +79,7 @@ export function useTranslation(lng: string, ns?: string | string[], options?: Re
                 i18n.off('languageChanged', checkReady)
                 i18n.off('loaded', checkReady)
             }
-        }, [lng, i18n])
+        }, [lng, i18n, ns])
         
         useEffect(() => {
             if (activeLng === i18n.resolvedLanguage) return

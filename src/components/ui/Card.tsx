@@ -21,7 +21,7 @@ const Card = memo(
         glass = false,
         delay = 0,
         direction = "up",
-        animate = true,
+        animate = false,
         children,
         ...props
       },

@@ -113,7 +113,7 @@ export const metadata: Metadata = {
     icon: [
       { url: "/favicons/favicon.ico", sizes: "32x32" },
       { url: "/favicons/favicon.svg", type: "image/svg+xml" },
-      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicons/favicon-96x96.png", sizes: "96x96", type: "image/png" },
     ],
     apple: [
       { url: "/favicons/apple-touch-icon.png" },
@@ -149,9 +149,9 @@ export default function RootLayout({
         {/* Favicon and app icons */}
         <link rel="icon" href="/favicons/favicon.ico" sizes="32x32" />
         <link rel="icon" href="/favicons/favicon.svg" type="image/svg+xml" />
-        <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+        <link rel="icon" href="/favicons/favicon-96x96.png" sizes="96x96" type="image/png" />
         <link rel="apple-touch-icon" href="/favicons/apple-touch-icon.png" />
-        <link rel="manifest" href="/favicons/site.webmanifest" />
+        <link rel="manifest" href="/manifest.json" />
 
         {/* Theme color for mobile browsers */}
         <meta name="theme-color" content="#8b4513" />

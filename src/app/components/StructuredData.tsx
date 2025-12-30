@@ -51,11 +51,6 @@ export function StructuredData({ lng }: StructuredDataProps) {
       name: "Mustofa Amami",
     },
     inLanguage: [lng],
-    potentialAction: {
-      "@type": "SearchAction",
-      target: `https://mustofaamami.dev/${lng}/blog?search={search_term_string}`,
-      "query-input": "required name=search_term_string",
-    },
   };
 
   const profilePageSchema = {

@@ -7,6 +7,7 @@ import { Providers } from "@/app/theme/Providers";
 import { SmartHeader } from "@/app/components/SmartHeader";
 import { SmartFooter } from "@/app/components/SmartFooter";
 import { Footer } from "@/app/components/Footer";
+import { StructuredData } from "@/app/components/StructuredData";
 import GoogleAnalytics from "@/app/components/GoogleAnalytics";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -109,16 +110,26 @@ export const metadata: Metadata = {
   verification: {
     google: process.env.GOOGLE_SITE_VERIFICATION,
   },
+  manifest: "/manifest.json",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#8b4513" },
+    { media: "(prefers-color-scheme: dark)", color: "#8b4513" },
+  ],
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "Mustofa Amami",
+  },
   icons: {
     icon: [
-      { url: "/favicons/favicon.ico", sizes: "32x32" },
-      { url: "/favicons/favicon.svg", type: "image/svg+xml" },
-      { url: "/favicons/favicon-96x96.png", sizes: "96x96", type: "image/png" },
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.svg", type: "image/svg+xml" },
     ],
     apple: [
-      { url: "/favicons/apple-touch-icon.png" },
+      { url: "/apple-icon.png", sizes: "180x180", type: "image/png" },
     ],
   },
+
 };
 
 export default function RootLayout({
@@ -145,23 +156,6 @@ export default function RootLayout({
           href="https://fonts.gstatic.com"
           crossOrigin=""
         />
-
-        {/* Favicon and app icons */}
-        <link rel="icon" href="/favicons/favicon.ico" sizes="32x32" />
-        <link rel="icon" href="/favicons/favicon.svg" type="image/svg+xml" />
-        <link rel="icon" href="/favicons/favicon-96x96.png" sizes="96x96" type="image/png" />
-        <link rel="apple-touch-icon" href="/favicons/apple-touch-icon.png" />
-        <link rel="manifest" href="/manifest.json" />
-
-        {/* Theme color for mobile browsers */}
-        <meta name="theme-color" content="#8b4513" />
-        <meta name="msapplication-TileColor" content="#8b4513" />
-
-        {/* Enhanced viewport for better mobile experience */}
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes"
-        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased relative min-h-screen bg-background text-foreground`}
@@ -175,6 +169,7 @@ export default function RootLayout({
         </a>
 
         <Providers>
+          <StructuredData lng={lng} />
           <GoogleAnalytics />
           <Analytics />
           <SpeedInsights />

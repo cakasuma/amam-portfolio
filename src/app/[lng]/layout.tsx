@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import { dir } from "i18next";
 import { use } from "react";
 import { languages } from "@/app/i18n/settings";
@@ -17,20 +16,17 @@ export async function generateStaticParams() {
   return languages.map((lng) => ({ lng }));
 }
 
-// Optimized font loading
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-  display: "swap", // Improve font loading performance
-  preload: true,
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-  display: "swap",
-  preload: false, // Only preload if needed
-});
+// Viewport configuration
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#8b4513" },
+    { media: "(prefers-color-scheme: dark)", color: "#8b4513" },
+  ],
+};
 
 // Enhanced SEO metadata
 export const metadata: Metadata = {
@@ -110,11 +106,6 @@ export const metadata: Metadata = {
   verification: {
     google: process.env.GOOGLE_SITE_VERIFICATION,
   },
-  manifest: "/manifest.json",
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#8b4513" },
-    { media: "(prefers-color-scheme: dark)", color: "#8b4513" },
-  ],
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
@@ -156,9 +147,16 @@ export default function RootLayout({
           href="https://fonts.gstatic.com"
           crossOrigin=""
         />
+        
+        {/* Manifest - must use absolute path with dynamic routes */}
+        <link rel="manifest" href="/manifest.json" />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased relative min-h-screen bg-background text-foreground`}
+        className="antialiased relative min-h-screen bg-background text-foreground"
+        style={{
+          fontFamily:
+            'ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
+        }}
       >
         {/* Skip to main content for accessibility */}
         <a

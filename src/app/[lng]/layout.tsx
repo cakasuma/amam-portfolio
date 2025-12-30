@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import { dir } from "i18next";
 import { use } from "react";
 import { languages } from "@/app/i18n/settings";
@@ -7,6 +6,7 @@ import { Providers } from "@/app/theme/Providers";
 import { SmartHeader } from "@/app/components/SmartHeader";
 import { SmartFooter } from "@/app/components/SmartFooter";
 import { Footer } from "@/app/components/Footer";
+import { StructuredData } from "@/app/components/StructuredData";
 import GoogleAnalytics from "@/app/components/GoogleAnalytics";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -16,20 +16,16 @@ export async function generateStaticParams() {
   return languages.map((lng) => ({ lng }));
 }
 
-// Optimized font loading
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-  display: "swap", // Improve font loading performance
-  preload: true,
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-  display: "swap",
-  preload: false, // Only preload if needed
-});
+// Viewport configuration
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#8b4513" },
+    { media: "(prefers-color-scheme: dark)", color: "#8b4513" },
+  ],
+};
 
 // Enhanced SEO metadata
 export const metadata: Metadata = {
@@ -109,16 +105,21 @@ export const metadata: Metadata = {
   verification: {
     google: process.env.GOOGLE_SITE_VERIFICATION,
   },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "Mustofa Amami",
+  },
   icons: {
     icon: [
-      { url: "/favicons/favicon.ico", sizes: "32x32" },
-      { url: "/favicons/favicon.svg", type: "image/svg+xml" },
-      { url: "/favicons/favicon-96x96.png", sizes: "96x96", type: "image/png" },
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.svg", type: "image/svg+xml" },
     ],
     apple: [
-      { url: "/favicons/apple-touch-icon.png" },
+      { url: "/apple-icon.png", sizes: "180x180", type: "image/png" },
     ],
   },
+
 };
 
 export default function RootLayout({
@@ -145,26 +146,16 @@ export default function RootLayout({
           href="https://fonts.gstatic.com"
           crossOrigin=""
         />
-
-        {/* Favicon and app icons */}
-        <link rel="icon" href="/favicons/favicon.ico" sizes="32x32" />
-        <link rel="icon" href="/favicons/favicon.svg" type="image/svg+xml" />
-        <link rel="icon" href="/favicons/favicon-96x96.png" sizes="96x96" type="image/png" />
-        <link rel="apple-touch-icon" href="/favicons/apple-touch-icon.png" />
+        
+        {/* Manifest - must use absolute path with dynamic routes */}
         <link rel="manifest" href="/manifest.json" />
-
-        {/* Theme color for mobile browsers */}
-        <meta name="theme-color" content="#8b4513" />
-        <meta name="msapplication-TileColor" content="#8b4513" />
-
-        {/* Enhanced viewport for better mobile experience */}
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes"
-        />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased relative min-h-screen bg-background text-foreground`}
+        className="antialiased relative min-h-screen bg-background text-foreground"
+        style={{
+          fontFamily:
+            'ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
+        }}
       >
         {/* Skip to main content for accessibility */}
         <a
@@ -175,6 +166,7 @@ export default function RootLayout({
         </a>
 
         <Providers>
+          <StructuredData lng={lng} />
           <GoogleAnalytics />
           <Analytics />
           <SpeedInsights />

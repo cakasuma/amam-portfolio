@@ -74,14 +74,6 @@ export const metadata: Metadata = {
     description:
       "Professional portfolio showcasing full-stack development expertise, modern web technologies, and creative problem-solving.",
     siteName: "Mustofa Amami Portfolio",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Mustofa Amami - Full-Stack Developer",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -89,7 +81,6 @@ export const metadata: Metadata = {
     description:
       "Professional portfolio showcasing full-stack development expertise and modern web technologies.",
     creator: "@mustofaamami",
-    images: ["/twitter-image.png"],
   },
   robots: {
     index: true,

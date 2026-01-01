@@ -27,19 +27,10 @@ export async function generateMetadata({
       description: "Showcase of innovative web applications and full-stack development projects featuring modern technologies and creative solutions.",
       type: "website",
       locale: lng === 'id' ? 'id_ID' : 'en_US',
-      images: [
-        {
-          url: '/portfolio-og.png',
-          width: 1200,
-          height: 630,
-          alt: 'Mustofa Amami Portfolio Projects',
-        },
-      ],
     },
     twitter: {
       title: "Portfolio - Mustofa Amami | Full-Stack Developer",
       description: "Showcase of innovative web applications and full-stack development projects featuring modern technologies.",
-      images: ['/portfolio-twitter.png'],
     },
     alternates: {
       canonical: `/${lng}/portfolio`,

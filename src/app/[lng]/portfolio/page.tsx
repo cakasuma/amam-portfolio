@@ -76,22 +76,22 @@ export default function Portfolio({ params }: PortfolioProps) {
     },
     {
       id: 5,
-      title: "Deriv Trading Platform",
+      title: "Deriv",
       description:
-        "Enterprise-level trading platform for derivatives and forex trading. Contributed to building scalable frontend architecture, real-time data visualization, trading charts, and responsive user interfaces for global markets.",
+        "Led transformative web initiatives at Deriv, a global fintech company. Spearheaded OAuth implementation across applications, managed partner onboarding and dashboard experience, architected new web platform using fullstack engineering with lowcode and AI tools, and supervised super app implementation to integrate onboarding and platform ecosystems.",
       image: "/projects/deriv.svg",
-      technologies: ["React", "TypeScript", "Redux", "WebSocket", "Trading APIs"],
+      technologies: ["React", "TypeScript", "OAuth", "Fullstack", "AI Tools", "Low-code"],
       demoUrl: "https://app.deriv.com",
       githubUrl: null,
       featured: false,
     },
     {
       id: 6,
-      title: "MoneyLion Financial App",
+      title: "MoneyLion",
       description:
-        "Financial services platform providing personal loans, banking services, and credit monitoring. Worked on developing user-facing features, payment integrations, and secure financial transactions.",
+        "Drove engineering excellence at MoneyLion, a leading fintech platform. Led organization-wide initiatives to enhance design system and monitoring infrastructure, built and documented mobile payment features using React Native, Redux, and Redux Saga, managed iOS and Android deployment pipelines, and maintained 99.9x% availability while ensuring exceptional code quality and architecture.",
       image: "/projects/moneylion.svg",
-      technologies: ["React", "TypeScript", "Node.js", "Financial APIs", "Security"],
+      technologies: ["React Native", "Redux", "Redux Saga", "iOS", "Android", "Mobile Payments"],
       demoUrl: "https://app.moneylion.com",
       githubUrl: null,
       featured: false,

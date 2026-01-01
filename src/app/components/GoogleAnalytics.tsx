@@ -55,7 +55,7 @@ function AnalyticsTracker({ trackingId }: { trackingId: string }) {
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    const url = pathname + searchParams.toString();
+    const url = pathname + (searchParams.toString() ? '?' + searchParams.toString() : '');
     pageview(url, trackingId);
   }, [pathname, searchParams, trackingId]);
 

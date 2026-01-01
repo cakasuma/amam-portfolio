@@ -22,10 +22,12 @@ export const gtag = (...args: unknown[]) => {
 };
 
 // Track page views
-export const pageview = (url: string) => {
-  gtag("config", process.env.NEXT_PUBLIC_GA_ID, {
-    page_path: url,
-  });
+export const pageview = (url: string, trackingId?: string) => {
+  if (trackingId) {
+    gtag("config", trackingId, {
+      page_path: url,
+    });
+  }
 };
 
 // Track custom events
@@ -48,14 +50,14 @@ export const event = ({
 };
 
 // Internal component that uses useSearchParams
-function AnalyticsTracker() {
+function AnalyticsTracker({ trackingId }: { trackingId: string }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    const url = pathname + searchParams.toString();
-    pageview(url);
-  }, [pathname, searchParams]);
+    const url = pathname + (searchParams.toString() ? '?' + searchParams.toString() : '');
+    pageview(url, trackingId);
+  }, [pathname, searchParams, trackingId]);
 
   return null;
 }
@@ -91,7 +93,7 @@ export default function GoogleAnalytics({
       />
       {/* Wrap the tracker in Suspense for SSR compatibility */}
       <Suspense fallback={null}>
-        <AnalyticsTracker />
+        <AnalyticsTracker trackingId={trackingId} />
       </Suspense>
     </>
   );

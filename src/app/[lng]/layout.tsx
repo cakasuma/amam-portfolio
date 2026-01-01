@@ -7,7 +7,6 @@ import { SmartHeader } from "@/app/components/SmartHeader";
 import { SmartFooter } from "@/app/components/SmartFooter";
 import { Footer } from "@/app/components/Footer";
 import { StructuredData } from "@/app/components/StructuredData";
-import GoogleAnalytics from "@/app/components/GoogleAnalytics";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
@@ -74,14 +73,6 @@ export const metadata: Metadata = {
     description:
       "Professional portfolio showcasing full-stack development expertise, modern web technologies, and creative problem-solving.",
     siteName: "Mustofa Amami Portfolio",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Mustofa Amami - Full-Stack Developer",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -89,7 +80,6 @@ export const metadata: Metadata = {
     description:
       "Professional portfolio showcasing full-stack development expertise and modern web technologies.",
     creator: "@mustofaamami",
-    images: ["/twitter-image.png"],
   },
   robots: {
     index: true,
@@ -167,7 +157,6 @@ export default function RootLayout({
 
         <Providers>
           <StructuredData lng={lng} />
-          <GoogleAnalytics />
           <Analytics />
           <SpeedInsights />
           <div className="flex flex-col min-h-screen">

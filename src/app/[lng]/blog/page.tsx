@@ -186,7 +186,6 @@ export default function Blog({ params }: BlogProps) {
                           alt={post.title}
                           fill
                           className="object-cover group-hover:scale-105 transition-transform duration-300"
-                          unoptimized
                         />
                       </div>
                     )}
@@ -301,7 +300,6 @@ export default function Blog({ params }: BlogProps) {
                             alt={post.title}
                             fill
                             className="object-cover group-hover:scale-105 transition-transform duration-300"
-                            unoptimized
                           />
                         </div>
                       )}

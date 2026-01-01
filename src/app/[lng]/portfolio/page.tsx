@@ -123,114 +123,6 @@ export default function Portfolio({ params }: PortfolioProps) {
         level={1}
       />
 
-      {/* Featured Projects */}
-      <Section id="featured-projects" ariaLabel="Featured projects">
-        <div className="text-center mb-8">
-          <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-4 flex items-center justify-center gap-3">
-            <span className="text-secondary text-3xl">⭐</span>
-            {t("featured-projects.title") || "Featured Projects"}
-          </h2>
-          <p className="text-text-secondary max-w-2xl mx-auto">
-            {t("featured-projects.description") || "Highlighting some of my most impactful and technically challenging projects"}
-          </p>
-        </div>
-
-        <ContentGrid columns={2} gap="lg">
-          {featuredProjects.map((project, index) => (
-            <motion.div
-              key={project.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 * index }}
-            >
-              <Card className="group h-full" hover>
-                {/* Project Image */}
-                <div className="relative h-48 bg-accent/30 rounded-t-xl mb-6 overflow-hidden">
-                  <Image
-                    src={project.image}
-                    alt={`${project.title} project screenshot`}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300 opacity-60"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-card/90 to-transparent" />
-                  <div className="absolute top-4 right-4">
-                    <span className="px-3 py-1 bg-secondary text-secondary-foreground text-xs font-medium rounded-full">
-                      {t("featured") || "Featured"}
-                    </span>
-                  </div>
-                </div>
-
-                <CardContent className="p-6">
-                  {/* Project Content */}
-                  <header className="mb-4">
-                    <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-secondary transition-colors duration-200">
-                      {project.title}
-                    </h3>
-                    <p className="text-text-secondary leading-relaxed">
-                      {project.description}
-                    </p>
-                  </header>
-
-                  {/* Technologies */}
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.technologies.map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-3 py-1 bg-secondary/10 text-secondary rounded-full text-sm border border-secondary/20 font-medium hover:bg-secondary/20 transition-colors duration-200"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* Action Buttons */}
-                  <footer className="flex gap-3">
-                    {project.demoUrl ? (
-                      <a
-                        href={project.demoUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={`View live demo of ${project.title}`}
-                        className="flex-1"
-                      >
-                        <Button variant="cta" size="sm" className="w-full">
-                          <FaExternalLinkAlt className="w-3 h-3 mr-2" />
-                          {t("view-demo") || "Live Demo"}
-                        </Button>
-                      </a>
-                    ) : (
-                      <Button variant="cta" size="sm" className="w-full opacity-50 cursor-not-allowed" disabled>
-                        <FaExternalLinkAlt className="w-3 h-3 mr-2" />
-                        {t("private-project") || "Private Project"}
-                      </Button>
-                    )}
-                    {project.githubUrl ? (
-                      <a
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={`View source code for ${project.title}`}
-                        className="flex-1"
-                      >
-                        <Button variant="outline" size="sm" className="w-full">
-                          <FaGithub className="w-3 h-3 mr-2" />
-                          {t("view-code") || "GitHub"}
-                        </Button>
-                      </a>
-                    ) : (
-                      <Button variant="outline" size="sm" className="w-full opacity-50 cursor-not-allowed" disabled>
-                        <FaGithub className="w-3 h-3 mr-2" />
-                        {t("private-repo") || "Private Repo"}
-                      </Button>
-                    )}
-                  </footer>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-        </ContentGrid>
-      </Section>
-
       {/* Professional Experience */}
       <Section id="professional-experience" ariaLabel="Professional experience">
         <div className="text-center mb-8">
@@ -346,6 +238,114 @@ export default function Portfolio({ params }: PortfolioProps) {
                         disabled
                       >
                         <FaGithub className="w-3 h-3 mr-1" />
+                        {t("private-repo") || "Private Repo"}
+                      </Button>
+                    )}
+                  </footer>
+                </CardContent>
+              </Card>
+            </motion.div>
+          ))}
+        </ContentGrid>
+      </Section>
+
+      {/* Featured Projects */}
+      <Section id="featured-projects" ariaLabel="Featured projects">
+        <div className="text-center mb-8">
+          <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-4 flex items-center justify-center gap-3">
+            <span className="text-secondary text-3xl">⭐</span>
+            {t("featured-projects.title") || "Featured Projects"}
+          </h2>
+          <p className="text-text-secondary max-w-2xl mx-auto">
+            {t("featured-projects.description") || "Highlighting some of my most impactful and technically challenging projects"}
+          </p>
+        </div>
+
+        <ContentGrid columns={2} gap="lg">
+          {featuredProjects.map((project, index) => (
+            <motion.div
+              key={project.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 * index }}
+            >
+              <Card className="group h-full" hover>
+                {/* Project Image */}
+                <div className="relative h-48 bg-accent/30 rounded-t-xl mb-6 overflow-hidden">
+                  <Image
+                    src={project.image}
+                    alt={`${project.title} project screenshot`}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-300 opacity-60"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-card/90 to-transparent" />
+                  <div className="absolute top-4 right-4">
+                    <span className="px-3 py-1 bg-secondary text-secondary-foreground text-xs font-medium rounded-full">
+                      {t("featured") || "Featured"}
+                    </span>
+                  </div>
+                </div>
+
+                <CardContent className="p-6">
+                  {/* Project Content */}
+                  <header className="mb-4">
+                    <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-secondary transition-colors duration-200">
+                      {project.title}
+                    </h3>
+                    <p className="text-text-secondary leading-relaxed">
+                      {project.description}
+                    </p>
+                  </header>
+
+                  {/* Technologies */}
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {project.technologies.map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-3 py-1 bg-secondary/10 text-secondary rounded-full text-sm border border-secondary/20 font-medium hover:bg-secondary/20 transition-colors duration-200"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Action Buttons */}
+                  <footer className="flex gap-3">
+                    {project.demoUrl ? (
+                      <a
+                        href={project.demoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`View live demo of ${project.title}`}
+                        className="flex-1"
+                      >
+                        <Button variant="cta" size="sm" className="w-full">
+                          <FaExternalLinkAlt className="w-3 h-3 mr-2" />
+                          {t("view-demo") || "Live Demo"}
+                        </Button>
+                      </a>
+                    ) : (
+                      <Button variant="cta" size="sm" className="w-full opacity-50 cursor-not-allowed" disabled>
+                        <FaExternalLinkAlt className="w-3 h-3 mr-2" />
+                        {t("private-project") || "Private Project"}
+                      </Button>
+                    )}
+                    {project.githubUrl ? (
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`View source code for ${project.title}`}
+                        className="flex-1"
+                      >
+                        <Button variant="outline" size="sm" className="w-full">
+                          <FaGithub className="w-3 h-3 mr-2" />
+                          {t("view-code") || "GitHub"}
+                        </Button>
+                      </a>
+                    ) : (
+                      <Button variant="outline" size="sm" className="w-full opacity-50 cursor-not-allowed" disabled>
+                        <FaGithub className="w-3 h-3 mr-2" />
                         {t("private-repo") || "Private Repo"}
                       </Button>
                     )}

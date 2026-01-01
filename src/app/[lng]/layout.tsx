@@ -7,7 +7,6 @@ import { SmartHeader } from "@/app/components/SmartHeader";
 import { SmartFooter } from "@/app/components/SmartFooter";
 import { Footer } from "@/app/components/Footer";
 import { StructuredData } from "@/app/components/StructuredData";
-import GoogleAnalytics from "@/app/components/GoogleAnalytics";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
@@ -158,7 +157,6 @@ export default function RootLayout({
 
         <Providers>
           <StructuredData lng={lng} />
-          <GoogleAnalytics />
           <Analytics />
           <SpeedInsights />
           <div className="flex flex-col min-h-screen">

@@ -231,15 +231,15 @@ export default function Portfolio({ params }: PortfolioProps) {
         </ContentGrid>
       </Section>
 
-      {/* Other Projects */}
-      <Section id="other-projects" ariaLabel="Other projects">
+      {/* Professional Experience */}
+      <Section id="professional-experience" ariaLabel="Professional experience">
         <div className="text-center mb-8">
           <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-4 flex items-center justify-center gap-3">
             <span className="text-warning text-3xl">🚀</span>
-            {t("other-projects.title") || "Other Projects"}
+            {t("other-projects.title") || "Professional Experience"}
           </h2>
           <p className="text-text-secondary max-w-2xl mx-auto">
-            {t("other-projects.description") || "Additional projects showcasing various technologies and creative solutions"}
+            {t("other-projects.description") || "Companies where I've led impactful initiatives and built innovative solutions at scale"}
           </p>
         </div>
 

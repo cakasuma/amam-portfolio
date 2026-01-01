@@ -76,22 +76,22 @@ export default function Portfolio({ params }: PortfolioProps) {
     },
     {
       id: 5,
-      title: "Deriv Trading Platform",
+      title: "Deriv",
       description:
-        "Enterprise-level trading platform for derivatives and forex trading. Contributed to building scalable frontend architecture, real-time data visualization, trading charts, and responsive user interfaces for global markets.",
+        "Led transformative web initiatives at Deriv, a global fintech company. Spearheaded OAuth implementation across applications, managed partner onboarding and dashboard experience, architected new web platform using fullstack engineering with lowcode and AI tools, and supervised super app implementation to integrate onboarding and platform ecosystems.",
       image: "/projects/deriv.svg",
-      technologies: ["React", "TypeScript", "Redux", "WebSocket", "Trading APIs"],
+      technologies: ["React", "TypeScript", "OAuth", "Fullstack", "AI Tools", "Low-code"],
       demoUrl: "https://app.deriv.com",
       githubUrl: null,
       featured: false,
     },
     {
       id: 6,
-      title: "MoneyLion Financial App",
+      title: "MoneyLion",
       description:
-        "Financial services platform providing personal loans, banking services, and credit monitoring. Worked on developing user-facing features, payment integrations, and secure financial transactions.",
+        "Drove engineering excellence at MoneyLion, a leading fintech platform. Led organization-wide initiatives to enhance design system and monitoring infrastructure, built and documented mobile payment features using React Native, Redux, and Redux Saga, managed iOS and Android deployment pipelines, and maintained 99.9x% availability while ensuring exceptional code quality and architecture.",
       image: "/projects/moneylion.svg",
-      technologies: ["React", "TypeScript", "Node.js", "Financial APIs", "Security"],
+      technologies: ["React Native", "Redux", "Redux Saga", "iOS", "Android", "Mobile Payments"],
       demoUrl: "https://app.moneylion.com",
       githubUrl: null,
       featured: false,
@@ -122,6 +122,127 @@ export default function Portfolio({ params }: PortfolioProps) {
         }
         level={1}
       />
+
+      {/* Professional Experience */}
+      <Section id="professional-experience" ariaLabel="Professional experience">
+        <div className="text-center mb-8">
+          <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-4 flex items-center justify-center gap-3">
+            <span className="text-warning text-3xl">🚀</span>
+            {t("other-projects.title") || "Professional Experience"}
+          </h2>
+          <p className="text-text-secondary max-w-2xl mx-auto">
+            {t("other-projects.description") || "Companies where I've led impactful initiatives and built innovative solutions at scale"}
+          </p>
+        </div>
+
+        <ContentGrid columns={2} gap="lg">
+          {otherProjects.map((project, index) => (
+            <motion.div
+              key={project.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 * index }}
+            >
+              <Card className="group h-full" hover>
+                {/* Project Image */}
+                <div className="relative h-48 bg-accent/30 rounded-t-xl mb-6 overflow-hidden">
+                  <Image
+                    src={project.image}
+                    alt={`${project.title} project screenshot`}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-300 opacity-60"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-card/90 to-transparent" />
+                </div>
+
+                <CardContent className="p-6">
+                  {/* Project Content */}
+                  <header className="mb-4">
+                    <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-secondary transition-colors duration-200">
+                      {project.title}
+                    </h3>
+                    <p className="text-text-secondary leading-relaxed">
+                      {project.description}
+                    </p>
+                  </header>
+
+                  {/* Technologies */}
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {project.technologies.map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-3 py-1 bg-warning/10 text-warning rounded-full text-sm border border-warning/20 font-medium hover:bg-warning/20 transition-colors duration-200"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Action Buttons */}
+                  <footer className="flex gap-3">
+                    {project.demoUrl ? (
+                      <a
+                        href={project.demoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`View demo of ${project.title}`}
+                        className="flex-1"
+                      >
+                        <Button
+                          variant="cta"
+                          size="sm"
+                          className="w-full"
+                        >
+                          <FaExternalLinkAlt className="w-3 h-3 mr-2" />
+                          {t("view-demo") || "Live Demo"}
+                        </Button>
+                      </a>
+                    ) : (
+                      <Button
+                        variant="cta"
+                        size="sm"
+                        className="w-full opacity-50 cursor-not-allowed"
+                        disabled
+                      >
+                        <FaExternalLinkAlt className="w-3 h-3 mr-2" />
+                        {t("private-project") || "Private Project"}
+                      </Button>
+                    )}
+                    {project.githubUrl ? (
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`View code for ${project.title}`}
+                        className="flex-1"
+                      >
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          className="w-full"
+                        >
+                          <FaGithub className="w-3 h-3 mr-2" />
+                          {t("view-code") || "GitHub"}
+                        </Button>
+                      </a>
+                    ) : (
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="w-full opacity-50 cursor-not-allowed"
+                        disabled
+                      >
+                        <FaGithub className="w-3 h-3 mr-2" />
+                        {t("private-repo") || "Private Repo"}
+                      </Button>
+                    )}
+                  </footer>
+                </CardContent>
+              </Card>
+            </motion.div>
+          ))}
+        </ContentGrid>
+      </Section>
 
       {/* Featured Projects */}
       <Section id="featured-projects" ariaLabel="Featured projects">
@@ -220,132 +341,6 @@ export default function Portfolio({ params }: PortfolioProps) {
                     ) : (
                       <Button variant="outline" size="sm" className="w-full opacity-50 cursor-not-allowed" disabled>
                         <FaGithub className="w-3 h-3 mr-2" />
-                        {t("private-repo") || "Private Repo"}
-                      </Button>
-                    )}
-                  </footer>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-        </ContentGrid>
-      </Section>
-
-      {/* Other Projects */}
-      <Section id="other-projects" ariaLabel="Other projects">
-        <div className="text-center mb-8">
-          <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-4 flex items-center justify-center gap-3">
-            <span className="text-warning text-3xl">🚀</span>
-            {t("other-projects.title") || "Other Projects"}
-          </h2>
-          <p className="text-text-secondary max-w-2xl mx-auto">
-            {t("other-projects.description") || "Additional projects showcasing various technologies and creative solutions"}
-          </p>
-        </div>
-
-        <ContentGrid columns={3} gap="md">
-          {otherProjects.map((project, index) => (
-            <motion.div
-              key={project.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 * index }}
-            >
-              <Card className="group h-full" hover>
-                {/* Project Image */}
-                <div className="relative h-32 bg-accent/30 rounded-t-xl mb-4 overflow-hidden">
-                  <Image
-                    src={project.image}
-                    alt={`${project.title} project screenshot`}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300 opacity-60"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-card/80 to-transparent" />
-                </div>
-
-                <CardContent className="p-4">
-                  {/* Project Content */}
-                  <header className="mb-3">
-                    <h3 className="text-lg font-bold text-foreground mb-2 group-hover:text-secondary transition-colors duration-200">
-                      {project.title}
-                    </h3>
-                    <p className="text-text-secondary text-sm leading-relaxed">
-                      {project.description}
-                    </p>
-                  </header>
-
-                  {/* Technologies */}
-                  <div className="flex flex-wrap gap-1 mb-4">
-                    {project.technologies.slice(0, 3).map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-2 py-1 bg-warning/10 text-warning rounded text-xs border border-warning/20"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                    {project.technologies.length > 3 && (
-                      <span className="px-2 py-1 bg-accent text-text-muted rounded text-xs">
-                        +{project.technologies.length - 3}
-                      </span>
-                    )}
-                  </div>
-
-                  {/* Action Buttons */}
-                  <footer className="flex gap-2">
-                    {project.demoUrl ? (
-                      <a
-                        href={project.demoUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={`View demo of ${project.title}`}
-                        className="flex-1"
-                      >
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          className="w-full text-xs"
-                        >
-                          <FaExternalLinkAlt className="w-3 h-3 mr-1" />
-                          {t("demo") || "Demo"}
-                        </Button>
-                      </a>
-                    ) : (
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        className="w-full text-xs opacity-50 cursor-not-allowed"
-                        disabled
-                      >
-                        <FaExternalLinkAlt className="w-3 h-3 mr-1" />
-                        {t("private-project") || "Private Project"}
-                      </Button>
-                    )}
-                    {project.githubUrl ? (
-                      <a
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={`View code for ${project.title}`}
-                        className="flex-1"
-                      >
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          className="w-full text-xs"
-                        >
-                          <FaGithub className="w-3 h-3 mr-1" />
-                          {t("code") || "Code"}
-                        </Button>
-                      </a>
-                    ) : (
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        className="w-full text-xs opacity-50 cursor-not-allowed"
-                        disabled
-                      >
-                        <FaGithub className="w-3 h-3 mr-1" />
                         {t("private-repo") || "Private Repo"}
                       </Button>
                     )}

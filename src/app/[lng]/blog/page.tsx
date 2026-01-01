@@ -180,11 +180,12 @@ export default function Blog({ params }: BlogProps) {
                   <CardContent className="p-6">
                     {/* Cover Image */}
                     {post.coverImage && (
-                      <div className="mb-4 -mx-6 -mt-6 overflow-hidden rounded-t-xl relative h-48">
+                      <div className="mb-4 -mx-6 -mt-6 overflow-hidden rounded-t-xl relative h-48 sm:h-56 md:h-64">
                         <Image 
                           src={post.coverImage} 
                           alt={post.title}
                           fill
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                           className="object-cover group-hover:scale-105 transition-transform duration-300"
                         />
                       </div>
@@ -294,11 +295,12 @@ export default function Blog({ params }: BlogProps) {
                     <div className="flex flex-col md:flex-row md:items-start gap-6">
                       {/* Cover Image */}
                       {post.coverImage && (
-                        <div className="md:w-48 h-48 md:h-32 flex-shrink-0 overflow-hidden rounded-lg relative">
+                        <div className="w-full md:w-48 h-48 md:h-32 flex-shrink-0 overflow-hidden rounded-lg relative">
                           <Image 
                             src={post.coverImage} 
                             alt={post.title}
                             fill
+                            sizes="(max-width: 768px) 100vw, 192px"
                             className="object-cover group-hover:scale-105 transition-transform duration-300"
                           />
                         </div>

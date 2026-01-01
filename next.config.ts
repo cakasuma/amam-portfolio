@@ -78,7 +78,23 @@ const nextConfig: NextConfig = {
     formats: ['image/webp', 'image/avif'],
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none';",
-    unoptimized: process.env.NODE_ENV === 'development',
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'dev-to-uploads.s3.amazonaws.com',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'media.dev.to',
+        pathname: '/**',
+      },
+    ],
   },
 
   // Compression

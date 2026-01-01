@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "motion/react";
 import { useTranslation } from "@/app/i18n/client";
+import { useState, useEffect } from "react";
 
 interface FooterProps {
   lng: string;
@@ -8,6 +9,11 @@ interface FooterProps {
 
 export function Footer({ lng }: FooterProps) {
   const { t } = useTranslation(lng, "footer");
+  const [currentYear, setCurrentYear] = useState(2024);
+
+  useEffect(() => {
+    setCurrentYear(new Date().getFullYear());
+  }, []);
 
   return (
     <motion.footer
@@ -20,7 +26,7 @@ export function Footer({ lng }: FooterProps) {
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="text-center md:text-left">
             <p className="text-muted">
-              © 2024 Mustofa Amami. {t("rights-reserved")}
+              © <span suppressHydrationWarning>{currentYear}</span> Mustofa Amami. {t("rights-reserved")}
             </p>
           </div>
 

@@ -135,7 +135,7 @@ export default function Portfolio({ params }: PortfolioProps) {
           </p>
         </div>
 
-        <ContentGrid columns={3} gap="md">
+        <ContentGrid columns={2} gap="lg">
           {otherProjects.map((project, index) => (
             <motion.div
               key={project.id}
@@ -145,46 +145,41 @@ export default function Portfolio({ params }: PortfolioProps) {
             >
               <Card className="group h-full" hover>
                 {/* Project Image */}
-                <div className="relative h-32 bg-accent/30 rounded-t-xl mb-4 overflow-hidden">
+                <div className="relative h-48 bg-accent/30 rounded-t-xl mb-6 overflow-hidden">
                   <Image
                     src={project.image}
                     alt={`${project.title} project screenshot`}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-300 opacity-60"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-card/80 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-card/90 to-transparent" />
                 </div>
 
-                <CardContent className="p-4">
+                <CardContent className="p-6">
                   {/* Project Content */}
-                  <header className="mb-3">
-                    <h3 className="text-lg font-bold text-foreground mb-2 group-hover:text-secondary transition-colors duration-200">
+                  <header className="mb-4">
+                    <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-secondary transition-colors duration-200">
                       {project.title}
                     </h3>
-                    <p className="text-text-secondary text-sm leading-relaxed">
+                    <p className="text-text-secondary leading-relaxed">
                       {project.description}
                     </p>
                   </header>
 
                   {/* Technologies */}
-                  <div className="flex flex-wrap gap-1 mb-4">
-                    {project.technologies.slice(0, 3).map((tech) => (
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {project.technologies.map((tech) => (
                       <span
                         key={tech}
-                        className="px-2 py-1 bg-warning/10 text-warning rounded text-xs border border-warning/20"
+                        className="px-3 py-1 bg-warning/10 text-warning rounded-full text-sm border border-warning/20 font-medium hover:bg-warning/20 transition-colors duration-200"
                       >
                         {tech}
                       </span>
                     ))}
-                    {project.technologies.length > 3 && (
-                      <span className="px-2 py-1 bg-accent text-text-muted rounded text-xs">
-                        +{project.technologies.length - 3}
-                      </span>
-                    )}
                   </div>
 
                   {/* Action Buttons */}
-                  <footer className="flex gap-2">
+                  <footer className="flex gap-3">
                     {project.demoUrl ? (
                       <a
                         href={project.demoUrl}
@@ -194,22 +189,22 @@ export default function Portfolio({ params }: PortfolioProps) {
                         className="flex-1"
                       >
                         <Button
-                          variant="ghost"
+                          variant="cta"
                           size="sm"
-                          className="w-full text-xs"
+                          className="w-full"
                         >
-                          <FaExternalLinkAlt className="w-3 h-3 mr-1" />
-                          {t("demo") || "Demo"}
+                          <FaExternalLinkAlt className="w-3 h-3 mr-2" />
+                          {t("view-demo") || "Live Demo"}
                         </Button>
                       </a>
                     ) : (
                       <Button
-                        variant="ghost"
+                        variant="cta"
                         size="sm"
-                        className="w-full text-xs opacity-50 cursor-not-allowed"
+                        className="w-full opacity-50 cursor-not-allowed"
                         disabled
                       >
-                        <FaExternalLinkAlt className="w-3 h-3 mr-1" />
+                        <FaExternalLinkAlt className="w-3 h-3 mr-2" />
                         {t("private-project") || "Private Project"}
                       </Button>
                     )}
@@ -222,22 +217,22 @@ export default function Portfolio({ params }: PortfolioProps) {
                         className="flex-1"
                       >
                         <Button
-                          variant="ghost"
+                          variant="outline"
                           size="sm"
-                          className="w-full text-xs"
+                          className="w-full"
                         >
-                          <FaGithub className="w-3 h-3 mr-1" />
-                          {t("code") || "Code"}
+                          <FaGithub className="w-3 h-3 mr-2" />
+                          {t("view-code") || "GitHub"}
                         </Button>
                       </a>
                     ) : (
                       <Button
-                        variant="ghost"
+                        variant="outline"
                         size="sm"
-                        className="w-full text-xs opacity-50 cursor-not-allowed"
+                        className="w-full opacity-50 cursor-not-allowed"
                         disabled
                       >
-                        <FaGithub className="w-3 h-3 mr-1" />
+                        <FaGithub className="w-3 h-3 mr-2" />
                         {t("private-repo") || "Private Repo"}
                       </Button>
                     )}

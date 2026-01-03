@@ -56,7 +56,7 @@ const nextConfig: NextConfig = {
               "default-src 'self'",
               "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://va.vercel-scripts.com",
               "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-              "img-src 'self' data: blob: https: http:",
+              "img-src 'self' data: blob: https://res.cloudinary.com https://dev-to-uploads.s3.amazonaws.com https://media.dev.to https:",
               "font-src 'self' https://fonts.gstatic.com",
               "connect-src 'self' https://dev.to https://va.vercel-scripts.com https://vitals.vercel-insights.com",
               "frame-src 'none'",
@@ -77,7 +77,6 @@ const nextConfig: NextConfig = {
   images: {
     formats: ['image/webp', 'image/avif'],
     dangerouslyAllowSVG: true,
-    contentSecurityPolicy: "default-src 'self'; script-src 'none';",
     remotePatterns: [
       {
         protocol: 'https',
@@ -87,6 +86,16 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'media.dev.to',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: '*.cloudinary.com',
         pathname: '/**',
       },
     ],

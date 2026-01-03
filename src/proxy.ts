@@ -9,7 +9,7 @@ interface ProxyConfig {
 }
 
 export const config: ProxyConfig = {
-    matcher: ['/((?!api|_next/static|_next/image|assets|favicon.ico|sw.js|site.webmanifest|projects).*)']
+    matcher: ['/((?!api|_next/static|_next/image|assets|favicon.ico|sw.js|site.webmanifest|manifest.json|projects|favicons).*)']
 }
 
 export function proxy(req: NextRequest): NextResponse {

@@ -1,7 +1,7 @@
 {
   "title": "Resume",
   "back-to-home": "Back to home",
-  "subtitle": "A Journey of Growth, Impact, and Continuous Learning",
+  "subtitle": "A Journey of Growth, Impact, and Lifelong Learning",
   "personal-info": {
     "title": "Personal Information",
     "name": "Name",
@@ -35,10 +35,10 @@
       "description": "Collaborated closely with cross-functional teams to ensure flawless payment flows and feature delivery for millions of users. Built and maintained high-performance mobile applications using React Native and Redux, always keeping user experience at the heart of every decision. Every feature shipped was a testament to our team's dedication to quality and reliability."
     },
     "job4": {
-      "title": "Software Engineering Lecturer",
+      "title": "Software Engineering Instructor",
       "company": "RevoU",
       "period": "Part-time",
-      "description": "One of my greatest joys is guiding aspiring engineers as they take their first steps into the world of software development. Sharing real-world insights and practical wisdom gained from years in the industry, I help students build not just technical skills, but the confidence and mindset needed to thrive in modern web development."
+      "description": "One of my greatest joys is guiding aspiring engineers as they embark on their journey into software development. Sharing real-world insights and practical wisdom gained from years in the industry, I help students build not just technical skills, but the confidence and mindset needed to thrive in modern web development."
     }
   },
   "education": {

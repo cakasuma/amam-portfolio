@@ -20,15 +20,15 @@
   },
   "follow": {
     "title": "Bergabung di Dev.to",
-    "description": "Mari berkembang bersama! Follow saya untuk update artikel baru dan ikut diskusi yang menarik. Saya rutin berbagi insight tentang web development, tips pemrograman praktis, dan tutorial teknologi yang saya harap ada waktu saya baru mulai belajar.",
+    "description": "Mari berkembang bersama! Follow saya untuk mendapat update artikel baru dan ikut diskusi yang menarik. Saya rutin berbagi insight tentang web development, tips pemrograman praktis, dan tutorial teknologi yang saya harap ada saat pertama kali belajar.",
     "button": "Follow di Dev.to",
-    "note": "Gabung di komunitas dan jangan lewatkan insight menarik!"
+    "note": "Gabung di komunitas dan jangan lewatkan insight yang bermanfaat!"
   },
   "newsletter": {
     "title": "Tetap Terhubung",
     "description": "Jadi yang pertama tahu update dan insight terbaru. Subscribe untuk dapat konten menarik langsung ke inbox Anda.",
     "placeholder": "Masukkan email Anda",
     "button": "Berlangganan",
-    "privacy": "Privasi Anda dijaga. Tanpa spam. Berhenti langganan kapan saja. Saya cuma kirim konten bermanfaat yang saya yakin bisa membantu Anda berkembang."
+    "privacy": "Privasi Anda dijaga. Tanpa spam. Berhenti langganan kapan saja. Saya hanya kirim konten bermanfaat yang saya yakin bisa membantu Anda berkembang."
   }
 }

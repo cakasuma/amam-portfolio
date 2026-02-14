@@ -1,7 +1,7 @@
 {
   "title": "Resume",
   "back-to-home": "Kembali ke halaman utama",
-  "subtitle": "Perjalanan Karir, Dampak, dan Pembelajaran Berkelanjutan",
+  "subtitle": "Perjalanan Karir, Dampak, dan Pembelajaran Sepanjang Hayat",
   "personal-info": {
     "title": "Informasi Pribadi",
     "name": "Nama",
@@ -38,7 +38,7 @@
       "title": "Pengajar Software Engineering",
       "company": "RevoU",
       "period": "Part-time",
-      "description": "Salah satu kebahagiaan terbesar saya adalah membimbing calon engineer saat mereka mulai menapaki dunia pengembangan software. Berbagi pengalaman nyata dan pembelajaran praktis dari bertahun-tahun di industri, saya membantu mahasiswa membangun tidak hanya skill teknis, tapi juga kepercayaan diri dan mindset yang dibutuhkan untuk berkembang di dunia pengembangan web modern."
+      "description": "Salah satu kebahagiaan terbesar saya adalah membimbing calon engineer saat mereka memulai perjalanan mereka dalam pengembangan software. Berbagi pengalaman nyata dan pembelajaran praktis dari bertahun-tahun di industri, saya membantu mahasiswa membangun tidak hanya skill teknis, tapi juga kepercayaan diri dan mindset yang dibutuhkan untuk berkembang di dunia pengembangan web modern."
     }
   },
   "education": {

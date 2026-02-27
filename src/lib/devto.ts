@@ -30,7 +30,28 @@ export interface BlogPost {
   featured: boolean;
   reactionsCount: number;
   commentsCount: number;
+  isInternal?: boolean;
 }
+
+// Static blog posts that are hosted on this site (not from dev.to)
+export const STATIC_BLOG_POSTS: BlogPost[] = [
+  {
+    id: 0,
+    title: "GitHub Copilot: Your AI Pair Programmer — A Practical Guide",
+    excerpt:
+      "Discover how GitHub Copilot transforms the way developers write code. From autocomplete to full function generation, learn practical tips, real-world use cases, and best practices to supercharge your productivity with AI-powered coding.",
+    date: "2025-02-01T00:00:00Z",
+    readTime: "8 min read",
+    category: "AI Tools",
+    tags: ["github-copilot", "ai", "productivity", "developer-tools"],
+    url: "/blog/copilot",
+    coverImage: null,
+    featured: true,
+    reactionsCount: 0,
+    commentsCount: 0,
+    isInternal: true,
+  },
+];
 
 const DEVTO_API_BASE = "https://dev.to/api";
 const DEVTO_USERNAME = "cakasuma";
@@ -85,14 +106,15 @@ export function transformArticleToBlogPost(article: DevToArticle): BlogPost {
 }
 
 /**
- * Fetches and transforms blog posts from dev.to
+ * Fetches and transforms blog posts from dev.to, merged with static posts
  */
 export async function getBlogPosts(): Promise<BlogPost[]> {
   try {
     const articles = await fetchDevToArticles();
-    return articles.map(transformArticleToBlogPost);
+    const devToPosts = articles.map(transformArticleToBlogPost);
+    return [...STATIC_BLOG_POSTS, ...devToPosts];
   } catch (error) {
     console.error("Error fetching blog posts from dev.to:", error);
-    return [];
+    return [...STATIC_BLOG_POSTS];
   }
 }

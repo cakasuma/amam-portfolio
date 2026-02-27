@@ -2,6 +2,7 @@
 import { useTranslation } from "@/app/i18n/client";
 import { motion } from "motion/react";
 import Image from "next/image";
+import Link from "next/link";
 import { use, useEffect, useState } from "react";
 import PageLayout, {
   PageHeader,
@@ -9,7 +10,7 @@ import PageLayout, {
   CTASection,
 } from "@/app/components/PageLayout";
 import { Card, CardContent, Button } from "@/components/ui";
-import { FaCalendarAlt, FaClock, FaTag, FaExternalLinkAlt, FaHeart, FaComment } from "react-icons/fa";
+import { FaCalendarAlt, FaClock, FaTag, FaExternalLinkAlt, FaArrowRight, FaHeart, FaComment } from "react-icons/fa";
 import { SiDevdotto } from "react-icons/si";
 import { getBlogPosts, BlogPost } from "@/lib/devto";
 
@@ -209,14 +210,23 @@ export default function Blog({ params }: BlogProps) {
 
                     {/* Post Content */}
                     <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-secondary transition-colors duration-200">
-                      <a
-                        href={post.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="hover:underline"
-                      >
-                        {post.title}
-                      </a>
+                      {post.isInternal ? (
+                        <Link
+                          href={`/${lng}${post.url}`}
+                          className="hover:underline"
+                        >
+                          {post.title}
+                        </Link>
+                      ) : (
+                        <a
+                          href={post.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="hover:underline"
+                        >
+                          {post.title}
+                        </a>
+                      )}
                     </h3>
 
                     <p className="text-text-secondary mb-4 leading-relaxed line-clamp-3">
@@ -252,15 +262,25 @@ export default function Blog({ params }: BlogProps) {
                         )}
                       </time>
 
-                      <a
-                        href={post.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-secondary hover:text-secondary/80 font-medium transition-colors group-hover:translate-x-1 duration-200"
-                      >
-                        {t("read-on-devto") || "Read on Dev.to"}
-                        <FaExternalLinkAlt className="w-3 h-3" />
-                      </a>
+                      {post.isInternal ? (
+                        <Link
+                          href={`/${lng}${post.url}`}
+                          className="inline-flex items-center gap-2 text-secondary hover:text-secondary/80 font-medium transition-colors group-hover:translate-x-1 duration-200"
+                        >
+                          {t("read-more") || "Read More"}
+                          <FaArrowRight className="w-3 h-3" />
+                        </Link>
+                      ) : (
+                        <a
+                          href={post.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 text-secondary hover:text-secondary/80 font-medium transition-colors group-hover:translate-x-1 duration-200"
+                        >
+                          {t("read-on-devto") || "Read on Dev.to"}
+                          <FaExternalLinkAlt className="w-3 h-3" />
+                        </a>
+                      )}
                     </footer>
                   </CardContent>
                 </Card>
@@ -331,14 +351,23 @@ export default function Blog({ params }: BlogProps) {
                         </header>
 
                         <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-secondary transition-colors duration-200">
-                          <a
-                            href={post.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="hover:underline"
-                          >
-                            {post.title}
-                          </a>
+                          {post.isInternal ? (
+                            <Link
+                              href={`/${lng}${post.url}`}
+                              className="hover:underline"
+                            >
+                              {post.title}
+                            </Link>
+                          ) : (
+                            <a
+                              href={post.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="hover:underline"
+                            >
+                              {post.title}
+                            </a>
+                          )}
                         </h3>
 
                         <p className="text-text-secondary mb-4 leading-relaxed line-clamp-2">
@@ -362,15 +391,25 @@ export default function Blog({ params }: BlogProps) {
                             )}
                           </time>
 
-                          <a
-                            href={post.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 text-secondary hover:text-secondary/80 font-medium transition-colors group-hover:translate-x-1 duration-200"
-                          >
-                            {t("read-on-devto") || "Read on Dev.to"}
-                            <FaExternalLinkAlt className="w-3 h-3" />
-                          </a>
+                          {post.isInternal ? (
+                            <Link
+                              href={`/${lng}${post.url}`}
+                              className="inline-flex items-center gap-2 text-secondary hover:text-secondary/80 font-medium transition-colors group-hover:translate-x-1 duration-200"
+                            >
+                              {t("read-more") || "Read More"}
+                              <FaArrowRight className="w-3 h-3" />
+                            </Link>
+                          ) : (
+                            <a
+                              href={post.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-2 text-secondary hover:text-secondary/80 font-medium transition-colors group-hover:translate-x-1 duration-200"
+                            >
+                              {t("read-on-devto") || "Read on Dev.to"}
+                              <FaExternalLinkAlt className="w-3 h-3" />
+                            </a>
+                          )}
                         </footer>
                       </div>
                     </div>

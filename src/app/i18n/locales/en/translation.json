@@ -6,7 +6,7 @@
   "phone": "+60 10-844 4970",
   "birthday": "Born: January 1, 1990",
   "role": "Tech Lead Fullstack & Software Engineering Lecturer",
-  "hero-description": "As Tech Team Lead at Deriv, I transform ideas into robust web and mobile platforms that empower millions of users. I'm also honored to guide the next generation of engineers at RevoU, sharing the passion and practical wisdom gained from years in the industry. Every line of code I write is driven by a commitment to creating experiences that are both powerful and delightful.",
+  "hero-description": "Leading technical innovation at Deriv, where I architect scalable solutions that serve millions globally. As a Software Engineering Lecturer at RevoU, I empower aspiring developers to master modern web technologies. Passionate about crafting elegant code that solves real-world challenges.",
   "location": "Kuala Lumpur, Malaysia",
   "contact-info": {
     "email-label": "Email",
@@ -22,20 +22,20 @@
   },
   "about": {
     "title": "About Me",
-    "content": "Technology is more than just code—it's about solving real problems and touching lives. As a Tech Team Lead at Deriv and Software Engineering Lecturer at RevoU, I bring together technical excellence and a deep understanding of what users truly need. With expertise spanning JavaScript, TypeScript, React, Next.js, and Node.js, I've had the privilege of leading teams and mentoring passionate developers on their journey to becoming great engineers. I believe the magic happens when creativity, empathy, and technical skill converge.",
-    "learning": "The learning never stops! I'm constantly exploring new horizons—Kotlin, Flutter, Swift, Go, Python—while staying connected to the pulse of our ever-evolving industry."
+    "content": "I'm a Tech Team Lead at Deriv, one of the world's leading fintech platforms, where I architect and deliver high-impact solutions that serve millions of users across 190+ countries. My technical leadership extends to the classroom at RevoU, where I mentor the next generation of software engineers, transforming beginners into confident, industry-ready professionals. With deep expertise in modern JavaScript ecosystems—React, Next.js, TypeScript, Node.js—I thrive at the intersection of technical excellence and user-centric design.",
+    "learning": "Continuously expanding my technical horizons with Kotlin, Flutter, Swift, Go, and Python. In tech, staying curious isn't optional—it's essential."
   },
   "what-i-do": {
     "title": "What I Do",
-    "content": "At Deriv, I lead our web platform fullstack development team, orchestrating complex initiatives like OAuth implementation and crafting seamless partner onboarding experiences. Beyond the corporate world, my heart finds joy in the classroom at RevoU, where I've had the honor of guiding hundreds of aspiring engineers as they discover their potential. My technical toolkit—React, Next.js, TypeScript, Node.js, and modern CSS frameworks—is always at the service of creating solutions that truly matter."
+    "content": "Leading fullstack development initiatives at Deriv—from implementing enterprise OAuth systems to designing seamless partner integration experiences. My work directly impacts millions of traders worldwide. Beyond corporate walls, I find my greatest fulfillment at RevoU, where I've trained 500+ aspiring engineers through intensive bootcamps, helping them land roles at top tech companies. My toolkit spans the modern web stack: React, Next.js, TypeScript, Node.js, PostgreSQL, and cloud infrastructure."
   },
   "testimonials": {
     "title": "Testimonials",
     "content": "Kind words from colleagues who've been part of my journey.",
-    "trusted": "Grateful for the trust and collaboration from talented individuals I've had the honor to work alongside.",
-    "quote1": "Mustofa brings both technical excellence and genuine care to everything he does. His ability to understand complex problems and guide teams toward elegant solutions is truly remarkable. Working with him has been both inspiring and rewarding.",
+    "trusted": "Honored to work with world-class engineers and leaders who inspire excellence every day.",
+    "quote1": "Mustofa is the rare engineer who excels at both technical depth and people leadership. His architectural decisions are sound, his code reviews are thorough, and his mentorship has elevated our entire team. He doesn't just build features—he builds systems that scale and teams that thrive.",
     "author1": "Yashim Wong, Staff Engineer at Deriv",
-    "quote2": "What sets Mustofa apart is not just his technical prowess, but his warm approach to leadership and mentorship. He has a gift for making challenging concepts accessible and creating an environment where everyone feels valued and motivated to grow.",
+    "quote2": "Having Mustofa lead our fullstack initiatives has been transformational. He delivers results while maintaining exceptional code quality and team morale. His ability to break down complex technical concepts and empower others to execute is what sets him apart as a true technical leader.",
     "author2": "Lipika, Senior Manager at Deriv"
   },
   "clients": {
@@ -43,8 +43,8 @@
     "content": "Companies I've had the pleasure to work with."
   },
   "cta": {
-    "title": "Let's Create Something Amazing Together",
-    "description": "Whether you're looking to build a groundbreaking application, need guidance on your tech journey, or simply want to exchange ideas—I'd love to hear from you. Every great project starts with a conversation.",
+    "title": "Ready to Build Something Exceptional?",
+    "description": "Whether you're building the next big fintech platform, need technical mentorship, or want to collaborate on innovative projects—let's connect. I'm always excited to work on challenging problems that make a real difference.",
     "get-in-touch": "Get in Touch",
     "view-my-work": "View My Work"
   }

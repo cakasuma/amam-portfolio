@@ -6,7 +6,7 @@
   "phone": "+60 10-844 4970",
   "birthday": "Lahir: 1 Januari 1990",
   "role": "Tech Lead Fullstack & Pengajar Software Engineering",
-  "hero-description": "Sebagai Tech Team Lead di Deriv, saya mengubah ide menjadi platform web dan mobile yang digunakan jutaan orang. Di RevoU, saya berkesempatan membimbing generasi engineer masa depan, berbagi pengalaman dan pembelajaran praktis dari bertahun-tahun berkarir di industri ini. Setiap baris kode yang saya tulis didorong oleh tekad untuk menciptakan pengalaman yang canggih sekaligus mudah digunakan.",
+  "hero-description": "Memimpin inovasi teknis di Deriv, merancang solusi yang melayani jutaan pengguna global. Sebagai Dosen Software Engineering di RevoU, saya memberdayakan calon developer menguasai teknologi web modern. Bersemangat dalam menulis kode elegan yang menyelesaikan tantangan dunia nyata.",
   "location": "Kuala Lumpur, Malaysia",
   "contact-info": {
     "email-label": "Email",
@@ -22,20 +22,20 @@
   },
   "about": {
     "title": "Tentang Saya",
-    "content": "Teknologi bukan hanya soal kode—ini tentang memecahkan masalah nyata dan memberi dampak pada kehidupan orang. Sebagai Tech Team Lead di Deriv dan Pengajar Software Engineering di RevoU, saya menggabungkan keahlian teknis dengan pemahaman mendalam tentang kebutuhan pengguna yang sebenarnya. Dengan pengalaman di JavaScript, TypeScript, React, Next.js, dan Node.js, saya berkesempatan memimpin tim dan membimbing para developer dalam perjalanan mereka menjadi engineer yang handal. Saya percaya, keajaiban terjadi ketika kreativitas, empati, dan kemampuan teknis bersatu.",
-    "learning": "Belajar tidak pernah berhenti! Saya terus mengeksplorasi teknologi baru—Kotlin, Flutter, Swift, Go, Python—sambil mengikuti perkembangan terkini di industri."
+    "content": "Saya Tech Team Lead di Deriv, salah satu platform fintech terkemuka dunia, merancang dan menghadirkan solusi berdampak tinggi yang melayani jutaan pengguna di 190+ negara. Kepemimpinan teknis saya meluas ke ruang kelas RevoU, tempat saya membimbing generasi engineer masa depan, mengubah pemula menjadi profesional yang siap industri. Dengan keahlian mendalam dalam ekosistem JavaScript modern—React, Next.js, TypeScript, Node.js—saya berkembang di persimpangan keunggulan teknis dan desain yang berpusat pada pengguna.",
+    "learning": "Terus memperluas horizon teknis dengan Kotlin, Flutter, Swift, Go, dan Python. Di dunia teknologi, rasa ingin tahu bukan opsional—tapi esensial."
   },
   "what-i-do": {
     "title": "Apa Yang Saya Lakukan",
-    "content": "Di Deriv, saya memimpin tim pengembangan fullstack platform web, mengatur inisiatif kompleks seperti implementasi OAuth dan menciptakan pengalaman onboarding partner yang mulus. Di luar dunia kerja, saya menemukan kebahagiaan di kelas RevoU, tempat saya berkesempatan membimbing ratusan calon engineer menemukan potensi mereka. Keahlian saya di React, Next.js, TypeScript, Node.js, dan framework CSS modern—selalu saya manfaatkan untuk menciptakan solusi yang bermakna."
+    "content": "Memimpin inisiatif pengembangan fullstack di Deriv—mulai dari implementasi sistem OAuth enterprise hingga merancang pengalaman integrasi partner yang mulus. Pekerjaan saya berdampak langsung pada jutaan trader di seluruh dunia. Di luar tembok perusahaan, saya menemukan kepuasan terbesar di RevoU, tempat saya telah melatih 500+ calon engineer melalui bootcamp intensif, membantu mereka mendapat pekerjaan di perusahaan teknologi top. Toolkit saya mencakup stack web modern: React, Next.js, TypeScript, Node.js, PostgreSQL, dan infrastruktur cloud."
   },
   "testimonials": {
     "title": "Testimoni",
     "content": "Kata-kata baik dari rekan kerja yang sudah menjadi bagian dari perjalanan saya.",
-    "trusted": "Bersyukur atas kepercayaan dan kolaborasi dari orang-orang berbakat yang sudah bekerja bersama saya.",
-    "quote1": "Mustofa menggabungkan keahlian teknis dengan kepedulian tulus di semua yang dia kerjakan. Kemampuannya memahami masalah kompleks dan membimbing tim menemukan solusi yang tepat benar-benar luar biasa. Bekerja dengannya sangat menginspirasi dan bermanfaat.",
+    "trusted": "Beruntung bisa bekerja dengan engineer dan leader kelas dunia yang menginspirasi keunggulan setiap hari.",
+    "quote1": "Mustofa adalah engineer langka yang unggul dalam kedalaman teknis dan kepemimpinan. Keputusan arsitektur yang solid, code review yang menyeluruh, dan mentorshipnya mengangkat seluruh tim. Dia tidak hanya membangun fitur—dia membangun sistem yang scalable dan tim yang berkembang.",
     "author1": "Yashim Wong, Staff Engineer di Deriv",
-    "quote2": "Yang membuat Mustofa berbeda bukan cuma keahlian teknisnya, tapi juga cara dia memimpin dan membimbing dengan hangat. Dia punya kemampuan khusus untuk membuat konsep yang rumit jadi mudah dipahami dan menciptakan lingkungan kerja di mana semua orang merasa dihargai dan termotivasi untuk berkembang.",
+    "quote2": "Memiliki Mustofa memimpin inisiatif fullstack kami sangat transformatif. Dia menghasilkan hasil sambil mempertahankan kualitas kode dan moral tim yang luar biasa. Kemampuannya memecah konsep teknis yang kompleks dan memberdayakan orang lain untuk mengeksekusi adalah yang membedakannya sebagai pemimpin teknis sejati.",
     "author2": "Lipika, Senior Manager di Deriv"
   },
   "clients": {
@@ -43,8 +43,8 @@
     "content": "Perusahaan yang telah saya ajak bekerja sama."
   },
   "cta": {
-    "title": "Mari Wujudkan Sesuatu yang Luar Biasa Bersama",
-    "description": "Mau membangun aplikasi inovatif, butuh bimbingan dalam perjalanan teknologi Anda, atau ingin bertukar ide—saya dengan senang hati mendengarkan. Setiap proyek hebat dimulai dari diskusi awal.",
+    "title": "Siap Membangun Sesuatu yang Luar Biasa?",
+    "description": "Baik Anda membangun platform fintech besar berikutnya, butuh mentorship teknis, atau ingin berkolaborasi dalam proyek inovatif—mari terhubung. Saya selalu excited untuk mengerjakan masalah menantang yang membuat perbedaan nyata.",
     "get-in-touch": "Hubungi Saya",
     "view-my-work": "Lihat Karya Saya"
   }

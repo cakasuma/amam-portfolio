@@ -37,13 +37,13 @@ export interface BlogPost {
 export const STATIC_BLOG_POSTS: BlogPost[] = [
   {
     id: 0,
-    title: "GitHub Copilot: Your AI Pair Programmer — A Practical Guide",
+    title: "GitHub Copilot in 2025: Agents, PR Reviews & Coding on the Go",
     excerpt:
-      "Discover how GitHub Copilot transforms the way developers write code. From autocomplete to full function generation, learn practical tips, real-world use cases, and best practices to supercharge your productivity with AI-powered coding.",
-    date: "2025-02-01T00:00:00Z",
-    readTime: "8 min read",
+      "Copilot has grown far beyond autocomplete. Discover how Copilot Agents can autonomously complete multi-step tasks, how PR review comments help your whole team ship cleaner code, and how you can use Copilot from your phone — anywhere, anytime.",
+    date: "2025-03-01T00:00:00Z",
+    readTime: "10 min read",
     category: "AI Tools",
-    tags: ["github-copilot", "ai", "productivity", "developer-tools"],
+    tags: ["github-copilot", "copilot-agents", "ai", "productivity", "mobile", "code-review"],
     url: "/blog/copilot",
     coverImage: null,
     featured: true,

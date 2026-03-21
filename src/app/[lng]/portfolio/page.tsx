@@ -111,9 +111,9 @@ export default function Portfolio({ params }: PortfolioProps) {
     },
     {
       id: 102,
-      title: "Calculator",
+      title: "Faraid Calculator",
       description:
-        "A clean and responsive web calculator app supporting basic arithmetic operations. Simple, fast, and accessible from any device.",
+        "An Islamic inheritance (Faraid) calculator that computes the rightful share of each heir according to Islamic law. Helps families determine estate distribution quickly and accurately.",
       image: "/projects/calculator.svg",
       technologies: ["JavaScript", "HTML", "CSS"],
       demoUrl: "https://calculator.amammustofa.com",

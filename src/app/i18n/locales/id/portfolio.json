@@ -15,6 +15,10 @@
     "title": "Pengalaman Profesional",
     "description": "Perusahaan tempat saya memimpin inisiatif berdampak dan membangun solusi inovatif dalam skala besar"
   },
+  "web-apps": {
+    "title": "Aplikasi Web",
+    "description": "Aplikasi kecil namun berguna yang saya bangun dan hosting di subdomain saya sendiri di amammustofa.com"
+  },
   "view-resume": "Lihat Resume",
   "cta": {
     "title": "Mari Bangun Sesuatu yang Luar Biasa Bersama",

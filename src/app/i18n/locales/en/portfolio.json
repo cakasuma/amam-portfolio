@@ -15,6 +15,10 @@
     "title": "Professional Experience",
     "description": "Companies where I've led impactful initiatives and built innovative solutions at scale"
   },
+  "web-apps": {
+    "title": "Web Apps",
+    "description": "Small yet handy apps I built and host under my own subdomain at amammustofa.com"
+  },
   "view-resume": "View Resume",
   "cta": {
     "title": "Let's Build Something Amazing Together",

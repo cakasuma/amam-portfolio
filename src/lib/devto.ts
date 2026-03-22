@@ -51,6 +51,22 @@ export const STATIC_BLOG_POSTS: BlogPost[] = [
     commentsCount: 0,
     isInternal: true,
   },
+  {
+    id: 1,
+    title: "Build & Ship a Real App From Your Phone — No Laptop Needed",
+    excerpt:
+      "You don't need a laptop to ship a real app. With Claude, GitHub Copilot, and Vercel, I built two live apps entirely from my phone. Here's the exact workflow.",
+    date: "2026-03-21T00:00:00Z",
+    readTime: "5 min read",
+    category: "AI Tools",
+    tags: ["claude", "copilot", "vercel", "mobile", "ai", "productivity"],
+    url: "/blog/build-app-from-phone",
+    coverImage: null,
+    featured: true,
+    reactionsCount: 0,
+    commentsCount: 0,
+    isInternal: true,
+  },
 ];
 
 const DEVTO_API_BASE = "https://dev.to/api";

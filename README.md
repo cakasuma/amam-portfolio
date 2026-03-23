@@ -154,6 +154,7 @@ This project is open source and available under the [MIT License](LICENSE).
 
 Feel free to reach out if you have any questions or suggestions!
 
-- Email: [mustofa.amami@email.com](mailto:mustofa.amami@email.com)
-- LinkedIn: [Your LinkedIn](https://linkedin.com/in/your-profile)
-- GitHub: [Your GitHub](https://github.com/your-username)
+- Email: [amammustofa@gmail.com](mailto:amammustofa@gmail.com)
+- LinkedIn: [Mustofa Ghaleb Amami](https://www.linkedin.com/in/mustofa-ghaleb-amami)
+- GitHub: [cakasuma](https://github.com/cakasuma)
+- Twitter/X: [@cakasuma](https://x.com/cakasuma)

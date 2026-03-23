@@ -20,15 +20,15 @@
   },
   "follow": {
     "title": "Join Me on Dev.to",
-    "description": "Let's grow together! Follow me to stay updated with new articles and be part of meaningful discussions. I regularly share insights about web development, practical programming tips, and tech tutorials that I wish I had when I was starting out.",
+    "description": "Let's grow together! Follow me to stay updated with new articles and be part of meaningful discussions. I regularly share insights about web development, practical programming tips, and tech tutorials that I wish I'd had when I was starting out.",
     "button": "Follow on Dev.to",
-    "note": "Join our community and never miss an insight!"
+    "note": "Join our community and never miss valuable insights!"
   },
   "newsletter": {
     "title": "Stay Connected",
     "description": "Be the first to know about new insights and updates. Subscribe to receive thoughtful content straight to your inbox.",
     "placeholder": "Enter your email",
     "button": "Subscribe",
-    "privacy": "Your privacy matters. No spam, ever. Unsubscribe anytime. I'll only share valuable content that I believe will help you grow."
+    "privacy": "Your privacy matters. No spam, ever. Unsubscribe anytime. I'll only share valuable content that I believe will genuinely help you grow."
   }
 }

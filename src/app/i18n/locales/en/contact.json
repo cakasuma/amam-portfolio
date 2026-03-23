@@ -4,7 +4,7 @@
   "back-to-home": "Back to home",
   "info": {
     "title": "Get in Touch",
-    "description": "I truly believe that the best projects start with genuine conversations. Whether you're exploring new opportunities, have questions about technology, or just want to connect—I'm all ears! Every message matters, and I look forward to hearing your story.",
+    "description": "I truly believe that the best projects start with genuine conversations. Whether you're exploring new opportunities, have questions about technology, or simply want to connect—I'm all ears! Every message matters, and I look forward to hearing your story.",
     "email": {
       "label": "Email"
     },
@@ -46,7 +46,7 @@
   },
   "freelance": {
     "title": "Open for Exciting Collaborations",
-    "description": "I'm currently welcoming new freelance projects and consulting opportunities. Whether you need a full-stack web application, UI/UX enhancements, or technical guidance—I'd be honored to help transform your vision into reality. Let's build something remarkable together.",
+    "description": "I'm currently welcoming new freelance projects and consulting opportunities. Whether you need a full-stack web application, UI/UX enhancements, or technical guidance—I'd be honored to help bring your vision to life. Let's build something remarkable together.",
     "available": "Available for new projects",
     "response": "Quick response time",
     "flexible": "Flexible scheduling"

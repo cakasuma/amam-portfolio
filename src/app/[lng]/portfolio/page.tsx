@@ -146,6 +146,109 @@ export default function Portfolio({ params }: PortfolioProps) {
         level={1}
       />
 
+      {/* Web Apps */}
+      <Section id="web-apps" ariaLabel="Web apps">
+        <div className="text-center mb-8">
+          <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-4 flex items-center justify-center gap-3">
+            <span className="text-secondary text-3xl">🌐</span>
+            {t("web-apps.title") || "Web Apps"}
+          </h2>
+          <p className="text-text-secondary max-w-2xl mx-auto">
+            {t("web-apps.description") || "Small yet handy apps I built and host under my own subdomain at amammustofa.com"}
+          </p>
+        </div>
+
+        <ContentGrid columns={2} gap="lg">
+          {webApps.map((app, index) => (
+            <motion.div
+              key={app.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 * index }}
+            >
+              <Card className="group h-full" hover>
+                {/* App Image */}
+                <div className="relative h-48 bg-accent/30 rounded-t-xl mb-6 overflow-hidden">
+                  <Image
+                    src={app.image}
+                    alt={`${app.title} screenshot`}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-300 opacity-60"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-card/90 to-transparent" />
+                </div>
+
+                <CardContent className="p-6">
+                  {/* App Content */}
+                  <header className="mb-4">
+                    <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-secondary transition-colors duration-200">
+                      {app.title}
+                    </h3>
+                    <p className="text-text-secondary leading-relaxed">
+                      {app.description}
+                    </p>
+                  </header>
+
+                  {/* Technologies */}
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {app.technologies.map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-3 py-1 bg-secondary/10 text-secondary rounded-full text-sm border border-secondary/20 font-medium hover:bg-secondary/20 transition-colors duration-200"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Action Buttons */}
+                  <footer className="flex gap-3">
+                    {app.demoUrl ? (
+                      <a
+                        href={app.demoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`Open ${app.title}`}
+                        className="flex-1"
+                      >
+                        <Button variant="cta" size="sm" className="w-full">
+                          <FaExternalLinkAlt className="w-3 h-3 mr-2" />
+                          {t("view-demo") || "Live Demo"}
+                        </Button>
+                      </a>
+                    ) : (
+                      <Button variant="cta" size="sm" className="w-full opacity-50 cursor-not-allowed" disabled>
+                        <FaExternalLinkAlt className="w-3 h-3 mr-2" />
+                        {t("private-project") || "Private Project"}
+                      </Button>
+                    )}
+                    {app.githubUrl ? (
+                      <a
+                        href={app.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`View source code for ${app.title}`}
+                        className="flex-1"
+                      >
+                        <Button variant="outline" size="sm" className="w-full">
+                          <FaGithub className="w-3 h-3 mr-2" />
+                          {t("view-code") || "GitHub"}
+                        </Button>
+                      </a>
+                    ) : (
+                      <Button variant="outline" size="sm" className="w-full opacity-50 cursor-not-allowed" disabled>
+                        <FaGithub className="w-3 h-3 mr-2" />
+                        {t("private-repo") || "Private Repo"}
+                      </Button>
+                    )}
+                  </footer>
+                </CardContent>
+              </Card>
+            </motion.div>
+          ))}
+        </ContentGrid>
+      </Section>
+
       {/* Professional Experience */}
       <Section id="professional-experience" ariaLabel="Professional experience">
         <div className="text-center mb-8">
@@ -354,109 +457,6 @@ export default function Portfolio({ params }: PortfolioProps) {
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label={`View source code for ${project.title}`}
-                        className="flex-1"
-                      >
-                        <Button variant="outline" size="sm" className="w-full">
-                          <FaGithub className="w-3 h-3 mr-2" />
-                          {t("view-code") || "GitHub"}
-                        </Button>
-                      </a>
-                    ) : (
-                      <Button variant="outline" size="sm" className="w-full opacity-50 cursor-not-allowed" disabled>
-                        <FaGithub className="w-3 h-3 mr-2" />
-                        {t("private-repo") || "Private Repo"}
-                      </Button>
-                    )}
-                  </footer>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-        </ContentGrid>
-      </Section>
-
-      {/* Web Apps */}
-      <Section id="web-apps" ariaLabel="Web apps">
-        <div className="text-center mb-8">
-          <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-4 flex items-center justify-center gap-3">
-            <span className="text-info text-3xl">🌐</span>
-            {t("web-apps.title") || "Web Apps"}
-          </h2>
-          <p className="text-text-secondary max-w-2xl mx-auto">
-            {t("web-apps.description") || "Small yet handy apps I built and host under my own subdomain at amammustofa.com"}
-          </p>
-        </div>
-
-        <ContentGrid columns={2} gap="lg">
-          {webApps.map((app, index) => (
-            <motion.div
-              key={app.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 * index }}
-            >
-              <Card className="group h-full" hover>
-                {/* App Image */}
-                <div className="relative h-48 bg-accent/30 rounded-t-xl mb-6 overflow-hidden">
-                  <Image
-                    src={app.image}
-                    alt={`${app.title} screenshot`}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300 opacity-60"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-card/90 to-transparent" />
-                </div>
-
-                <CardContent className="p-6">
-                  {/* App Content */}
-                  <header className="mb-4">
-                    <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-info transition-colors duration-200">
-                      {app.title}
-                    </h3>
-                    <p className="text-text-secondary leading-relaxed">
-                      {app.description}
-                    </p>
-                  </header>
-
-                  {/* Technologies */}
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {app.technologies.map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-3 py-1 bg-info/10 text-info rounded-full text-sm border border-info/20 font-medium hover:bg-info/20 transition-colors duration-200"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* Action Buttons */}
-                  <footer className="flex gap-3">
-                    {app.demoUrl ? (
-                      <a
-                        href={app.demoUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={`Open ${app.title}`}
-                        className="flex-1"
-                      >
-                        <Button variant="cta" size="sm" className="w-full">
-                          <FaExternalLinkAlt className="w-3 h-3 mr-2" />
-                          {t("view-demo") || "Live Demo"}
-                        </Button>
-                      </a>
-                    ) : (
-                      <Button variant="cta" size="sm" className="w-full opacity-50 cursor-not-allowed" disabled>
-                        <FaExternalLinkAlt className="w-3 h-3 mr-2" />
-                        {t("private-project") || "Private Project"}
-                      </Button>
-                    )}
-                    {app.githubUrl ? (
-                      <a
-                        href={app.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={`View source code for ${app.title}`}
                         className="flex-1"
                       >
                         <Button variant="outline" size="sm" className="w-full">

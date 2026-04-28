@@ -117,6 +117,16 @@ const webApps = [
     demoUrl: "https://calculator.amammustofa.com",
     githubUrl: null,
   },
+  {
+    id: 103,
+    title: "Malaysian Salary Calculator",
+    description:
+      "A take-home pay calculator for Malaysians that estimates net salary after EPF, SOCSO, EIS, and PCB tax deductions. Supports English and Bahasa Indonesia, helping employees and freelancers plan their finances with clarity.",
+    image: "/projects/salary-calculator.svg",
+    technologies: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
+    demoUrl: "https://calculator.amammustofa.com/salary",
+    githubUrl: null,
+  },
 ];
 
 export default async function Portfolio({ params }: PortfolioProps) {

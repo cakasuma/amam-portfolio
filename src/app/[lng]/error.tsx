@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "motion/react";
 import Link from "next/link";
 import { Button } from "@/components/ui";
 import {
@@ -25,20 +24,7 @@ export default function Error({
             subtitle="We apologize for the inconvenience. Please try again or go back to the homepage."
           />
 
-          {/* Error illustration */}
-          <motion.div
-            className="text-6xl mb-8"
-            animate={{
-              rotate: [0, 5, -5, 0],
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              repeatDelay: 3,
-            }}
-          >
-            🛠️
-          </motion.div>
+          <div className="text-6xl mb-8 animate-pulse">🛠️</div>
 
           <div className="space-y-4 mb-8">
             <p className="text-text-secondary">

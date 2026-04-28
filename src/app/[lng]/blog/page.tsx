@@ -1,18 +1,23 @@
-"use client";
-import { useTranslation } from "@/app/i18n/client";
-import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
-import { use, useEffect, useState } from "react";
 import PageLayout, {
   PageHeader,
   Section,
   CTASection,
 } from "@/app/components/PageLayout";
 import { Card, CardContent, Button } from "@/components/ui";
-import { FaCalendarAlt, FaClock, FaTag, FaExternalLinkAlt, FaArrowRight, FaHeart, FaComment } from "react-icons/fa";
-import { SiDevdotto } from "react-icons/si";
-import { getBlogPosts, BlogPost } from "@/lib/devto";
+import {
+  FaCalendarAlt,
+  FaClock,
+  FaTag,
+  FaExternalLinkAlt,
+  FaArrowRight,
+  FaHeart,
+  FaComment,
+  SiDevdotto,
+} from "@/components/icons";
+import { getBlogPosts } from "@/lib/devto";
+import { usingTranslation } from "@/app/i18n";
 
 interface BlogProps {
   params: Promise<{
@@ -20,69 +25,25 @@ interface BlogProps {
   }>;
 }
 
-// Loading skeleton component
-function BlogPostSkeleton() {
-  return (
-    <Card className="animate-pulse">
-      <CardContent className="p-6">
-        <div className="flex flex-wrap items-center gap-3 mb-4">
-          <div className="h-6 w-20 bg-accent/30 rounded-full"></div>
-          <div className="h-4 w-24 bg-accent/20 rounded"></div>
-        </div>
-        <div className="h-6 w-3/4 bg-accent/30 rounded mb-3"></div>
-        <div className="h-4 w-full bg-accent/20 rounded mb-2"></div>
-        <div className="h-4 w-2/3 bg-accent/20 rounded mb-4"></div>
-        <div className="flex items-center justify-between">
-          <div className="h-4 w-28 bg-accent/20 rounded"></div>
-          <div className="h-4 w-20 bg-accent/20 rounded"></div>
-        </div>
-      </CardContent>
-    </Card>
-  );
-}
-
-export default function Blog({ params }: BlogProps) {
-  const { lng } = use(params);
-  const { t, ready } = useTranslation(lng, "blog");
-  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  const fetchPosts = async () => {
-    setLoading(true);
-    setError(null);
-    try {
-      const posts = await getBlogPosts();
-      setBlogPosts(posts);
-    } catch (err) {
-      setError("Failed to load blog posts");
-      console.error(err);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchPosts();
-  }, []);
+export default async function Blog({ params }: BlogProps) {
+  const { lng } = await params;
+  const [{ t }, blogPosts] = await Promise.all([
+    usingTranslation(lng, "blog"),
+    getBlogPosts(),
+  ]);
 
   const featuredPosts = blogPosts.filter((post) => post.featured);
   const regularPosts = blogPosts.filter((post) => !post.featured);
 
-  // Show loading state until translations are ready
-  if (!ready) {
-    return (
-      <PageLayout maxWidth="5xl">
-        <div className="min-h-screen flex items-center justify-center">
-          <div className="animate-pulse text-muted">Loading...</div>
-        </div>
-      </PageLayout>
-    );
-  }
+  const dateLocale = lng === "id" ? "id-ID" : "en-US";
+  const dateFormatter = new Intl.DateTimeFormat(dateLocale, {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
 
   return (
     <PageLayout maxWidth="5xl">
-      {/* Header */}
       <PageHeader
         title={t("title") || "Blog"}
         subtitle={
@@ -92,15 +53,14 @@ export default function Blog({ params }: BlogProps) {
         level={1}
       />
 
-      {/* Dev.to Attribution */}
-      <Section id="devto-attribution" ariaLabel="Content source">
+      <Section id="devto-attribution" ariaLabel="Content source" animate={false}>
         <div className="flex items-center justify-center gap-2 text-text-secondary mb-8">
           <SiDevdotto className="w-6 h-6" />
           <span className="text-sm">
             {t("powered-by") || "Articles from"}{" "}
-            <a 
-              href="https://dev.to/cakasuma" 
-              target="_blank" 
+            <a
+              href="https://dev.to/cakasuma"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-secondary hover:underline font-medium"
             >
@@ -110,42 +70,15 @@ export default function Blog({ params }: BlogProps) {
         </div>
       </Section>
 
-      {/* Loading State */}
-      {loading && (
-        <Section id="loading" ariaLabel="Loading blog posts">
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
-            {[1, 2, 3, 4].map((i) => (
-              <BlogPostSkeleton key={i} />
-            ))}
-          </div>
-        </Section>
-      )}
-
-      {/* Error State */}
-      {error && !loading && (
-        <Section id="error" ariaLabel="Error loading blog posts">
-          <div className="text-center py-12">
-            <p className="text-error mb-4">{error}</p>
-            <Button 
-              variant="outline" 
-              onClick={() => fetchPosts()}
-            >
-              {t("retry") || "Try Again"}
-            </Button>
-          </div>
-        </Section>
-      )}
-
-      {/* Empty State */}
-      {!loading && !error && blogPosts.length === 0 && (
+      {blogPosts.length === 0 && (
         <Section id="empty" ariaLabel="No blog posts">
           <div className="text-center py-12">
             <p className="text-text-secondary mb-4">
               {t("no-posts") || "No blog posts found. Check back later!"}
             </p>
-            <a 
-              href="https://dev.to/cakasuma" 
-              target="_blank" 
+            <a
+              href="https://dev.to/cakasuma"
+              target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-secondary hover:underline"
             >
@@ -156,8 +89,7 @@ export default function Blog({ params }: BlogProps) {
         </Section>
       )}
 
-      {/* Featured Posts */}
-      {!loading && featuredPosts.length > 0 && (
+      {featuredPosts.length > 0 && (
         <Section id="featured-posts" ariaLabel="Featured blog posts">
           <div className="text-center mb-8">
             <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-4 flex items-center justify-center gap-3">
@@ -165,35 +97,31 @@ export default function Blog({ params }: BlogProps) {
               {t("featured-posts.title") || "Featured Posts"}
             </h2>
             <p className="text-text-secondary max-w-2xl mx-auto">
-              {t("featured-posts.description") || "Popular articles with the most engagement from the community"}
+              {t("featured-posts.description") ||
+                "Popular articles with the most engagement from the community"}
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 mb-12">
             {featuredPosts.map((post, index) => (
-              <motion.article
-                key={post.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 * index }}
-              >
+              <article key={post.id}>
                 <Card className="group h-full" hover>
                   <CardContent className="p-6">
-                    {/* Cover Image */}
                     {post.coverImage && (
                       <div className="mb-4 -mx-6 -mt-6 overflow-hidden rounded-t-xl relative h-48 sm:h-56 md:h-64">
-                        <Image 
-                          src={post.coverImage} 
+                        <Image
+                          src={post.coverImage}
                           alt={post.title}
                           fill
                           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                           className="object-cover group-hover:scale-105 transition-transform duration-300"
                           unoptimized
+                          priority={index === 0}
+                          loading={index === 0 ? "eager" : "lazy"}
                         />
                       </div>
                     )}
-                    
-                    {/* Post Meta */}
+
                     <header className="flex flex-wrap items-center gap-3 mb-4">
                       <span className="px-3 py-1 bg-accent/10 text-accent border-accent/20 rounded-full text-sm border font-medium flex items-center gap-1">
                         <FaTag className="w-3 h-3" />
@@ -208,13 +136,9 @@ export default function Blog({ params }: BlogProps) {
                       </span>
                     </header>
 
-                    {/* Post Content */}
                     <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-secondary transition-colors duration-200">
                       {post.isInternal ? (
-                        <Link
-                          href={`/${lng}${post.url}`}
-                          className="hover:underline"
-                        >
+                        <Link href={`/${lng}${post.url}`} className="hover:underline">
                           {post.title}
                         </Link>
                       ) : (
@@ -233,7 +157,6 @@ export default function Blog({ params }: BlogProps) {
                       {post.excerpt}
                     </p>
 
-                    {/* Engagement Stats */}
                     <div className="flex items-center gap-4 mb-4 text-text-muted text-sm">
                       <span className="flex items-center gap-1">
                         <FaHeart className="w-3 h-3 text-error" />
@@ -245,21 +168,13 @@ export default function Blog({ params }: BlogProps) {
                       </span>
                     </div>
 
-                    {/* Post Footer */}
                     <footer className="flex items-center justify-between">
                       <time
                         className="text-text-muted text-sm flex items-center gap-1"
                         dateTime={post.date}
                       >
                         <FaCalendarAlt className="w-3 h-3" />
-                        {new Date(post.date).toLocaleDateString(
-                          lng === "id" ? "id-ID" : "en-US",
-                          {
-                            year: "numeric",
-                            month: "long",
-                            day: "numeric",
-                          }
-                        )}
+                        {dateFormatter.format(new Date(post.date))}
                       </time>
 
                       {post.isInternal ? (
@@ -284,14 +199,13 @@ export default function Blog({ params }: BlogProps) {
                     </footer>
                   </CardContent>
                 </Card>
-              </motion.article>
+              </article>
             ))}
           </div>
         </Section>
       )}
 
-      {/* Regular Posts */}
-      {!loading && regularPosts.length > 0 && (
+      {regularPosts.length > 0 && (
         <Section id="recent-posts" ariaLabel="Recent blog posts">
           <div className="text-center mb-8">
             <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-4 flex items-center justify-center gap-3">
@@ -299,38 +213,32 @@ export default function Blog({ params }: BlogProps) {
               {t("recent-posts.title") || "All Posts"}
             </h2>
             <p className="text-text-secondary max-w-2xl mx-auto">
-              {t("recent-posts.description") || "Latest articles and tutorials from my development journey"}
+              {t("recent-posts.description") ||
+                "Latest articles and tutorials from my development journey"}
             </p>
           </div>
 
           <div className="space-y-6">
-            {regularPosts.map((post, index) => (
-              <motion.article
-                key={post.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 * index }}
-              >
+            {regularPosts.map((post) => (
+              <article key={post.id}>
                 <Card className="group" hover>
                   <CardContent className="p-6">
                     <div className="flex flex-col md:flex-row md:items-start gap-6">
-                      {/* Cover Image */}
                       {post.coverImage && (
                         <div className="w-full md:w-48 h-48 md:h-32 flex-shrink-0 overflow-hidden rounded-lg relative">
-                          <Image 
-                            src={post.coverImage} 
+                          <Image
+                            src={post.coverImage}
                             alt={post.title}
                             fill
                             sizes="(max-width: 768px) 100vw, 192px"
                             className="object-cover group-hover:scale-105 transition-transform duration-300"
                             unoptimized
+                            loading="lazy"
                           />
                         </div>
                       )}
-                      
-                      {/* Post Content */}
+
                       <div className="flex-1">
-                        {/* Post Meta */}
                         <header className="flex flex-wrap items-center gap-3 mb-3">
                           <span className="px-3 py-1 bg-accent/10 text-accent border-accent/20 rounded-full text-sm border font-medium flex items-center gap-1">
                             <FaTag className="w-3 h-3" />
@@ -374,21 +282,13 @@ export default function Blog({ params }: BlogProps) {
                           {post.excerpt}
                         </p>
 
-                        {/* Post Footer */}
                         <footer className="flex items-center justify-between">
                           <time
                             className="text-text-muted text-sm flex items-center gap-1"
                             dateTime={post.date}
                           >
                             <FaCalendarAlt className="w-3 h-3" />
-                            {new Date(post.date).toLocaleDateString(
-                              lng === "id" ? "id-ID" : "en-US",
-                              {
-                                year: "numeric",
-                                month: "long",
-                                day: "numeric",
-                              }
-                            )}
+                            {dateFormatter.format(new Date(post.date))}
                           </time>
 
                           {post.isInternal ? (
@@ -415,13 +315,12 @@ export default function Blog({ params }: BlogProps) {
                     </div>
                   </CardContent>
                 </Card>
-              </motion.article>
+              </article>
             ))}
           </div>
         </Section>
       )}
 
-      {/* Follow on Dev.to CTA */}
       <CTASection
         title={t("follow.title") || "Follow Me on Dev.to"}
         description={
@@ -431,11 +330,7 @@ export default function Blog({ params }: BlogProps) {
         variant="secondary"
       >
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <a
-            href="https://dev.to/cakasuma"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href="https://dev.to/cakasuma" target="_blank" rel="noopener noreferrer">
             <Button variant="cta" size="md" className="inline-flex items-center gap-2">
               <SiDevdotto className="w-5 h-5" />
               {t("follow.button") || "Follow on Dev.to"}

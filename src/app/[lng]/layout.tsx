@@ -129,23 +129,10 @@ export default function RootLayout({
       className="scroll-smooth"
     >
       <head>
-        {/* Preconnect to external domains for performance */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin=""
-        />
-        
-        {/* Manifest - must use absolute path with dynamic routes */}
         <link rel="manifest" href="/manifest.json" />
       </head>
       <body
         className="antialiased relative min-h-screen bg-background text-foreground"
-        style={{
-          fontFamily:
-            'ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
-        }}
       >
         {/* Skip to main content for accessibility */}
         <a

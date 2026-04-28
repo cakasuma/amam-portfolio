@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "motion/react";
 import { Button } from "@/components/ui";
 import {
   HeroSection,
@@ -32,19 +31,7 @@ export default function GlobalError({
                 subtitle="Something went seriously wrong. We're working to fix this issue."
               />
 
-              {/* Error illustration */}
-              <motion.div
-                className="text-6xl mb-8"
-                animate={{
-                  scale: [1, 1.1, 1],
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                }}
-              >
-                ⚠️
-              </motion.div>
+              <div className="text-6xl mb-8 animate-pulse">⚠️</div>
 
               <div className="space-y-4 mb-8">
                 <p className="text-text-secondary">

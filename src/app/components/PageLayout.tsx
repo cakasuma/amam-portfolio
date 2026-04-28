@@ -1,8 +1,5 @@
-"use client";
-
-import { motion } from "motion/react";
-import { ReactNode, memo } from "react";
-import { Card } from "@/components/ui";
+import { ReactNode } from "react";
+import { Card } from "@/components/ui/Card";
 
 interface PageLayoutProps {
   children: ReactNode;
@@ -11,7 +8,7 @@ interface PageLayoutProps {
   gradient?: boolean;
 }
 
-const PageLayout = memo(function PageLayout({
+export default function PageLayout({
   children,
   className = "",
   maxWidth = "6xl",
@@ -21,169 +18,118 @@ const PageLayout = memo(function PageLayout({
     ? "bg-gradient-to-br from-background via-background-secondary to-background"
     : "bg-background";
 
+  const widthClass = {
+    "4xl": "max-w-4xl",
+    "5xl": "max-w-5xl",
+    "6xl": "max-w-6xl",
+    "7xl": "max-w-7xl",
+  }[maxWidth];
+
   return (
-    <div
-      className={`min-h-screen ${gradientClass} transition-all duration-300 ${className}`}
-    >
-      <div
-        className={`max-w-${maxWidth} mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-16`}
-      >
+    <div className={`min-h-screen ${gradientClass} ${className}`}>
+      <div className={`${widthClass} mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-16`}>
         {children}
       </div>
     </div>
   );
-});
+}
 
-export default PageLayout;
-
-// Enhanced page header component with better SEO structure
 interface PageHeaderProps {
   title: string;
   subtitle?: string;
   children?: ReactNode;
-  delay?: number;
   level?: 1 | 2 | 3;
   animate?: boolean;
 }
 
-export const PageHeader = memo(function PageHeader({
+export function PageHeader({
   title,
   subtitle,
   children,
-  delay = 0,
   level = 1,
   animate = true,
 }: PageHeaderProps) {
-  const headingStyles = {
+  const headingClass = {
     1: "text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4 lg:mb-6",
     2: "text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3 lg:mb-5",
     3: "text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-2 lg:mb-4",
-  };
+  }[level];
 
-  const renderHeading = () => {
-    const className = headingStyles[level];
-    switch (level) {
-      case 1:
-        return <h1 className={className}>{title}</h1>;
-      case 2:
-        return <h2 className={className}>{title}</h2>;
-      case 3:
-        return <h3 className={className}>{title}</h3>;
-      default:
-        return <h1 className={className}>{title}</h1>;
-    }
-  };
+  const Heading = level === 1 ? "h1" : level === 2 ? "h2" : "h3";
 
-  const content = (
-    <>
-      {renderHeading()}
+  return (
+    <header
+      className={`text-center mb-12 lg:mb-16 ${animate ? "anim-fade-up" : ""}`}
+    >
+      <Heading className={headingClass}>{title}</Heading>
       {subtitle && (
         <p className="text-lg md:text-xl text-text-secondary max-w-2xl mx-auto mb-6">
           {subtitle}
         </p>
       )}
       {children}
-    </>
+    </header>
   );
+}
 
-  if (!animate) {
-    return (
-      <header className="text-center mb-12 lg:mb-16" role="banner">
-        {content}
-      </header>
-    );
-  }
-
-  return (
-    <motion.header
-      className="text-center mb-12 lg:mb-16"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, delay }}
-      role="banner"
-    >
-      {content}
-    </motion.header>
-  );
-});
-
-// Enhanced animated card component using the new Card UI component
 interface AnimatedCardProps {
   children: ReactNode;
   className?: string;
-  delay?: number;
   direction?: "up" | "left" | "right";
   hover?: boolean;
   glass?: boolean;
   animate?: boolean;
 }
 
-export const AnimatedCard = memo(function AnimatedCard({
+export function AnimatedCard({
   children,
   className = "",
-  delay = 0,
   direction = "up",
   hover = true,
   glass = false,
   animate = true,
 }: AnimatedCardProps) {
+  const animClass = animate
+    ? direction === "left"
+      ? "anim-fade-left"
+      : direction === "right"
+      ? "anim-fade-right"
+      : "anim-fade-up"
+    : "";
+
   return (
-    <Card
-      className={className}
-      delay={delay}
-      direction={direction}
-      hover={hover}
-      glass={glass}
-      animate={animate}
-    >
+    <Card className={`${animClass} ${className}`} hover={hover} glass={glass}>
       {children}
     </Card>
   );
-});
+}
 
-// Enhanced section wrapper component with better semantic structure
 interface SectionProps {
   children: ReactNode;
   className?: string;
-  delay?: number;
   id?: string;
   ariaLabel?: string;
   animate?: boolean;
 }
 
-export const Section = memo(function Section({
+export function Section({
   children,
   className = "",
-  delay = 0,
   id,
   ariaLabel,
   animate = true,
 }: SectionProps) {
-  if (!animate) {
-    return (
-      <section id={id} className={`mb-8 lg:mb-12 ${className}`} aria-label={ariaLabel}>
-        {children}
-      </section>
-    );
-  }
-
   return (
-    <motion.section
+    <section
       id={id}
-      className={`mb-8 lg:mb-12 ${className}`}
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, delay }}
+      className={`mb-8 lg:mb-12 ${animate ? "anim-fade-up" : ""} ${className}`}
       aria-label={ariaLabel}
     >
       {children}
-    </motion.section>
+    </section>
   );
-});
+}
 
-// New components for better structure
-
-// Hero section component for landing pages
 interface HeroSectionProps {
   children: ReactNode;
   className?: string;
@@ -191,7 +137,7 @@ interface HeroSectionProps {
   animate?: boolean;
 }
 
-export const HeroSection = memo(function HeroSection({
+export function HeroSection({
   children,
   className = "",
   background = "gradient",
@@ -210,9 +156,8 @@ export const HeroSection = memo(function HeroSection({
       {children}
     </Section>
   );
-});
+}
 
-// Content grid for organizing sections
 interface ContentGridProps {
   children: ReactNode;
   columns?: 1 | 2 | 3;
@@ -220,7 +165,7 @@ interface ContentGridProps {
   className?: string;
 }
 
-export const ContentGrid = memo(function ContentGrid({
+export function ContentGrid({
   children,
   columns = 2,
   gap = "lg",
@@ -230,22 +175,13 @@ export const ContentGrid = memo(function ContentGrid({
     1: "grid-cols-1",
     2: "grid-cols-1 lg:grid-cols-2",
     3: "grid-cols-1 md:grid-cols-2 lg:grid-cols-3",
-  };
+  }[columns];
 
-  const gridGap = {
-    sm: "gap-4",
-    md: "gap-6",
-    lg: "gap-8",
-  };
+  const gridGap = { sm: "gap-4", md: "gap-6", lg: "gap-8" }[gap];
 
-  return (
-    <div className={`grid ${gridCols[columns]} ${gridGap[gap]} ${className}`}>
-      {children}
-    </div>
-  );
-});
+  return <div className={`grid ${gridCols} ${gridGap} ${className}`}>{children}</div>;
+}
 
-// Call-to-action section
 interface CTASectionProps {
   title: string;
   description?: string;
@@ -255,7 +191,7 @@ interface CTASectionProps {
   animate?: boolean;
 }
 
-export const CTASection = memo(function CTASection({
+export function CTASection({
   title,
   description,
   children,
@@ -270,10 +206,8 @@ export const CTASection = memo(function CTASection({
 
   return (
     <Section className={`text-center ${className}`} animate={animate}>
-      <Card className={`${bgClass} p-8 md:p-12`} hover={false} animate={animate}>
-        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">
-          {title}
-        </h2>
+      <Card className={`${bgClass} p-8 md:p-12`} hover={false}>
+        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">{title}</h2>
         {description && (
           <p className="text-lg md:text-xl mb-6 opacity-90 max-w-2xl mx-auto">
             {description}
@@ -283,4 +217,4 @@ export const CTASection = memo(function CTASection({
       </Card>
     </Section>
   );
-});
+}

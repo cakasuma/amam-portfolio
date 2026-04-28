@@ -1,12 +1,10 @@
-"use client";
-import { useTranslation } from "@/app/i18n/client";
-import { use } from "react";
 import PageLayout, {
   PageHeader,
   Section,
   ContentGrid,
 } from "@/app/components/PageLayout";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui";
+import { usingTranslation } from "@/app/i18n";
 
 interface ResumeProps {
   params: Promise<{
@@ -14,103 +12,18 @@ interface ResumeProps {
   }>;
 }
 
-export default function Resume({ params }: ResumeProps) {
-  const { lng } = use(params);
-  const { t, ready } = useTranslation(lng, "resume");
-
-  // Show loading state until translations are ready
-  if (!ready) {
-    return (
-      <PageLayout maxWidth="4xl">
-        <div className="min-h-screen flex items-center justify-center">
-          <div className="animate-pulse text-muted">Loading...</div>
-        </div>
-      </PageLayout>
-    );
-  }
+export default async function Resume({ params }: ResumeProps) {
+  const { lng } = await params;
+  const { t } = await usingTranslation(lng, "resume");
 
   return (
     <PageLayout maxWidth="4xl">
-      {/* Header */}
       <PageHeader
         title={t("title") || "Professional Resume"}
-        subtitle={
-          t("subtitle") || "Experience, Skills, and Professional Journey"
-        }
+        subtitle={t("subtitle") || "Experience, Skills, and Professional Journey"}
         level={1}
       />
 
-      {/* Personal Info Section */}
-      {/* <Section id="personal-info" ariaLabel="Personal information">
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-3">
-              <span className="text-secondary text-3xl">👤</span>
-              {t("personal-info.title") || "Personal Information"}
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <ContentGrid columns={2} gap="md">
-              <div className="space-y-4">
-                <div className="flex items-center gap-2">
-                  <span className="font-semibold text-foreground min-w-[80px]">
-                    {t("personal-info.name") || "Name"}:
-                  </span>
-                  <span
-                    className="text-text-secondary"
-                    style={{ wordBreak: "break-word" }}
-                  >
-                    Mustofa Ghaleb Amami
-                  </span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="font-semibold text-foreground min-w-[80px]">
-                    {t("personal-info.linkedin") || "LinkedIn"}:
-                  </span>
-                  <a
-                    href="https://www.linkedin.com/in/mustofa-ghaleb-amami/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-text-secondary hover:text-secondary transition-colors duration-200"
-                    style={{ wordBreak: "break-word" }}
-                  >
-                    /mustofa-ghaleb-amami
-                  </a>
-                </div>
-              </div>
-              <div className="space-y-4">
-                <div className="flex items-center gap-2">
-                  <span className="font-semibold text-foreground min-w-[80px]">
-                    {t("personal-info.github") || "GitHub"}:
-                  </span>
-                  <a
-                    href="https://github.com/cakasuma"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-text-secondary hover:text-success transition-colors duration-200"
-                    style={{ wordBreak: "break-word" }}
-                  >
-                    @cakasuma
-                  </a>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="font-semibold text-foreground min-w-[80px]">
-                    {t("personal-info.location") || "Location"}:
-                  </span>
-                  <span
-                    className="text-text-secondary"
-                    style={{ wordBreak: "break-word" }}
-                  >
-                    Kuala Lumpur, Malaysia
-                  </span>
-                </div>
-              </div>
-            </ContentGrid>
-          </CardContent>
-        </Card>
-      </Section> */}
-
-      {/* Experience Section */}
       <Section id="experience" ariaLabel="Professional experience">
         <Card>
           <CardHeader>
@@ -124,8 +37,7 @@ export default function Resume({ params }: ResumeProps) {
               <article className="border-l-4 border-secondary pl-6 py-4 bg-accent/30 rounded-r-lg transition-all duration-300 hover:border-secondary/80 hover:bg-accent/50">
                 <header>
                   <h3 className="text-xl font-semibold text-foreground mb-2">
-                    {t("experience.job1.title") ||
-                      "Senior Full-Stack Developer"}
+                    {t("experience.job1.title") || "Senior Full-Stack Developer"}
                   </h3>
                   <p className="text-secondary font-medium text-lg mb-1">
                     {t("experience.job1.company") || "Tech Company Inc."}
@@ -167,8 +79,7 @@ export default function Resume({ params }: ResumeProps) {
                     {t("experience.job3.company") || "MoneyLion"}
                   </p>
                   <p className="text-text-muted text-sm mb-3">
-                    {t("experience.job3.period") ||
-                      "October 2021 - September 2023"}
+                    {t("experience.job3.period") || "October 2021 - September 2023"}
                   </p>
                 </header>
                 <p className="text-text-secondary leading-relaxed">
@@ -180,8 +91,7 @@ export default function Resume({ params }: ResumeProps) {
               <article className="border-l-4 border-success pl-6 py-4 bg-accent/30 rounded-r-lg transition-all duration-300 hover:border-success/80 hover:bg-accent/50">
                 <header>
                   <h3 className="text-xl font-semibold text-foreground mb-2">
-                    {t("experience.job4.title") ||
-                      "Software Engineering Lecturer"}
+                    {t("experience.job4.title") || "Software Engineering Lecturer"}
                   </h3>
                   <p className="text-success font-medium text-lg mb-1">
                     {t("experience.job4.company") || "RevoU"}
@@ -200,7 +110,6 @@ export default function Resume({ params }: ResumeProps) {
         </Card>
       </Section>
 
-      {/* Education Section */}
       <Section id="education" ariaLabel="Educational background">
         <Card>
           <CardHeader>
@@ -227,7 +136,6 @@ export default function Resume({ params }: ResumeProps) {
         </Card>
       </Section>
 
-      {/* Skills Section */}
       <Section id="skills" ariaLabel="Technical skills">
         <Card>
           <CardHeader>
@@ -244,14 +152,7 @@ export default function Resume({ params }: ResumeProps) {
                   {t("skills.frontend") || "Frontend Development"}
                 </h3>
                 <div className="flex flex-wrap gap-3">
-                  {[
-                    "React",
-                    "Next.js",
-                    "TypeScript",
-                    "Tailwind CSS",
-                    "HTML5",
-                    "CSS3",
-                  ].map((skill) => (
+                  {["React", "Next.js", "TypeScript", "Tailwind CSS", "HTML5", "CSS3"].map((skill) => (
                     <span
                       key={skill}
                       className="px-4 py-2 bg-secondary/10 text-secondary rounded-full text-sm border border-secondary/20 font-medium transition-all duration-300 hover:bg-secondary/20 hover:border-secondary/40"
@@ -267,14 +168,7 @@ export default function Resume({ params }: ResumeProps) {
                   {t("skills.backend") || "Backend Development"}
                 </h3>
                 <div className="flex flex-wrap gap-3">
-                  {[
-                    "Node.js",
-                    "Express",
-                    "PostgreSQL",
-                    "MongoDB",
-                    "REST APIs",
-                    "GraphQL",
-                  ].map((skill) => (
+                  {["Node.js", "Express", "PostgreSQL", "MongoDB", "REST APIs", "GraphQL"].map((skill) => (
                     <span
                       key={skill}
                       className="px-4 py-2 bg-info/10 text-info rounded-full text-sm border border-theme-accent font-medium transition-all duration-300 hover:bg-info/20 hover:border-info/40"
@@ -289,7 +183,6 @@ export default function Resume({ params }: ResumeProps) {
         </Card>
       </Section>
 
-      {/* Certifications Section */}
       <Section id="certifications" ariaLabel="Professional certifications">
         <Card>
           <CardHeader>
@@ -302,8 +195,7 @@ export default function Resume({ params }: ResumeProps) {
             <ContentGrid columns={2} gap="md">
               <div className="p-4 bg-accent/50 rounded-lg border border-border">
                 <h4 className="font-semibold text-foreground mb-2">
-                  {t("certifications.cert1.name") ||
-                    "Javascript (Intermediate)"}
+                  {t("certifications.cert1.name") || "Javascript (Intermediate)"}
                 </h4>
                 <p className="text-text-muted text-sm">
                   {t("certifications.cert1.issuer") || "Team HackerRank"} •{" "}
@@ -312,8 +204,7 @@ export default function Resume({ params }: ResumeProps) {
               </div>
               <div className="p-4 bg-accent/50 rounded-lg border border-border">
                 <h4 className="font-semibold text-foreground mb-2">
-                  {t("certifications.cert2.name") ||
-                    "DEV401 Salesforce Platform App Builder"}
+                  {t("certifications.cert2.name") || "DEV401 Salesforce Platform App Builder"}
                 </h4>
                 <p className="text-text-muted text-sm">
                   {t("certifications.cert2.issuer") || "Salesforce"} •{" "}
@@ -322,8 +213,7 @@ export default function Resume({ params }: ResumeProps) {
               </div>
               <div className="p-4 bg-accent/50 rounded-lg border border-border">
                 <h4 className="font-semibold text-foreground mb-2">
-                  {t("certifications.cert3.name") ||
-                    "Microsoft Azure Fundamentals"}
+                  {t("certifications.cert3.name") || "Microsoft Azure Fundamentals"}
                 </h4>
                 <p className="text-text-muted text-sm">
                   {t("certifications.cert3.issuer") || "Microsoft"} •{" "}

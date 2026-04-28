@@ -1,47 +1,44 @@
-/* eslint-disable react-hooks/rules-of-hooks */
-
 'use client'
 
 import { useEffect, useState } from 'react'
-import i18next, { TFunction} from 'i18next'
+import i18next, { TFunction } from 'i18next'
 import { initReactI18next, useTranslation as useTranslationOrg } from 'react-i18next'
 import { useCookies } from 'react-cookie'
 import resourcesToBackend from 'i18next-resources-to-backend'
 import LanguageDetector from 'i18next-browser-languagedetector'
-import { getOptions, languages, cookieName } from './settings'
+import { getOptions, cookieName } from './settings'
 
 const runsOnServerSide = typeof window === 'undefined'
 
-// 
-interface I18nOptions {
-    lng: string | undefined;
-    detection: {
-        order: string[];
-    };
-    preload: string[];
+if (!i18next.isInitialized) {
+    i18next
+        .use(initReactI18next)
+        .use(LanguageDetector)
+        .use(
+            resourcesToBackend(
+                (language: string, namespace: string) =>
+                    import(`./locales/${language}/${namespace}.json`)
+            )
+        )
+        .init({
+            ...getOptions(),
+            lng: undefined,
+            detection: {
+                order: ['path', 'htmlTag', 'cookie', 'navigator'],
+            },
+            // Only preload the namespace we need; other lngs lazy-load on switch
+            preload: runsOnServerSide ? [] : undefined,
+            react: {
+                useSuspense: false,
+            },
+            interpolation: {
+                escapeValue: false,
+            },
+            // Reduce overhead from missing-key callbacks
+            saveMissing: false,
+            partialBundledLanguages: true,
+        })
 }
-
-// Initialize i18next with better performance settings
-i18next
-    .use(initReactI18next)
-    .use(LanguageDetector)
-    .use(resourcesToBackend((language: string, namespace: string) => import(`./locales/${language}/${namespace}.json`)))
-    .init<I18nOptions>({
-        ...getOptions(),
-        lng: undefined, // let detect the language on client side
-        detection: {
-            order: ['path', 'htmlTag', 'cookie', 'navigator'],
-        },
-        preload: languages, // Preload all languages to prevent flickering
-        // Performance optimizations
-        react: {
-            useSuspense: false, // Disable suspense for better performance
-        },
-        interpolation: {
-            escapeValue: false, // React already escapes values
-        },
-    })
-
 
 interface UseTranslationReturn {
     t: TFunction;
@@ -49,53 +46,47 @@ interface UseTranslationReturn {
     ready: boolean;
 }
 
-export function useTranslation(lng: string, ns?: string | string[], options?: Record<string, unknown>): UseTranslationReturn {
+export function useTranslation(
+    lng: string,
+    ns?: string | string[],
+    options?: Record<string, unknown>
+): UseTranslationReturn {
     const [cookies, setCookie] = useCookies([cookieName])
-    const [ready, setReady] = useState(false)
     const ret = useTranslationOrg(ns, options) as Omit<UseTranslationReturn, 'ready'>
     const { i18n } = ret
-    
+
     if (runsOnServerSide && lng && i18n.resolvedLanguage !== lng) {
         i18n.changeLanguage(lng)
-    } else {
-        const [activeLng, setActiveLng] = useState<string>(i18n.resolvedLanguage || 'en')
-        
-        useEffect(() => {
-            // Check if translations are loaded for the current language and namespace
-            const checkReady = () => {
-                // Get the namespace to check - default to 'translation' if not specified
-                const namespaceToCheck = Array.isArray(ns) ? ns[0] : (ns || 'translation')
-                const isReady = i18n.hasResourceBundle(lng, namespaceToCheck)
-                setReady(isReady)
-            }
-            
-            checkReady()
-            
-            // Listen for language changes
-            i18n.on('languageChanged', checkReady)
-            i18n.on('loaded', checkReady)
-            
-            return () => {
-                i18n.off('languageChanged', checkReady)
-                i18n.off('loaded', checkReady)
-            }
-        }, [lng, i18n, ns])
-        
-        useEffect(() => {
-            if (activeLng === i18n.resolvedLanguage) return
-            setActiveLng(i18n.resolvedLanguage || 'en')
-        }, [activeLng, i18n.resolvedLanguage])
-        
-        useEffect(() => {
-            if (!lng || i18n.resolvedLanguage === lng) return
-            i18n.changeLanguage(lng)
-        }, [lng, i18n])
-        
-        useEffect(() => {
-            if (cookies.i18next === lng) return
-            setCookie(cookieName, lng, { path: '/' })
-        }, [lng, cookies.i18next, setCookie])
     }
-    
+
+    const namespaceToCheck = Array.isArray(ns) ? ns[0] : (ns || 'translation')
+    const initialReady =
+        runsOnServerSide || i18n.hasResourceBundle(lng, namespaceToCheck)
+    const [ready, setReady] = useState(initialReady)
+
+    useEffect(() => {
+        if (runsOnServerSide) return
+        if (i18n.resolvedLanguage !== lng) {
+            i18n.changeLanguage(lng)
+        }
+        const check = () => {
+            const isReady = i18n.hasResourceBundle(lng, namespaceToCheck)
+            setReady((prev) => (prev === isReady ? prev : isReady))
+        }
+        check()
+        i18n.on('languageChanged', check)
+        i18n.on('loaded', check)
+        return () => {
+            i18n.off('languageChanged', check)
+            i18n.off('loaded', check)
+        }
+    }, [lng, namespaceToCheck, i18n])
+
+    useEffect(() => {
+        if (runsOnServerSide) return
+        if (cookies.i18next === lng) return
+        setCookie(cookieName, lng, { path: '/' })
+    }, [lng, cookies.i18next, setCookie])
+
     return { ...ret, ready }
 }

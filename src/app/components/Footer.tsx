@@ -1,32 +1,23 @@
-"use client";
-import { motion } from "motion/react";
-import { useTranslation } from "@/app/i18n/client";
-import { useState, useEffect } from "react";
+import { usingTranslation } from "@/app/i18n";
 
 interface FooterProps {
   lng: string;
 }
 
-export function Footer({ lng }: FooterProps) {
-  const { t } = useTranslation(lng, "footer");
-  const [currentYear, setCurrentYear] = useState(2024);
+// Evaluated once at build time — cacheComponents forbids runtime `new Date()`
+// inside a server component without a request-data dependency.
+const CURRENT_YEAR = new Date().getFullYear();
 
-  useEffect(() => {
-    setCurrentYear(new Date().getFullYear());
-  }, []);
+export async function Footer({ lng }: FooterProps) {
+  const { t } = await usingTranslation(lng, "footer");
 
   return (
-    <motion.footer
-      className="bg-background/10 backdrop-blur-sm border-t border-border/50 py-8 px-6 relative z-10"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ delay: 0.5 }}
-    >
+    <footer className="bg-background/10 backdrop-blur-sm border-t border-border/50 py-8 px-6 relative z-10">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="text-center md:text-left">
             <p className="text-muted">
-              © <span suppressHydrationWarning>{currentYear}</span> Mustofa Amami. {t("rights-reserved")}
+              © {CURRENT_YEAR} Mustofa Amami. {t("rights-reserved")}
             </p>
           </div>
 
@@ -58,6 +49,6 @@ export function Footer({ lng }: FooterProps) {
           </div>
         </div>
       </div>
-    </motion.footer>
+    </footer>
   );
 }

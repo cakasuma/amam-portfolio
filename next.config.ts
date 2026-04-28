@@ -1,9 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Enable experimental features
   experimental: {
-    optimizePackageImports: ['motion', 'react-icons'],
+    // Tree-shakes individual icons in the client bundle.
+    optimizePackageImports: ["react-icons"],
   },
 
   // Enable Cache Components (formerly PPR) for better performance

@@ -1,9 +1,6 @@
-"use client";
-import { motion } from "motion/react";
 import Link from "next/link";
 import Image from "next/image";
-import { use, useMemo } from "react";
-import { useTranslation } from "@/app/i18n/client";
+import { FaLinkedin, FaGithub, FaTwitter } from "@/components/icons";
 import PageLayout, {
   AnimatedCard,
   Section,
@@ -12,7 +9,7 @@ import PageLayout, {
   CTASection,
 } from "@/app/components/PageLayout";
 import { Button } from "@/components/ui";
-import { FaLinkedin, FaGithub, FaTwitter } from "react-icons/fa";
+import { usingTranslation } from "@/app/i18n";
 
 interface HomeProps {
   params: Promise<{
@@ -20,86 +17,61 @@ interface HomeProps {
   }>;
 }
 
-export default function Home({ params }: HomeProps) {
-  const { lng } = use(params);
-  const { t, ready } = useTranslation(lng);
+export default async function Home({ params }: HomeProps) {
+  const { lng } = await params;
+  const { t } = await usingTranslation(lng);
 
-  // Memoize contact info to avoid recreating on every render
-  const contactInfo = useMemo(
-    () => [
-      {
-        icon: "📧",
-        text: t("email") || "amammustofa@gmail.com",
-        label: t("contact-info.email-label") || "Email",
-        href: "mailto:amammustofa@gmail.com",
-      },
-      {
-        icon: "📱",
-        text: t("phone") || "+60 10-844 4970",
-        label: t("contact-info.phone-label") || "Phone",
-        href: "https://wa.me/60108444970",
-      },
-      {
-        icon: "📍",
-        text: t("location") || "Kuala Lumpur, Malaysia",
-        label: t("contact-info.location-label") || "Location",
-        href: "https://maps.google.com/?q=Kuala+Lumpur,+Malaysia",
-      },
-    ],
-    [t]
-  );
+  const contactInfo = [
+    {
+      icon: "📧",
+      text: t("email") || "amammustofa@gmail.com",
+      label: t("contact-info.email-label") || "Email",
+      href: "mailto:amammustofa@gmail.com",
+    },
+    {
+      icon: "📱",
+      text: t("phone") || "+60 10-844 4970",
+      label: t("contact-info.phone-label") || "Phone",
+      href: "https://wa.me/60108444970",
+    },
+    {
+      icon: "📍",
+      text: t("location") || "Kuala Lumpur, Malaysia",
+      label: t("contact-info.location-label") || "Location",
+      href: "https://maps.google.com/?q=Kuala+Lumpur,+Malaysia",
+    },
+  ];
 
-  // Memoize social links
-  const socialLinks = useMemo(
-    () => [
-      {
-        href: "https://www.linkedin.com/in/mustofa-ghaleb-amami?originalSubdomain=my",
-        icon: FaLinkedin,
-        label: "LinkedIn",
-        color: "from-blue-600 to-blue-700",
-        hoverColor: "from-blue-500 to-blue-600",
-      },
-      {
-        href: "https://github.com/cakasuma",
-        icon: FaGithub,
-        label: "GitHub",
-        color: "bg-github border-2 border-github",
-        hoverColor: "bg-github-hover border-github-hover",
-      },
-      {
-        href: "https://x.com/cakasuma",
-        icon: FaTwitter,
-        label: "Twitter",
-        color: "from-sky-500 to-sky-600",
-        hoverColor: "from-sky-400 to-sky-500",
-      },
-    ],
-    []
-  );
+  const socialLinks = [
+    {
+      href: "https://www.linkedin.com/in/mustofa-ghaleb-amami?originalSubdomain=my",
+      icon: FaLinkedin,
+      label: "LinkedIn",
+      color: "from-blue-600 to-blue-700",
+      hoverColor: "from-blue-500 to-blue-600",
+    },
+    {
+      href: "https://github.com/cakasuma",
+      icon: FaGithub,
+      label: "GitHub",
+      color: "bg-github border-2 border-github",
+      hoverColor: "bg-github-hover border-github-hover",
+    },
+    {
+      href: "https://x.com/cakasuma",
+      icon: FaTwitter,
+      label: "Twitter",
+      color: "from-sky-500 to-sky-600",
+      hoverColor: "from-sky-400 to-sky-500",
+    },
+  ];
 
-  // Memoize skills
-  const skills = useMemo(
-    () => ["React", "Next.js", "TypeScript", "Node.js", "Tailwind CSS", "PostgreSQL"],
-    []
-  );
-
-  // Don't render content until translations are ready
-  if (!ready) {
-    return (
-      <PageLayout>
-        <div className="min-h-screen flex items-center justify-center">
-          <div className="animate-pulse text-muted">Loading...</div>
-        </div>
-      </PageLayout>
-    );
-  }
+  const skills = ["React", "Next.js", "TypeScript", "Node.js", "Tailwind CSS", "PostgreSQL"];
 
   return (
     <PageLayout>
-      {/* Hero Section */}
       <HeroSection animate={false}>
         <div>
-          {/* Profile Image with enhanced styling */}
           <div className="relative w-48 h-48 lg:w-56 lg:h-56 mx-auto mb-8">
             <div className="relative w-full h-full">
               <Image
@@ -108,12 +80,11 @@ export default function Home({ params }: HomeProps) {
                 width={224}
                 height={224}
                 priority
+                fetchPriority="high"
+                sizes="(max-width: 1024px) 192px, 224px"
                 className="rounded-full border-4 border-secondary object-cover shadow-lg w-full h-full"
-                style={{
-                  objectPosition: "center 15%",
-                }}
+                style={{ objectPosition: "center 15%" }}
               />
-              {/* Professional status indicator - simplified animation */}
               <span
                 className="absolute bottom-4 right-5 lg:right-7 w-7 h-7 bg-success rounded-full border-4 border-background shadow-lg animate-pulse"
                 title="Available for projects"
@@ -121,7 +92,6 @@ export default function Home({ params }: HomeProps) {
             </div>
           </div>
 
-          {/* Name and Title */}
           <div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4">
               {t("name") || "Mustofa Amami"}
@@ -137,16 +107,13 @@ export default function Home({ params }: HomeProps) {
             </p>
           </div>
 
-          {/* Contact Info Cards */}
           <div className="flex flex-wrap justify-center gap-4 mb-12">
             {contactInfo.map((item) => (
               <a
                 key={item.label}
                 href={item.href}
                 target={item.label === "Location" ? "_blank" : undefined}
-                rel={
-                  item.label === "Location" ? "noopener noreferrer" : undefined
-                }
+                rel={item.label === "Location" ? "noopener noreferrer" : undefined}
                 className="group flex items-center gap-3 bg-card border border-border rounded-full px-6 py-3 hover:shadow-lg hover:border-secondary transition-all duration-200 cursor-pointer border-runner active:scale-95"
               >
                 <span className="text-2xl group-hover:scale-110 transition-transform duration-200">
@@ -159,7 +126,6 @@ export default function Home({ params }: HomeProps) {
             ))}
           </div>
 
-          {/* Social Links */}
           <div className="flex justify-center gap-6">
             {socialLinks.map((social) => (
               <a
@@ -195,10 +161,8 @@ export default function Home({ params }: HomeProps) {
         </div>
       </HeroSection>
 
-      {/* Main Content Sections */}
       <ContentGrid columns={2} className="mb-12">
-        {/* About Section */}
-        <AnimatedCard delay={0} direction="left" animate={false}>
+        <AnimatedCard direction="left" animate={false}>
           <header className="mb-6">
             <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
               <span className="text-secondary text-3xl">⚡</span>
@@ -215,8 +179,7 @@ export default function Home({ params }: HomeProps) {
           </p>
         </AnimatedCard>
 
-        {/* Skills Section */}
-        <AnimatedCard delay={0} direction="right" animate={false}>
+        <AnimatedCard direction="right" animate={false}>
           <header className="mb-6">
             <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
               <span className="text-warning text-3xl">🎯</span>
@@ -240,9 +203,7 @@ export default function Home({ params }: HomeProps) {
         </AnimatedCard>
       </ContentGrid>
 
-      {/* Testimonials Section */}
       <Section
-        delay={0}
         className="mb-12"
         id="testimonials"
         ariaLabel="Client testimonials"
@@ -269,8 +230,7 @@ export default function Home({ params }: HomeProps) {
                 &rdquo;
               </p>
               <cite className="text-secondary font-semibold text-sm">
-                -{" "}
-                {t("testimonials.author1") || "Sarah Johnson, Project Manager"}
+                - {t("testimonials.author1") || "Sarah Johnson, Project Manager"}
               </cite>
             </blockquote>
 
@@ -289,7 +249,6 @@ export default function Home({ params }: HomeProps) {
         </AnimatedCard>
       </Section>
 
-      {/* Call to Action */}
       <CTASection
         title={t("cta.title") || "Ready to work together?"}
         description={
@@ -300,20 +259,16 @@ export default function Home({ params }: HomeProps) {
         animate={false}
       >
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <div style={{ overflow: "visible" }}>
-            <Link href={`/${lng}/contact`} prefetch={true}>
-              <Button variant="cta" size="lg" className="cursor-pointer">
-                {t("cta.get-in-touch") || "Get in Touch"}
-              </Button>
-            </Link>
-          </div>
-          <div className="cursor-pointer" style={{ overflow: "visible" }}>
-            <Link href={`/${lng}/portfolio`} prefetch={true}>
-              <Button variant="outline" size="lg" className="cursor-pointer">
-                {t("cta.view-my-work") || "View My Work"}
-              </Button>
-            </Link>
-          </div>
+          <Link href={`/${lng}/contact`} prefetch={true}>
+            <Button variant="cta" size="lg" className="cursor-pointer">
+              {t("cta.get-in-touch") || "Get in Touch"}
+            </Button>
+          </Link>
+          <Link href={`/${lng}/portfolio`} prefetch={true}>
+            <Button variant="outline" size="lg" className="cursor-pointer">
+              {t("cta.view-my-work") || "View My Work"}
+            </Button>
+          </Link>
         </div>
       </CTASection>
     </PageLayout>

@@ -130,6 +130,7 @@ export default function RootLayout({
     >
       <head>
         <link rel="manifest" href="/manifest.json" />
+        <meta name="google-adsense-account" content="ca-pub-4424261944689002" />
       </head>
       <body
         className="antialiased relative min-h-screen bg-background text-foreground"

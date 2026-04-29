@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { usingTranslation } from "@/app/i18n";
 
 interface FooterProps {
@@ -21,7 +22,7 @@ export async function Footer({ lng }: FooterProps) {
             </p>
           </div>
 
-          <div className="flex gap-6">
+          <div className="flex flex-wrap items-center justify-center gap-6">
             <a
               href="https://linkedin.com"
               target="_blank"
@@ -46,6 +47,12 @@ export async function Footer({ lng }: FooterProps) {
             >
               Twitter
             </a>
+            <Link href={`/${lng}/privacy`} className="text-muted hover:text-primary transition-colors">
+              {t("privacy") || "Privacy"}
+            </Link>
+            <Link href={`/${lng}/terms`} className="text-muted hover:text-primary transition-colors">
+              {t("terms") || "Terms"}
+            </Link>
           </div>
         </div>
       </div>

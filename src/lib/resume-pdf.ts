@@ -108,9 +108,14 @@ export function generateResumePdf(data: ResumePdfData): Buffer {
     });
   };
 
-  // `followingBlock` keeps the rule from being stranded at the foot of a page:
-  // the title only lands here if its first chunk of content fits beneath it.
+  // Sections own the space above their own heading, so the rhythm stays even no
+  // matter what the preceding block left behind. `followingBlock` keeps the rule
+  // from being stranded at the foot of a page: the title only lands here if its
+  // first chunk of content fits beneath it.
   const addSectionTitle = (title: string, followingBlock = 12) => {
+    if (y > MARGIN) {
+      y += 5;
+    }
     ensureSpace(12 + followingBlock);
     doc.setFont("helvetica", "bold");
     doc.setFontSize(13);
@@ -152,7 +157,9 @@ export function generateResumePdf(data: ResumePdfData): Buffer {
   y += 2.5;
   doc.setDrawColor(190, 190, 190);
   doc.line(MARGIN, y, PAGE_WIDTH - MARGIN, y);
-  y += 8;
+  // The first section heading adds its own lead-in, so only a hairline is needed
+  // here or the rule ends up floating in the middle of a large gap.
+  y += 2;
 
   // Profile summary
   if (data.summary) {
@@ -196,7 +203,7 @@ export function generateResumePdf(data: ResumePdfData): Buffer {
         y += 3.6;
       }
     });
-    y = rowTop + 5.5 + labelLineCount * 3.6 + 5;
+    y = rowTop + 5.5 + labelLineCount * 3.6;
   }
 
   // Experience
@@ -223,9 +230,8 @@ export function generateResumePdf(data: ResumePdfData): Buffer {
       y += 5.5;
 
       job.bullets.forEach((bullet) => addBullet(bullet));
-      y += idx === data.experience.length - 1 ? 2 : 5;
+      y += idx === data.experience.length - 1 ? 0 : 5;
     });
-    y += 1;
   }
 
   // Education
@@ -253,7 +259,7 @@ export function generateResumePdf(data: ResumePdfData): Buffer {
       if (edu.detail) {
         addWrappedText(edu.detail, 10, INK.secondary);
       }
-      y += idx === data.education.length - 1 ? 3 : 2.5;
+      y += idx === data.education.length - 1 ? 0 : 2.5;
     });
   }
 
@@ -286,18 +292,24 @@ export function generateResumePdf(data: ResumePdfData): Buffer {
         doc.text(line, MARGIN + labelColumn, y + lineIndex * 4.5);
       });
 
-      y += lines.length * 4.5 + (idx === data.skills.length - 1 ? 2 : 2);
+      y += lines.length * 4.5 + (idx === data.skills.length - 1 ? 0 : 2);
     });
   }
 
   // Certifications, in two columns so short entries don't burn a full page width.
   if (data.certifications.length) {
     addSectionTitle(data.labels.certifications);
-    const columnWidth = CONTENT_WIDTH / 2;
-    const rowCount = Math.ceil(data.certifications.length / 2);
+    // Prefer three across when it divides evenly, so a trailing entry is never
+    // left stranded on a near-empty row of its own.
+    const columns = data.certifications.length % 3 === 0 ? 3 : 2;
+    const columnWidth = CONTENT_WIDTH / columns;
+    const rowCount = Math.ceil(data.certifications.length / columns);
 
     for (let row = 0; row < rowCount; row++) {
-      const rowEntries = data.certifications.slice(row * 2, row * 2 + 2);
+      const rowEntries = data.certifications.slice(
+        row * columns,
+        row * columns + columns
+      );
       // Height is driven by whichever entry in the row wraps to more lines.
       const rowLineCount = Math.max(
         ...rowEntries.map(
@@ -305,13 +317,16 @@ export function generateResumePdf(data: ResumePdfData): Buffer {
             (doc.splitTextToSize(cert.name, columnWidth - 4) as string[]).length
         )
       );
-      const rowHeight = rowLineCount * 4.6 + 7;
+      const rowHeight = rowLineCount * 4.6 + 5;
       ensureSpace(rowHeight);
       const rowTop = y;
 
+      // Issuers share one baseline across the row, set by the tallest name, so a
+      // wrapped title doesn't drag its own issuer out of line with its neighbours.
+      const issuerBaseline = rowTop + rowLineCount * 4.6;
+
       rowEntries.forEach((cert, column) => {
         const x = MARGIN + columnWidth * column;
-        y = rowTop;
 
         doc.setFont("helvetica", "bold");
         doc.setFontSize(10);
@@ -320,20 +335,18 @@ export function generateResumePdf(data: ResumePdfData): Buffer {
           cert.name,
           columnWidth - 4
         ) as string[];
-        for (const line of nameLines) {
-          doc.text(line, x, y);
-          y += 4.6;
-        }
+        nameLines.forEach((line, lineIndex) => {
+          doc.text(line, x, rowTop + lineIndex * 4.6);
+        });
 
         doc.setFont("helvetica", "normal");
         doc.setFontSize(9);
         doc.setTextColor(INK.muted[0], INK.muted[1], INK.muted[2]);
-        doc.text(`${cert.issuer} • ${cert.year}`, x, y);
+        doc.text(`${cert.issuer} • ${cert.year}`, x, issuerBaseline);
       });
 
       y = rowTop + rowHeight;
     }
-    y += 1;
   }
 
   // Writing & community

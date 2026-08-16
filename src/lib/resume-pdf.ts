@@ -4,13 +4,19 @@ export interface ResumeExperienceEntry {
   title: string;
   company: string;
   period: string;
-  description: string;
+  bullets: string[];
 }
 
 export interface ResumeEducationEntry {
   degree: string;
   school: string;
   period: string;
+  detail?: string;
+}
+
+export interface ResumeHighlight {
+  value: string;
+  label: string;
 }
 
 export interface ResumeSkillGroup {
@@ -33,20 +39,25 @@ export interface ResumePdfData {
   linkedin: string;
   github: string;
   labels: {
+    summary: string;
     experience: string;
     education: string;
     skills: string;
     certifications: string;
+    writing: string;
   };
+  summary: string;
+  highlights: ResumeHighlight[];
   experience: ResumeExperienceEntry[];
   education: ResumeEducationEntry[];
   skills: ResumeSkillGroup[];
   certifications: ResumeCertificationEntry[];
+  writing: string;
 }
 
 const PAGE_WIDTH = 210;
 const PAGE_HEIGHT = 297;
-const MARGIN = 18;
+const MARGIN = 16;
 const CONTENT_WIDTH = PAGE_WIDTH - MARGIN * 2;
 
 const INK = { primary: [26, 26, 26], secondary: [70, 70, 70], muted: [120, 120, 120] };
@@ -66,7 +77,7 @@ export function generateResumePdf(data: ResumePdfData): Buffer {
     text: string,
     fontSize: number,
     color: number[],
-    lineHeight = 5
+    lineHeight = 4.8
   ) => {
     doc.setFont("helvetica", "normal");
     doc.setFontSize(fontSize);
@@ -79,8 +90,28 @@ export function generateResumePdf(data: ResumePdfData): Buffer {
     }
   };
 
-  const addSectionTitle = (title: string) => {
-    ensureSpace(14);
+  // Bullets hang: the marker sits in the margin gutter and wrapped lines align
+  // to the text column rather than back under the dot.
+  const addBullet = (text: string, fontSize = 10, lineHeight = 4.6) => {
+    const indent = 4;
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(fontSize);
+    doc.setTextColor(INK.secondary[0], INK.secondary[1], INK.secondary[2]);
+    const lines = doc.splitTextToSize(text, CONTENT_WIDTH - indent) as string[];
+    lines.forEach((line, index) => {
+      ensureSpace(lineHeight);
+      if (index === 0) {
+        doc.text("•", MARGIN, y);
+      }
+      doc.text(line, MARGIN + indent, y);
+      y += lineHeight;
+    });
+  };
+
+  // `followingBlock` keeps the rule from being stranded at the foot of a page:
+  // the title only lands here if its first chunk of content fits beneath it.
+  const addSectionTitle = (title: string, followingBlock = 12) => {
+    ensureSpace(12 + followingBlock);
     doc.setFont("helvetica", "bold");
     doc.setFontSize(13);
     doc.setTextColor(INK.primary[0], INK.primary[1], INK.primary[2]);
@@ -88,7 +119,7 @@ export function generateResumePdf(data: ResumePdfData): Buffer {
     y += 2;
     doc.setDrawColor(210, 210, 210);
     doc.line(MARGIN, y, PAGE_WIDTH - MARGIN, y);
-    y += 7;
+    y += 6.5;
   };
 
   // Header
@@ -102,7 +133,7 @@ export function generateResumePdf(data: ResumePdfData): Buffer {
   doc.setFontSize(12);
   doc.setTextColor(INK.secondary[0], INK.secondary[1], INK.secondary[2]);
   doc.text(data.role, MARGIN, y);
-  y += 7;
+  y += 6.5;
 
   doc.setFontSize(9.5);
   doc.setTextColor(INK.muted[0], INK.muted[1], INK.muted[2]);
@@ -118,16 +149,62 @@ export function generateResumePdf(data: ResumePdfData): Buffer {
     y += 4;
   }
 
-  y += 3;
+  y += 2.5;
   doc.setDrawColor(190, 190, 190);
   doc.line(MARGIN, y, PAGE_WIDTH - MARGIN, y);
-  y += 9;
+  y += 8;
+
+  // Profile summary
+  if (data.summary) {
+    addSectionTitle(data.labels.summary);
+    addWrappedText(data.summary, 10, INK.secondary);
+    y += 5;
+  }
+
+  // Highlights, laid out as an evenly divided single row of figures.
+  if (data.highlights.length) {
+    const columnWidth = CONTENT_WIDTH / data.highlights.length;
+    // Reserve the tallest label so a wrapped label never collides with the
+    // section that follows.
+    const labelLineCount = Math.max(
+      ...data.highlights.map(
+        (h) => (doc.splitTextToSize(h.label, columnWidth - 4) as string[]).length
+      )
+    );
+    ensureSpace(9 + labelLineCount * 3.6 + 4);
+
+    const rowTop = y;
+    data.highlights.forEach((highlight, idx) => {
+      const centre = MARGIN + columnWidth * idx + columnWidth / 2;
+      y = rowTop;
+
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(15);
+      doc.setTextColor(INK.primary[0], INK.primary[1], INK.primary[2]);
+      doc.text(highlight.value, centre, y, { align: "center" });
+      y += 5.5;
+
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(8);
+      doc.setTextColor(INK.muted[0], INK.muted[1], INK.muted[2]);
+      const labelLines = doc.splitTextToSize(
+        highlight.label,
+        columnWidth - 4
+      ) as string[];
+      for (const line of labelLines) {
+        doc.text(line, centre, y, { align: "center" });
+        y += 3.6;
+      }
+    });
+    y = rowTop + 5.5 + labelLineCount * 3.6 + 5;
+  }
 
   // Experience
   if (data.experience.length) {
     addSectionTitle(data.labels.experience);
     data.experience.forEach((job, idx) => {
-      ensureSpace(11);
+      // Keep the heading block with at least its first bullet.
+      ensureSpace(16);
       doc.setFont("helvetica", "bold");
       doc.setFontSize(11.5);
       doc.setTextColor(INK.primary[0], INK.primary[1], INK.primary[2]);
@@ -145,10 +222,10 @@ export function generateResumePdf(data: ResumePdfData): Buffer {
       doc.text(job.company, MARGIN, y);
       y += 5.5;
 
-      addWrappedText(job.description, 10, INK.secondary);
-      y += idx === data.experience.length - 1 ? 3 : 7;
+      job.bullets.forEach((bullet) => addBullet(bullet));
+      y += idx === data.experience.length - 1 ? 2 : 5;
     });
-    y += 2;
+    y += 1;
   }
 
   // Education
@@ -171,43 +248,98 @@ export function generateResumePdf(data: ResumePdfData): Buffer {
       doc.setFontSize(10.5);
       doc.setTextColor(INK.secondary[0], INK.secondary[1], INK.secondary[2]);
       doc.text(edu.school, MARGIN, y);
-      y += idx === data.education.length - 1 ? 9 : 8;
-    });
-  }
-
-  // Skills
-  if (data.skills.length) {
-    addSectionTitle(data.labels.skills);
-    data.skills.forEach((group, idx) => {
-      ensureSpace(10);
-      doc.setFont("helvetica", "bold");
-      doc.setFontSize(10.5);
-      doc.setTextColor(INK.primary[0], INK.primary[1], INK.primary[2]);
-      doc.text(group.label, MARGIN, y);
       y += 5.5;
 
-      addWrappedText(group.items.join("  •  "), 10, INK.secondary);
-      y += idx === data.skills.length - 1 ? 5 : 4;
+      if (edu.detail) {
+        addWrappedText(edu.detail, 10, INK.secondary);
+      }
+      y += idx === data.education.length - 1 ? 3 : 2.5;
     });
   }
 
-  // Certifications
-  if (data.certifications.length) {
-    addSectionTitle(data.labels.certifications);
-    data.certifications.forEach((cert) => {
-      ensureSpace(9);
+  // Skills. The label sits inline and the items hang off it in their own column,
+  // which packs far tighter than giving every group a full heading line.
+  if (data.skills.length) {
+    addSectionTitle(data.labels.skills);
+
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(9.5);
+    const labelColumn =
+      Math.max(...data.skills.map((g) => doc.getTextWidth(`${g.label}  `))) + 1;
+
+    data.skills.forEach((group, idx) => {
+      const lines = doc.splitTextToSize(
+        group.items.join("  •  "),
+        CONTENT_WIDTH - labelColumn
+      ) as string[];
+      ensureSpace(lines.length * 4.5);
+
       doc.setFont("helvetica", "bold");
-      doc.setFontSize(10.5);
+      doc.setFontSize(9.5);
       doc.setTextColor(INK.primary[0], INK.primary[1], INK.primary[2]);
-      doc.text(cert.name, MARGIN, y);
-      y += 5;
+      doc.text(group.label, MARGIN, y);
 
       doc.setFont("helvetica", "normal");
       doc.setFontSize(9.5);
-      doc.setTextColor(INK.muted[0], INK.muted[1], INK.muted[2]);
-      doc.text(`${cert.issuer} • ${cert.year}`, MARGIN, y);
-      y += 6.5;
+      doc.setTextColor(INK.secondary[0], INK.secondary[1], INK.secondary[2]);
+      lines.forEach((line, lineIndex) => {
+        doc.text(line, MARGIN + labelColumn, y + lineIndex * 4.5);
+      });
+
+      y += lines.length * 4.5 + (idx === data.skills.length - 1 ? 2 : 2);
     });
+  }
+
+  // Certifications, in two columns so short entries don't burn a full page width.
+  if (data.certifications.length) {
+    addSectionTitle(data.labels.certifications);
+    const columnWidth = CONTENT_WIDTH / 2;
+    const rowCount = Math.ceil(data.certifications.length / 2);
+
+    for (let row = 0; row < rowCount; row++) {
+      const rowEntries = data.certifications.slice(row * 2, row * 2 + 2);
+      // Height is driven by whichever entry in the row wraps to more lines.
+      const rowLineCount = Math.max(
+        ...rowEntries.map(
+          (cert) =>
+            (doc.splitTextToSize(cert.name, columnWidth - 4) as string[]).length
+        )
+      );
+      const rowHeight = rowLineCount * 4.6 + 7;
+      ensureSpace(rowHeight);
+      const rowTop = y;
+
+      rowEntries.forEach((cert, column) => {
+        const x = MARGIN + columnWidth * column;
+        y = rowTop;
+
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(10);
+        doc.setTextColor(INK.primary[0], INK.primary[1], INK.primary[2]);
+        const nameLines = doc.splitTextToSize(
+          cert.name,
+          columnWidth - 4
+        ) as string[];
+        for (const line of nameLines) {
+          doc.text(line, x, y);
+          y += 4.6;
+        }
+
+        doc.setFont("helvetica", "normal");
+        doc.setFontSize(9);
+        doc.setTextColor(INK.muted[0], INK.muted[1], INK.muted[2]);
+        doc.text(`${cert.issuer} • ${cert.year}`, x, y);
+      });
+
+      y = rowTop + rowHeight;
+    }
+    y += 1;
+  }
+
+  // Writing & community
+  if (data.writing) {
+    addSectionTitle(data.labels.writing, 16);
+    addWrappedText(data.writing, 10, INK.secondary);
   }
 
   return Buffer.from(doc.output("arraybuffer"));

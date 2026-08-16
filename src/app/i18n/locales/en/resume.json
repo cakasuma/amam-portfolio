@@ -1,7 +1,7 @@
 {
   "title": "Resume",
   "back-to-home": "Back to home",
-  "subtitle": "A Journey of Growth, Impact, and Lifelong Learning",
+  "subtitle": "Fintech engineering leader — trading platforms, payments, and the teams that ship them",
   "download-pdf": "Download PDF",
   "downloading-pdf": "Preparing PDF...",
   "personal-info": {
@@ -11,55 +11,115 @@
     "github": "GitHub",
     "location": "Location"
   },
+  "summary": {
+    "title": "Profile",
+    "content": "Full-stack engineering leader with 8+ years building and scaling web and mobile products in regulated fintech — trading platforms at Deriv and consumer payments at MoneyLion, serving millions of users worldwide. I built Deriv's mobile app from scratch to 500K+ installs and 50K daily active users, and I lead the web platform team that owns authentication, partner-facing applications, and platform reliability. My work sits where engineering meets trust: OAuth2 rollouts, KYC and identity verification, disaster recovery, and the automation that catches problems before customers do. I also teach — 250+ students coached into their first engineering roles."
+  },
+  "highlights": {
+    "title": "Highlights",
+    "stat1": {
+      "value": "500K+",
+      "label": "App installs, built from zero"
+    },
+    "stat2": {
+      "value": "50K",
+      "label": "Daily active users"
+    },
+    "stat3": {
+      "value": "7",
+      "label": "Applications migrated to OAuth2 / OpenID Connect"
+    },
+    "stat4": {
+      "value": "250+",
+      "label": "Engineers coached at RevoU"
+    }
+  },
   "skills": {
-    "title": "Skills",
-    "frontend": "Frontend Technologies",
-    "backend": "Backend Technologies"
+    "title": "Technical Skills",
+    "frontend": "Frontend",
+    "mobile": "Mobile",
+    "backend": "Backend & Data",
+    "platform": "Cloud & Platform",
+    "practice": "Engineering Practice",
+    "leadership": "Leadership"
   },
   "experience": {
     "title": "Work Experience",
     "job1": {
-      "title": "Tech Team Lead - Web Platform Fullstack",
+      "title": "Tech Team Lead — Web Platform Fullstack",
       "company": "Deriv",
       "period": "July 2024 - Present",
-      "description": "Leading cross-functional teams to transform ambitious ideas into reality. Orchestrating OAuth implementation enhancements and crafting intuitive partner onboarding experiences that set new standards in fintech. Every day brings opportunities to mentor talented individuals and push the boundaries of what's possible with modern web technologies."
+      "bullets": [
+        "Built and launched Deriv's mobile app from scratch — from zero to 500K+ installs and 50K daily active users.",
+        "Built the authentication platform end to end: OAuth2 with public clients (OpenID Connect) rolled out across 7 applications, plus passkeys, MFA (TOTP), trusted-device flows, and mobile app integrity verification.",
+        "Built CI automation across the software delivery lifecycle, carrying work from requirement through to opened pull request.",
+        "Built automated monitoring and alerting over user data that surfaces skew and anomalies to the business before they reach customers.",
+        "Architected and led the disaster recovery solution for Deriv applications, running the design sessions and driving implementation across teams.",
+        "Led development of an AI-assisted KYC solution for proof of identity and proof of address, cutting manual review from the onboarding path.",
+        "Own SLOs and SLIs for client-facing trading applications, and coach engineers on architecture and code review."
+      ]
     },
     "job2": {
       "title": "Mobile Team Lead",
       "company": "MoneyLion",
       "period": "October 2022 - September 2023",
-      "description": "Promoted to lead the mobile engineering team, collaborating closely with cross-functional partners to ensure flawless payment flows and feature delivery for millions of users. Directed the development and maintenance of high-performance mobile applications using React Native and Redux, always keeping user experience at the heart of every decision. Every feature shipped was a testament to our team's dedication to quality and reliability."
+      "bullets": [
+        "Promoted to lead mobile engineering after a year on the team.",
+        "Drove organisation-wide initiatives to strengthen the design system and monitoring infrastructure.",
+        "Maintained 99.9%+ availability across mobile payment features serving millions of users.",
+        "Owned iOS and Android release and deployment pipelines end to end."
+      ]
     },
     "job3": {
       "title": "Senior Mobile Engineer",
       "company": "MoneyLion",
       "period": "October 2021 - October 2022",
-      "description": "Collaborated closely with cross-functional teams to ensure flawless payment flows and feature delivery for millions of users. Built and maintained high-performance mobile applications using React Native and Redux, always keeping user experience at the heart of every decision."
+      "bullets": [
+        "Built, shipped, and documented mobile payment features using React Native, Redux, and Redux Saga.",
+        "Partnered closely with product managers, backend engineers, and QA to keep payment flows reliable at scale."
+      ]
     },
     "job4": {
       "title": "Lead Frontend Developer",
       "company": "Deriv (formerly Binary.com)",
       "period": "September 2020 - October 2021",
-      "description": "Pioneered the development of innovative web applications that serve millions globally. Using React, Next.js, TypeScript, and Node.js, I led initiatives that balanced technical excellence with user delight. Mentored junior developers, fostering a culture of continuous learning and best practices that elevated our entire team's capabilities."
+      "bullets": [
+        "Led a team of 6 engineers delivering DWallet features and maintaining Deriv.com and Deriv.app.",
+        "Set frontend architecture and review practice across the trading platform, mentoring engineers into greater ownership."
+      ]
     },
     "job5": {
       "title": "Senior Frontend Developer",
       "company": "Deriv (formerly Binary.com)",
       "period": "July 2018 - September 2020",
-      "description": "Built and maintained responsive web applications, collaborating with designers and backend engineers to deliver polished, high-quality user experiences using JavaScript, React, and modern frontend tooling."
+      "bullets": [
+        "Built Deriv, a new financial trading platform, using React with MobX.",
+        "Integrated the Onfido identity verification API across Binary.com and Deriv.com.",
+        "Developed the Deriv.com product landing page with Gatsby, and integrated the platform with marketing and analytics tooling."
+      ]
     },
     "job6": {
-      "title": "Software Engineering Instructor",
+      "title": "Software Engineering Lecturer",
       "company": "RevoU",
-      "period": "Part-time",
-      "description": "One of my greatest joys is guiding aspiring engineers as they embark on their journey into software development. Sharing real-world insights and practical wisdom gained from years in the industry, I help students build not just technical skills, but the confidence and mindset needed to thrive in modern web development."
+      "period": "August 2023 - December 2023",
+      "bullets": [
+        "Lectured and coached 250+ students across cities in Indonesia into their first software engineering roles.",
+        "Taught industry practice in frontend and backend development, grounded in real production experience."
+      ]
     }
+  },
+  "writing": {
+    "title": "Writing & Community",
+    "content": "I write about the craft on DEV Community — including a MobX 6 and React hooks guide that remains the reference I get asked about most — and keep a public body of work on GitHub, from Islamic inheritance and Hijri calendar tools to a Malaysian take-home pay calculator.",
+    "devto": "4 published articles on DEV Community",
+    "github": "Open source at github.com/cakasuma"
   },
   "education": {
     "title": "Education",
-    "degree": "BSc in Information Technology (Information Security System)",
+    "degree": "BSc in Information Technology (Information Security Systems)",
     "school": "Asia Pacific University of Technology & Innovation (APU)",
-    "period": "2015 - 2018"
+    "period": "2015 - 2018",
+    "detail": "CGPA 3.48 — a security specialisation that still shapes how I approach authentication, identity, and trust in fintech."
   },
   "certifications": {
     "title": "Certifications & Achievements",

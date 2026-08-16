@@ -88,11 +88,29 @@ export default async function Resume({ params }: ResumeProps) {
                     {t("experience.job3.company") || "MoneyLion"}
                   </p>
                   <p className="text-text-muted text-sm mb-3">
-                    {t("experience.job3.period") || "October 2021 - September 2023"}
+                    {t("experience.job3.period") || "October 2022 - September 2023"}
                   </p>
                 </header>
                 <p className="text-text-secondary leading-relaxed">
                   {t("experience.job3.description") ||
+                    "Promoted to lead the mobile engineering team, ensuring payment flows and features run smoothly."}
+                </p>
+              </article>
+
+              <article className="border-l-4 border-warning pl-6 py-4 bg-accent/30 rounded-r-lg transition-all duration-300 hover:border-warning/80 hover:bg-accent/50">
+                <header>
+                  <h3 className="text-xl font-semibold text-foreground mb-2">
+                    {t("experience.job4.title") || "Senior Mobile Engineer"}
+                  </h3>
+                  <p className="text-warning font-medium text-lg mb-1">
+                    {t("experience.job4.company") || "MoneyLion"}
+                  </p>
+                  <p className="text-text-muted text-sm mb-3">
+                    {t("experience.job4.period") || "October 2021 - October 2022"}
+                  </p>
+                </header>
+                <p className="text-text-secondary leading-relaxed">
+                  {t("experience.job4.description") ||
                     "Worked closely with managers, backend, and testers to ensure payment flows and features run smoothly."}
                 </p>
               </article>
@@ -100,17 +118,17 @@ export default async function Resume({ params }: ResumeProps) {
               <article className="border-l-4 border-success pl-6 py-4 bg-accent/30 rounded-r-lg transition-all duration-300 hover:border-success/80 hover:bg-accent/50">
                 <header>
                   <h3 className="text-xl font-semibold text-foreground mb-2">
-                    {t("experience.job4.title") || "Software Engineering Lecturer"}
+                    {t("experience.job5.title") || "Software Engineering Lecturer"}
                   </h3>
                   <p className="text-success font-medium text-lg mb-1">
-                    {t("experience.job4.company") || "RevoU"}
+                    {t("experience.job5.company") || "RevoU"}
                   </p>
                   <p className="text-text-muted text-sm mb-3">
-                    {t("experience.job4.period") || "Part-time"}
+                    {t("experience.job5.period") || "Part-time"}
                   </p>
                 </header>
                 <p className="text-text-secondary leading-relaxed">
-                  {t("experience.job4.description") ||
+                  {t("experience.job5.description") ||
                     "Coaching and mentoring software engineering students, sharing practical insights from industry experience."}
                 </p>
               </article>

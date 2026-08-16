@@ -33,10 +33,16 @@
     "job3": {
       "title": "Mobile Team Lead",
       "company": "MoneyLion",
-      "period": "October 2021 - September 2023",
-      "description": "Led the mobile engineering team, collaborating closely with cross-functional partners to ensure flawless payment flows and feature delivery for millions of users. Directed the development and maintenance of high-performance mobile applications using React Native and Redux, always keeping user experience at the heart of every decision. Every feature shipped was a testament to our team's dedication to quality and reliability."
+      "period": "October 2022 - September 2023",
+      "description": "Promoted to lead the mobile engineering team, collaborating closely with cross-functional partners to ensure flawless payment flows and feature delivery for millions of users. Directed the development and maintenance of high-performance mobile applications using React Native and Redux, always keeping user experience at the heart of every decision. Every feature shipped was a testament to our team's dedication to quality and reliability."
     },
     "job4": {
+      "title": "Senior Mobile Engineer",
+      "company": "MoneyLion",
+      "period": "October 2021 - October 2022",
+      "description": "Collaborated closely with cross-functional teams to ensure flawless payment flows and feature delivery for millions of users. Built and maintained high-performance mobile applications using React Native and Redux, always keeping user experience at the heart of every decision."
+    },
+    "job5": {
       "title": "Software Engineering Instructor",
       "company": "RevoU",
       "period": "Part-time",

@@ -33,10 +33,16 @@
     "job3": {
       "title": "Mobile Team Lead",
       "company": "MoneyLion",
-      "period": "Oktober 2021 - September 2023",
-      "description": "Memimpin tim mobile engineering, berkolaborasi erat dengan tim lintas fungsi untuk memastikan alur pembayaran dan fitur berjalan sempurna bagi jutaan pengguna. Mengarahkan pengembangan dan pemeliharaan aplikasi mobile berkinerja tinggi dengan React Native dan Redux, selalu menempatkan pengalaman pengguna sebagai prioritas utama. Setiap fitur yang diluncurkan adalah bukti dedikasi tim terhadap kualitas dan keandalan."
+      "period": "Oktober 2022 - September 2023",
+      "description": "Dipromosikan untuk memimpin tim mobile engineering, berkolaborasi erat dengan tim lintas fungsi untuk memastikan alur pembayaran dan fitur berjalan sempurna bagi jutaan pengguna. Mengarahkan pengembangan dan pemeliharaan aplikasi mobile berkinerja tinggi dengan React Native dan Redux, selalu menempatkan pengalaman pengguna sebagai prioritas utama. Setiap fitur yang diluncurkan adalah bukti dedikasi tim terhadap kualitas dan keandalan."
     },
     "job4": {
+      "title": "Senior Mobile Engineer",
+      "company": "MoneyLion",
+      "period": "Oktober 2021 - Oktober 2022",
+      "description": "Berkolaborasi erat dengan tim lintas fungsi untuk memastikan alur pembayaran dan fitur berjalan sempurna bagi jutaan pengguna. Membangun dan merawat aplikasi mobile berkinerja tinggi dengan React Native dan Redux, selalu menempatkan pengalaman pengguna sebagai prioritas utama."
+    },
+    "job5": {
       "title": "Pengajar Software Engineering",
       "company": "RevoU",
       "period": "Part-time",

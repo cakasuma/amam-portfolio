@@ -4,6 +4,8 @@ import PageLayout, {
   ContentGrid,
 } from "@/app/components/PageLayout";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui";
+import { Button } from "@/components/ui";
+import { FaDownload } from "@/components/icons";
 import { usingTranslation } from "@/app/i18n";
 
 interface ResumeProps {
@@ -22,7 +24,14 @@ export default async function Resume({ params }: ResumeProps) {
         title={t("title") || "Professional Resume"}
         subtitle={t("subtitle") || "Experience, Skills, and Professional Journey"}
         level={1}
-      />
+      >
+        <a href={`/api/resume/pdf?lng=${lng}`} download>
+          <Button variant="cta" size="md" className="inline-flex items-center gap-2">
+            <FaDownload className="w-4 h-4" />
+            {t("download-pdf") || "Download PDF"}
+          </Button>
+        </a>
+      </PageHeader>
 
       <Section id="experience" ariaLabel="Professional experience">
         <Card>

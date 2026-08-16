@@ -20,6 +20,7 @@ export {
   FaCheckCircle,
   FaExclamationCircle,
   FaTimes,
+  FaDownload,
 } from "react-icons/fa";
 
 export { FiSun, FiMoon, FiChevronDown } from "react-icons/fi";

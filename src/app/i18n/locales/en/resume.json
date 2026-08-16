@@ -1,7 +1,7 @@
 {
   "title": "Resume",
   "back-to-home": "Back to home",
-  "subtitle": "Fintech engineering leader — trading platforms, payments, and the teams that ship them",
+  "subtitle": "Fintech engineering leader across trading platforms, payments, and the teams that ship them",
   "download-pdf": "Download PDF",
   "downloading-pdf": "Preparing PDF...",
   "personal-info": {
@@ -13,7 +13,7 @@
   },
   "summary": {
     "title": "Profile",
-    "content": "Full-stack engineering leader with 8+ years building and scaling web and mobile products in regulated fintech — trading platforms at Deriv and consumer payments at MoneyLion, serving millions of users worldwide. I lead a team of 6 engineers including 2 tech leads, built Deriv's mobile app from scratch to 500K+ installs and 50K daily active users, and shipped the DWallet programme to production as TradersHub. My work sits where engineering meets trust: OAuth2 and passkeys, KYC and identity verification, disaster recovery, and the automation that catches problems before customers do. I also teach — 250+ students coached into their first engineering roles."
+    "content": "Full-stack engineering leader with 8+ years building and scaling web and mobile products in regulated fintech, from trading platforms at Deriv to consumer payments at MoneyLion, serving millions of users worldwide. I lead a team of 6 engineers including 2 tech leads, built Deriv's mobile app from scratch to 500K+ installs and 50K daily active users, and shipped the DWallet programme to production as TradersHub. My work sits where engineering meets trust: OAuth2 and passkeys, KYC and identity verification, disaster recovery, and the automation that catches problems before customers do. I also teach, having coached 250+ students into their first engineering roles."
   },
   "highlights": {
     "title": "Highlights",
@@ -46,12 +46,12 @@
   "experience": {
     "title": "Work Experience",
     "job1": {
-      "title": "Tech Team Lead — Web Platform Fullstack",
+      "title": "Tech Team Lead - Web Platform Fullstack",
       "company": "Deriv",
       "period": "July 2024 - Present",
       "bullets": [
         "Lead a team of 6 engineers including 2 tech leads, and own SLOs and SLIs for client-facing trading applications.",
-        "Built and launched Deriv's mobile app from scratch — from zero to 500K+ installs and 50K daily active users.",
+        "Built and launched Deriv's mobile app from scratch, taking it from zero to 500K+ installs and 50K daily active users.",
         "Completed and released the DWallet programme to production as TradersHub, finishing work I had previously led on the frontend.",
         "Built the authentication platform end to end: OAuth2 with public clients (OpenID Connect) rolled out across 7 applications, plus passkeys, MFA (TOTP), trusted-device flows, and mobile app integrity verification.",
         "Built CI automation across the software delivery lifecycle, carrying work from requirement through to opened pull request.",
@@ -111,7 +111,7 @@
   },
   "writing": {
     "title": "Ventures, Writing & Community",
-    "content": "Co-founder of Qlassku, an IT services and consulting venture built alongside my full-time engineering work. I also write about the craft on DEV Community — including a MobX 6 and React hooks guide that remains the reference I get asked about most — and keep a public body of work on GitHub, from Islamic inheritance and Hijri calendar tools to a Malaysian take-home pay calculator.",
+    "content": "Co-founder of Qlassku, an IT services and consulting venture built alongside my full-time engineering work. I also write about the craft on DEV Community, including a MobX 6 and React hooks guide that remains the reference I get asked about most, and keep a public body of work on GitHub, from Islamic inheritance and Hijri calendar tools to a Malaysian take-home pay calculator.",
     "devto": "4 published articles on DEV Community",
     "github": "Open source at github.com/cakasuma"
   },
@@ -120,7 +120,7 @@
     "degree": "BSc in Information Technology (Information Security Systems)",
     "school": "Asia Pacific University of Technology & Innovation (APU)",
     "period": "2015 - 2018",
-    "detail": "CGPA 3.48 — a security specialisation that still shapes how I approach authentication, identity, and trust in fintech."
+    "detail": "CGPA 3.48. A security specialisation that still shapes how I approach authentication, identity, and trust in fintech."
   },
   "certifications": {
     "title": "Certifications & Achievements",

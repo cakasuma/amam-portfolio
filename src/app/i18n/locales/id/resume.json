@@ -1,7 +1,7 @@
 {
   "title": "Resume",
   "back-to-home": "Kembali ke halaman utama",
-  "subtitle": "Pemimpin engineering fintech — platform trading, pembayaran, dan tim yang membangunnya",
+  "subtitle": "Pemimpin engineering fintech untuk platform trading, pembayaran, dan tim yang membangunnya",
   "download-pdf": "Unduh PDF",
   "downloading-pdf": "Menyiapkan PDF...",
   "personal-info": {
@@ -13,7 +13,7 @@
   },
   "summary": {
     "title": "Profil",
-    "content": "Pemimpin engineering fullstack dengan 8+ tahun pengalaman membangun dan menskalakan produk web dan mobile di fintech teregulasi — platform trading di Deriv dan pembayaran konsumen di MoneyLion, melayani jutaan pengguna. Saya memimpin tim berisi 6 engineer termasuk 2 tech lead, membangun aplikasi mobile Deriv dari nol hingga 500K+ instalasi dan 50K pengguna aktif harian, serta merilis program DWallet ke produksi sebagai TradersHub. Fokus saya di titik temu engineering dan kepercayaan: OAuth2 dan passkey, KYC, disaster recovery, dan otomasi yang menangkap masalah sebelum sampai ke pengguna. Saya juga membimbing 250+ mahasiswa menuju peran engineering pertama mereka."
+    "content": "Pemimpin engineering fullstack dengan 8+ tahun pengalaman membangun dan menskalakan produk web dan mobile di fintech teregulasi, dari platform trading di Deriv hingga pembayaran konsumen di MoneyLion, melayani jutaan pengguna. Saya memimpin tim berisi 6 engineer termasuk 2 tech lead, membangun aplikasi mobile Deriv dari nol hingga 500K+ instalasi dan 50K pengguna aktif harian, serta merilis program DWallet ke produksi sebagai TradersHub. Fokus saya di titik temu engineering dan kepercayaan: OAuth2 dan passkey, KYC, disaster recovery, dan otomasi yang menangkap masalah sebelum sampai ke pengguna. Saya juga membimbing 250+ mahasiswa menuju peran engineering pertama mereka."
   },
   "highlights": {
     "title": "Sorotan",
@@ -46,12 +46,12 @@
   "experience": {
     "title": "Pengalaman Kerja",
     "job1": {
-      "title": "Tech Team Lead — Web Platform Fullstack",
+      "title": "Tech Team Lead - Web Platform Fullstack",
       "company": "Deriv",
       "period": "Juli 2024 - Sekarang",
       "bullets": [
         "Memimpin tim berisi 6 engineer termasuk 2 tech lead, serta bertanggung jawab atas SLO dan SLI aplikasi trading.",
-        "Membangun dan meluncurkan aplikasi mobile Deriv dari nol — hingga 500K+ instalasi dan 50K pengguna aktif harian.",
+        "Membangun dan meluncurkan aplikasi mobile Deriv dari nol hingga 500K+ instalasi dan 50K pengguna aktif harian.",
         "Menyelesaikan dan merilis program DWallet ke produksi sebagai TradersHub, merampungkan pekerjaan yang sebelumnya saya pimpin di sisi frontend.",
         "Membangun platform autentikasi menyeluruh: OAuth2 dengan public client (OpenID Connect) di 7 aplikasi, passkey, MFA (TOTP), trusted device, dan verifikasi app integrity.",
         "Membangun otomasi CI di seluruh siklus pengembangan, dari kebutuhan hingga pull request terbuka.",
@@ -111,7 +111,7 @@
   },
   "writing": {
     "title": "Ventura, Tulisan & Komunitas",
-    "content": "Co-founder Qlassku, ventura layanan dan konsultasi IT yang saya bangun bersamaan dengan pekerjaan engineering penuh waktu. Saya juga menulis tentang craft di DEV Community — termasuk panduan MobX 6 dengan React hooks yang paling sering ditanyakan — dan menjaga karya publik di GitHub, mulai dari kalkulator waris Islam dan kalender Hijriah hingga kalkulator gaji bersih Malaysia.",
+    "content": "Co-founder Qlassku, ventura layanan dan konsultasi IT yang saya bangun bersamaan dengan pekerjaan engineering penuh waktu. Saya juga menulis tentang craft di DEV Community, termasuk panduan MobX 6 dengan React hooks yang paling sering ditanyakan, dan menjaga karya publik di GitHub, mulai dari kalkulator waris Islam dan kalender Hijriah hingga kalkulator gaji bersih Malaysia.",
     "devto": "4 artikel terbit di DEV Community",
     "github": "Open source di github.com/cakasuma"
   },
@@ -120,7 +120,7 @@
     "degree": "BSc Teknologi Informasi (Sistem Keamanan Informasi)",
     "school": "Asia Pacific University of Technology & Innovation (APU)",
     "period": "2015 - 2018",
-    "detail": "CGPA 3.48 — spesialisasi keamanan yang hingga kini membentuk cara saya menangani autentikasi, identitas, dan kepercayaan di fintech."
+    "detail": "CGPA 3.48. Spesialisasi keamanan yang hingga kini membentuk cara saya menangani autentikasi, identitas, dan kepercayaan di fintech."
   },
   "certifications": {
     "title": "Sertifikasi & Pencapaian",

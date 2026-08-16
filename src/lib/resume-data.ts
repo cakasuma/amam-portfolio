@@ -2,7 +2,7 @@
  * Single source of truth for the resume's structure.
  *
  * The resume page and the PDF route both render from these keys, so adding or
- * reordering a role means editing this file plus the locale JSON — never hand
+ * reordering a role means editing this file plus the locale JSON, never hand
  * renumbering markup in two places.
  */
 

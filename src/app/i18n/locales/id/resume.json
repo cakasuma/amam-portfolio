@@ -1,7 +1,9 @@
 {
   "title": "Resume",
   "back-to-home": "Kembali ke halaman utama",
-  "subtitle": "Perjalanan Karir, Dampak, dan Pembelajaran Sepanjang Hayat",
+  "subtitle": "Pemimpin engineering fintech untuk platform trading, pembayaran, dan tim yang membangunnya",
+  "download-pdf": "Unduh PDF",
+  "downloading-pdf": "Menyiapkan PDF...",
   "personal-info": {
     "title": "Informasi Pribadi",
     "name": "Nama",
@@ -9,10 +11,37 @@
     "github": "GitHub",
     "location": "Lokasi"
   },
+  "summary": {
+    "title": "Profil",
+    "content": "Pemimpin engineering fullstack dengan 8+ tahun pengalaman membangun dan menskalakan produk web dan mobile di fintech teregulasi, dari platform trading di Deriv hingga pembayaran konsumen di MoneyLion, melayani jutaan pengguna. Saya memimpin tim berisi 6 engineer termasuk 2 tech lead, membangun aplikasi mobile Deriv dari nol hingga 500K+ instalasi dan 50K pengguna aktif harian, serta merilis program DWallet ke produksi sebagai TradersHub. Fokus saya di titik temu engineering dan kepercayaan: OAuth2 dan passkey, KYC, disaster recovery, dan otomasi yang menangkap masalah sebelum sampai ke pengguna. Saya juga membimbing 250+ mahasiswa menuju peran engineering pertama mereka."
+  },
+  "highlights": {
+    "title": "Sorotan",
+    "stat1": {
+      "value": "500K+",
+      "label": "Instalasi aplikasi, dibangun dari nol"
+    },
+    "stat2": {
+      "value": "50K",
+      "label": "Pengguna aktif harian"
+    },
+    "stat3": {
+      "value": "7",
+      "label": "Aplikasi bermigrasi ke OAuth2 / OpenID Connect"
+    },
+    "stat4": {
+      "value": "250+",
+      "label": "Engineer dibimbing di RevoU"
+    }
+  },
   "skills": {
-    "title": "Keahlian",
-    "frontend": "Teknologi Frontend",
-    "backend": "Teknologi Backend"
+    "title": "Keahlian Teknis",
+    "frontend": "Frontend",
+    "mobile": "Mobile",
+    "backend": "Backend & Data",
+    "platform": "Cloud & Platform",
+    "practice": "Praktik Engineering",
+    "leadership": "Kepemimpinan"
   },
   "experience": {
     "title": "Pengalaman Kerja",
@@ -20,32 +49,78 @@
       "title": "Tech Team Lead - Web Platform Fullstack",
       "company": "Deriv",
       "period": "Juli 2024 - Sekarang",
-      "description": "Memimpin tim lintas fungsi untuk mewujudkan ide-ide ambisius. Mengatur peningkatan implementasi OAuth dan menciptakan pengalaman onboarding partner yang intuitif dengan standar baru di fintech. Setiap hari adalah kesempatan untuk membimbing talenta-talenta berbakat dan mendorong batas kemungkinan teknologi web modern."
+      "bullets": [
+        "Memimpin tim berisi 6 engineer termasuk 2 tech lead, serta bertanggung jawab atas SLO dan SLI aplikasi trading.",
+        "Membangun dan meluncurkan aplikasi mobile Deriv dari nol hingga 500K+ instalasi dan 50K pengguna aktif harian.",
+        "Menyelesaikan dan merilis program DWallet ke produksi sebagai TradersHub, merampungkan pekerjaan yang sebelumnya saya pimpin di sisi frontend.",
+        "Membangun platform autentikasi menyeluruh: OAuth2 dengan public client (OpenID Connect) di 7 aplikasi, passkey, MFA (TOTP), trusted device, dan verifikasi app integrity.",
+        "Membangun otomasi CI di seluruh siklus pengembangan, dari kebutuhan hingga pull request terbuka.",
+        "Membangun monitoring dan alerting otomatis atas data pengguna yang mendeteksi anomali sebelum berdampak ke pelanggan.",
+        "Merancang dan memimpin solusi disaster recovery untuk aplikasi Deriv, memimpin sesi desain dan implementasinya lintas tim.",
+        "Memimpin pengembangan solusi KYC berbasis AI untuk proof of identity dan proof of address, memangkas review manual saat onboarding."
+      ]
     },
     "job2": {
-      "title": "Lead Frontend Developer",
-      "company": "Deriv (sebelumnya Binary.com)",
-      "period": "2018 - 2024",
-      "description": "Memimpin pengembangan aplikasi web inovatif yang digunakan jutaan orang di seluruh dunia. Dengan React, Next.js, TypeScript, dan Node.js, saya memimpin inisiatif yang menyeimbangkan keunggulan teknis dengan kepuasan pengguna. Membimbing developer junior dan membangun budaya belajar berkelanjutan yang meningkatkan kemampuan seluruh tim."
+      "title": "Mobile Team Lead",
+      "company": "MoneyLion",
+      "period": "Oktober 2022 - September 2023",
+      "bullets": [
+        "Dipromosikan memimpin tim mobile engineering setelah satu tahun bergabung.",
+        "Mendorong inisiatif lintas organisasi untuk memperkuat design system dan infrastruktur monitoring.",
+        "Menjaga ketersediaan 99.9%+ pada fitur pembayaran mobile yang melayani jutaan pengguna.",
+        "Mengelola pipeline rilis dan deployment iOS serta Android secara menyeluruh."
+      ]
     },
     "job3": {
       "title": "Senior Mobile Engineer",
       "company": "MoneyLion",
-      "period": "Oktober 2021 - September 2023",
-      "description": "Berkolaborasi erat dengan tim lintas fungsi untuk memastikan alur pembayaran dan fitur berjalan sempurna bagi jutaan pengguna. Membangun dan merawat aplikasi mobile berkinerja tinggi dengan React Native dan Redux, selalu menempatkan pengalaman pengguna sebagai prioritas utama. Setiap fitur yang diluncurkan adalah bukti dedikasi tim terhadap kualitas dan keandalan."
+      "period": "Oktober 2021 - Oktober 2022",
+      "bullets": [
+        "Membangun, merilis, dan mendokumentasikan fitur pembayaran mobile dengan React Native, Redux, dan Redux Saga.",
+        "Berkolaborasi erat dengan product manager, backend engineer, dan QA untuk menjaga keandalan alur pembayaran dalam skala besar."
+      ]
     },
     "job4": {
+      "title": "Lead Frontend Developer",
+      "company": "Deriv (sebelumnya Binary.com)",
+      "period": "September 2020 - Oktober 2021",
+      "bullets": [
+        "Memimpin tim berisi 6 engineer untuk mengembangkan fitur DWallet dan memelihara Deriv.com serta Deriv.app.",
+        "Menetapkan arsitektur frontend dan praktik review di seluruh platform trading, membimbing engineer untuk mengambil tanggung jawab lebih besar."
+      ]
+    },
+    "job5": {
+      "title": "Senior Frontend Developer",
+      "company": "Deriv (sebelumnya Binary.com)",
+      "period": "Juli 2018 - September 2020",
+      "bullets": [
+        "Membangun Deriv, platform trading finansial baru, menggunakan React dengan MobX.",
+        "Mengintegrasikan API verifikasi identitas Onfido di Binary.com dan Deriv.com.",
+        "Mengembangkan landing page produk Deriv.com dengan Gatsby, serta mengintegrasikan platform dengan perkakas marketing dan analitik."
+      ]
+    },
+    "job6": {
       "title": "Pengajar Software Engineering",
       "company": "RevoU",
-      "period": "Part-time",
-      "description": "Salah satu kebahagiaan terbesar saya adalah membimbing calon engineer saat mereka memulai perjalanan mereka dalam pengembangan software. Berbagi pengalaman nyata dan pembelajaran praktis dari bertahun-tahun di industri, saya membantu mahasiswa membangun tidak hanya skill teknis, tapi juga kepercayaan diri dan mindset yang dibutuhkan untuk berkembang di dunia pengembangan web modern."
+      "period": "Agustus 2023 - Desember 2023",
+      "bullets": [
+        "Mengajar dan membimbing 250+ mahasiswa di berbagai kota di Indonesia menuju peran software engineering pertama mereka.",
+        "Mengajarkan praktik industri dalam pengembangan frontend dan backend, berlandaskan pengalaman produksi nyata."
+      ]
     }
+  },
+  "writing": {
+    "title": "Ventura, Tulisan & Komunitas",
+    "content": "Co-founder Qlassku, ventura layanan dan konsultasi IT yang saya bangun bersamaan dengan pekerjaan engineering penuh waktu. Saya juga menulis tentang craft di DEV Community, termasuk panduan MobX 6 dengan React hooks yang paling sering ditanyakan, dan menjaga karya publik di GitHub, mulai dari kalkulator waris Islam dan kalender Hijriah hingga kalkulator gaji bersih Malaysia.",
+    "devto": "4 artikel terbit di DEV Community",
+    "github": "Open source di github.com/cakasuma"
   },
   "education": {
     "title": "Pendidikan",
     "degree": "BSc Teknologi Informasi (Sistem Keamanan Informasi)",
     "school": "Asia Pacific University of Technology & Innovation (APU)",
-    "period": "2015 - 2018"
+    "period": "2015 - 2018",
+    "detail": "CGPA 3.48. Spesialisasi keamanan yang hingga kini membentuk cara saya menangani autentikasi, identitas, dan kepercayaan di fintech."
   },
   "certifications": {
     "title": "Sertifikasi & Pencapaian",

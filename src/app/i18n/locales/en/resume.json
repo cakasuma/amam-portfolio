@@ -13,7 +13,7 @@
   },
   "summary": {
     "title": "Profile",
-    "content": "Full-stack engineering leader with 8+ years building and scaling web and mobile products in regulated fintech — trading platforms at Deriv and consumer payments at MoneyLion, serving millions of users worldwide. I built Deriv's mobile app from scratch to 500K+ installs and 50K daily active users, and I lead the web platform team that owns authentication, partner-facing applications, and platform reliability. My work sits where engineering meets trust: OAuth2 rollouts, KYC and identity verification, disaster recovery, and the automation that catches problems before customers do. I also teach — 250+ students coached into their first engineering roles."
+    "content": "Full-stack engineering leader with 8+ years building and scaling web and mobile products in regulated fintech — trading platforms at Deriv and consumer payments at MoneyLion, serving millions of users worldwide. I lead a team of 6 engineers including 2 tech leads, built Deriv's mobile app from scratch to 500K+ installs and 50K daily active users, and shipped the DWallet programme to production as TradersHub. My work sits where engineering meets trust: OAuth2 and passkeys, KYC and identity verification, disaster recovery, and the automation that catches problems before customers do. I also teach — 250+ students coached into their first engineering roles."
   },
   "highlights": {
     "title": "Highlights",
@@ -50,13 +50,14 @@
       "company": "Deriv",
       "period": "July 2024 - Present",
       "bullets": [
+        "Lead a team of 6 engineers including 2 tech leads, and own SLOs and SLIs for client-facing trading applications.",
         "Built and launched Deriv's mobile app from scratch — from zero to 500K+ installs and 50K daily active users.",
+        "Completed and released the DWallet programme to production as TradersHub, finishing work I had previously led on the frontend.",
         "Built the authentication platform end to end: OAuth2 with public clients (OpenID Connect) rolled out across 7 applications, plus passkeys, MFA (TOTP), trusted-device flows, and mobile app integrity verification.",
         "Built CI automation across the software delivery lifecycle, carrying work from requirement through to opened pull request.",
         "Built automated monitoring and alerting over user data that surfaces skew and anomalies to the business before they reach customers.",
         "Architected and led the disaster recovery solution for Deriv applications, running the design sessions and driving implementation across teams.",
-        "Led development of an AI-assisted KYC solution for proof of identity and proof of address, cutting manual review from the onboarding path.",
-        "Own SLOs and SLIs for client-facing trading applications, and coach engineers on architecture and code review."
+        "Led development of an AI-assisted KYC solution for proof of identity and proof of address, cutting manual review from the onboarding path."
       ]
     },
     "job2": {

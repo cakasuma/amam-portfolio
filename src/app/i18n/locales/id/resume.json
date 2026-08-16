@@ -13,7 +13,7 @@
   },
   "summary": {
     "title": "Profil",
-    "content": "Pemimpin engineering fullstack dengan 8+ tahun pengalaman membangun dan menskalakan produk web dan mobile di fintech teregulasi — platform trading di Deriv dan pembayaran konsumen di MoneyLion, melayani jutaan pengguna. Saya membangun aplikasi mobile Deriv dari nol hingga 500K+ instalasi dan 50K pengguna aktif harian, serta memimpin tim web platform yang menangani autentikasi, aplikasi partner, dan keandalan platform. Fokus saya di titik temu engineering dan kepercayaan: OAuth2, KYC, disaster recovery, dan otomasi yang menangkap masalah sebelum sampai ke pengguna. Saya juga membimbing 250+ mahasiswa menuju peran engineering pertama mereka."
+    "content": "Pemimpin engineering fullstack dengan 8+ tahun pengalaman membangun dan menskalakan produk web dan mobile di fintech teregulasi — platform trading di Deriv dan pembayaran konsumen di MoneyLion, melayani jutaan pengguna. Saya memimpin tim berisi 6 engineer termasuk 2 tech lead, membangun aplikasi mobile Deriv dari nol hingga 500K+ instalasi dan 50K pengguna aktif harian, serta merilis program DWallet ke produksi sebagai TradersHub. Fokus saya di titik temu engineering dan kepercayaan: OAuth2 dan passkey, KYC, disaster recovery, dan otomasi yang menangkap masalah sebelum sampai ke pengguna. Saya juga membimbing 250+ mahasiswa menuju peran engineering pertama mereka."
   },
   "highlights": {
     "title": "Sorotan",
@@ -50,13 +50,14 @@
       "company": "Deriv",
       "period": "Juli 2024 - Sekarang",
       "bullets": [
+        "Memimpin tim berisi 6 engineer termasuk 2 tech lead, serta bertanggung jawab atas SLO dan SLI aplikasi trading.",
         "Membangun dan meluncurkan aplikasi mobile Deriv dari nol — hingga 500K+ instalasi dan 50K pengguna aktif harian.",
+        "Menyelesaikan dan merilis program DWallet ke produksi sebagai TradersHub, merampungkan pekerjaan yang sebelumnya saya pimpin di sisi frontend.",
         "Membangun platform autentikasi menyeluruh: OAuth2 dengan public client (OpenID Connect) di 7 aplikasi, passkey, MFA (TOTP), trusted device, dan verifikasi app integrity.",
         "Membangun otomasi CI di seluruh siklus pengembangan, dari kebutuhan hingga pull request terbuka.",
         "Membangun monitoring dan alerting otomatis atas data pengguna yang mendeteksi anomali sebelum berdampak ke pelanggan.",
         "Merancang dan memimpin solusi disaster recovery untuk aplikasi Deriv, memimpin sesi desain dan implementasinya lintas tim.",
-        "Memimpin pengembangan solusi KYC berbasis AI untuk proof of identity dan proof of address, memangkas review manual saat onboarding.",
-        "Bertanggung jawab atas SLO dan SLI aplikasi trading, serta membimbing engineer dalam arsitektur dan code review."
+        "Memimpin pengembangan solusi KYC berbasis AI untuk proof of identity dan proof of address, memangkas review manual saat onboarding."
       ]
     },
     "job2": {

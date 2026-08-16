@@ -36,7 +36,7 @@ export async function GET(request: NextRequest) {
       skills: tResume("skills.title") || "Skills",
       certifications: tResume("certifications.title") || "Certifications & Achievements",
     },
-    experience: ["job1", "job2", "job3", "job4", "job5"].map((key) => ({
+    experience: ["job1", "job2", "job3", "job4", "job5", "job6"].map((key) => ({
       title: tResume(`experience.${key}.title`),
       company: tResume(`experience.${key}.company`),
       period: tResume(`experience.${key}.period`),

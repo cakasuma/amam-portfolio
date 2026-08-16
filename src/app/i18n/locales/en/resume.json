@@ -25,24 +25,30 @@
       "description": "Leading cross-functional teams to transform ambitious ideas into reality. Orchestrating OAuth implementation enhancements and crafting intuitive partner onboarding experiences that set new standards in fintech. Every day brings opportunities to mentor talented individuals and push the boundaries of what's possible with modern web technologies."
     },
     "job2": {
-      "title": "Lead Frontend Developer",
-      "company": "Deriv (formerly Binary.com)",
-      "period": "2018 - 2024",
-      "description": "Pioneered the development of innovative web applications that serve millions globally. Using React, Next.js, TypeScript, and Node.js, I led initiatives that balanced technical excellence with user delight. Mentored junior developers, fostering a culture of continuous learning and best practices that elevated our entire team's capabilities."
-    },
-    "job3": {
       "title": "Mobile Team Lead",
       "company": "MoneyLion",
       "period": "October 2022 - September 2023",
       "description": "Promoted to lead the mobile engineering team, collaborating closely with cross-functional partners to ensure flawless payment flows and feature delivery for millions of users. Directed the development and maintenance of high-performance mobile applications using React Native and Redux, always keeping user experience at the heart of every decision. Every feature shipped was a testament to our team's dedication to quality and reliability."
     },
-    "job4": {
+    "job3": {
       "title": "Senior Mobile Engineer",
       "company": "MoneyLion",
       "period": "October 2021 - October 2022",
       "description": "Collaborated closely with cross-functional teams to ensure flawless payment flows and feature delivery for millions of users. Built and maintained high-performance mobile applications using React Native and Redux, always keeping user experience at the heart of every decision."
     },
+    "job4": {
+      "title": "Lead Frontend Developer",
+      "company": "Deriv (formerly Binary.com)",
+      "period": "September 2020 - October 2021",
+      "description": "Pioneered the development of innovative web applications that serve millions globally. Using React, Next.js, TypeScript, and Node.js, I led initiatives that balanced technical excellence with user delight. Mentored junior developers, fostering a culture of continuous learning and best practices that elevated our entire team's capabilities."
+    },
     "job5": {
+      "title": "Senior Frontend Developer",
+      "company": "Deriv (formerly Binary.com)",
+      "period": "July 2018 - September 2020",
+      "description": "Built and maintained responsive web applications, collaborating with designers and backend engineers to deliver polished, high-quality user experiences using JavaScript, React, and modern frontend tooling."
+    },
+    "job6": {
       "title": "Software Engineering Instructor",
       "company": "RevoU",
       "period": "Part-time",

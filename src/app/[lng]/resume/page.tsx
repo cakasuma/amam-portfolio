@@ -61,38 +61,20 @@ export default async function Resume({ params }: ResumeProps) {
                 </p>
               </article>
 
-              <article className="border-l-4 border-warning pl-6 py-4 bg-accent/30 rounded-r-lg transition-all duration-300 hover:border-warning/80 hover:bg-accent/50">
+              <article className="border-l-4 border-info pl-6 py-4 bg-accent/30 rounded-r-lg transition-all duration-300 hover:border-info/80 hover:bg-accent/50">
                 <header>
                   <h3 className="text-xl font-semibold text-foreground mb-2">
-                    {t("experience.job2.title") || "Frontend Developer"}
+                    {t("experience.job2.title") || "Mobile Team Lead"}
                   </h3>
-                  <p className="text-warning font-medium text-lg mb-1">
-                    {t("experience.job2.company") || "Digital Agency"}
+                  <p className="text-info font-medium text-lg mb-1">
+                    {t("experience.job2.company") || "MoneyLion"}
                   </p>
                   <p className="text-text-muted text-sm mb-3">
-                    {t("experience.job2.period") || "2020 - 2022"}
+                    {t("experience.job2.period") || "October 2022 - September 2023"}
                   </p>
                 </header>
                 <p className="text-text-secondary leading-relaxed">
                   {t("experience.job2.description") ||
-                    "Developed responsive web applications and user interfaces. Worked closely with designers to implement pixel-perfect designs and ensure excellent user experience."}
-                </p>
-              </article>
-
-              <article className="border-l-4 border-info pl-6 py-4 bg-accent/30 rounded-r-lg transition-all duration-300 hover:border-info/80 hover:bg-accent/50">
-                <header>
-                  <h3 className="text-xl font-semibold text-foreground mb-2">
-                    {t("experience.job3.title") || "Mobile Team Lead"}
-                  </h3>
-                  <p className="text-info font-medium text-lg mb-1">
-                    {t("experience.job3.company") || "MoneyLion"}
-                  </p>
-                  <p className="text-text-muted text-sm mb-3">
-                    {t("experience.job3.period") || "October 2022 - September 2023"}
-                  </p>
-                </header>
-                <p className="text-text-secondary leading-relaxed">
-                  {t("experience.job3.description") ||
                     "Promoted to lead the mobile engineering team, ensuring payment flows and features run smoothly."}
                 </p>
               </article>
@@ -100,35 +82,71 @@ export default async function Resume({ params }: ResumeProps) {
               <article className="border-l-4 border-warning pl-6 py-4 bg-accent/30 rounded-r-lg transition-all duration-300 hover:border-warning/80 hover:bg-accent/50">
                 <header>
                   <h3 className="text-xl font-semibold text-foreground mb-2">
-                    {t("experience.job4.title") || "Senior Mobile Engineer"}
+                    {t("experience.job3.title") || "Senior Mobile Engineer"}
                   </h3>
                   <p className="text-warning font-medium text-lg mb-1">
-                    {t("experience.job4.company") || "MoneyLion"}
+                    {t("experience.job3.company") || "MoneyLion"}
                   </p>
                   <p className="text-text-muted text-sm mb-3">
-                    {t("experience.job4.period") || "October 2021 - October 2022"}
+                    {t("experience.job3.period") || "October 2021 - October 2022"}
+                  </p>
+                </header>
+                <p className="text-text-secondary leading-relaxed">
+                  {t("experience.job3.description") ||
+                    "Worked closely with managers, backend, and testers to ensure payment flows and features run smoothly."}
+                </p>
+              </article>
+
+              <article className="border-l-4 border-secondary pl-6 py-4 bg-accent/30 rounded-r-lg transition-all duration-300 hover:border-secondary/80 hover:bg-accent/50">
+                <header>
+                  <h3 className="text-xl font-semibold text-foreground mb-2">
+                    {t("experience.job4.title") || "Lead Frontend Developer"}
+                  </h3>
+                  <p className="text-secondary font-medium text-lg mb-1">
+                    {t("experience.job4.company") || "Deriv (formerly Binary.com)"}
+                  </p>
+                  <p className="text-text-muted text-sm mb-3">
+                    {t("experience.job4.period") || "September 2020 - October 2021"}
                   </p>
                 </header>
                 <p className="text-text-secondary leading-relaxed">
                   {t("experience.job4.description") ||
-                    "Worked closely with managers, backend, and testers to ensure payment flows and features run smoothly."}
+                    "Pioneered the development of innovative web applications that serve millions globally."}
+                </p>
+              </article>
+
+              <article className="border-l-4 border-secondary pl-6 py-4 bg-accent/30 rounded-r-lg transition-all duration-300 hover:border-secondary/80 hover:bg-accent/50">
+                <header>
+                  <h3 className="text-xl font-semibold text-foreground mb-2">
+                    {t("experience.job5.title") || "Senior Frontend Developer"}
+                  </h3>
+                  <p className="text-secondary font-medium text-lg mb-1">
+                    {t("experience.job5.company") || "Deriv (formerly Binary.com)"}
+                  </p>
+                  <p className="text-text-muted text-sm mb-3">
+                    {t("experience.job5.period") || "July 2018 - September 2020"}
+                  </p>
+                </header>
+                <p className="text-text-secondary leading-relaxed">
+                  {t("experience.job5.description") ||
+                    "Built and maintained responsive web applications, collaborating with designers and backend engineers."}
                 </p>
               </article>
 
               <article className="border-l-4 border-success pl-6 py-4 bg-accent/30 rounded-r-lg transition-all duration-300 hover:border-success/80 hover:bg-accent/50">
                 <header>
                   <h3 className="text-xl font-semibold text-foreground mb-2">
-                    {t("experience.job5.title") || "Software Engineering Lecturer"}
+                    {t("experience.job6.title") || "Software Engineering Lecturer"}
                   </h3>
                   <p className="text-success font-medium text-lg mb-1">
-                    {t("experience.job5.company") || "RevoU"}
+                    {t("experience.job6.company") || "RevoU"}
                   </p>
                   <p className="text-text-muted text-sm mb-3">
-                    {t("experience.job5.period") || "Part-time"}
+                    {t("experience.job6.period") || "Part-time"}
                   </p>
                 </header>
                 <p className="text-text-secondary leading-relaxed">
-                  {t("experience.job5.description") ||
+                  {t("experience.job6.description") ||
                     "Coaching and mentoring software engineering students, sharing practical insights from industry experience."}
                 </p>
               </article>

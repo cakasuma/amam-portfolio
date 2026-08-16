@@ -8,16 +8,10 @@ const CONTACT = {
   github: "github.com/cakasuma",
 };
 
-const SKILLS: ResumePdfData["skills"] = [
-  {
-    label: "Frontend Development",
-    items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "HTML5", "CSS3"],
-  },
-  {
-    label: "Backend Development",
-    items: ["Node.js", "Express", "PostgreSQL", "MongoDB", "REST APIs", "GraphQL"],
-  },
-];
+const SKILL_ITEMS = {
+  frontend: ["React", "Next.js", "TypeScript", "Tailwind CSS", "HTML5", "CSS3"],
+  backend: ["Node.js", "Express", "PostgreSQL", "MongoDB", "REST APIs", "GraphQL"],
+};
 
 export async function GET(request: NextRequest) {
   const requestedLng = request.nextUrl.searchParams.get("lng") ?? fallbackLng;
@@ -55,7 +49,16 @@ export async function GET(request: NextRequest) {
         period: tResume("education.period"),
       },
     ],
-    skills: SKILLS,
+    skills: [
+      {
+        label: tResume("skills.frontend") || "Frontend Development",
+        items: SKILL_ITEMS.frontend,
+      },
+      {
+        label: tResume("skills.backend") || "Backend Development",
+        items: SKILL_ITEMS.backend,
+      },
+    ],
     certifications: ["cert1", "cert2", "cert3"].map((key) => ({
       name: tResume(`certifications.${key}.name`),
       issuer: tResume(`certifications.${key}.issuer`),

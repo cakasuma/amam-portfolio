@@ -82,7 +82,7 @@ export default async function Resume({ params }: ResumeProps) {
               <article className="border-l-4 border-info pl-6 py-4 bg-accent/30 rounded-r-lg transition-all duration-300 hover:border-info/80 hover:bg-accent/50">
                 <header>
                   <h3 className="text-xl font-semibold text-foreground mb-2">
-                    {t("experience.job3.title") || "Senior Mobile Engineer"}
+                    {t("experience.job3.title") || "Mobile Team Lead"}
                   </h3>
                   <p className="text-info font-medium text-lg mb-1">
                     {t("experience.job3.company") || "MoneyLion"}

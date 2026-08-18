@@ -1,14 +1,20 @@
 "use client";
 
 import { FiSun, FiMoon } from "react-icons/fi";
-import { useState, useEffect } from "react";
+import { useSyncExternalStore } from "react";
 import { useTheme } from "next-themes";
 
-export default function ThemeSwitcher() {
-  const [mounted, setMounted] = useState(false);
-  const { setTheme, resolvedTheme } = useTheme();
+const subscribeToNothing = () => () => {};
 
-  useEffect(() => setMounted(true), []);
+export default function ThemeSwitcher() {
+  // `false` while server-rendering and on the hydration pass, `true` afterwards.
+  // Guards against reading resolvedTheme before next-themes knows it.
+  const mounted = useSyncExternalStore(
+    subscribeToNothing,
+    () => true,
+    () => false
+  );
+  const { setTheme, resolvedTheme } = useTheme();
 
   if (!mounted) {
     return (

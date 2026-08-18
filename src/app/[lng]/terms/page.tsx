@@ -46,7 +46,7 @@ export default async function TermsPage({ params }: TermsPageProps) {
 
         <h2 className="text-2xl font-semibold">Disclaimer</h2>
         <p>
-          The website is provided "as is" without warranties of any kind. We do not
+          The website is provided &quot;as is&quot; without warranties of any kind. We do not
           guarantee uninterrupted or error-free operation.
         </p>
 

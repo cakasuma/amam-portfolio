@@ -19,22 +19,38 @@ export function Snackbar({
 }: SnackbarProps) {
   const [render, setRender] = useState(isOpen);
   const [closing, setClosing] = useState(false);
+  const [prevIsOpen, setPrevIsOpen] = useState(isOpen);
   const onCloseRef = useRef(onClose);
-  onCloseRef.current = onClose;
 
   useEffect(() => {
+    onCloseRef.current = onClose;
+  }, [onClose]);
+
+  // Adjust state during render when `isOpen` flips, rather than in an effect,
+  // so the enter/exit class is correct on the very first paint of each transition.
+  if (prevIsOpen !== isOpen) {
+    setPrevIsOpen(isOpen);
     if (isOpen) {
       setRender(true);
       setClosing(false);
-      const timer = setTimeout(() => onCloseRef.current(), duration);
-      return () => clearTimeout(timer);
-    }
-    if (render) {
+    } else if (render) {
       setClosing(true);
-      const t = setTimeout(() => setRender(false), 200);
-      return () => clearTimeout(t);
     }
-  }, [isOpen, duration, render]);
+  }
+
+  // Auto-dismiss while open.
+  useEffect(() => {
+    if (!isOpen) return;
+    const timer = setTimeout(() => onCloseRef.current(), duration);
+    return () => clearTimeout(timer);
+  }, [isOpen, duration]);
+
+  // Unmount once the exit animation has played.
+  useEffect(() => {
+    if (!closing) return;
+    const timer = setTimeout(() => setRender(false), 200);
+    return () => clearTimeout(timer);
+  }, [closing]);
 
   if (!render) return null;
 

@@ -1,160 +1,76 @@
-# Mustofa Amami - Portfolio
+# amam-portfolio
 
-A modern, responsive portfolio website built with Next.js 15, TypeScript, and Tailwind CSS.
+Personal portfolio of **Mustofa Ghaleb Amami** — a bilingual (English /
+Indonesian) Next.js site with a résumé, project portfolio, aggregated writing,
+and a working contact form.
+
+Live at [mustofaamami.dev](https://mustofaamami.dev).
 
 ## Features
 
-- 🌐 **Internationalization (i18n)** - Support for English and Indonesian
-- 🌗 **Dark/Light Theme** - Toggle between themes with system preference detection
-- 📱 **Responsive Design** - Optimized for all device sizes
-- ⚡ **Fast Performance** - Built with Next.js 15 and Turbopack
-- 🎨 **Modern UI** - Glass morphism effects and smooth animations
-- 📄 **Multiple Pages** - Home, Resume, Portfolio, Blog, and Contact
+- **Bilingual** — English and Indonesian, with the locale in the URL
+- **Light and dark themes** — following the OS preference, overridable, persisted
+- **Résumé as a page and a PDF** — both generated from the same content
+- **Aggregated blog** — site-hosted posts and Dev.to articles in one list
+- **Contact form** — validated, rate-limited, delivered by email
+- **Server-rendered throughout** — no client-side animation runtime
 
-## Tech Stack
+## Stack
 
-- **Framework**: Next.js 15
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS
-- **Animations**: Motion (Framer Motion)
-- **Internationalization**: react-i18next
-- **Theme Management**: next-themes
-- **Icons**: React Icons
+Next.js 16 (App Router) · React 19 · TypeScript · Tailwind CSS v4 ·
+i18next · next-themes · Resend · jsPDF · Vercel
 
-## Getting Started
+## Quick start
 
-1. **Clone the repository**
-
-   ```bash
-   git clone https://github.com/cakasuma/amam-portfolio.git
-   cd amam-portfolio
-   ```
-
-2. **Install dependencies**
-
-   ```bash
-   npm install
-   ```
-
-3. **Run the development server**
-
-   ```bash
-   npm run dev
-   ```
-
-4. **Open your browser**
-
-   Navigate to [http://localhost:3000](http://localhost:3000)
-
-## Project Structure
-
-```text
-src/
-├── app/
-│   ├── [lng]/                 # Internationalized routes
-│   │   ├── blog/             # Blog page
-│   │   ├── contact/          # Contact page
-│   │   ├── portfolio/        # Portfolio page
-│   │   ├── resume/           # Resume page
-│   │   ├── layout.tsx        # Root layout
-│   │   └── page.tsx          # Home page
-│   ├── components/           # Reusable components
-│   │   ├── Footer.tsx
-│   │   ├── LanguageSwitcher.tsx
-│   │   ├── MotionLink.tsx
-│   │   ├── Navigation.tsx
-│   │   └── ThemeSwitcher.tsx
-│   ├── i18n/                 # Internationalization setup
-│   │   ├── locales/          # Translation files
-│   │   │   ├── en/          # English translations
-│   │   │   └── id/          # Indonesian translations
-│   │   ├── client.ts
-│   │   ├── index.ts
-│   │   └── settings.ts
-│   └── theme/
-│       └── Providers.tsx     # Theme provider setup
+```bash
+git clone https://github.com/cakasuma/amam-portfolio.git
+cd amam-portfolio
+npm install
+npm run dev
 ```
 
-## Customization
+Open <http://localhost:3000>. Every environment variable is optional locally —
+the app degrades rather than failing. See
+[`docs/development.md`](docs/development.md) for the full setup.
 
-### Updating Personal Information
+## Commands
 
-1. **Profile Image**: Replace `/public/profile-placeholder.svg` with your actual photo
-2. **Contact Information**: Update the contact details in the translation files (`src/app/i18n/locales/*/translation.json`)
-3. **Social Links**: Update social media links in the navigation and footer components
-4. **Resume Content**: Modify the resume data in `src/app/i18n/locales/*/resume.json`
-
-### Adding New Projects
-
-Edit the `projects` array in `src/app/[lng]/portfolio/page.tsx` to add your projects:
-
-```typescript
-const projects = [
-  {
-    id: 1,
-    title: "Your Project Title",
-    description: "Project description",
-    image: "/path-to-image",
-    technologies: ["React", "Next.js", "TypeScript"],
-    demoUrl: "https://your-demo-url.com",
-    githubUrl: "https://github.com/your-username/project"
-  },
-  // Add more projects...
-];
+```bash
+npm run dev        # Development server
+npm run build      # Production build
+npm run lint       # ESLint
+npm run typecheck  # tsc --noEmit
+npm run verify     # All three — must pass before merge
 ```
 
-### Styling
+## How this repository is organised
 
-The project uses CSS custom properties for theming. You can customize colors in `src/app/[lng]/globals.css`:
+| Path | Contents |
+| --- | --- |
+| [`openspec/`](openspec/) | What the system does, and proposed changes |
+| [`docs/`](docs/) | Architecture, development, ADRs, runbooks |
+| [`.claude/skills/`](.claude/skills/) | Repeatable procedures, agent-invocable |
+| [`AGENTS.md`](AGENTS.md) | Entry point for AI coding assistants |
+| `src/` | Application code |
 
-```css
-html.light {
-  --primary: #2563eb;
-  --secondary: #4f46e5;
-  --accent: #18181b;
-  /* ... other colors */
-}
+This project practises spec-driven development: behaviour is specified in
+[`openspec/specs/`](openspec/specs/) before it is built, and changes are
+proposed in [`openspec/changes/`](openspec/changes/) before they are
+implemented. [`docs/adr/0005`](docs/adr/0005-spec-driven-development.md)
+explains why.
 
-html.dark {
-  --primary: #3b82f6;
-  --secondary: #6366f1;
-  --accent: #d4d4d4;
-  /* ... other colors */
-}
-```
+## Contributing
 
-## Scripts
+See [`CONTRIBUTING.md`](CONTRIBUTING.md). In short: `npm run verify` must pass,
+copy ships in both locales, and behaviour changes start with a proposal.
 
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run start` - Start production server
-- `npm run lint` - Run ESLint
+## Licence
 
-## Deployment
-
-This project can be deployed to any platform that supports Next.js:
-
-- **Vercel** (Recommended)
-- **Netlify**
-- **AWS Amplify**
-- **Railway**
-- **Self-hosted**
-
-For Vercel deployment:
-
-1. Push your code to GitHub
-2. Connect your repository to Vercel
-3. Deploy automatically
-
-## License
-
-This project is open source and available under the [MIT License](LICENSE).
+MIT.
 
 ## Contact
 
-Feel free to reach out if you have any questions or suggestions!
-
-- Email: [amammustofa@gmail.com](mailto:amammustofa@gmail.com)
-- LinkedIn: [Mustofa Ghaleb Amami](https://www.linkedin.com/in/mustofa-ghaleb-amami)
-- GitHub: [cakasuma](https://github.com/cakasuma)
-- Twitter/X: [@cakasuma](https://x.com/cakasuma)
+- Email — [amammustofa@gmail.com](mailto:amammustofa@gmail.com)
+- LinkedIn — [Mustofa Ghaleb Amami](https://www.linkedin.com/in/mustofa-ghaleb-amami)
+- GitHub — [cakasuma](https://github.com/cakasuma)
+- X — [@cakasuma](https://x.com/cakasuma)

@@ -21,7 +21,7 @@ export default async function PrivacyPage({ params }: PrivacyPageProps) {
 
       <div className="space-y-6 text-foreground/90 leading-relaxed">
         <p>
-          This Privacy Policy explains how Mustofa Amami ("we", "our", or "us")
+          This Privacy Policy explains how Mustofa Amami (&quot;we&quot;, &quot;our&quot;, or &quot;us&quot;)
           collects, uses, and protects information when you visit this website.
         </p>
 

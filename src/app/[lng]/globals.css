@@ -699,3 +699,115 @@ body {
 .i18n-ready {
   opacity: 1;
 }
+
+/* ============================================================================
+   Scroll-driven depth
+   ----------------------------------------------------------------------------
+   Parallax planes and scroll-triggered reveals, expressed entirely with CSS
+   scroll-driven timelines. No JavaScript runs on scroll, and only `transform`
+   and `opacity` animate, so the work stays off the main thread.
+
+   Three guards bound the risk:
+
+   1. `prefers-reduced-motion: no-preference` wraps everything, so motion is
+      opted into by the visitor's OS setting rather than applied and undone.
+   2. `@supports (animation-timeline: view())` wraps everything too. Without it,
+      a browser lacking scroll timelines would read `animation: reveal linear`
+      as an ordinary time-based animation and play the whole choreography once
+      on load — the opposite of a graceful degradation.
+   3. The hidden state exists only inside `@keyframes`. Nothing here sets
+      `opacity: 0` in a base rule, so when a timeline is inactive — printing, a
+      page too short to scroll, an element in a collapsed container — the
+      effect is simply not applied and the element renders visible.
+   ========================================================================== */
+
+/* Structural only: no motion, so these stay outside the guards. */
+.parallax-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  /* The planes can neither affect nor be affected by layout outside this box. */
+  contain: layout paint style;
+}
+
+.parallax-plane {
+  position: absolute;
+  /* Oversized vertically so a drifting plane never exposes an edge. */
+  inset: -20% 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    /* One keyframe serves every plane; each element supplies its own depth
+       through custom properties, and every default is an identity value. */
+    @keyframes parallax-depth {
+      to {
+        transform: translate3d(
+            var(--parallax-x, 0px),
+            var(--parallax-y, 0px),
+            0
+          )
+          scale(var(--parallax-scale, 1));
+        opacity: var(--parallax-opacity, 1);
+      }
+    }
+
+    /* Backdrop planes track the whole document scroll. They are `fixed`, so
+       translating them upward makes them travel *with* the page but far more
+       slowly than the content — the further the plane, the smaller the shift. */
+    .parallax-plane {
+      animation: parallax-depth linear both;
+      animation-timeline: scroll(root block);
+    }
+
+    /* Hero planes are ranged to the first viewport of scrolling, which is the
+       only stretch where the hero is on screen. Positive `--parallax-y` makes a
+       plane lag behind the scroll, reading as distance. */
+    .hero-plane {
+      animation: parallax-depth linear both;
+      animation-timeline: scroll(root block);
+      animation-range: 0 100vh;
+    }
+
+    /* Reveals are driven by the element's own passage through the viewport.
+       `from` carries the hidden state; the implicit `to` is the element's base
+       style, so the resting state is always the visible one. */
+    @keyframes reveal-rise {
+      from {
+        opacity: 0;
+        transform: translate3d(0, var(--reveal-distance, 20px), 0);
+      }
+    }
+
+    /* `--reveal-start` shifts the whole range rather than just its start, so a
+       staggered sibling stays a constant beat behind its neighbour instead of
+       racing to catch up by the time both finish. */
+    .reveal-on-scroll {
+      animation: reveal-rise linear both;
+      animation-timeline: view();
+      animation-range-start: entry var(--reveal-start, 10%);
+      animation-range-end: entry
+        calc(var(--reveal-start, 10%) + var(--reveal-span, 70%));
+    }
+  }
+}
+
+/* Printing has no scroll container to drive a timeline. The animations above
+   are already inert without one, but a printed page is not a place to rely on
+   that: state it outright, and drop the decorative backdrop rather than spend
+   ink on a wash that carries no information. */
+@media print {
+  .parallax-backdrop {
+    display: none;
+  }
+
+  .parallax-plane,
+  .hero-plane,
+  .reveal-on-scroll {
+    animation: none;
+    transform: none;
+    opacity: 1;
+  }
+}

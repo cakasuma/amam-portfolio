@@ -1,5 +1,32 @@
-import { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import { Card } from "@/components/ui/Card";
+import { ParallaxBackdrop } from "@/app/components/ParallaxBackdrop";
+
+/**
+ * Shared plumbing for the `reveal` prop on the section primitives below.
+ *
+ * `reveal` opts an element into the scroll-driven reveal defined in
+ * `globals.css`: it rises and fades in as it enters the viewport, rather than
+ * animating once on load the way `animate` does. The two are mutually
+ * exclusive — an element carrying both would run two animations against the
+ * same `opacity` and `transform` — so every caller below lets `reveal` win.
+ *
+ * `revealStart` shifts how far into the element's entry the reveal runs — the
+ * whole range moves, not just its start, so a raised value keeps a card a
+ * constant beat behind its neighbour rather than racing it to the finish.
+ * Staggering two side-by-side cards is the only reason to set it.
+ */
+function revealAttrs(reveal: boolean, revealStart?: number) {
+  if (!reveal) return { className: "", style: undefined };
+
+  return {
+    className: "reveal-on-scroll",
+    style:
+      revealStart === undefined
+        ? undefined
+        : ({ "--reveal-start": `${revealStart}%` } as CSSProperties),
+  };
+}
 
 interface PageLayoutProps {
   children: ReactNode;
@@ -26,8 +53,13 @@ export default function PageLayout({
   }[maxWidth];
 
   return (
-    <div className={`min-h-screen ${gradientClass} ${className}`}>
-      <div className={`${widthClass} mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-16`}>
+    /* `isolate` keeps the backdrop's stacking context local, so a plane at
+       `z-0` can never rise into the fixed header's layer. */
+    <div className={`relative isolate min-h-screen ${gradientClass} ${className}`}>
+      <ParallaxBackdrop />
+      <div
+        className={`relative z-10 ${widthClass} mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-16`}
+      >
         {children}
       </div>
     </div>
@@ -79,6 +111,8 @@ interface AnimatedCardProps {
   hover?: boolean;
   glass?: boolean;
   animate?: boolean;
+  reveal?: boolean;
+  revealStart?: number;
 }
 
 export function AnimatedCard({
@@ -88,8 +122,10 @@ export function AnimatedCard({
   hover = true,
   glass = false,
   animate = true,
+  reveal = false,
+  revealStart,
 }: AnimatedCardProps) {
-  const animClass = animate
+  const loadAnimClass = animate
     ? direction === "left"
       ? "anim-fade-left"
       : direction === "right"
@@ -97,8 +133,16 @@ export function AnimatedCard({
       : "anim-fade-up"
     : "";
 
+  const scrollReveal = revealAttrs(reveal, revealStart);
+  const animClass = reveal ? scrollReveal.className : loadAnimClass;
+
   return (
-    <Card className={`${animClass} ${className}`} hover={hover} glass={glass}>
+    <Card
+      className={`${animClass} ${className}`}
+      style={scrollReveal.style}
+      hover={hover}
+      glass={glass}
+    >
       {children}
     </Card>
   );
@@ -110,6 +154,8 @@ interface SectionProps {
   id?: string;
   ariaLabel?: string;
   animate?: boolean;
+  reveal?: boolean;
+  revealStart?: number;
 }
 
 export function Section({
@@ -118,11 +164,21 @@ export function Section({
   id,
   ariaLabel,
   animate = true,
+  reveal = false,
+  revealStart,
 }: SectionProps) {
+  const scrollReveal = revealAttrs(reveal, revealStart);
+  const animClass = reveal
+    ? scrollReveal.className
+    : animate
+    ? "anim-fade-up"
+    : "";
+
   return (
     <section
       id={id}
-      className={`mb-8 lg:mb-12 ${animate ? "anim-fade-up" : ""} ${className}`}
+      className={`mb-8 lg:mb-12 ${animClass} ${className}`}
+      style={scrollReveal.style}
       aria-label={ariaLabel}
     >
       {children}
@@ -135,6 +191,7 @@ interface HeroSectionProps {
   className?: string;
   background?: "gradient" | "solid";
   animate?: boolean;
+  reveal?: boolean;
 }
 
 export function HeroSection({
@@ -142,6 +199,7 @@ export function HeroSection({
   className = "",
   background = "gradient",
   animate = true,
+  reveal = false,
 }: HeroSectionProps) {
   return (
     <Section
@@ -152,6 +210,7 @@ export function HeroSection({
       } ${className}`}
       ariaLabel="Hero section"
       animate={animate}
+      reveal={reveal}
     >
       {children}
     </Section>
@@ -189,6 +248,8 @@ interface CTASectionProps {
   className?: string;
   variant?: "primary" | "secondary";
   animate?: boolean;
+  reveal?: boolean;
+  revealStart?: number;
 }
 
 export function CTASection({
@@ -198,6 +259,8 @@ export function CTASection({
   className = "",
   variant = "primary",
   animate = true,
+  reveal = false,
+  revealStart,
 }: CTASectionProps) {
   const bgClass =
     variant === "primary"
@@ -205,7 +268,12 @@ export function CTASection({
       : "bg-accent text-foreground border border-border";
 
   return (
-    <Section className={`text-center ${className}`} animate={animate}>
+    <Section
+      className={`text-center ${className}`}
+      animate={animate}
+      reveal={reveal}
+      revealStart={revealStart}
+    >
       <Card className={`${bgClass} p-8 md:p-12`} hover={false}>
         <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">{title}</h2>
         {description && (

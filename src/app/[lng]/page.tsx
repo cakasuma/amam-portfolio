@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { FaLinkedin, FaGithub, FaTwitter } from "@/components/icons";
@@ -71,8 +72,39 @@ export default async function Home({ params }: HomeProps) {
   return (
     <PageLayout>
       <HeroSection animate={false}>
+        {/*
+          The hero is composed as depth planes. Each `hero-plane` lags the
+          scroll by its own `--parallax-y` over the first viewport of scrolling;
+          the higher an element sits, the more it lags, so the hero gently
+          compresses as it leaves rather than sliding away as one flat sheet.
+          Nothing here animates opacity except the decorative glow — copy the
+          visitor may still be reading is displaced, never faded.
+
+          All of it is suppressed for `prefers-reduced-motion: reduce` and for
+          browsers without scroll timelines; see `globals.css`.
+        */}
         <div>
-          <div className="relative w-48 h-48 lg:w-56 lg:h-56 mx-auto mb-8">
+          <div
+            className="hero-plane relative w-48 h-48 lg:w-56 lg:h-56 mx-auto mb-8"
+            style={{ "--parallax-y": "40px", "--parallax-scale": "0.97" } as CSSProperties}
+          >
+            {/* Furthest plane: a glow that blooms and drifts out from behind
+                the portrait, giving the photo something to have depth against.
+                It sits inside the portrait's plane, so these values compose on
+                top of the parent's — 32px here lands at 72px of total lag. */}
+            <div
+              aria-hidden="true"
+              className="hero-plane pointer-events-none absolute -inset-10 rounded-full"
+              style={
+                {
+                  "--parallax-y": "32px",
+                  "--parallax-scale": "1.12",
+                  "--parallax-opacity": "0.4",
+                  backgroundImage:
+                    "radial-gradient(circle, color-mix(in srgb, var(--secondary) 26%, transparent) 0%, transparent 68%)",
+                } as CSSProperties
+              }
+            />
             <div className="relative w-full h-full">
               <Image
                 src="/image-amam.png"
@@ -92,7 +124,10 @@ export default async function Home({ params }: HomeProps) {
             </div>
           </div>
 
-          <div>
+          <div
+            className="hero-plane"
+            style={{ "--parallax-y": "22px" } as CSSProperties}
+          >
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4">
               {t("name") || "Mustofa Amami"}
             </h1>
@@ -107,7 +142,10 @@ export default async function Home({ params }: HomeProps) {
             </p>
           </div>
 
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
+          <div
+            className="hero-plane flex flex-wrap justify-center gap-4 mb-12"
+            style={{ "--parallax-y": "10px" } as CSSProperties}
+          >
             {contactInfo.map((item) => (
               <a
                 key={item.label}
@@ -162,7 +200,7 @@ export default async function Home({ params }: HomeProps) {
       </HeroSection>
 
       <ContentGrid columns={2} className="mb-12">
-        <AnimatedCard direction="left" animate={false}>
+        <AnimatedCard direction="left" reveal>
           <header className="mb-6">
             <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
               <span className="text-secondary text-3xl">⚡</span>
@@ -179,7 +217,9 @@ export default async function Home({ params }: HomeProps) {
           </p>
         </AnimatedCard>
 
-        <AnimatedCard direction="right" animate={false}>
+        {/* Staggered a little behind its neighbour so the pair reads as two
+            beats rather than one. */}
+        <AnimatedCard direction="right" reveal revealStart={25}>
           <header className="mb-6">
             <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
               <span className="text-warning text-3xl">🎯</span>
@@ -207,7 +247,7 @@ export default async function Home({ params }: HomeProps) {
         className="mb-12"
         id="testimonials"
         ariaLabel="Client testimonials"
-        animate={false}
+        reveal
       >
         <AnimatedCard animate={false}>
           <header className="text-center mb-8">
@@ -256,7 +296,7 @@ export default async function Home({ params }: HomeProps) {
           "Let's create something amazing together! I'm always excited to take on new challenges and bring innovative ideas to life."
         }
         variant="primary"
-        animate={false}
+        reveal
       >
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <Link href={`/${lng}/contact`} prefetch={true}>

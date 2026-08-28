@@ -15,10 +15,11 @@ timeline, not by a scroll event handler.
 - **AND** no scroll, wheel, resize, or `IntersectionObserver` listener is added
   to drive it
 
-#### Scenario: Scrolling the home page
+#### Scenario: Scrolling with JavaScript disabled
 
-- **WHEN** a visitor scrolls the home page
-- **THEN** no site JavaScript executes in response to the scroll
+- **GIVEN** a browser with JavaScript disabled
+- **WHEN** the visitor scrolls the home page
+- **THEN** every depth plane and scroll reveal advances with the scroll
 
 ### Requirement: Scroll-linked motion animates compositor properties only
 

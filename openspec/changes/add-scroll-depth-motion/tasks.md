@@ -49,8 +49,8 @@
       moves on scroll and every section is fully visible
 - [x] 4.4 Manually verify: the document has no horizontal scrollbar at 320 px,
       768 px and 1440 px widths
-- [x] 4.5 Manually verify: a performance trace while scrolling shows no
-      scripting and no layout from the motion
+- [x] 4.5 Manually verify: the depth motion runs with JavaScript disabled, so no
+      scroll handler of any kind drives it
 - [x] 4.6 Manually verify: tab order and screen-reader output are unchanged by
       the backdrop
 
@@ -69,9 +69,17 @@ production build (`next build && next start`), driven by Playwright:
 | No horizontal overflow | `scrollWidth == clientWidth` at 320, 768 and 1440 px |
 | No content stranded invisible | swept 0→2756 px at viewport heights 700, 900 and 1400: nothing more than 35% on screen ever sat below 0.15 opacity |
 | Print | all reveal targets `opacity: 1`, backdrop `display: none` |
-| No scroll work in JS | no `scroll` or `wheel` listener registered on the page |
+| Motion needs no JavaScript | with JavaScript disabled entirely, a wheel scroll still moved the hero planes (21.3 / 17.1 / 11.7 / 5.3 px), the backdrop planes (−7.8 / −20.7 / −38.8 px) and the reveals (0.56 / 0.35 opacity, stagger intact) |
 | Backdrop is inert | `aria-hidden="true"`, `pointer-events: none`, zero focusable descendants |
 | Other routes unaffected | `/en/portfolio`, `/en/resume`, `/en/blog`, `/en/contact`, `/id` — 200, no overflow, no invisible text |
+
+Corrected after review: an earlier version of this record claimed no `scroll`
+or `wheel` listener was registered on the page. That was a false negative — the
+probe read the listener list before hydration finished. After hydration the page
+registers eight, two of them the `window` `scroll` listeners in `SmartHeader`
+and `SmartFooter`, which predate this change. The claim that matters is the one
+in the table above, and it is stronger: the motion runs with JavaScript switched
+off, so none of those handlers has anything to do with it.
 
 Not a finding of this change, but recorded because it was seen while testing:
 every route logs React error #418 (a text hydration mismatch) in a production

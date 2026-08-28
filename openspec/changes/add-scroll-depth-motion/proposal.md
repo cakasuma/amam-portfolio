@@ -22,8 +22,9 @@ depth affordable within the constraints the site already has.
 ## What Changes
 
 - An ambient backdrop of three depth planes — a dot grid and two soft
-  gradient fields — drifts behind every page at different rates as the visitor
-  scrolls. It is decorative, `aria-hidden`, and outside the tab order.
+  gradient fields — drifts at different rates behind every page built on
+  `PageLayout` (home, portfolio, résumé, blog, contact) as the visitor scrolls.
+  It is decorative, `aria-hidden`, and outside the tab order.
 - The home hero separates into three planes that move at different rates: a
   glow behind the portrait (furthest), the portrait (nearest), and the text
   block (between them).
@@ -35,6 +36,12 @@ depth affordable within the constraints the site already has.
 
 All of it is CSS. No component gains `"use client"`, no dependency is added,
 and only `transform` and `opacity` are animated.
+
+The site's header and footer already hide themselves on scroll from a `scroll`
+listener in `SmartHeader` and `SmartFooter`. That is pre-existing and untouched
+here, so the requirement below is not that the page runs no scroll JavaScript —
+it is that *this* motion needs none of its own, which is verifiable by turning
+JavaScript off entirely and watching the planes still move.
 
 Three guards bound the risk, and each is a requirement below:
 
@@ -71,3 +78,7 @@ Three guards bound the risk, and each is a requirement below:
 - Not in scope: parallax on the portfolio, resume, blog or contact pages. They
   get the ambient backdrop through `PageLayout`; opting them into reveals is a
   later change
+- Also not in scope: `privacy` and `terms`, which render a bare `<section>` and
+  never mount `PageLayout`, so they get no backdrop. Giving them one means
+  giving them the shared page chrome — a different width, padding and background
+  on two pages this change has no other reason to touch

@@ -69,6 +69,36 @@ export default async function Home({ params }: HomeProps) {
 
   const skills = ["React", "Next.js", "TypeScript", "Node.js", "Tailwind CSS", "PostgreSQL"];
 
+  // Onward paths for a visitor who is interested but not ready to make contact.
+  // The closing CTA is the only exit otherwise, and by then the nav is far
+  // above them.
+  const exploreLinks = [
+    {
+      href: `/${lng}/resume`,
+      icon: "\u{1F4C4}",
+      title: t("explore.resume-title") || "Résumé",
+      description:
+        t("explore.resume-description") ||
+        "The roles, the stack, and what I actually shipped in each.",
+    },
+    {
+      href: `/${lng}/portfolio`,
+      icon: "\u{1F4BC}",
+      title: t("explore.portfolio-title") || "Portfolio",
+      description:
+        t("explore.portfolio-description") ||
+        "Projects I have built, with the problem each one set out to solve.",
+    },
+    {
+      href: `/${lng}/blog`,
+      icon: "\u{1F4DD}",
+      title: t("explore.blog-title") || "Blog",
+      description:
+        t("explore.blog-description") ||
+        "Notes on engineering, leading a team, and teaching.",
+    },
+  ];
+
   return (
     <PageLayout>
       <HeroSection animate={false}>
@@ -85,7 +115,7 @@ export default async function Home({ params }: HomeProps) {
         */}
         <div>
           <div
-            className="hero-plane relative w-48 h-48 lg:w-56 lg:h-56 mx-auto mb-8"
+            className="hero-plane relative w-40 h-40 lg:w-56 lg:h-56 mx-auto mb-6 lg:mb-8"
             style={{ "--parallax-y": "40px", "--parallax-scale": "0.97" } as CSSProperties}
           >
             {/* Furthest plane: a glow that blooms and drifts out from behind
@@ -113,7 +143,7 @@ export default async function Home({ params }: HomeProps) {
                 height={224}
                 priority
                 fetchPriority="high"
-                sizes="(max-width: 1024px) 192px, 224px"
+                sizes="(max-width: 1024px) 160px, 224px"
                 className="rounded-full border-4 border-secondary object-cover shadow-lg w-full h-full"
                 style={{ objectPosition: "center 15%" }}
               />
@@ -132,18 +162,18 @@ export default async function Home({ params }: HomeProps) {
               {t("name") || "Mustofa Amami"}
             </h1>
 
-            <p className="text-xl lg:text-2xl text-text-secondary mb-8 max-w-2xl mx-auto">
+            <p className="text-xl lg:text-2xl text-text-secondary mb-6 lg:mb-8 max-w-2xl mx-auto">
               {t("role") || "Full-Stack Developer & UI/UX Enthusiast"}
             </p>
 
-            <p className="text-base lg:text-lg text-text-muted mb-12 max-w-xl mx-auto leading-relaxed">
+            <p className="text-base lg:text-lg text-text-muted mb-8 lg:mb-12 max-w-xl mx-auto leading-relaxed">
               {t("hero-description") ||
                 "Passionate about creating beautiful, functional web experiences with modern technologies. Based in Jakarta, Indonesia."}
             </p>
           </div>
 
           <div
-            className="hero-plane flex flex-wrap justify-center gap-4 mb-12"
+            className="hero-plane flex flex-wrap justify-center gap-4 mb-8 lg:mb-12"
             style={{ "--parallax-y": "10px" } as CSSProperties}
           >
             {contactInfo.map((item) => (
@@ -196,10 +226,31 @@ export default async function Home({ params }: HomeProps) {
               </a>
             ))}
           </div>
+
+          {/*
+            The hero cannot fit every phone — on a 360x740 screen the
+            description alone overruns the usable area — so the fold has to say
+            that more follows rather than just severing a sentence. A real
+            anchor rather than a decorative flourish: it is operable, it reads
+            in the accessibility tree, and it still works with reduced motion
+            or without scroll-timeline support. The bob is decoration on top of
+            a link that works without it.
+          */}
+          <a
+            href="#about"
+            className="group mt-10 lg:mt-14 inline-flex flex-col items-center gap-2 text-text-muted hover:text-foreground transition-colors duration-200"
+          >
+            <span className="text-sm font-medium tracking-wide">
+              {t("scroll-cue") || "Scroll to read on"}
+            </span>
+            <span aria-hidden="true" className="scroll-cue-arrow text-lg leading-none">
+              ↓
+            </span>
+          </a>
         </div>
       </HeroSection>
 
-      <ContentGrid columns={2} className="mb-12">
+      <ContentGrid columns={2} className="mb-12" id="about">
         <AnimatedCard direction="left" reveal>
           <header className="mb-6">
             <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-4 flex items-center gap-3">
@@ -287,6 +338,45 @@ export default async function Home({ params }: HomeProps) {
             </blockquote>
           </ContentGrid>
         </AnimatedCard>
+      </Section>
+
+      <Section className="mb-12" ariaLabel="Keep exploring" reveal>
+        <header className="text-center mb-8">
+          <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-3">
+            {t("explore.title") || "Keep exploring"}
+          </h2>
+          <p className="text-text-secondary max-w-2xl mx-auto">
+            {t("explore.description") ||
+              "Not ready to get in touch yet? There is more to look through."}
+          </p>
+        </header>
+
+        <ContentGrid columns={3} gap="md">
+          {exploreLinks.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              prefetch={true}
+              className="group flex flex-col gap-2 rounded-xl border border-border bg-card p-6 transition-all duration-200 hover:border-secondary hover:shadow-lg active:scale-[0.99]"
+            >
+              <span aria-hidden="true" className="text-2xl">
+                {item.icon}
+              </span>
+              <span className="flex items-center gap-2 text-lg font-semibold text-foreground">
+                {item.title}
+                <span
+                  aria-hidden="true"
+                  className="text-secondary transition-transform duration-200 group-hover:translate-x-1"
+                >
+                  →
+                </span>
+              </span>
+              <span className="text-sm text-text-muted leading-relaxed">
+                {item.description}
+              </span>
+            </Link>
+          ))}
+        </ContentGrid>
       </Section>
 
       <CTASection

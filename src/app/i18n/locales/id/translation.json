@@ -7,6 +7,7 @@
   "birthday": "Lahir: 1 Januari 1990",
   "role": "Tech Lead Fullstack & Pengajar Software Engineering",
   "hero-description": "Sebagai Tech Team Lead di Deriv, saya mengubah ide menjadi platform web dan mobile yang digunakan jutaan orang. Di RevoU, saya berkesempatan membimbing generasi engineer masa depan, berbagi pengalaman dan pembelajaran praktis dari bertahun-tahun berkarier di industri teknologi. Setiap baris kode yang saya tulis didorong oleh tekad untuk menciptakan pengalaman yang canggih sekaligus mudah digunakan.",
+  "scroll-cue": "Gulir untuk lanjut membaca",
   "location": "Kuala Lumpur, Malaysia",
   "contact-info": {
     "email-label": "Email",
@@ -47,5 +48,15 @@
     "description": "Baik Anda membangun platform fintech besar berikutnya, butuh mentorship teknis, atau ingin berkolaborasi dalam proyek inovatif—mari terhubung. Saya selalu excited untuk mengerjakan masalah menantang yang membuat perbedaan nyata.",
     "get-in-touch": "Hubungi Saya",
     "view-my-work": "Lihat Karya Saya"
+  },
+  "explore": {
+    "title": "Jelajahi lebih lanjut",
+    "description": "Belum siap menghubungi? Masih ada yang bisa ditelusuri.",
+    "resume-title": "Résumé",
+    "resume-description": "Peran, teknologi yang dipakai, dan apa yang benar-benar saya kerjakan di tiap peran.",
+    "portfolio-title": "Portofolio",
+    "portfolio-description": "Proyek yang saya bangun, beserta masalah yang ingin dipecahkan masing-masing.",
+    "blog-title": "Blog",
+    "blog-description": "Catatan seputar rekayasa perangkat lunak, memimpin tim, dan mengajar."
   }
 }

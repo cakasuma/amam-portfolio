@@ -813,3 +813,21 @@ body {
     opacity: 1;
   }
 }
+
+/* Scroll cue closing the hero. The bob is decoration over a working anchor —
+   the global reduced-motion block above collapses its duration, and the link
+   keeps working either way. */
+@keyframes scroll-cue-bob {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, 5px, 0);
+  }
+}
+
+.scroll-cue-arrow {
+  display: inline-block;
+  animation: scroll-cue-bob 2.4s ease-in-out infinite;
+}

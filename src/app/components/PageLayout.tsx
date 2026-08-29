@@ -222,6 +222,8 @@ interface ContentGridProps {
   columns?: 1 | 2 | 3;
   gap?: "sm" | "md" | "lg";
   className?: string;
+  /** Anchor target, so a grid can be the destination of an in-page link. */
+  id?: string;
 }
 
 export function ContentGrid({
@@ -229,6 +231,7 @@ export function ContentGrid({
   columns = 2,
   gap = "lg",
   className = "",
+  id,
 }: ContentGridProps) {
   const gridCols = {
     1: "grid-cols-1",
@@ -238,7 +241,11 @@ export function ContentGrid({
 
   const gridGap = { sm: "gap-4", md: "gap-6", lg: "gap-8" }[gap];
 
-  return <div className={`grid ${gridCols} ${gridGap} ${className}`}>{children}</div>;
+  return (
+    <div id={id} className={`grid ${gridCols} ${gridGap} ${className}`}>
+      {children}
+    </div>
+  );
 }
 
 interface CTASectionProps {

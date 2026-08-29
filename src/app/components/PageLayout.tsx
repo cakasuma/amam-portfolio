@@ -55,7 +55,7 @@ export default function PageLayout({
   return (
     /* `isolate` keeps the backdrop's stacking context local, so a plane at
        `z-0` can never rise into the fixed header's layer. */
-    <div className={`relative isolate min-h-screen ${gradientClass} ${className}`}>
+    <div className={`relative isolate min-h-svh ${gradientClass} ${className}`}>
       <ParallaxBackdrop />
       <div
         className={`relative z-10 ${widthClass} mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-16`}

@@ -155,9 +155,11 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Smooth scrolling */
+/* Smooth scrolling. The header is `sticky`, so it overlays whatever an in-page
+   anchor lands on; `scroll-padding-top` keeps that content clear of it. */
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
 }
 
 /* Custom scrollbar - Theme aware */

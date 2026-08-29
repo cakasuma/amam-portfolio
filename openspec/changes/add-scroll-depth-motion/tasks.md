@@ -19,7 +19,7 @@
 
 - [x] 2.1 Add `src/app/components/ParallaxBackdrop.tsx` as a Server Component —
       no `"use client"`
-- [x] 2.2 Build the planes from `color-mix()` over existing custom properties;
+- [x] 2.2 Build the plane from `color-mix()` over existing custom properties;
       no hardcoded hex values
 - [x] 2.3 Use radial gradients rather than `filter: blur()`, so the planes cost
       nothing to paint
@@ -43,8 +43,8 @@
 ## 4. Verification
 
 - [x] 4.1 `npm run verify` passes
-- [x] 4.2 Manually verify: scrolling the home page moves the backdrop planes
-      and hero planes at visibly different rates
+- [x] 4.2 Manually verify: scrolling the home page moves the backdrop grid
+      and the hero planes at visibly different rates
 - [x] 4.3 Manually verify: with `prefers-reduced-motion: reduce` forced, nothing
       moves on scroll and every section is fully visible
 - [x] 4.4 Manually verify: the document has no horizontal scrollbar at 320 px,
@@ -69,7 +69,7 @@ production build (`next build && next start`), driven by Playwright:
 | No horizontal overflow | `scrollWidth == clientWidth` at 320, 768 and 1440 px |
 | No content stranded invisible | swept 0→2756 px at viewport heights 700, 900 and 1400: nothing more than 35% on screen ever sat below 0.15 opacity |
 | Print | all reveal targets `opacity: 1`, backdrop `display: none` |
-| Motion needs no JavaScript | with JavaScript disabled entirely, a wheel scroll still moved the hero planes (21.3 / 17.1 / 11.7 / 5.3 px), the backdrop planes (−7.8 / −20.7 / −38.8 px) and the reveals (0.56 / 0.35 opacity, stagger intact) |
+| Motion needs no JavaScript | with JavaScript disabled entirely, a wheel scroll still moved the hero planes (21.3 / 17.1 / 11.7 / 5.3 px), the backdrop grid (−7.8 px; measured when the backdrop still had three planes, at −7.8 / −20.7 / −38.8 px) and the reveals (0.56 / 0.35 opacity, stagger intact) |
 | Backdrop is inert | `aria-hidden="true"`, `pointer-events: none`, zero focusable descendants |
 | Other routes unaffected | `/en/portfolio`, `/en/resume`, `/en/blog`, `/en/contact`, `/id` — 200, no overflow, no invisible text |
 

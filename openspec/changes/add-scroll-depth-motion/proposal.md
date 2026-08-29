@@ -21,10 +21,10 @@ depth affordable within the constraints the site already has.
 
 ## What Changes
 
-- An ambient backdrop of three depth planes — a dot grid and two soft
-  gradient fields — drifts at different rates behind every page built on
-  `PageLayout` (home, portfolio, résumé, blog, contact) as the visitor scrolls.
-  It is decorative, `aria-hidden`, and outside the tab order.
+- An ambient dot grid drifts behind every page built on `PageLayout` (home,
+  portfolio, résumé, blog, contact) as the visitor scrolls, slowly enough to
+  read as distance. It is decorative, `aria-hidden`, and outside the tab
+  order.
 - The home hero separates into three planes that move at different rates: a
   glow behind the portrait (furthest), the portrait (nearest), and the text
   block (between them).
@@ -59,6 +59,19 @@ Three guards bound the risk, and each is a requirement below:
    animation's effect is not applied and the element renders at its base style,
    which is fully visible.
 
+## Revised during review
+
+The backdrop began as three planes: the dot grid plus two soft colour fields
+mixed from `--secondary` and `--primary` at 9–12% alpha. Their alpha was chosen
+against the light palette, where those tokens sit close to the background. In
+dark mode `--secondary` is a light tan over near-black, so the same alpha read
+as a bright warm smudge in the top-left corner — depth turning into a stain.
+
+The fields were removed rather than tuned per theme: the grid is what makes the
+drift legible, and colour was not carrying the effect. Verified by screenshot —
+with the backdrop hidden the corner is clean, with the fields removed it stays
+clean while the grid and its drift remain.
+
 ## Impact
 
 - Affected specs: `web-performance`
@@ -68,10 +81,10 @@ Three guards bound the risk, and each is a requirement below:
 - Affected translations: none — nothing added is user-facing copy
 - Bundle impact: none. Zero bytes of JavaScript; the CSS added is under 3 kB
   before compression
-- Contrast: backdrop planes are drawn from `--secondary`, `--primary` and
-  `--warning` at 6–12% alpha over `--background`. At 12% the light theme's
-  body-text ratio moves from 19.0:1 to ~15.9:1 and the dark theme's from 17.6:1
-  to ~14.1:1 — both far above the 4.5:1 that `theming` requires
+- Contrast: the backdrop is a `--muted` dot grid at 38% alpha, masked and held
+  at 50% opacity. It is a sparse 1px texture rather than a wash, so the
+  effective change to the background behind body text is negligible in both
+  themes
 - Risk: low, and confined to presentation. The failure modes that matter —
   content stranded invisible, animation on load in an unsupported browser,
   motion for a visitor who asked for none — are each closed by a guard above

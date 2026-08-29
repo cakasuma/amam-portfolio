@@ -133,7 +133,7 @@ export default function RootLayout({
         <meta name="google-adsense-account" content="ca-pub-4424261944689002" />
       </head>
       <body
-        className="antialiased relative min-h-screen bg-background text-foreground"
+        className="antialiased relative min-h-svh bg-background text-foreground"
       >
         {/* Skip to main content for accessibility */}
         <a
@@ -147,11 +147,11 @@ export default function RootLayout({
           <StructuredData lng={lng} />
           <Analytics />
           <SpeedInsights />
-          <div className="flex flex-col min-h-screen">
+          <div className="flex flex-col min-h-svh">
             <SmartHeader lng={lng} />
             <main
               id="main-content"
-              className="flex-1 pt-16 pb-24 md:pb-16"
+              className="flex-1 pb-24 md:pb-16"
               role="main"
             >
               {children}

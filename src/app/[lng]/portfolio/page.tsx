@@ -109,22 +109,12 @@ const webApps = [
   },
   {
     id: 102,
-    title: "Faraid Calculator",
+    title: "HelloKalku",
     description:
-      "An Islamic inheritance (Faraid) calculator that computes the rightful share of each heir according to Islamic law. Helps families determine estate distribution quickly and accurately.",
-    image: "/projects/calculator.svg",
-    technologies: ["JavaScript", "HTML", "CSS"],
-    demoUrl: "https://calculator.amammustofa.com",
-    githubUrl: null,
-  },
-  {
-    id: 103,
-    title: "Malaysian Salary Calculator",
-    description:
-      "A take-home pay calculator for Malaysians that estimates net salary after EPF, SOCSO, EIS, and PCB tax deductions. Supports English and Bahasa Indonesia, helping employees and freelancers plan their finances with clarity.",
-    image: "/projects/salary-calculator.svg",
-    technologies: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
-    demoUrl: "https://calculator.amammustofa.com/salary",
+      "A suite of free calculators for Malaysia — take-home salary, tax, zakat, faraid inheritance, and planning tools — gathered into one bilingual app. Supersedes the standalone Faraid and salary calculators.",
+    image: "/projects/hellokalku.svg",
+    technologies: ["React", "Vite", "Tailwind CSS"],
+    demoUrl: "https://hellokalku.com",
     githubUrl: null,
   },
 ];

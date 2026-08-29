@@ -7,6 +7,7 @@
   "birthday": "Born: January 1, 1990",
   "role": "Tech Lead Fullstack & Software Engineering Instructor",
   "hero-description": "As Tech Team Lead at Deriv, I transform ideas into robust web and mobile platforms that empower millions of users. I'm also honored to guide the next generation of engineers at RevoU, sharing the passion and practical wisdom gained from years in the tech industry. Every line of code I write is driven by a commitment to creating experiences that are both powerful and delightful.",
+  "scroll-cue": "Scroll to read on",
   "location": "Kuala Lumpur, Malaysia",
   "contact-info": {
     "email-label": "Email",
@@ -47,5 +48,15 @@
     "description": "Whether you're building the next big fintech platform, need technical mentorship, or want to collaborate on innovative projects—let's connect. I'm always excited to work on challenging problems that make a real difference.",
     "get-in-touch": "Get in Touch",
     "view-my-work": "View My Work"
+  },
+  "explore": {
+    "title": "Keep exploring",
+    "description": "Not ready to get in touch yet? There is more to look through.",
+    "resume-title": "Résumé",
+    "resume-description": "The roles, the stack, and what I actually shipped in each.",
+    "portfolio-title": "Portfolio",
+    "portfolio-description": "Projects I have built, with the problem each one set out to solve.",
+    "blog-title": "Blog",
+    "blog-description": "Notes on engineering, leading a team, and teaching."
   }
 }

@@ -9,15 +9,23 @@ rather than ending on whatever the fold happens to cut.
 
 ## ADDED Requirements
 
-### Requirement: The first screen signals that the page continues
+### Requirement: The scroll cue is visible without scrolling
 
-The home page SHALL end its hero with a visible cue that more content follows.
+The home page SHALL show its scroll cue within the usable viewport on first
+load, so that a visitor is told the page continues before they have to guess.
 
-#### Scenario: Reaching the bottom of the hero
+#### Scenario: Landing on the home page
 
-- **WHEN** a visitor scrolls to the end of the hero
-- **THEN** a cue naming the next section is visible
-- **AND** activating it moves the visitor to that section
+- **GIVEN** any viewport from 340×734 to 1920×1080
+- **WHEN** the home page loads and nothing has been scrolled
+- **THEN** the scroll cue is fully within the area below the header and above
+  the mobile navigation
+
+#### Scenario: Activating the cue
+
+- **WHEN** a visitor activates the cue
+- **THEN** the section below the hero is scrolled to
+- **AND** it lands clear of the sticky header
 
 #### Scenario: Cue without motion support
 
@@ -26,24 +34,22 @@ The home page SHALL end its hero with a visible cue that more content follows.
 - **WHEN** the home page renders
 - **THEN** the cue is still present and still activates the next section
 
-### Requirement: The hero fits the small viewport where it can
+### Requirement: The first screen is self-contained
 
-The hero SHALL be laid out so that its description completes within the usable
-viewport on a 390×844 screen — below the header and above the mobile
-navigation.
+The hero SHALL be sized to the usable viewport and SHALL carry only the
+visitor's identity — portrait, name, role — and the scroll cue, so that the
+fold falls on a section boundary rather than through content.
 
-#### Scenario: Loading on a 390×844 phone
+#### Scenario: Loading on any supported viewport
 
-- **WHEN** the home page loads at 390×844
-- **THEN** the hero description's last line sits above the mobile navigation
-- **AND** no line of the description is obscured by it
-
-#### Scenario: Loading on a screen too small for the hero
-
-- **GIVEN** a viewport too short to hold the hero
 - **WHEN** the home page loads
-- **THEN** the content is cut only below the scroll cue's line of sight, and
-  the cue remains reachable by scrolling
+- **THEN** no hero element is intersected by the bottom of the usable viewport
+
+#### Scenario: Where the rest of the introduction lives
+
+- **WHEN** a visitor scrolls past the hero
+- **THEN** the biography, contact details and social links are the first
+  content they meet
 
 ### Requirement: The page offers onward paths before it ends
 

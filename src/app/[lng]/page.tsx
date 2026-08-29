@@ -67,7 +67,14 @@ export default async function Home({ params }: HomeProps) {
     },
   ];
 
-  const skills = ["React", "Next.js", "TypeScript", "Node.js", "Tailwind CSS", "PostgreSQL"];
+  const skills = [
+    "React",
+    "Next.js",
+    "TypeScript",
+    "Node.js",
+    "Tailwind CSS",
+    "PostgreSQL",
+  ];
 
   // Onward paths for a visitor who is interested but not ready to make contact.
   // The closing CTA is the only exit otherwise, and by then the nav is far
@@ -103,152 +110,182 @@ export default async function Home({ params }: HomeProps) {
     <PageLayout>
       <HeroSection animate={false}>
         {/*
-          The hero is composed as depth planes. Each `hero-plane` lags the
-          scroll by its own `--parallax-y` over the first viewport of scrolling;
-          the higher an element sits, the more it lags, so the hero gently
-          compresses as it leaves rather than sliding away as one flat sheet.
-          Nothing here animates opacity except the decorative glow — copy the
-          visitor may still be reading is displaced, never faded.
+          The hero is sized to the usable viewport — the space below the sticky
+          header and above the mobile nav — with the identity centred in it and
+          the scroll cue at its foot. That is the point: the fold lands on a
+          section boundary instead of slicing whatever happened to be there,
+          and the cue is on the first screen rather than 400px below it.
 
-          All of it is suppressed for `prefers-reduced-motion: reduce` and for
-          browsers without scroll timelines; see `globals.css`.
+          Measured before this: the hero wanted 1054-1134px against 573-771px
+          of usable height, overrunning on every phone AND on a 1440x900
+          desktop, because it carried the bio and the contact details as well
+          as the identity. Those moved to #intro, directly below. The `14rem` /
+          `15rem` allowances are the real chrome: 72px header + 89px mobile nav
+          + 64px page padding on small screens, 94px header + 128px padding on
+          large.
+
+          Within the hero, each `hero-plane` lags the scroll by its own
+          `--parallax-y` over the first viewport of scrolling, so the hero
+          gently compresses as it leaves rather than sliding away as one flat
+          sheet. Only the decorative glow animates opacity — copy the visitor
+          may still be reading is displaced, never faded. All of it is
+          suppressed for `prefers-reduced-motion: reduce` and for browsers
+          without scroll timelines; see `globals.css`.
         */}
-        <div>
-          <div
-            className="hero-plane relative w-40 h-40 lg:w-56 lg:h-56 mx-auto mb-6 lg:mb-8"
-            style={{ "--parallax-y": "40px", "--parallax-scale": "0.97" } as CSSProperties}
-          >
-            {/* Furthest plane: a glow that blooms and drifts out from behind
+        <div className="flex flex-col min-h-[calc(100svh-14rem)] lg:min-h-[calc(100svh-15rem)]">
+          <div className="flex flex-1 flex-col justify-center">
+            <div
+              className="hero-plane relative w-40 h-40 lg:w-56 lg:h-56 mx-auto mb-6 lg:mb-8"
+              style={
+                {
+                  "--parallax-y": "40px",
+                  "--parallax-scale": "0.97",
+                } as CSSProperties
+              }
+            >
+              {/* Furthest plane: a glow that blooms and drifts out from behind
                 the portrait, giving the photo something to have depth against.
                 It sits inside the portrait's plane, so these values compose on
                 top of the parent's — 32px here lands at 72px of total lag. */}
+              <div
+                aria-hidden="true"
+                className="hero-plane pointer-events-none absolute -inset-10 rounded-full"
+                style={
+                  {
+                    "--parallax-y": "32px",
+                    "--parallax-scale": "1.12",
+                    "--parallax-opacity": "0.4",
+                    backgroundImage:
+                      "radial-gradient(circle, color-mix(in srgb, var(--secondary) 26%, transparent) 0%, transparent 68%)",
+                  } as CSSProperties
+                }
+              />
+              <div className="relative w-full h-full">
+                <Image
+                  src="/image-amam.png"
+                  alt="Mustofa Amami - Full-Stack Developer Portrait"
+                  width={224}
+                  height={224}
+                  priority
+                  fetchPriority="high"
+                  sizes="(max-width: 1024px) 160px, 224px"
+                  className="rounded-full border-4 border-secondary object-cover shadow-lg w-full h-full"
+                  style={{ objectPosition: "center 15%" }}
+                />
+                <span
+                  className="absolute bottom-4 right-5 lg:right-7 w-7 h-7 bg-success rounded-full border-4 border-background shadow-lg animate-pulse"
+                  title="Available for projects"
+                />
+              </div>
+            </div>
+
             <div
-              aria-hidden="true"
-              className="hero-plane pointer-events-none absolute -inset-10 rounded-full"
-              style={
-                {
-                  "--parallax-y": "32px",
-                  "--parallax-scale": "1.12",
-                  "--parallax-opacity": "0.4",
-                  backgroundImage:
-                    "radial-gradient(circle, color-mix(in srgb, var(--secondary) 26%, transparent) 0%, transparent 68%)",
-                } as CSSProperties
-              }
-            />
-            <div className="relative w-full h-full">
-              <Image
-                src="/image-amam.png"
-                alt="Mustofa Amami - Full-Stack Developer Portrait"
-                width={224}
-                height={224}
-                priority
-                fetchPriority="high"
-                sizes="(max-width: 1024px) 160px, 224px"
-                className="rounded-full border-4 border-secondary object-cover shadow-lg w-full h-full"
-                style={{ objectPosition: "center 15%" }}
-              />
-              <span
-                className="absolute bottom-4 right-5 lg:right-7 w-7 h-7 bg-success rounded-full border-4 border-background shadow-lg animate-pulse"
-                title="Available for projects"
-              />
+              className="hero-plane"
+              style={{ "--parallax-y": "22px" } as CSSProperties}
+            >
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4">
+                {t("name") || "Mustofa Amami"}
+              </h1>
+
+              <p className="text-xl lg:text-2xl text-text-secondary max-w-2xl mx-auto">
+                {t("role") || "Full-Stack Developer & UI/UX Enthusiast"}
+              </p>
             </div>
           </div>
 
-          <div
-            className="hero-plane"
-            style={{ "--parallax-y": "22px" } as CSSProperties}
-          >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4">
-              {t("name") || "Mustofa Amami"}
-            </h1>
-
-            <p className="text-xl lg:text-2xl text-text-secondary mb-6 lg:mb-8 max-w-2xl mx-auto">
-              {t("role") || "Full-Stack Developer & UI/UX Enthusiast"}
-            </p>
-
-            <p className="text-base lg:text-lg text-text-muted mb-8 lg:mb-12 max-w-xl mx-auto leading-relaxed">
-              {t("hero-description") ||
-                "Passionate about creating beautiful, functional web experiences with modern technologies. Based in Jakarta, Indonesia."}
-            </p>
-          </div>
-
-          <div
-            className="hero-plane flex flex-wrap justify-center gap-4 mb-8 lg:mb-12"
-            style={{ "--parallax-y": "10px" } as CSSProperties}
-          >
-            {contactInfo.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                target={item.label === "Location" ? "_blank" : undefined}
-                rel={item.label === "Location" ? "noopener noreferrer" : undefined}
-                className="group flex items-center gap-3 bg-card border border-border rounded-full px-6 py-3 hover:shadow-lg hover:border-secondary transition-all duration-200 cursor-pointer border-runner active:scale-95"
-              >
-                <span className="text-2xl group-hover:scale-110 transition-transform duration-200">
-                  {item.icon}
-                </span>
-                <span className="text-text-muted text-sm font-medium group-hover:text-foreground transition-colors duration-200">
-                  {item.text}
-                </span>
-              </a>
-            ))}
-          </div>
-
-          <div className="flex justify-center gap-6">
-            {socialLinks.map((social) => (
-              <a
-                key={social.label}
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`group relative w-14 h-14 ${
-                  social.label === "GitHub"
-                    ? social.color
-                    : `bg-gradient-to-br ${social.color}`
-                } rounded-xl flex items-center justify-center hover:shadow-lg transition-all duration-200 overflow-hidden active:scale-95`}
-                aria-label={`Visit my ${social.label} profile`}
-              >
-                {social.label !== "GitHub" && (
-                  <div
-                    className={`absolute inset-0 bg-gradient-to-br ${social.hoverColor} opacity-0 group-hover:opacity-100 transition-opacity duration-200`}
-                  />
-                )}
-                {social.label === "GitHub" && (
-                  <div
-                    className={`absolute inset-0 ${social.hoverColor} opacity-0 group-hover:opacity-100 transition-opacity duration-200 rounded-xl`}
-                  />
-                )}
-                <social.icon
-                  className={`${
-                    social.label === "GitHub" ? "text-foreground" : "text-white"
-                  } text-xl relative z-10 group-hover:scale-110 transition-transform duration-200`}
-                />
-              </a>
-            ))}
-          </div>
-
           {/*
-            The hero cannot fit every phone — on a 360x740 screen the
-            description alone overruns the usable area — so the fold has to say
-            that more follows rather than just severing a sentence. A real
-            anchor rather than a decorative flourish: it is operable, it reads
-            in the accessibility tree, and it still works with reduced motion
-            or without scroll-timeline support. The bob is decoration on top of
-            a link that works without it.
+            A real anchor, not a decorative flourish: operable, present in the
+            accessibility tree, and working under reduced motion and without
+            scroll-timeline support. The bob is decoration on top of a link
+            that works without it.
           */}
           <a
-            href="#about"
-            className="group mt-10 lg:mt-14 inline-flex flex-col items-center gap-2 text-text-muted hover:text-foreground transition-colors duration-200"
+            href="#intro"
+            className="group mx-auto mt-8 inline-flex flex-col items-center gap-2 pt-4 text-text-muted hover:text-foreground transition-colors duration-200"
           >
             <span className="text-sm font-medium tracking-wide">
               {t("scroll-cue") || "Scroll to read on"}
             </span>
-            <span aria-hidden="true" className="scroll-cue-arrow text-lg leading-none">
+            <span
+              aria-hidden="true"
+              className="scroll-cue-arrow text-lg leading-none"
+            >
               ↓
             </span>
           </a>
         </div>
       </HeroSection>
+
+      {/* What the hero used to carry. First thing below the fold, so the cue
+          has somewhere real to land. */}
+      <Section
+        className="mb-12"
+        id="intro"
+        ariaLabel="Introduction"
+        animate={false}
+      >
+        <p className="text-base lg:text-lg text-text-muted mb-8 lg:mb-10 max-w-2xl mx-auto text-center leading-relaxed">
+          {t("hero-description") ||
+            "Passionate about creating beautiful, functional web experiences with modern technologies. Based in Jakarta, Indonesia."}
+        </p>
+
+        {/* No `hero-plane` here any more: that timeline is ranged to the first
+            viewport of scrolling, so below the fold it would only hold a dead
+            10px offset. */}
+        <div className="flex flex-wrap justify-center gap-4 mb-8 lg:mb-12">
+          {contactInfo.map((item) => (
+            <a
+              key={item.label}
+              href={item.href}
+              target={item.label === "Location" ? "_blank" : undefined}
+              rel={
+                item.label === "Location" ? "noopener noreferrer" : undefined
+              }
+              className="group flex items-center gap-3 bg-card border border-border rounded-full px-6 py-3 hover:shadow-lg hover:border-secondary transition-all duration-200 cursor-pointer border-runner active:scale-95"
+            >
+              <span className="text-2xl group-hover:scale-110 transition-transform duration-200">
+                {item.icon}
+              </span>
+              <span className="text-text-muted text-sm font-medium group-hover:text-foreground transition-colors duration-200">
+                {item.text}
+              </span>
+            </a>
+          ))}
+        </div>
+
+        <div className="flex justify-center gap-6">
+          {socialLinks.map((social) => (
+            <a
+              key={social.label}
+              href={social.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`group relative w-14 h-14 ${
+                social.label === "GitHub"
+                  ? social.color
+                  : `bg-gradient-to-br ${social.color}`
+              } rounded-xl flex items-center justify-center hover:shadow-lg transition-all duration-200 overflow-hidden active:scale-95`}
+              aria-label={`Visit my ${social.label} profile`}
+            >
+              {social.label !== "GitHub" && (
+                <div
+                  className={`absolute inset-0 bg-gradient-to-br ${social.hoverColor} opacity-0 group-hover:opacity-100 transition-opacity duration-200`}
+                />
+              )}
+              {social.label === "GitHub" && (
+                <div
+                  className={`absolute inset-0 ${social.hoverColor} opacity-0 group-hover:opacity-100 transition-opacity duration-200 rounded-xl`}
+                />
+              )}
+              <social.icon
+                className={`${
+                  social.label === "GitHub" ? "text-foreground" : "text-white"
+                } text-xl relative z-10 group-hover:scale-110 transition-transform duration-200`}
+              />
+            </a>
+          ))}
+        </div>
+      </Section>
 
       <ContentGrid columns={2} className="mb-12" id="about">
         <AnimatedCard direction="left" reveal>
@@ -321,7 +358,8 @@ export default async function Home({ params }: HomeProps) {
                 &rdquo;
               </p>
               <cite className="text-secondary font-semibold text-sm">
-                - {t("testimonials.author1") || "Sarah Johnson, Project Manager"}
+                -{" "}
+                {t("testimonials.author1") || "Sarah Johnson, Project Manager"}
               </cite>
             </blockquote>
 

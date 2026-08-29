@@ -16,10 +16,17 @@ Measured against the usable viewport (below the header, above the mobile nav):
 | 360×740 | 579px | 163px |
 | 1440×900 | 806px | fits, but the contact chips are cut |
 
-Tightening the hero fixes the 390-class phones. It cannot fix the 360-class
-ones without cutting copy, which is the author's call, not a layout decision.
-So the cut has to become deliberate: a reader who reaches the bottom of the
-first screen should be told there is more, not left at a severed sentence.
+A first attempt tightened the hero — smaller portrait, smaller gaps — and
+bought about 60px. That was nibbling at the wrong thing. Measured properly, the
+hero wanted 1054–1134px against 573–771px of usable height: it overran on every
+phone *and* on a 1440×900 desktop, because it was carrying the biography and
+the contact details as well as the identity. No amount of spacing would close a
+280–560px gap.
+
+The established pattern is a hero of headline, subheadline, one visual and one
+action, with the biography below the fold. Adopting it makes the first screen
+self-contained: the fold falls on a section boundary, so nothing is sliced, and
+there is room for the cue to sit on the first screen where it can do its job.
 
 The same gap exists at the other end. The page finishes on a contact CTA, so a
 visitor who is interested but not ready to email has nowhere to go — the résumé,
@@ -27,13 +34,15 @@ portfolio and blog are reachable only from the nav bar they scrolled past.
 
 ## What Changes
 
-- The hero tightens on small screens: a smaller portrait and smaller gaps
-  between blocks, so the description completes above the fold on a 390×844
-  phone. Desktop spacing is unchanged.
-- A scroll cue closes the hero — a labelled link to the first content section.
-  It sits in normal flow at the end of the hero, so it is a step in the page
-  rather than an overlay, and it works for everyone rather than depending on
-  motion support.
+- The hero is sized to the usable viewport and carries only the identity —
+  portrait, name, role — with the scroll cue at its foot. The fold then falls
+  on a section boundary rather than through a paragraph or a half-drawn card,
+  and the cue is on the first screen rather than several hundred pixels below
+  it.
+- The biography, contact details and social links move out of the hero into an
+  `#intro` section directly below it, which is what the cue points at.
+- The scroll cue is a labelled anchor in normal flow, so it is a step in the
+  page rather than an overlay, and it works without motion support.
 - A "keep exploring" section before the closing CTA offers the résumé,
   portfolio and blog as onward paths, each with a line saying what is there.
 - Both additions carry new copy, in `en` and `id`.
@@ -45,7 +54,6 @@ portfolio and blog are reachable only from the nav bar they scrolled past.
 - Affected translations: 9 new keys in the `translation` namespace, in both locales
 - Risk: low. Layout and copy only; no new dependency, no client component, no
   new route
-- Not in scope: shortening the hero description. That would fix the 360×740
-  overrun outright, but the copy is the author's voice and this change should
-  not quietly rewrite it. Flagged rather than done
+- Not in scope: shortening the hero description. Moving it below the fold
+  removes the pressure on it, so it no longer needs cutting
 - Not in scope: the same treatment on the portfolio, résumé and blog pages

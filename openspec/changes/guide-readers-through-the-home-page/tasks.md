@@ -10,6 +10,8 @@
 - [x] 1.4 Drop `hero-plane` from the moved blocks: that timeline is ranged to
       the first viewport, so below the fold it would hold a dead offset
 - [x] 1.5 Confirm by measurement that nothing is intersected by the fold
+- [x] 1.6 Restore the portrait size: it was shrunk to make room for a bio that
+      now lives in `#intro`, leaving the hero sparse and the cue adrift
 
 ## 2. Scroll cue
 
@@ -21,6 +23,8 @@
       `scroll-padding-top` so it does not land under the sticky header
 - [x] 2.4 Keep it working with reduced motion and without scroll-timeline
       support — any motion on it is decoration over a working link
+- [x] 2.5 Size it for the foot of an otherwise empty screen: 16px label, 24px
+      arrow, a tap target well past the 44px minimum
 
 ## 3. Onward paths
 
@@ -29,6 +33,10 @@
 - [x] 3.2 Give each a one-line description of what is there
 - [x] 3.3 Prefetch each destination, per `web-performance`
 - [x] 3.4 Opt the section into the existing scroll reveal
+- [x] 3.5 Give `#intro` depth of its own — it is the payoff for scrolling. A
+      `view()`-driven drift on the wrapper, staggered rises on its three
+      children. `.hero-plane` cannot serve it: that timeline is ranged to the
+      first viewport, so past it there is only a dead offset
 
 ## 4. Copy
 
@@ -53,13 +61,17 @@ viewport measured — this is the requirement that drove the restructure:
 
 | Viewport | Cue | Fold | `#intro` starts |
 | --- | --- | --- | --- |
-| 340×734 | 568–630 | 645 | 678 |
-| 360×740 | 574–636 | 651 | 684 |
-| 390×844 | 678–740 | 755 | 788 |
-| 430×932 | 766–828 | 843 | 876 |
-| 768×1024 | 928–990 | 1024 | 1054 |
-| 1440×900 | 788–850 | 900 | 930 |
-| 1920×1080 | 968–1030 | 1080 | 1110 |
+| 340×734 | 550–630 | 645 | 678 |
+| 360×740 | 556–636 | 651 | 684 |
+| 390×844 | 660–740 | 755 | 788 |
+| 430×932 | 748–828 | 843 | 876 |
+| 768×1024 | 910–990 | 1024 | 1054 |
+| 1440×900 | 778–850 | 900 | 930 |
+| 1920×1080 | 958–1030 | 1080 | 1110 |
+
+Re-measured after restoring the portrait and enlarging the cue; still 7/7. The
+larger portrait also closed the dead space the restructure had opened up —
+role-to-cue is 32px on a 333px-wide screen, not the ~300px it was.
 
 7/7. The first attempt — tightening spacing — reached 3/7, and only on the
 larger screens; the hero wanted 1054–1134px against 573–771px of usable height.
@@ -75,6 +87,9 @@ Other checks, headless Chromium against a production build:
 | Reduced motion | cue present, visible and operable; only the bob suppressed |
 | Locale parity | `en` and `id` key sets identical |
 | Scroll-depth suites | 17/17 and 12/12; motion still runs with JS disabled |
+| `#intro` drift | 5.0 → 26.0px across its traverse of the viewport, continuous |
+| `#intro` stagger | opacities [1, 0, 0] → [1, 1, 0.21] → [1, 1, 1] as it rises |
+| Mobile cue | 186×80px tap target, 16px label, 24px arrow, within the fold |
 
 The Indonesian cue was "Gulir untuk lanjut membaca". Corrected to "Scroll untuk
 lanjut membaca": *gulir* is the formal calque, but *scroll* is the loanword

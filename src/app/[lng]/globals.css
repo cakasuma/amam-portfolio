@@ -831,3 +831,22 @@ body {
   display: inline-block;
   animation: scroll-cue-bob 2.4s ease-in-out infinite;
 }
+
+/* Parallax for content below the first viewport.
+   ------------------------------------------------------------
+   `.hero-plane` is ranged to the first viewport of scrolling, so it cannot
+   serve a section further down the page — past that range it would only hold a
+   dead offset. This drives the drift from the element's own passage through
+   the viewport instead, so it works anywhere on the page.
+
+   Sits inside the same reduced-motion and `@supports` guards as everything
+   else; the block below re-opens them. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .parallax-drift {
+      animation: parallax-depth linear both;
+      animation-timeline: view();
+      animation-range: cover 0% cover 100%;
+    }
+  }
+}

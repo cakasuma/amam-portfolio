@@ -135,7 +135,7 @@ export default async function Home({ params }: HomeProps) {
         <div className="flex flex-col min-h-[calc(100svh-14rem)] lg:min-h-[calc(100svh-15rem)]">
           <div className="flex flex-1 flex-col justify-center">
             <div
-              className="hero-plane relative w-40 h-40 lg:w-56 lg:h-56 mx-auto mb-6 lg:mb-8"
+              className="hero-plane relative w-48 h-48 sm:w-52 sm:h-52 lg:w-60 lg:h-60 mx-auto mb-6 lg:mb-8"
               style={
                 {
                   "--parallax-y": "40px",
@@ -164,11 +164,11 @@ export default async function Home({ params }: HomeProps) {
                 <Image
                   src="/image-amam.png"
                   alt="Mustofa Amami - Full-Stack Developer Portrait"
-                  width={224}
-                  height={224}
+                  width={240}
+                  height={240}
                   priority
                   fetchPriority="high"
-                  sizes="(max-width: 1024px) 160px, 224px"
+                  sizes="(max-width: 640px) 192px, (max-width: 1024px) 208px, 240px"
                   className="rounded-full border-4 border-secondary object-cover shadow-lg w-full h-full"
                   style={{ objectPosition: "center 15%" }}
                 />
@@ -201,14 +201,14 @@ export default async function Home({ params }: HomeProps) {
           */}
           <a
             href="#intro"
-            className="group mx-auto mt-8 inline-flex flex-col items-center gap-2 pt-4 text-text-muted hover:text-foreground transition-colors duration-200"
+            className="group mx-auto mt-8 inline-flex min-h-11 flex-col items-center gap-2 rounded-full px-6 py-3 text-text-muted transition-colors duration-200 hover:text-foreground hover:bg-card/60"
           >
-            <span className="text-sm font-medium tracking-wide">
+            <span className="text-base lg:text-sm font-medium tracking-wide">
               {t("scroll-cue") || "Scroll to read on"}
             </span>
             <span
               aria-hidden="true"
-              className="scroll-cue-arrow text-lg leading-none"
+              className="scroll-cue-arrow text-2xl lg:text-xl leading-none"
             >
               ↓
             </span>
@@ -217,73 +217,88 @@ export default async function Home({ params }: HomeProps) {
       </HeroSection>
 
       {/* What the hero used to carry. First thing below the fold, so the cue
-          has somewhere real to land. */}
+          has somewhere real to land — and the payoff for scrolling, so it gets
+          depth of its own: the block lags as it crosses the viewport while its
+          three parts rise in sequence. The lag is on the wrapper and the rises
+          are on the children, because two animations on one element would both
+          be driving `transform` and the later would simply win. */}
       <Section
         className="mb-12"
         id="intro"
         ariaLabel="Introduction"
         animate={false}
       >
-        <p className="text-base lg:text-lg text-text-muted mb-8 lg:mb-10 max-w-2xl mx-auto text-center leading-relaxed">
-          {t("hero-description") ||
-            "Passionate about creating beautiful, functional web experiences with modern technologies. Based in Jakarta, Indonesia."}
-        </p>
+        <div
+          className="parallax-drift"
+          style={{ "--parallax-y": "26px" } as CSSProperties}
+        >
+          <p className="reveal-on-scroll text-base lg:text-lg text-text-muted mb-8 lg:mb-10 max-w-2xl mx-auto text-center leading-relaxed">
+            {t("hero-description") ||
+              "Passionate about creating beautiful, functional web experiences with modern technologies. Based in Jakarta, Indonesia."}
+          </p>
 
-        {/* No `hero-plane` here any more: that timeline is ranged to the first
+          {/* No `hero-plane` here any more: that timeline is ranged to the first
             viewport of scrolling, so below the fold it would only hold a dead
             10px offset. */}
-        <div className="flex flex-wrap justify-center gap-4 mb-8 lg:mb-12">
-          {contactInfo.map((item) => (
-            <a
-              key={item.label}
-              href={item.href}
-              target={item.label === "Location" ? "_blank" : undefined}
-              rel={
-                item.label === "Location" ? "noopener noreferrer" : undefined
-              }
-              className="group flex items-center gap-3 bg-card border border-border rounded-full px-6 py-3 hover:shadow-lg hover:border-secondary transition-all duration-200 cursor-pointer border-runner active:scale-95"
-            >
-              <span className="text-2xl group-hover:scale-110 transition-transform duration-200">
-                {item.icon}
-              </span>
-              <span className="text-text-muted text-sm font-medium group-hover:text-foreground transition-colors duration-200">
-                {item.text}
-              </span>
-            </a>
-          ))}
-        </div>
+          <div
+            className="reveal-on-scroll flex flex-wrap justify-center gap-4 mb-8 lg:mb-12"
+            style={{ "--reveal-start": "20%" } as CSSProperties}
+          >
+            {contactInfo.map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                target={item.label === "Location" ? "_blank" : undefined}
+                rel={
+                  item.label === "Location" ? "noopener noreferrer" : undefined
+                }
+                className="group flex items-center gap-3 bg-card border border-border rounded-full px-6 py-3 hover:shadow-lg hover:border-secondary transition-all duration-200 cursor-pointer border-runner active:scale-95"
+              >
+                <span className="text-2xl group-hover:scale-110 transition-transform duration-200">
+                  {item.icon}
+                </span>
+                <span className="text-text-muted text-sm font-medium group-hover:text-foreground transition-colors duration-200">
+                  {item.text}
+                </span>
+              </a>
+            ))}
+          </div>
 
-        <div className="flex justify-center gap-6">
-          {socialLinks.map((social) => (
-            <a
-              key={social.label}
-              href={social.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`group relative w-14 h-14 ${
-                social.label === "GitHub"
-                  ? social.color
-                  : `bg-gradient-to-br ${social.color}`
-              } rounded-xl flex items-center justify-center hover:shadow-lg transition-all duration-200 overflow-hidden active:scale-95`}
-              aria-label={`Visit my ${social.label} profile`}
-            >
-              {social.label !== "GitHub" && (
-                <div
-                  className={`absolute inset-0 bg-gradient-to-br ${social.hoverColor} opacity-0 group-hover:opacity-100 transition-opacity duration-200`}
+          <div
+            className="reveal-on-scroll flex justify-center gap-6"
+            style={{ "--reveal-start": "32%" } as CSSProperties}
+          >
+            {socialLinks.map((social) => (
+              <a
+                key={social.label}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`group relative w-14 h-14 ${
+                  social.label === "GitHub"
+                    ? social.color
+                    : `bg-gradient-to-br ${social.color}`
+                } rounded-xl flex items-center justify-center hover:shadow-lg transition-all duration-200 overflow-hidden active:scale-95`}
+                aria-label={`Visit my ${social.label} profile`}
+              >
+                {social.label !== "GitHub" && (
+                  <div
+                    className={`absolute inset-0 bg-gradient-to-br ${social.hoverColor} opacity-0 group-hover:opacity-100 transition-opacity duration-200`}
+                  />
+                )}
+                {social.label === "GitHub" && (
+                  <div
+                    className={`absolute inset-0 ${social.hoverColor} opacity-0 group-hover:opacity-100 transition-opacity duration-200 rounded-xl`}
+                  />
+                )}
+                <social.icon
+                  className={`${
+                    social.label === "GitHub" ? "text-foreground" : "text-white"
+                  } text-xl relative z-10 group-hover:scale-110 transition-transform duration-200`}
                 />
-              )}
-              {social.label === "GitHub" && (
-                <div
-                  className={`absolute inset-0 ${social.hoverColor} opacity-0 group-hover:opacity-100 transition-opacity duration-200 rounded-xl`}
-                />
-              )}
-              <social.icon
-                className={`${
-                  social.label === "GitHub" ? "text-foreground" : "text-white"
-                } text-xl relative z-10 group-hover:scale-110 transition-transform duration-200`}
-              />
-            </a>
-          ))}
+              </a>
+            ))}
+          </div>
         </div>
       </Section>
 

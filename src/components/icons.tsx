@@ -21,6 +21,7 @@ export {
   FaExclamationCircle,
   FaTimes,
   FaDownload,
+  FaWhatsapp,
 } from "react-icons/fa";
 
 export { FiSun, FiMoon, FiChevronDown } from "react-icons/fi";

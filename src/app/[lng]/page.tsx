@@ -1,7 +1,7 @@
 import type { CSSProperties } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { FaLinkedin, FaGithub, FaTwitter } from "@/components/icons";
+import { FaLinkedin, FaGithub, FaTwitter, FaWhatsapp } from "@/components/icons";
 import PageLayout, {
   AnimatedCard,
   Section,
@@ -30,7 +30,11 @@ export default async function Home({ params }: HomeProps) {
       href: "mailto:amammustofa@gmail.com",
     },
     {
-      icon: "📱",
+      // The link has always gone to wa.me, so a generic phone glyph was
+      // mis-signalling where it lands. `--success` rather than WhatsApp's own
+      // green: `theming` wants colour to come from the token set, and at this
+      // size it reads the same.
+      icon: <FaWhatsapp className="text-success" aria-hidden="true" />,
       text: t("phone") || "+60 10-844 4970",
       label: t("contact-info.phone-label") || "Phone",
       href: "https://wa.me/60108444970",
@@ -254,7 +258,7 @@ export default async function Home({ params }: HomeProps) {
                 }
                 className="group flex items-center gap-3 bg-card border border-border rounded-full px-6 py-3 hover:shadow-lg hover:border-secondary transition-all duration-200 cursor-pointer border-runner active:scale-95"
               >
-                <span className="text-2xl group-hover:scale-110 transition-transform duration-200">
+                <span className="flex items-center justify-center text-2xl leading-none group-hover:scale-110 transition-transform duration-200">
                   {item.icon}
                 </span>
                 <span className="text-text-muted text-sm font-medium group-hover:text-foreground transition-colors duration-200">

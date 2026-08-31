@@ -1,13 +1,16 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useTranslation } from "@/app/i18n/client";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import ThemeSwitcher from "./ThemeSwitcher";
 import { memo, useEffect, useMemo, useRef, useState } from "react";
 
+import type { NavLabels } from "./nav-labels";
+
 interface SmartHeaderProps {
   lng: string;
+  /** Resolved on the server. See the note in `[lng]/layout.tsx`. */
+  navLabels: NavLabels;
 }
 
 function useHideOnScroll(threshold: number = 150) {
@@ -39,20 +42,22 @@ function useHideOnScroll(threshold: number = 150) {
   return isHidden;
 }
 
-export const SmartHeader = memo(function SmartHeader({ lng }: SmartHeaderProps) {
+export const SmartHeader = memo(function SmartHeader({
+  lng,
+  navLabels,
+}: SmartHeaderProps) {
   const pathname = usePathname();
-  const { t } = useTranslation(lng);
   const isHidden = useHideOnScroll(150);
 
   const navItems = useMemo(
     () => [
-      { href: `/${lng}`, label: t("nav.home") || "Home", icon: "🏠", ariaLabel: "Navigate to home page" },
-      { href: `/${lng}/resume`, label: t("nav.resume") || "Resume", icon: "📄", ariaLabel: "View my resume and experience" },
-      { href: `/${lng}/portfolio`, label: t("nav.portfolio") || "Portfolio", icon: "💼", ariaLabel: "Browse my portfolio projects" },
-      { href: `/${lng}/blog`, label: t("nav.blog") || "Blog", icon: "📝", ariaLabel: "Read my blog posts" },
-      { href: `/${lng}/contact`, label: t("nav.contact") || "Contact", icon: "📧", ariaLabel: "Get in touch with me" },
+      { href: `/${lng}`, label: navLabels.home, icon: "🏠", ariaLabel: "Navigate to home page" },
+      { href: `/${lng}/resume`, label: navLabels.resume, icon: "📄", ariaLabel: "View my resume and experience" },
+      { href: `/${lng}/portfolio`, label: navLabels.portfolio, icon: "💼", ariaLabel: "Browse my portfolio projects" },
+      { href: `/${lng}/blog`, label: navLabels.blog, icon: "📝", ariaLabel: "Read my blog posts" },
+      { href: `/${lng}/contact`, label: navLabels.contact, icon: "📧", ariaLabel: "Get in touch with me" },
     ],
-    [lng, t]
+    [lng, navLabels]
   );
 
   return (

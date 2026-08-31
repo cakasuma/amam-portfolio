@@ -1,11 +1,14 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useTranslation } from "@/app/i18n/client";
 import { memo, useEffect, useMemo, useRef, useState } from "react";
+
+import type { NavLabels } from "./nav-labels";
 
 interface SmartFooterProps {
   lng: string;
+  /** Resolved on the server. See the note in `[lng]/layout.tsx`. */
+  navLabels: NavLabels;
 }
 
 function useHideOnScroll(threshold: number = 150) {
@@ -37,20 +40,22 @@ function useHideOnScroll(threshold: number = 150) {
   return isHidden;
 }
 
-export const SmartFooter = memo(function SmartFooter({ lng }: SmartFooterProps) {
+export const SmartFooter = memo(function SmartFooter({
+  lng,
+  navLabels,
+}: SmartFooterProps) {
   const pathname = usePathname();
-  const { t } = useTranslation(lng);
   const isHidden = useHideOnScroll(150);
 
   const navItems = useMemo(
     () => [
-      { href: `/${lng}`, label: t("nav.home") || "Home", icon: "🏠" },
-      { href: `/${lng}/resume`, label: t("nav.resume") || "Resume", icon: "📄" },
-      { href: `/${lng}/portfolio`, label: t("nav.portfolio") || "Portfolio", icon: "💼" },
-      { href: `/${lng}/blog`, label: t("nav.blog") || "Blog", icon: "📝" },
-      { href: `/${lng}/contact`, label: t("nav.contact") || "Contact", icon: "📧" },
+      { href: `/${lng}`, label: navLabels.home, icon: "🏠" },
+      { href: `/${lng}/resume`, label: navLabels.resume, icon: "📄" },
+      { href: `/${lng}/portfolio`, label: navLabels.portfolio, icon: "💼" },
+      { href: `/${lng}/blog`, label: navLabels.blog, icon: "📝" },
+      { href: `/${lng}/contact`, label: navLabels.contact, icon: "📧" },
     ],
-    [lng, t]
+    [lng, navLabels]
   );
 
   return (

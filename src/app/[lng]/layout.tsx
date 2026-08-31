@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import { dir } from "i18next";
-import { use } from "react";
 import { languages } from "@/app/i18n/settings";
 import { Providers } from "@/app/theme/Providers";
 import { SmartHeader } from "@/app/components/SmartHeader";
 import { SmartFooter } from "@/app/components/SmartFooter";
 import { Footer } from "@/app/components/Footer";
 import { StructuredData } from "@/app/components/StructuredData";
+import { usingTranslation } from "@/app/i18n";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
@@ -112,14 +112,34 @@ export const metadata: Metadata = {
 
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
   params,
 }: Readonly<{
   children: React.ReactNode;
   params: Promise<{ lng: string }>;
 }>) {
-  const { lng } = use(params);
+  const { lng } = await params;
+
+  // Resolved here, on the server, and passed down.
+  //
+  // The header and footer are Client Components because they track the active
+  // route and hide on scroll — but their labels are static per locale, and
+  // asking for them through client i18n was a real bug: the locale JSON is
+  // lazy-imported, so at hydration `t("nav.home")` had no bundle to read and
+  // returned the key. React saw text that did not match the server, discarded
+  // the server's markup for that subtree, and re-rendered it as "nav.home",
+  // "nav.resume" and so on until the JSON arrived. On a fast connection that is
+  // a flicker and a console error; on a slow one the raw keys are what the
+  // visitor reads.
+  const { t } = await usingTranslation(lng);
+  const navLabels = {
+    home: t("nav.home"),
+    resume: t("nav.resume"),
+    portfolio: t("nav.portfolio"),
+    blog: t("nav.blog"),
+    contact: t("nav.contact"),
+  };
 
   return (
     <html
@@ -148,7 +168,7 @@ export default function RootLayout({
           <Analytics />
           <SpeedInsights />
           <div className="flex flex-col min-h-svh">
-            <SmartHeader lng={lng} />
+            <SmartHeader lng={lng} navLabels={navLabels} />
             <main
               id="main-content"
               className="flex-1 pb-24 md:pb-16"
@@ -156,7 +176,7 @@ export default function RootLayout({
             >
               {children}
             </main>
-            <SmartFooter lng={lng} />
+            <SmartFooter lng={lng} navLabels={navLabels} />
             <Footer lng={lng} />
           </div>
         </Providers>

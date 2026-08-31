@@ -1,5 +1,3 @@
-import Script from "next/script";
-
 interface StructuredDataProps {
   lng: string;
 }
@@ -75,25 +73,36 @@ export function StructuredData({ lng }: StructuredDataProps) {
     },
   };
 
+  // Plain <script> tags, not next/script.
+  //
+  // `next/script` exists to control *when executable JavaScript runs*. JSON-LD
+  // is not executable — it is data a crawler reads out of the markup. Sending
+  // it through `next/script` with `afterInteractive` meant the tags were server
+  // rendered but their contents were injected on the client, so:
+  //
+  //   * a crawler that does not run JavaScript found three empty blocks, which
+  //     is the opposite of what `seo-metadata` requires; and
+  //   * each script's text node differed between server and client, which is
+  //     what React reported as the hydration mismatch (#418) on every route.
+  //
+  // This component is a Server Component, so a plain tag renders the JSON
+  // straight into the HTML, where both problems disappear.
   return (
     <>
-      <Script
+      <script
         id="person-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
-        strategy="afterInteractive"
       />
-      <Script
+      <script
         id="website-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
-        strategy="afterInteractive"
       />
-      <Script
+      <script
         id="profile-page-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(profilePageSchema) }}
-        strategy="afterInteractive"
       />
     </>
   );

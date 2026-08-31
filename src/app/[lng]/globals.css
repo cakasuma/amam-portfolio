@@ -13,6 +13,12 @@
   --text-primary: #0d0c0a;
   --text-secondary: #3c2415;
   --text-muted: #8b7355;
+
+  /* Opacity of the backdrop's warm field. Light only: over the beige ground
+     `--secondary` is a saddle brown that sits close to the background, but in
+     dark mode the same token is a light tan over near-black and the identical
+     mix reads as a smudge rather than as depth. */
+  --backdrop-warmth: 0.1;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -26,6 +32,7 @@
     --text-primary: #f5f3f0;
     --text-secondary: #d2b48c;
     --text-muted: #a68b5b;
+    --backdrop-warmth: 0;
   }
 }
 
@@ -85,6 +92,8 @@ html.light {
   --nav-active-bg: #d2b48c; /* Light brown active nav */
   --nav-active-text: #3c2415; /* Dark brown text */
   --nav-hover-bg: rgba(230, 215, 195, 0.5); /* Light beige hover */
+
+  --backdrop-warmth: 0.1; /* see :root */
 }
 
 html.dark {
@@ -143,6 +152,8 @@ html.dark {
   --nav-active-bg: #8b4513; /* Brown active nav */
   --nav-active-text: #f5f3f0; /* Light beige text */
   --nav-hover-bg: rgba(42, 31, 21, 0.5); /* Dark brown hover */
+
+  --backdrop-warmth: 0; /* see :root — this is the theme it looked wrong in */
 }
 
 body {

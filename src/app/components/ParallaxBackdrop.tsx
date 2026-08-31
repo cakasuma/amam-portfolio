@@ -9,12 +9,15 @@ import type { CSSProperties } from "react";
  * flat background there is nothing for the eye to measure the drift by.
  *
  * This started out as three planes: the grid plus two soft colour fields mixed
- * from `--secondary` and `--primary`. The fields were dropped. Their alpha was
- * chosen against the light palette, where the mix sits close to the background;
- * in dark mode `--secondary` is a light tan over near-black, so the same alpha
- * read as a bright warm smudge in the top-left corner rather than as depth.
- * Colour is not what was carrying the effect, so it went rather than being
- * tuned per theme.
+ * from `--secondary` and `--primary`. The fields were dropped when the same
+ * alpha that sat quietly over the beige ground read as a bright smudge over
+ * near-black — in dark mode `--secondary` is a light tan.
+ *
+ * One warm field is back, but only where it was ever right. Its opacity is
+ * `--backdrop-warmth`, which the palette blocks set to 0.1 in light and 0 in
+ * dark, so the theme decides rather than the component. It is also what gives
+ * the backdrop a second plane again: one layer cannot show parallax against
+ * itself.
  *
  * All of the motion lives in `.parallax-plane` in `globals.css`, behind a
  * reduced-motion guard and an `@supports` test. With the animation suppressed
@@ -36,6 +39,27 @@ export function ParallaxBackdrop() {
             WebkitMaskImage:
               "radial-gradient(ellipse 85% 55% at 50% 22%, #000 0%, transparent 100%)",
             opacity: 0.5,
+          } as CSSProperties
+        }
+      />
+
+      {/*
+        Light-mode warmth. `--parallax-opacity` has to be set as well as the
+        base `opacity`: the `parallax-depth` keyframes animate opacity toward
+        that variable, so leaving it unset would let the field fade up to 1 in
+        dark mode — precisely the smudge this is scoped to avoid. Setting both
+        to the same token makes the animation a no-op on this axis.
+      */}
+      <div
+        className="parallax-plane"
+        style={
+          {
+            "--parallax-y": "-95px",
+            "--parallax-x": "18px",
+            "--parallax-opacity": "var(--backdrop-warmth, 0)",
+            opacity: "var(--backdrop-warmth, 0)",
+            backgroundImage:
+              "radial-gradient(circle at 14% 16%, color-mix(in srgb, var(--secondary) 70%, transparent) 0%, transparent 55%)",
           } as CSSProperties
         }
       />

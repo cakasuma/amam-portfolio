@@ -94,6 +94,17 @@ const projects: Project[] = [
     githubUrl: null,
     featured: false,
   },
+  {
+    id: 9,
+    title: "HelloKalku",
+    description:
+      "A suite of free calculators for Malaysia — take-home salary, tax, zakat, faraid inheritance, and planning tools — gathered into one bilingual app. Supersedes the standalone Faraid and salary calculators.",
+    image: "/projects/hellokalku.svg",
+    technologies: ["React", "Vite", "Tailwind CSS"],
+    demoUrl: "https://hellokalku.com",
+    githubUrl: null,
+    featured: false,
+  },
 ];
 
 const webApps = [
@@ -105,16 +116,6 @@ const webApps = [
     image: "/projects/hijriah.svg",
     technologies: ["JavaScript", "HTML", "CSS"],
     demoUrl: "https://hijriah.amammustofa.com",
-    githubUrl: null,
-  },
-  {
-    id: 102,
-    title: "HelloKalku",
-    description:
-      "A suite of free calculators for Malaysia — take-home salary, tax, zakat, faraid inheritance, and planning tools — gathered into one bilingual app. Supersedes the standalone Faraid and salary calculators.",
-    image: "/projects/hellokalku.svg",
-    technologies: ["React", "Vite", "Tailwind CSS"],
-    demoUrl: "https://hellokalku.com",
     githubUrl: null,
   },
 ];
